@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get 'laastras/terms_of_use'
   get 'laastras/privacy'
   get 'laastras/cookies'
+  get 'laastras/contact'
+  get 'laastras/about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
