@@ -42,8 +42,15 @@ class LaastrasController < ApplicationController
     @sign_up_key = "sign up"
     @sign_in_key = "sign in"
     @kick_off = "Kick off"
+    @mission = "Mission"
     @kick_off_url = "https://1drv.ms/u/s!Alpt4zgtrW4ug1ux6xHa5ls7Y1rm?e=sA3Qid"
     @copy_right = "#{Time.now.year} Laastras. All Rights Reserved."
+    @laastras_services = [
+      "Internet of our Things (IoT).",
+      "Services Exchange and Virtual Money.",
+      "Equality.",
+      "Logistics and E-commerce instead of shops and malls."
+    ]
     @globalization_intro = %Q(
       Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
       Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),

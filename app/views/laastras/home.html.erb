@@ -25,15 +25,27 @@
     </header>
     <hr>
     <main role="main">
-        <div class="shadow-sm p-3 mb-5 bg-white rounded" style="margin: 4px">
-            <p> 
-                <%= @globalization_intro %>
-            </p>
+        <div class="text-center">
+            <% @laastras_services.each do |service| %>
+                <p style="font-size: 20px">
+                    <%= service %>
+                </p>
+            <% end %>
+        </div>
+        <div class="shadow-sm p-1 mb-2 bg-white rounded" style="margin: 4px">
+            <div class="shadow-none p-1 mb-2 bg-light rounded">
+                <span style="font-size: 32px; font-weight: bold"> <%= @mission %> </span>
+            </div>
+            <div>
+                <p> 
+                    <%= @globalization_intro %>
+                </p>
+            </div>
         </div>
         
-        <div class="shadow p-3 mb-5 bg-white rounded">
-            <div class="shadow-none p-3 mb-5 bg-light rounded">
-                <span style="font-size: 20px; font-weight: bold"> <%= @kick_off %> </span>
+        <div class="shadow p-1 mb-2 bg-white rounded">
+            <div class="shadow-none p-1 mb-2 bg-light rounded">
+                <span style="font-size: 32px; font-weight: bold"> <%= @kick_off %> </span>
             </div>
             <%= image_tag @kick_off_url, {style: ""} %>
             <div class="row text-center">
