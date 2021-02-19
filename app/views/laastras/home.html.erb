@@ -8,14 +8,18 @@
                     </span> 
                 </div>
             </div>
-            <div class="col-sm-1"> <%= link_to @sign_in_key, url_for(controller: 'laastras', action: 'sign_in') %></div>
-            <div class="col-sm-1"> <%= link_to @sign_up_key, url_for(controller: 'laastras', action: 'sign_up') %></div>
-            <div class="col-sm-1">
-                <button type = "button" class = "btn btn-default">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-square-text-fill" viewBox="0 0 16 16">
-                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
-                    </svg>
-                </button>
+            <div class="col-sm-3">
+                <div class="row text-center">
+                    <div class="col-sm-4"> <%= link_to @sign_in_key, url_for(controller: 'laastras', action: 'sign_in') %></div>
+                    <div class="col-sm-4"> <%= link_to @sign_up_key, url_for(controller: 'laastras', action: 'sign_up') %></div>
+                    <div class="col-sm-4">
+                        <button type = "button" class = "btn btn-default">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-square-text-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -33,29 +37,29 @@
             </div>
             <%= image_tag @kick_off_url, {style: ""} %>
             <div class="row">
-                <div class="col-sm-5"></div>
-                <div class="col-sm-1 text-center">
+                <div class="col-5"></div>
+                <div class="col-1 text-center">
                     <button type = "button" class = "btn btn-default">
                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="col-sm-1 text-center">
+                <div class="col-1 text-center">
                     <button type = "button" class = "btn btn-default">
                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="col-sm-5"></div>
+                <div class="col-5"></div>
             </div>
         </div>
     </main>
     <footer class="shadow-lg p-3 mb-5 bg-white rounded">
         <div class="text-center"> &copy; <%= @copy_right %> </div>
-        <section style="padding: 2px">
-            <div class="row justify-content-center">
+        <section class="text-center" style="padding: 2px">
+            <div class="row text-center">
                 <div class="col-sm-1"></div>
                 <%= link_to @about_key, url_for(controller: 'laastras', action: 'about'), class: "col-sm-2" %>
                 <%= link_to @terms_of_use_key, url_for(controller: 'laastras', action: 'terms_of_use'), class: "col-sm-2" %>
@@ -65,8 +69,8 @@
                 <div class="col-sm-1"></div>
             </div>
         </section>
-        <section style="padding: 2px">
-            <div class="row justify-content-center">
+        <section class="text-center" style="padding: 2px">
+            <div class="row text-center">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
