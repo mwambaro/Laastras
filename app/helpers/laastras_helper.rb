@@ -1,0 +1,2 @@
+module LaastrasHelper
+end
