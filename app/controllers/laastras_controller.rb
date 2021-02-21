@@ -34,33 +34,30 @@ class LaastrasController < ApplicationController
   end
 
   def init_parameters
-    @contact_key = "Contact Us"
-    @about_key = "about"
-    @cookies_key = "cookies"
-    @privacy_key = "privacy"
-    @terms_of_use_key = "terms of use"
-    @sign_up_key = "sign up"
-    @sign_in_key = "sign in"
-    @kick_off = "Kick off"
-    @mission = "Mission"
+    @contact_key = I18n.t 'contact_us'
+    @about_key = I18n.t 'about'
+    @cookies_key = I18n.t 'cookies'
+    @privacy_key = I18n.t 'privacy'
+    @terms_of_use_key = I18n.t 'terms_of_use'
+    @sign_up_key = I18n.t 'sign_up'
+    @sign_in_key = I18n.t 'sign_in'
+    @kick_off = I18n.t 'kick_off'
+    @mission = I18n.t 'mission'
+    @services = I18n.t 'services'
     @kick_off_url = "https://1drv.ms/u/s!Alpt4zgtrW4ug1ux6xHa5ls7Y1rm?e=sA3Qid"
-    @copy_right = "#{Time.now.year} Laastras. All Rights Reserved."
+    @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
     @laastras_services = [
-      "Internet of our Things (IoT).",
-      "Services Exchange and Virtual Money.",
-      "Equality.",
-      "Logistics and E-commerce instead of shops and malls."
+      (I18n.t 'iot'),
+      (I18n.t 'means_of_exchange'),
+      (I18n.t 'equality_policy'),
+      (I18n.t 'logistics_ecommerce')
     ]
-    @globalization_intro = %Q(
-      Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
-      Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),
-      Communication as a Service (CaaS), and Legal Protection as a Service (PraaS) can turn malls, shops, 
-      and market places into trans-shipment warehouses and divert manpower therein to actual production. 
-      This IoT will then curb unemployment, poverty, and conflicts. Welcome to Laastras (LaaS trade system), 
-      a collection of IoT services that lead to a world of plenty for all. Our money is Services Exchange, 
-      on one side, and Virtual Money, on the other. We agree to disagree on everything else but one unrefutable 
-      truth: We must equally share all resources that support our existence, present and future, discovered and 
-      yet to be found. Laastras IoT collection of services offer the best policy to achieve that truth.
-    ).gsub("\n", " ").gsub("\r", "")
+    @globalization_intro = (I18n.t 'mission_terms').gsub(/\t\n{0,1}/, " ").gsub(/[^\n]\n{1}[^\n]/, " ")
+    @supported_languages = [
+      (I18n.t 'english' + ' (english)'),
+      (I18n.t 'kirundi' + ' (kirundi)'),
+      (I18n.t 'french' + ' (french)'),
+      (I18n.t 'swahili' + ' (swahili)')
+    ]
   end
 end

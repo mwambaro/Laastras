@@ -1,0 +1,62 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  english: "English"
+  kirundi: "Kirundi"
+  swahili: "Swahili"
+  french: "French"
+  contact_us: "Contact us"
+  about: "About"
+  cookies: "Cookies"
+  privacy: "Privacy"
+  terms_of_use: "Terms of use"
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  kick_off: "Kick-off"
+  mission: "Mission"
+  services: "Services"
+  copy_right: "Laastras. All Rights Reserved"
+  iot: "Internet of our Things (IoT)"
+  means_of_exchange: "Services Exchange and Virtual Money"
+  equality_policy: "Equality policy on global resources"
+  logistics_ecommerce: "Logistics and E-commerce instead of shops, malls, and marketplaces"
+  mission_terms: "
+      Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
+      Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),
+      Communication as a Service (CaaS), and Legal Protection as a Service (PraaS) can turn malls, shops, 
+      and market places into trans-shipment warehouses and divert manpower therein to actual production. 
+      This IoT will then curb unemployment, poverty, and conflicts. Welcome to Laastras (LaaS trade system), 
+      a collection of IoT services that lead to a world of plenty for all. Our money is Services Exchange, 
+      on one side, and Virtual Money, on the other. We agree to disagree on everything else but one unrefutable 
+      truth: We must equally share all resources that support our existence, present and future, discovered and 
+      yet to be found. Laastras IoT collection of services offer the best policy to achieve that truth.
+  "
