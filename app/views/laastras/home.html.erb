@@ -1,27 +1,12 @@
 <div class="container">
     <header>
-        <div class="row">
-            <div class="col-sm-9"> 
-                <div>
-                    <span class="shadow-lg p-3 mb-5 bg-white rounded" style="font-size: 40px; font-weight: bold">
-                        Laastras
-                    </span> 
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="row text-center">
-                    <div class="col-sm-4"> <%= link_to @sign_in_key, url_for(controller: 'laastras', action: 'sign_in') %></div>
-                    <div class="col-sm-4"> <%= link_to @sign_up_key, url_for(controller: 'laastras', action: 'sign_up') %></div>
-                    <div class="col-sm-4">
-                        <button type = "button" class = "btn btn-default">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-square-text-fill" viewBox="0 0 16 16">
-                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%= react_component('SiteHeader', {
+            sign_in_inner_text: @sign_in_key,
+            sign_in_url: url_for(controller: 'laastras', action: 'sign_in'),
+            sign_up_inner_text: @sign_up_key,
+            sign_up_url: url_for(controller: 'laastras', action: 'sign_up'),
+            supported_languages: @supported_languages
+        }) %>
     </header>
     <hr>
     <main role="main">
@@ -45,22 +30,22 @@
             </div>
             <%= image_tag @kick_off_url, {style: ""} %>
             <div class="row text-center">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-3 text-center">
+                <div class="col-3"></div>
+                <div class="col-3 text-center">
                     <button type = "button" class = "btn btn-default">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="col-sm-3 text-center">
+                <div class="col-3 text-center">
                     <button type = "button" class = "btn btn-default">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="col-sm-3"></div>
+                <div class="col-3"></div>
             </div>
         </div>
         <div class="shadow-sm p-1 mb-2 bg-white rounded" style="margin: 4px">

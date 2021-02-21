@@ -1,3 +1,5 @@
+require 'json'
+
 class LaastrasController < ApplicationController
   before_action :init_parameters
 
@@ -53,11 +55,11 @@ class LaastrasController < ApplicationController
       (I18n.t 'logistics_ecommerce')
     ]
     @globalization_intro = (I18n.t 'mission_terms').gsub(/\t\n{0,1}/, " ").gsub(/[^\n]\n{1}[^\n]/, " ")
-    @supported_languages = [
-      (I18n.t 'english' + ' (english)'),
-      (I18n.t 'kirundi' + ' (kirundi)'),
-      (I18n.t 'french' + ' (french)'),
-      (I18n.t 'swahili' + ' (swahili)')
-    ]
+    @supported_languages = JSON.generate({
+      en: (I18n.t 'english'),
+      ru: (I18n.t 'kirundi'),
+      fr: (I18n.t 'french'),
+      sw: (I18n.t 'swahili')
+    })
   end
 end
