@@ -41,7 +41,7 @@ en:
   terms_of_use: "Terms of use"
   sign_up: "Sign up"
   sign_in: "Sign in"
-  kick_off: "Kick-off"
+  kick_off: "Kick-off and Milestones"
   mission: "Mission"
   services: "Services"
   copy_right: "Laastras. All Rights Reserved"
@@ -49,6 +49,56 @@ en:
   means_of_exchange: "Services Exchange and Virtual Money"
   equality_policy: "Equality policy on global resources"
   logistics_ecommerce: "Logistics and E-commerce instead of shops, malls, and marketplaces"
+  homefinances_dfd_url: "https://am3pap006files.storage.live.com/y4mEb_w-eUT4VHKpBfGtuL_fkJaaJXK3IabRMUGuq9__nYRVBt606ORjnk_u9qplvxk4UpQh22qmoXWYOciUSZExaOpMmjpDbmPQtliRNkZ5mxkKAs-cw7G6HNOqoZyxh0YmXXC0kDJ5ijQr7XjR-JY3E01yeL3G-nda1zQyQ7zk8Op7b_51aizik_hZiK_li-T?width=2045&height=1457&cropmode=none"
+  homefinances_dfd_description: "
+      Our IoT collection of services start at home. We provide software solutions for the nerve-racking
+      task of family budgeting. We integrate industry-standard electronic payment methods according to
+      the capabilities given to local people by E-payment vendors. Most importantly, we devise our
+      own Virtual Currency that is recognized within Laastras and used by members to do trade
+      amongst themselves.
+  "
+  b2c_to_homefinances_dfd_url: "https://am3pap006files.storage.live.com/y4mE86k9ZTKcRko_jiWKHY7Yj78zHa030BpkKoULwsghqxHG1NzmOZdaOfJkhde9ku6urpShFX8pYjqNHFhDDKX6u5XF-aK1EZj8aQSC9A2z50xmAZuEw_RNtkJrIiG2gACVkWx8N0jiIVrClUMeN3O_TCT0DmlxFQK99rVdALIyDg21753r5Uew3MhkDQR3mrw?width=1397&height=1809&cropmode=none"
+  b2c_to_homefinances_dfd_description: "
+      Laastras shops must support B2C and B2B application model that interact with home finances App.
+      Our users agree to trade with each other on the basis of this trade reform. AGAS stands for
+      Available Goods and Services and make sure every tradeable asset is E-commercialized.
+  "
+  logistics_ecommerce_for_scops_url: "https://am3pap006files.storage.live.com/y4m1ehWpZpT2GklSF1dcCALLzq7C0lIEflAk9klxZs-t18qxCBMHZlv3GlFmKE-VWPNoGCMVYx8PL7vx9BkTTL_-VSqHjfozQkjJIsCC5mbBnRRCA6u80BeWhkxW-OfWem_tcHRQuegr59xmCnacB6HzjujtLgOMQMF2lRxkDATK9rVvdByTyP_m_vypXg7-s29?width=2100&height=1413&cropmode=none"
+  logistics_ecommerce_for_scops_description: "
+      Logistics: Order, track, and trail goods along the shipment path. E-commerce: A large AGAS 
+      (Available Goods and Services) online marketplace for all the needs in trade. To fully
+      migrate to E-commerce we use radio and TV services for those who cannot afford a smartphone
+      yet. But the goal is every Laastras member must ultimately own at least a smart Communication
+      device. These IoT services will fulfill the SCoSH service of LaaS model.
+  "
+  standardization_and_praas_url: "https://am3pap006files.storage.live.com/y4mIc5EiGKHHjKaIFj-Ffm-ljU6zBj1jz0foapEOKrqcT7F8PwfKg8GP65e6Tpz7Vpt9fMoWOgmUm6ngXYwFP-XJlNaobCkRTCpMoU2ivUpt8PjFv0QE5Cubi_2n_dXwoqYNjfQd-DMvQj3MGCrgy_2bEgKxgAOM1r9Sc87rVH7cEpfZdlzcGnINuXy1MMEfpiE?width=2081&height=1512&cropmode=none"
+  standardization_and_praas_description: "
+      Produce, maintain, and evangelize LaaS standards. Also, provide Protection as a Service (PraaS)
+      to Laastrasians by aorying protection and law firms. [to aori: to Acquire OR Integrate (AORI)].
+  "
+  farming_storage_and_transformation_url: "https://am3pap006files.storage.live.com/y4mFj3O7RQFjOiLp18B1TMM04zCVgssytGHcMu9yFmi93ZbYcIpt0wwPTcQIWYlSFu0YT_Nxg-BbjAOo3wltJeDnLeG4Be62gtiDaqk55w5l_-M8LAhYRS-PEo0_ZgJIisy4ifiEELXizegVc1kL8B2HM-6aNPzx9opf3lv_VWuIXh4ebORepddrWb4BdtAiCh7?width=2178&height=1490&cropmode=none"
+  farming_storage_and_transformation_description: "
+      Acquire or Integrate (Aori) farms so as to function autonomously as soon as possible. Aori 
+      transformation, production, and storage firms and enterprises to achieve self-reliance.
+  "
+  laastras_lobbying_url: "https://am3pap006files.storage.live.com/y4mOlZn1z9dFoUpm4Fvbt5L99dif_3ORFW50KTXkHkXbODd3jV6TUfQiTAiCA-VDb6d4et1YtT2W0Xp5Y1jIaoV6BHXpa4X6qdsZ7IVQTsQwXADG4jFzLRonbhmNtdf5x73hVl4ffhaS26jw2knYKKu3VehEtaOjvkFLdvDH24_9br9gOqtuIpZl4OaFUs4xVSO?width=1468&height=2043&cropmode=none"
+  laastras_lobbying_description: "
+      Our team of lobbyists will use our publications and trademarks to lobby for Laastras so that
+      political leaders and public officials support and include LaaS model in the legal system. They 
+      also prep for talking them into featuring Laastras in the next local election campaigns.
+  "
+  laastras_humanitarianism_url: "https://am3pap006files.storage.live.com/y4mE3NKZBKGGyggbspJbYansi9sSaK4ZRDhtTMLunWcJ9RVfc_Sl1xXyH8Gat83rHN_iRUAxm4FVId-fcNj1WEP3CadNVL0TtUz4zljkPgAu12gWL-VpRuikGntQ5BvSZnejmH1PpFva-RjiAKkzO0TJpL_2HT25BhxseASCIwE2bLYz1B-QSLkacAJOHtgjhND?width=2007&height=1526&cropmode=none"
+  laastras_humanitarianism_description: "
+      Laastras must aim for local and global coverage. To that end, a dedicated team must work to Acquire or Integrate
+      (Aori) the support of NGO's. These will be encouraged to affiliate to IFaSS and then smooth things over for
+      Laastras progression.
+  "
+  laastras_globalization_url: "https://am3pap006files.storage.live.com/y4mX5-bEBq3UyPu80KEo8BOJMPRnxX-YGAwoulnMISOhaUh-qseEy2bOe-y9KxPWSiZdhw_2q9arRKgREpGyim1vxX9eUJbozPswNvXy7n45LxwLND1kr_e3n86Osj81XNBhtjGMxZAUDFBn6cxhV5A689JSvDeve0B78kpoge8DB19pY9oYz3bhliHIuV-Apjp?width=2060&height=1254&cropmode=none"
+  laastras_globalization_description: "
+    The United Nations (UN) have got extensive experience in launching and coordinating global endeavors. A special team of
+    envoys to the UN will make sure UN is aware of the Laastras project and how it fits in UN plans to make the world 
+    a safe haven for humankind.
+  "
   mission_terms: "
       Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
       Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),

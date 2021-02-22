@@ -56,3 +56,4 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'autoprefixer-rails'
 
 gem 'react-rails'
+gem 'jquery-rails'

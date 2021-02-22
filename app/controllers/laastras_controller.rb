@@ -1,4 +1,5 @@
 require 'json'
+require 'core_ext/string'
 
 class LaastrasController < ApplicationController
   before_action :init_parameters
@@ -46,7 +47,40 @@ class LaastrasController < ApplicationController
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
     @services = I18n.t 'services'
-    @kick_off_url = "https://1drv.ms/u/s!Alpt4zgtrW4ug1ux6xHa5ls7Y1rm?e=sA3Qid"
+    @mission_kick_off_data = JSON.generate([
+      {
+        url: (I18n.t 'homefinances_dfd_url'),
+        description: (I18n.t 'homefinances_dfd_description').paragraphize
+      },
+      {
+        url: (I18n.t 'b2c_to_homefinances_dfd_url'),
+        description: (I18n.t 'b2c_to_homefinances_dfd_description').paragraphize
+      },
+      {
+        url: (I18n.t 'logistics_ecommerce_for_scops_url'),
+        description: (I18n.t 'logistics_ecommerce_for_scops_description').paragraphize
+      },
+      {
+        url: (I18n.t 'standardization_and_praas_url'),
+        description: (I18n.t 'standardization_and_praas_description').paragraphize
+      },
+      {
+        url: (I18n.t 'farming_storage_and_transformation_url'),
+        description: (I18n.t 'farming_storage_and_transformation_description').paragraphize
+      },
+      {
+        url: (I18n.t 'laastras_lobbying_url'),
+        description: (I18n.t 'laastras_lobbying_description').paragraphize
+      },
+      {
+        url: (I18n.t 'laastras_humanitarianism_url'),
+        description: (I18n.t 'laastras_humanitarianism_description').paragraphize
+      },
+      {
+        url: (I18n.t 'laastras_globalization_url'),
+        description: (I18n.t 'laastras_globalization_description').paragraphize
+      }
+    ])
     @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
     @laastras_services = [
       (I18n.t 'iot'),
@@ -54,12 +88,12 @@ class LaastrasController < ApplicationController
       (I18n.t 'equality_policy'),
       (I18n.t 'logistics_ecommerce')
     ]
-    @globalization_intro = (I18n.t 'mission_terms').gsub(/\t\n{0,1}/, " ").gsub(/[^\n]\n{1}[^\n]/, " ")
-    @supported_languages = JSON.generate({
-      en: (I18n.t 'english'),
-      ru: (I18n.t 'kirundi'),
-      fr: (I18n.t 'french'),
-      sw: (I18n.t 'swahili')
-    })
+    @globalization_intro = (I18n.t 'mission_terms').paragraphize
+    @supported_languages = JSON.generate([
+      {locale: 'en', language: (I18n.t 'english')},
+      {locale: 'ru', language: (I18n.t 'kirundi')},
+      {locale: 'fr', language: (I18n.t 'french')},
+      {locale: 'sw', language: (I18n.t 'swahili')}
+    ])
   end
 end
