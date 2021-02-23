@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get 'laastras/cookies'
   get 'laastras/contact'
   get 'laastras/about'
+
+  post 'laastras/locale'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

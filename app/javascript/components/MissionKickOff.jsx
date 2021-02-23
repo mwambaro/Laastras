@@ -23,6 +23,29 @@ class MissionKickOff extends React.Component
         };
         return(
             <div>
+                <div id="kick-off-image-details-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header text-right">
+                                <button type="button" className="close" aria-label="Close"
+                                        onClick={(se) => this.leaveImageDetails(se)}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <div id="kick-off-image-details-body">
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <div className="text-center">
+                                    <button type="button" className="btn btn-primary" onClick={(se) => this.leaveImageDetails(se)}>
+                                        OK
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="kick-off-image-onprogress-spinner" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
@@ -43,7 +66,8 @@ class MissionKickOff extends React.Component
                     <div className="text-center">
                         <img src={this.state.mission_kick_off_data[this.state.current_index].url} 
                              className="img-fluid"
-                             id="kick-off-image" />
+                             id="kick-off-image"
+                             onClick={(se) => this.goToImageDetails(se)} />
                     </div>
                     <div id="kick-off-arrow-section" className="row text-center">
                         <div className="col-3"></div>
@@ -90,6 +114,7 @@ class MissionKickOff extends React.Component
                 }
                 console.log('image failed to load.');
             };
+            img.style.cursor = "pointer";
         }
 
         window.addEventListener('resize', e => {
@@ -114,6 +139,45 @@ class MissionKickOff extends React.Component
                    $('#kick-off-title-section').height() - 
                    $('#kick-off-arrow-section').height();
         $('#kick-off-image').height(imgH);
+    }
+
+    goToImageDetails(e)
+    {
+        if(typeof(this) === 'undefined')
+        {
+            console.log('goToImageDetails: "this" object is undefined');
+            return;
+        }
+        if(!e)
+        {
+            console.log('goToImageDetails: Event object is not set');
+            return;
+        }
+
+        let image = e.target;
+        if(image)
+        {
+            let description = this.state.mission_kick_off_data[this.state.current_index].description;
+            let url = this.state.mission_kick_off_data[this.state.current_index].url;
+            if(url !== image.src)
+            {
+                console.log('goToImageDetails: Something is up. Image URLs mismatch. Current index state must be messed up.');
+            }
+
+            let html = `
+                <div style="font-size: 18px"><p> ${description} </p></div>
+                <hr>
+                <div class="text-center"> <img src="${url}" class="img-fluid" /> </div>
+            `;
+            $('#kick-off-image-details-body').append(html);
+            $('#kick-off-image-details-section').modal('show');
+        }
+    }
+
+    leaveImageDetails(e)
+    {
+        $('#kick-off-image-details-body').empty();
+        $('#kick-off-image-details-section').modal('hide');
     }
 
     onNextPreviousClicked(e, btnType)

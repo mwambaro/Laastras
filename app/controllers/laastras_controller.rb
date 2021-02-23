@@ -16,6 +16,71 @@ class LaastrasController < ApplicationController
     
   end
 
+  # See https://gist.github.com/mlanett/a31c340b132ddefa9cca
+  # for HTTP status codes and symbols.
+  def locale
+    lc = params[:locale]
+    lchash = nil
+    data = nil
+    options = {
+      type: :json,
+      disposition: 'inline',
+      status: (Rack::Utils::SYMBOL_TO_STATUS_CODE[:ok])
+    }
+
+    begin
+
+      if(lc.nil?)
+      
+        data = {
+          code: '0',
+          message: (I18n.t 'locale_set_no_locale_settings').paragraphize
+        }
+        #options[:status] = Rack::Utils::SYMBOL_TO_STATUS_CODE[:bad_request]
+
+      else
+        lchash = JSON.parse(lc)
+        if(!lchash['locale'].blank?)
+          I18n.locale = lchash['locale'].to_sym
+          data = {
+            code: '1',
+            message: ((I18n.t 'locale_set_success').paragraphize + 
+                   ": #{lchash['language']} (#{lchash['country']})")
+          }
+        else
+          data = {
+            code: '0',
+            message: ((I18n.t 'locale_set_failure').paragraphize + 
+                   ": #{lchash['language']} (#{lchash['country']})")
+          }
+          #options[:status] = Rack::Utils::SYMBOL_TO_STATUS_CODE[:not_acceptable]
+        end
+      end
+
+    rescue I18n::InvalidLocale
+
+      message = (I18n.t 'locale_set_failure').paragraphize
+      if(!lchash.nil?)
+        message += ": #{lchash['language']} (#{lchash['country']})"
+      end
+
+      data = {
+        code: 0,
+        message: message             
+      }
+
+    rescue Exception => e
+
+      data = {
+        code: 0,
+        message: e.message
+      }
+
+    end
+    # send data to caller
+    render plain: JSON.generate(data) if(!data.nil?)
+  end
+
   def terms_of_use
     
   end
@@ -90,10 +155,10 @@ class LaastrasController < ApplicationController
     ]
     @globalization_intro = (I18n.t 'mission_terms').paragraphize
     @supported_languages = JSON.generate([
-      {locale: 'en', language: (I18n.t 'english')},
-      {locale: 'ru', language: (I18n.t 'kirundi')},
-      {locale: 'fr', language: (I18n.t 'french')},
-      {locale: 'sw', language: (I18n.t 'swahili')}
+      {locale: 'en', language: (I18n.t 'english'), country: (I18n.t 'usa')},
+      {locale: 'ru', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
+      {locale: 'fr', language: (I18n.t 'french'), country: (I18n.t 'france')},
+      {locale: 'sw', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
     ])
   end
 end
