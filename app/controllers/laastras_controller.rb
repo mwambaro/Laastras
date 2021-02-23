@@ -102,6 +102,7 @@ class LaastrasController < ApplicationController
   end
 
   def init_parameters
+    @action_name = params[:action].nil? ? '' : params[:action]
     @contact_key = I18n.t 'contact_us'
     @about_key = I18n.t 'about'
     @cookies_key = I18n.t 'cookies'
@@ -112,6 +113,8 @@ class LaastrasController < ApplicationController
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
     @services = I18n.t 'services'
+    @site_description = I18n.t 'site_meta_description'
+    @site_title = 'Laastras | ' + @action_name
     @mission_kick_off_data = JSON.generate([
       {
         url: (I18n.t 'homefinances_dfd_url'),
