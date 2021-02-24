@@ -126,7 +126,9 @@ class LaastrasController < ApplicationController
     @donate_label = I18n.t 'donate_label'
     @hire_us_label = I18n.t 'hire_us_label'
     @site_description = I18n.t 'site_meta_description'
+    @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'
     @work_in_progress_label = I18n.t 'work_in_progress_label'
+    @founder_and_ceo_contact_label = I18n.t 'founder_and_ceo_contact_label'
     @work_in_progress_description = I18n.t 'work_in_progress_description'
     @site_title = 'Laastras | ' + @action_name
     @mission_kick_off_data = JSON.generate([
