@@ -8,6 +8,15 @@ class LaastrasController < ApplicationController
     
   end
 
+  def services
+  end
+
+  def hire_us
+  end
+
+  def donate
+  end
+
   def sign_in
     
   end
@@ -112,8 +121,13 @@ class LaastrasController < ApplicationController
     @sign_in_key = I18n.t 'sign_in'
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
-    @services = I18n.t 'services'
+    @home_label = I18n.t 'home_label'
+    @services_label = I18n.t 'services_label'
+    @donate_label = I18n.t 'donate_label'
+    @hire_us_label = I18n.t 'hire_us_label'
     @site_description = I18n.t 'site_meta_description'
+    @work_in_progress_label = I18n.t 'work_in_progress_label'
+    @work_in_progress_description = I18n.t 'work_in_progress_description'
     @site_title = 'Laastras | ' + @action_name
     @mission_kick_off_data = JSON.generate([
       {
@@ -154,14 +168,15 @@ class LaastrasController < ApplicationController
       (I18n.t 'iot'),
       (I18n.t 'means_of_exchange'),
       (I18n.t 'equality_policy'),
-      (I18n.t 'logistics_ecommerce')
+      (I18n.t 'logistics_ecommerce'),
+      (I18n.t 'aori_globalization')
     ]
     @globalization_intro = (I18n.t 'mission_terms').paragraphize
     @supported_languages = JSON.generate([
-      {locale: 'en', language: (I18n.t 'english'), country: (I18n.t 'usa')},
-      {locale: 'ru', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
-      {locale: 'fr', language: (I18n.t 'french'), country: (I18n.t 'france')},
-      {locale: 'sw', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
+      {locale: 'en_US', language: (I18n.t 'english'), country: (I18n.t 'usa')},
+      {locale: 'ru_BI', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
+      {locale: 'fr_FR', language: (I18n.t 'french'), country: (I18n.t 'france')},
+      {locale: 'sw_TZ', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
     ])
   end
 end

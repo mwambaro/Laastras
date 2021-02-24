@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'laastras#home'
   
   get 'laastras/home'
+  get 'laastras/services'
+  get 'laastras/hire_us'
+  get 'laastras/donate'
   get 'laastras/sign_in'
   get 'laastras/sign_up'
   get 'laastras/terms_of_use'

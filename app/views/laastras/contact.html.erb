@@ -1,2 +1,11 @@
-<h1>Laastras#contact</h1>
-<p>Find me in app/views/laastras/contact.html.erb</p>
+
+<div  class="container">
+    
+    <%= react_component('WorkInProgress', {
+        work_in_progress_description: @work_in_progress_description,
+        work_in_progress_section_title: @work_in_progress_label,
+        information_desk_url: url_for(controller: 'laastras', action: 'home'),
+        information_desk_inner_text: @home_label
+    }) %>
+
+</div>

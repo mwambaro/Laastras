@@ -18,5 +18,18 @@ module Laastras
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    #=> I18n configs
+    config.i18n.load_path += Dir[
+      Rails.root.join('config', 'locales', '*.{rb,yml}'),
+      Rails.root.join('config', 'locales', 'articles', '*.{rb,yml}'),
+      Rails.root.join('config', 'locales', 'date_time_currency', '*.{rb,yml}'),
+      Rails.root.join('config', 'locales', 'models', '*.{rb,yml}'),
+      Rails.root.join('config', 'locales', 'views', '*.{rb,yml}')
+    ]
+    config.i18n.available_locales = [:en_US] # add (:ru_BI, :sw_TZ, :fr_FR) ASAP
+    config.i18n.default_locale = :en_US
+    #=> end I18n configs
+
   end
 end

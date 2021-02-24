@@ -1,0 +1,68 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+# Less than 3 lines of text or immutable texts.
+en_US:
+  usa: "United States of America"
+  burundi: "Burundi"
+  tanzania: "Tanzania"
+  france: "France"
+  english: "English"
+  kirundi: "Kirundi"
+  swahili: "Swahili"
+  french: "French"
+  contact_us: "Contact us"
+  about: "About"
+  cookies: "Cookies"
+  privacy: "Privacy"
+  terms_of_use: "Terms of use"
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  kick_off: "Kick-off and Milestones"
+  mission: "Mission"
+  services_label: "Services"
+  donate_label: "Donate"
+  hire_us_label: "Hire us"
+  home_label: "Home"
+  work_in_progress_label: "Work in progress"
+  copy_right: "Laastras. All Rights Reserved"
+  iot: "Internet of our Things (IoT)"
+  means_of_exchange: "Services Exchange and Virtual Currency"
+  equality_policy: "Equality policy on global resources (LaaS)"
+  logistics_ecommerce: "Logistics and E-commerce"
+  aori_globalization: "Meet globalization challenges and constraints (Aori)"
+  locale_set_success: "
+      The language settings were set successfully as requested. You need to reload your pages for these settings to take effect
+  "
+  locale_set_failure: "Yikes! Something went wrong. The language settings requested could not be set"
+  locale_set_no_locale_settings: "
+      Apparently you did not actually send any language settings information. Unless our servers failed us
+  "

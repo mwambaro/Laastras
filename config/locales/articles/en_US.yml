@@ -29,39 +29,15 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  usa: "United States of America"
-  burundi: "Burundi"
-  tanzania: "Tanzania"
-  france: "France"
-  english: "English"
-  kirundi: "Kirundi"
-  swahili: "Swahili"
-  french: "French"
-  contact_us: "Contact us"
-  about: "About"
-  cookies: "Cookies"
-  privacy: "Privacy"
-  terms_of_use: "Terms of use"
-  sign_up: "Sign up"
-  sign_in: "Sign in"
-  kick_off: "Kick-off and Milestones"
-  mission: "Mission"
-  services: "Services"
-  copy_right: "Laastras. All Rights Reserved"
-  iot: "Internet of our Things (IoT)"
-  means_of_exchange: "Services Exchange and Virtual Money"
-  equality_policy: "Equality policy on global resources"
-  logistics_ecommerce: "Logistics and E-commerce instead of shops, malls, and marketplaces"
-  locale_set_success: "
-      The language settings were set successfully as requested. You need to reload 
-      your pages for these settings to take effect
+# More than 2 lines of text and related URL's or descriptions
+
+en_US:
+  work_in_progress_description: "
+      Excuse us for the inconvenience, please. We are still working on the website features like this page.
+      For a detailed description of our Laastras project see our home page by following the link below.
+      Thank you so much for your understanding attitude.
   "
-  locale_set_failure: "Yikes! Something went wrong. The language settings requested could not be set"
-  locale_set_no_locale_settings: "
-      Apparently you did not actually send any language 
-      settings information. Unless our servers failed us
-  "
+  open_graph_proto_image: "https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none"
   homefinances_dfd_url: "https://am3pap006files.storage.live.com/y4mEb_w-eUT4VHKpBfGtuL_fkJaaJXK3IabRMUGuq9__nYRVBt606ORjnk_u9qplvxk4UpQh22qmoXWYOciUSZExaOpMmjpDbmPQtliRNkZ5mxkKAs-cw7G6HNOqoZyxh0YmXXC0kDJ5ijQr7XjR-JY3E01yeL3G-nda1zQyQ7zk8Op7b_51aizik_hZiK_li-T?width=2045&height=1457&cropmode=none"
   homefinances_dfd_description: "
       Our collection of IoT services start at home. We provide software solutions for the nerve-racking
