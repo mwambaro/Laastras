@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'logistics/shipment_service'
+  get 'logistics/bus_service'
+  get 'logistics/cab_service'
+  get 'logistics/bike_service'
+  get 'e_commerce/job_offer_posting'
+  get 'e_commerce/real_estate_posting'
+  get 'e_commerce/online_shopping_service'
+  get 'e_commerce/sofware_solutions_service'
   root 'laastras#home'
   
   get 'laastras/home'

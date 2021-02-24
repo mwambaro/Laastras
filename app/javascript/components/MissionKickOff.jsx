@@ -104,6 +104,7 @@ class MissionKickOff extends React.Component
                     console.log('image onload event in componentDidMount: "this" object is undefined.');
                     return;
                 }
+                $('#kick-off-image-onprogress-spinner').modal('hide');
                 this.onImgLoadedData(e, this);
             };
             img.onerror = e => {

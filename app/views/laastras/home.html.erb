@@ -1,7 +1,7 @@
 <div class="container">
     <header>
         <%= react_component('SiteHeader', {
-            services_url: url_for(controller: 'laastras', action: 'services'),
+            laastras_services: @laastras_services, # JSON array of {url:, inner_text:} hashes
             services_inner_text: @services_label,
             hire_us_url: url_for(controller: 'laastras', action: 'hire_us'),
             hire_us_inner_text: @hire_us_label,
@@ -17,18 +17,20 @@
     </header>
     <hr>
     <main role="main">
-        <div class="text-center">
-            <p style="font-size: 20px">
-                <% count = 0 %>
-                <% @laastras_services.each do |service| %>  
-                    <% if count == @laastras_services.length-1 %>
-                        <%= service %>  
-                    <% else %>
-                        <%= service + ' • ' %>
+        <div class="text-center" style="background-color: #e3f2fd; border-radius: 3px;">
+            <div style="padding: 3px; margin: 3px;">
+                <p style="font-size: 18px; padding: 3px">
+                    <% count = 0 %>
+                    <% @laastras_sample_services.each do |service| %>  
+                        <% if count == @laastras_sample_services.length-1 %>
+                            <%= service %>  
+                        <% else %>
+                            <%= service + ' • ' %>
+                        <% end %>
+                        <% count += 1%>  
                     <% end %>
-                    <% count += 1%>  
-                <% end %>
-            </p>
+                </p>
+            </div>
         </div>
         <hr>
         <%= react_component('MissionKickOff', {

@@ -10,6 +10,15 @@ class SiteHeader extends React.Component
     constructor(props)
     {
         super(props);
+        try
+        {
+            console.log('Laastras services: ' + this.props.laastras_services);
+            this.laastras_services_array = JSON.parse(this.props.laastras_services);
+        }
+        catch(error)
+        {
+            console.log('SiteHeader#constructor: ' + error);
+        }
     }
 
     render()
@@ -21,7 +30,7 @@ class SiteHeader extends React.Component
                         <LaastrasLogo />  
                     </div>
                     <div className="col-sm-6">
-                        <NavigationBar services_url={this.props.services_url}
+                        <NavigationBar laastras_services={this.laastras_services_array}
                                        services_inner_text={this.props.services_inner_text}
                                        hire_us_url={this.props.hire_us_url}
                                        hire_us_inner_text={this.props.hire_us_inner_text}
@@ -50,7 +59,7 @@ SiteHeader.propTypes = {
     sign_up_url: PropTypes.string,
     sign_up_inner_text: PropTypes.string,
     services_inner_text: PropTypes.string,
-    services_url: PropTypes.string,
+    laastras_services: PropTypes.string, // JSON string of an array of {url: '', inner_text: ''} hashes
     hire_us_inner_text: PropTypes.string,
     hire_us_url: PropTypes.string,
     donate_inner_text: PropTypes.string,

@@ -166,7 +166,41 @@ class LaastrasController < ApplicationController
       }
     ])
     @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
-    @laastras_services = [
+    @laastras_services = JSON.generate([
+      {
+        url: url_for(controller: 'e_commerce', action: 'job_offer_posting'),
+        inner_text: (I18n.t 'job_offer_posting_label')
+      },
+      {
+        url: url_for(controller: 'e_commerce', action: 'real_estate_posting'),
+        inner_text: (I18n.t 'real_estate_posting_label')
+      },
+      {
+        url: url_for(controller: 'e_commerce', action: 'online_shopping_service'),
+        inner_text: (I18n.t 'online_shopping_label')
+      },
+      {
+        url: url_for(controller: 'e_commerce', action: 'sofware_solutions_service'),
+        inner_text: (I18n.t 'software_solutions_service_label')
+      },
+      {
+        url: url_for(controller: 'logistics', action: 'shipment_service'),
+        inner_text: (I18n.t 'shipment_service_label')
+      },
+      {
+        url: url_for(controller: 'logistics', action: 'bus_service'),
+        inner_text: (I18n.t 'bus_service_label')
+      },
+      {
+        url: url_for(controller: 'logistics', action: 'cab_service'),
+        inner_text: (I18n.t 'cab_service_label')
+      },
+      {
+        url: url_for(controller: 'logistics', action: 'bike_service'),
+        inner_text: (I18n.t 'bike_service_label')
+      }
+    ])
+    @laastras_sample_services = [
       (I18n.t 'iot'),
       (I18n.t 'means_of_exchange'),
       (I18n.t 'equality_policy'),
