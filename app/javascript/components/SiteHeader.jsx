@@ -12,7 +12,7 @@ class SiteHeader extends React.Component
         super(props);
         try
         {
-            console.log('Laastras services: ' + this.props.laastras_services);
+            //console.log('Laastras services: ' + this.props.laastras_services);
             this.laastras_services_array = JSON.parse(this.props.laastras_services);
         }
         catch(error)
@@ -23,13 +23,17 @@ class SiteHeader extends React.Component
 
     render()
     {
+        let header_style = {
+            display: 'flex'
+        }
+
         return(
             <div>
-                <div className="row">
-                    <div className="col-sm-4"> 
+                <div id="parent-site-header" style={header_style}>
+                    <div id="site-header-logo"> 
                         <LaastrasLogo />  
                     </div>
-                    <div className="col-sm-6">
+                    <div id="site-header-navbar">
                         <NavigationBar laastras_services={this.laastras_services_array}
                                        services_inner_text={this.props.services_inner_text}
                                        hire_us_url={this.props.hire_us_url}
@@ -41,7 +45,7 @@ class SiteHeader extends React.Component
                                        sign_up_url={this.props.sign_up_url}
                                        sign_up_inner_text={this.props.sign_up_inner_text}/>
                     </div>
-                    <div className="col-sm-2">
+                    <div id="site-header-lang">
                         <LocaleSettings locale_end_point={this.props.locale_end_point}
                                         supported_languages={this.props.supported_languages} />
                     </div>
@@ -50,7 +54,22 @@ class SiteHeader extends React.Component
         );
     }
 
-    
+    componentDidMount()
+    {
+        window.addEventListener('resize', e => this.orderElementsOnResize(e));
+    }
+
+    orderElementsOnResize(e)
+    {
+        try
+        {
+            
+        }
+        catch(error)
+        {
+            console.log('orderElementsOnResize: ' + error);
+        }
+    }
 }
 
 SiteHeader.propTypes = {

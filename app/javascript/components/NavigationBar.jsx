@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import NavigationBarDropdownItem from "./NavigationBarDropdownItem"
 
 class NavigationBar extends React.Component
 {
@@ -10,14 +11,12 @@ class NavigationBar extends React.Component
 
     render()
     {
-        console.log('Services count: ' + this.props.laastras_services.length);
-        this.props.laastras_services.map(service => {
-            console.log(`Service: ${service.inner_text}; URL: ${service.url}`);
-        });
+        //console.log('Services count: ' + this.props.laastras_services.length);
+        
         return(
             <div>
                 <div>
-                    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+                    <nav id="navigation-bar-nav" className="navbar navbar-expand-sm navbar-dark bg-dark">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -29,9 +28,14 @@ class NavigationBar extends React.Component
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         {
-                                            this.props.laastras_services.map(service => {
-                                                <a className="dropdown-item" href={service.url}>{service.inner_text}</a>
-                                            })
+                                            this.props.laastras_services.map((service, idx) => 
+                                                <NavigationBarDropdownItem 
+                                                    key={`navbar-dropdown-item-${idx}`}
+                                                    url={service.url}
+                                                    inner_text={service.inner_text}
+                                                    index={idx}
+                                                    count_hint={this.props.laastras_services.length}/>
+                                            )
                                         }
                                     </div>
                                 </li>

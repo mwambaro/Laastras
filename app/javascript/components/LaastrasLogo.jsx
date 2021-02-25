@@ -18,7 +18,7 @@ class LaastrasLogo extends React.Component
         return(
             <div>
                 <div>
-                    <span className="shadow-lg p-3 mb-5 bg-white rounded" style={logo_style}>
+                    <span id="logo-span" className="shadow-lg p-3 mb-5 bg-white rounded" style={logo_style}>
                         Laastras
                     </span> 
                 </div>
