@@ -10,6 +10,9 @@ class SiteHeader extends React.Component
     constructor(props)
     {
         super(props);
+        this.state = {
+            parent_max_width: window.innerWidth
+        }
         try
         {
             //console.log('Laastras services: ' + this.props.laastras_services);
@@ -43,7 +46,8 @@ class SiteHeader extends React.Component
                                        sign_in_url={this.props.sign_in_url}
                                        sign_in_inner_text={this.props.sign_in_inner_text}
                                        sign_up_url={this.props.sign_up_url}
-                                       sign_up_inner_text={this.props.sign_up_inner_text}/>
+                                       sign_up_inner_text={this.props.sign_up_inner_text}
+                                       parent_max_width={this.state.parent_max_width}/>
                     </div>
                     <div id="site-header-lang">
                         <LocaleSettings locale_end_point={this.props.locale_end_point}
@@ -56,14 +60,34 @@ class SiteHeader extends React.Component
 
     componentDidMount()
     {
-        window.addEventListener('resize', e => this.orderElementsOnResize(e));
+        this.reactToParentSizeChange();
+        window.addEventListener('resize', e => this.orderElementsOnResize(e)); 
+    }
+
+    reactToParentSizeChange(e=null)
+    {
+        if(typeof(this) === 'undefined')
+        {
+            console.log('reactToParentSizeChange: "this" object is not defined');
+        }
+
+        let max_width = window.innerWidth - $('#site-header-lang').width() - $('#site-header-logo').width();
+        //console.log(`Parent max width: ${max_width}`);
+        this.setState({
+            parent_max_width: max_width
+        });
     }
 
     orderElementsOnResize(e)
     {
+        if(typeof(this) === 'undefined')
+        {
+            console.log('orderElementsOnResize: "this" object is not defined');
+        }
+
         try
         {
-            
+            this.reactToParentSizeChange();
         }
         catch(error)
         {
