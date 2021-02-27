@@ -7,124 +7,275 @@ class NavigationBar extends React.Component
     constructor(props)
     {
         super(props);
-        this.navigation_bar_type = 'list';
+        this.navbar_state = {
+            navbar_ul_list_style: {
+                display: 'block'
+            },
+            navigation_bar_type: 'list'
+        };
+        this.state = {
+            rerender: false
+        };
     }
 
     render()
     {
-        //console.log('Services count: ' + this.props.laastras_services.length);
-        
+        if(this.state.rerender)
+        {
+            this.assessViewPortSize(this.props);
+        }
+
+        console.log('Type: ' + this.navbar_state.navigation_bar_type);
+
+        let render_data = null;
+
+        if(this.navbar_state.navigation_bar_type === 'list') // Initial, not UX-valid
+        {
+            render_data = this.renderNavigationBarAsList();
+        }
+        else if(this.navbar_state.navigation_bar_type === 'modal')
+        {
+            render_data = this.renderNavigationBarAsModal();
+        }
+        else if(this.navbar_state.navigation_bar_type === 'flex')
+        {
+            render_data = this.renderNavigationBarAsList();
+        }
+        else if(this.navbar_state.navigation_bar_type === 'flex-modal')
+        {
+            render_data = this.renderNavigationBarAsModal();
+        }
+        else
+        {
+            render_data = this.renderNavigationBarAsModal();
+        }
+
+        if(!render_data)
+        {
+            console.log("Oops, you are about to render invalid data");
+        }
+
+        return render_data;
+    }
+
+    renderNavigationBarAsList()
+    {   
+        let navbar_list_li_style = {
+            listStyleType: 'none'
+        };
+
         return(
-            <div id="navbar-outer">
-                <div id="servicesDropdownModal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+            <div>
+                <div id="navbar-dropdown-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <button id="services-dropdown-modal-close" type="button" className="close" aria-label="Close">
+                                <button id="navbar-modal-close" type="button" className="close" aria-label="Close"
+                                        onClick={se => this.onClickNavbarDropdownModalCloseBtn(se)}>
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <ul id="services-list-ul">
-                                </ul>
+                                <table className="table">
+                                    <tbody id="navbar-dropdown-modal-body">
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="navbar-items">
-                    <ul id="navbar-list-group">
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" id="servicesDropdownLink" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                {this.props.services_inner_text} 
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href={this.props.hire_us_url}> {this.props.hire_us_inner_text} </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href={this.props.donate_url}> {this.props.donate_inner_text} </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href={this.props.sign_in_url}> {this.props.sign_in_inner_text} </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href={this.props.sign_up_url}> {this.props.sign_up_inner_text} </a>
-                        </li>
+                <div>
+                    <ul id="navbar-list-group" style={this.navbar_state.navbar_ul_list_style}>
+                        {
+                            this.props.laastras_actions.map((action, idx) =>
+                                <li className="nav-item"
+                                    key={`navbar-nav-item-li-${idx}`}
+                                    style={navbar_list_li_style}>
+                                    <a className="nav-link"
+                                       id={`navbar-nav-item-list-a-${idx}-${action.dropdown_boolean}`}
+                                       href={action.url}
+                                       onClick={se => this.onClickNavbarNavLink(se)}>
+                                        {action.inner_text}
+                                    </a>
+                                </li>
+                            )
+                        }
                     </ul>
-                </div>        
+                </div>
+            </div>
+        );
+    }
+
+    renderNavigationBarAsModal()
+    {
+
+        return(
+            <div>
+                <div id="navbar-dropdown-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button id="navbar-modal-close" type="button" className="close" aria-label="Close"
+                                        onClick={se => this.onClickNavbarDropdownModalCloseBtn(se)}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <table className="table">
+                                    <tbody id="navbar-dropdown-modal-body">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="navbar-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button id="navbar-modal-close" type="button" className="close" aria-label="Close"
+                                        onClick={se => this.onClickNavbarModalCloseBtn(se)}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <table className="table">
+                                    <tbody>
+                                        {
+                                            this.props.laastras_actions.map((action, idx) =>
+                                                <tr key={`navbar-nav-item-tr-${idx}`}>
+                                                    <td>
+                                                        <a className="nav-link"
+                                                           id={`navbar-nav-item-modal-a-${idx}-${action.dropdown_boolean}`}
+                                                           href={action.url}
+                                                           onClick={se => this.onClickNavbarNavLink(se)}>
+                                                           {action.inner_text}
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="navbar-modal-launch"
+                     onClick={se => this.onClickNavbarModalLaunch(se)}
+                     onMouseOver={se => this.onHoverNavbarModalLaunch(se)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#5a49b6" className="bi bi-list-ul" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                </div>
             </div>
         );
     }
 
     componentDidMount()
     {
-        //console.log('navigation bar type (component did mount): ' + this.navigation_bar_type);
-        $('#servicesDropdownLink').click(e => {
-            if(this.navigation_bar_type === 'modal')
-                console.log('Services drop down clicked.');
-            setTimeout(e => {
-                if(this.navigation_bar_type === 'modal')
-                {
-                    $('#navbar-items').modal('hide');
-                }
-
-                let services_list_html = "";
-                this.props.laastras_services.map((service, idx) => {
-                    services_list_html += `
-                        <li class="nav-item" style="list-style-type: none;">
-                            <a href="${service.url}" class="nav-link">
-                                ${service.inner_text}
-                            </a>
-                        </li>
-                    `;
-                });
-                $('#services-list-ul').empty();
-                $('#services-list-ul').append(services_list_html);
-                $('#servicesDropdownModal').modal('show');
-            }, 1000);
-        })
-        $('#services-dropdown-modal-close').click(e => {
-            $('#servicesDropdownModal').modal('hide');
-            if(this.navigation_bar_type === 'modal')
-            {
-                $('#navbar-items').modal('show');
-            }
-        });
-
-        this.designNavigationBar();
+        this.setState({rerender: true}); // Leave the UX-invalid state
     }
 
-    shouldComponentUpdate(nextProps, nextState)
+    onClickNavbarDropdownModalCloseBtn(e)
     {
-        let should = true;
+        $('#navbar-dropdown-modal').modal('hide');
+    }
 
-        if(this.props.parent_max_width === nextProps.parent_max_width)
+    onClickNavbarModalCloseBtn(e)
+    {
+        $('#navbar-modal').modal('hide');
+    }
+
+    onClickNavbarModalLaunch(e)
+    {
+        $('#navbar-modal').modal('show');
+    }
+
+    onHoverNavbarModalLaunch(e)
+    {
+        $('#navbar-modal-launch').css('cursor', 'pointer');
+    }
+
+    onClickNavbarNavLink(e)
+    {
+        if(typeof(e) === 'undefined')
         {
-            //should = false;
+            console.log('onClickNavbarNavLink: event object is not defined');
+            return;
         }
-        //console.log('shouldComponentUpdate: ' + should);
+        let anchor = e.target;
+        if(!anchor)
+        {
+            console.log('onClickNavbarNavLink: clicked target is not defined');
+            return;
+        }
+        e.preventDefault();
+        
+        //console.log(`${anchor.innerText.trim()} (id): ${anchor.id}`);
+        let m = anchor.id.match(/-(\d+)-(true|false)$/i);
+        if(!m)
+        {
+            console.log('onClickNavbarNavLink: missing/invalid "dropdown_boolean" data in link object');
+            return;
+        }
 
-        return should;
+        if(m[2].match(/^true$/i)) // Has dropdown
+        {
+            if(this.navbar_state.navigation_bar_type === 'modal')
+            {
+                $('#navbar-modal').modal('hide');
+            }
+            else if(this.navbar_state.navigation_bar_type === 'flex-modal')
+            {
+                $('#navbar-modal').modal('hide');
+            }
+
+            let html = "";
+            try
+            {
+                let idx = parseInt(m[1]);
+                let action = this.props.laastras_actions[idx];
+                let inner_actions = JSON.parse(action.data);
+                inner_actions.map((action, i) => {
+                    html += `
+                        <tr>
+                            <td>
+                                <a href="${action.url}" class="nav-link">
+                                    ${action.inner_text}
+                                </a>
+                            </td>
+                        </tr>
+                    `
+                });
+            }
+            catch(error)
+            {
+                console.log('onClickNavbarNavLink: ' + error);
+            }
+
+            $('#navbar-dropdown-modal-body').empty();
+            $('#navbar-dropdown-modal-body').append(html);
+            $('#navbar-dropdown-modal').modal('show');
+        }
+        else if(m[2].match(/^false$/i)) // Has no dropdown
+        {
+            window.location = anchor.href;
+        }
     }
 
-    componentDidUpdate(prevProps, prevState)
-    {
-        //console.log('navigation bar type (component did update): ' + this.navigation_bar_type);
-        this.designNavigationBar();
-    }
-
-    designNavigationBar()
+    assessViewPortSize(props)
     {
         if(typeof(this) === 'undefined')
         {
-            console.log("designNavigationBar: 'this' object is undefined.");
+            console.log("assessViewPortSize: 'this' object is undefined.");
             return;
         }
 
         try
-        {
-            
-            $('#navbar-list-group li').css("list-style-type", "none");
+        {   
             let maxWidth = 0;
             let totalWidth = 0;
             if(this.navigation_bar_total_width && this.navigation_bar_max_with)
@@ -151,110 +302,55 @@ class NavigationBar extends React.Component
                     }
                     totalWidth += width;
                 });
-                this.navigation_bar_max_with = maxWidth;
-                this.navigation_bar_total_width = totalWidth;
+                if(maxWidth>0 && totalWidth>0)
+                {
+                    this.navigation_bar_max_with = maxWidth;
+                    this.navigation_bar_total_width = totalWidth;
+                }
             }
 
-            //console.log(`Parent max width (Nav): ${this.props.parent_max_width}; Total width: ${totalWidth}; Max width: ${maxWidth}`);
-            if(this.props.parent_max_width >= totalWidth) // Flex
+            let how_many = 0;
+            if(maxWidth>0)
             {
-                if(this.navigationBarListGroup)
-                {
-                    $('#navbar-items').remove();
-                    $(`#${this.navigation_bar_modal_launch}`).remove();
-                    $('#navbar-outer').append(`
-                        <div id="navbar-items">
-                        </div>
-                    `);
-                    $('#navbar-items').append(this.navigationBarListGroup);
-                    console.log('Just appended buffered navigation nodes');
-                }
-                $('#navbar-list-group').css("display", "flex");
-                this.navigation_bar_type = 'flex';
+                how_many = Math.floor(props.parent_max_width/maxWidth);
+            }
+
+            console.log(`Parent max width (Nav): ${props.parent_max_width}; Total width: ${totalWidth}; Max width: ${maxWidth}; How many: ${how_many}`);
+            if(props.parent_max_width >= totalWidth) // Flex
+            {
+                this.navbar_state = {
+                    navbar_ul_list_style: {
+                        display: 'flex'
+                    },
+                    navigation_bar_type: 'flex'
+                };
+            }
+            else if(how_many>0) // flex + modal
+            {
+                this.navbar_state = {
+                    navbar_ul_list_style: {
+                        display: 'flex'
+                    },
+                    navigation_bar_type: 'flex-modal'
+                };
             }
             else // modal
             {
-                if(this.navigation_bar_modal_launch)
-                {
-                    $(`#${this.navigation_bar_modal_launch}`).remove();
-                }
-                // 0. Reset default list display
-                $('#navbar-list-group').css("display", "table-cell");
-                // 1. add modal properties
-                $('#navbar-items').addClass('modal fade');
-                $('#navbar-items').data('data-keyboard', 'false');
-                $('#navbar-items').data('data-backdrop', 'static')
-                $('#navbar-items').data('tabindex', '-1');
-                $('#navbar-items').data('aria-labelledby', 'NavigationBar');
-                $('#navbar-items').data('aria-hidden', 'true');
-                // 2. buffer child nodes
-                this.navigationBarListGroup = $('#navbar-items').contents().filter($('#navbar-list-group'));
-                // 3. add intermediary nodes needed by modal
-                $('#navbar-items').empty();
-                let id = "navigation-bar-modal-content";
-                $('#navbar-items').append(`
-                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                        <div id="${id}" class="modal-content">
-                        </div>
-                    </div>
-                `);
-                let btn_id = 'navigation-bar-modal-close-btn-id';
-                let modal_body_id = "navigation-bar-modal-body-id";
-                $(`#${id}`).append(`
-                    <div class="modal-header text-right">
-                        <button id="${btn_id}" type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div id="${modal_body_id}" class="modal-body">
-                    </div>
-                `);             
-                // 4. add buffered child nodes as modal body
-                $(`#${modal_body_id}`).append(this.navigationBarListGroup);
-                // 5. Prepend/Append an elt that fires the modal
-                let div_id = 'navigation-bar-modal-launch';
-                let div = `
-                    <div id="${div_id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#5a49b6" class="bi bi-list-ul" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                    </div>
-                `
-                this.navigation_bar_modal_launch = div_id;
-                $('#navbar-items').after(div);
-                $(`#${div_id}`).click(e => {
-                    $('#navbar-items').modal('show');
-                });
-                $(`#${div_id}`).hover(e => {
-                    $(e.target).css("cursor", "pointer");
-                });
-                
-                $(`#${btn_id}`).click(e => {
-                    //console.log('Btn for modal clicked ...');
-                    $('#navbar-items').modal('hide');
-                });
-                // 7. Set the navigation bar type
-                this.navigation_bar_type = 'modal';
+                this.navbar_state = {
+                    navbar_ul_list_style: {},
+                    navigation_bar_type: 'modal'
+                };
             }
         }
         catch(error)
         {
-            console.log("designNavigationBar: " + error);
+            console.log("assessViewPortSize: " + error);
         }
     }
 }
 
 NavigationBar.propTypes = {
-    sign_in_url: PropTypes.string,
-    sign_in_inner_text: PropTypes.string,
-    sign_up_url: PropTypes.string,
-    sign_up_inner_text: PropTypes.string,
-    services_inner_text: PropTypes.string,
-    laastras_services: PropTypes.array, // array of {url: '', inner_text: ''} hashes
-    hire_us_inner_text: PropTypes.string,
-    hire_us_url: PropTypes.string,
-    donate_inner_text: PropTypes.string,
-    donate_url: PropTypes.string,
+    laastras_actions: PropTypes.array, // array of {url: '', inner_text: '', dropdown_boolean: '', data: ''} hashes
     parent_max_width: PropTypes.number // parent is an elt in which this component lives
 };
 

@@ -117,14 +117,9 @@ class LaastrasController < ApplicationController
     @cookies_key = I18n.t 'cookies'
     @privacy_key = I18n.t 'privacy'
     @terms_of_use_key = I18n.t 'terms_of_use'
-    @sign_up_key = I18n.t 'sign_up'
-    @sign_in_key = I18n.t 'sign_in'
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
     @home_label = I18n.t 'home_label'
-    @services_label = I18n.t 'services_label'
-    @donate_label = I18n.t 'donate_label'
-    @hire_us_label = I18n.t 'hire_us_label'
     @site_description = I18n.t 'site_meta_description'
     @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'
     @work_in_progress_label = I18n.t 'work_in_progress_label'
@@ -198,6 +193,38 @@ class LaastrasController < ApplicationController
       {
         url: url_for(controller: 'logistics', action: 'bike_service'),
         inner_text: (I18n.t 'bike_service_label')
+      }
+    ])
+    @laastras_actions = JSON.generate([
+      {
+        url: url_for(controller: 'laastras', action: 'hire_us'),
+        inner_text: (I18n.t 'hire_us_label'),
+        dropdown_boolean: 'false',
+        data: ''
+      },
+      {
+        url: '',
+        inner_text: (I18n.t 'services_label'),
+        dropdown_boolean: 'true',
+        data: @laastras_services
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'donate'),
+        inner_text: (I18n.t 'donate_label'),
+        dropdown_boolean: 'false',
+        data: ''
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'sign_in'),
+        inner_text: (I18n.t 'sign_in'),
+        dropdown_boolean: 'false',
+        data: ''
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'sign_up'),
+        inner_text: (I18n.t 'sign_up'),
+        dropdown_boolean: 'false',
+        data: ''
       }
     ])
     @laastras_sample_services = [

@@ -1,16 +1,7 @@
 <div class="container">
     <header>
         <%= react_component('SiteHeader', {
-            laastras_services: @laastras_services, # JSON array of {url:, inner_text:} hashes
-            services_inner_text: @services_label,
-            hire_us_url: url_for(controller: 'laastras', action: 'hire_us'),
-            hire_us_inner_text: @hire_us_label,
-            donate_url: url_for(controller: 'laastras', action: 'donate'),
-            donate_inner_text: @donate_label,
-            sign_in_inner_text: @sign_in_key,
-            sign_in_url: url_for(controller: 'laastras', action: 'sign_in'),
-            sign_up_inner_text: @sign_up_key,
-            sign_up_url: url_for(controller: 'laastras', action: 'sign_up'),
+            laastras_actions: @laastras_actions,
             locale_end_point: url_for(controller: 'laastras', action: 'locale'),
             supported_languages: @supported_languages
         }) %>
