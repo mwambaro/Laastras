@@ -61,23 +61,27 @@ class NavigationBar extends React.Component
         //console.log('navigation bar type (component did mount): ' + this.navigation_bar_type);
         $('#servicesDropdownLink').click(e => {
             if(this.navigation_bar_type === 'modal')
-            {
-                $('#navbar-items').modal('hide');
-            }
+                console.log('Services drop down clicked.');
+            setTimeout(e => {
+                if(this.navigation_bar_type === 'modal')
+                {
+                    $('#navbar-items').modal('hide');
+                }
 
-            let services_list_html = "";
-            this.props.laastras_services.map((service, idx) => {
-                services_list_html += `
-                    <li class="nav-item" style="list-style-type: none;">
-                        <a href="${service.url}" class="nav-link">
-                            ${service.inner_text}
-                        </a>
-                    </li>
-                `;
-            });
-            $('#services-list-ul').empty();
-            $('#services-list-ul').append(services_list_html);
-            $('#servicesDropdownModal').modal('show');
+                let services_list_html = "";
+                this.props.laastras_services.map((service, idx) => {
+                    services_list_html += `
+                        <li class="nav-item" style="list-style-type: none;">
+                            <a href="${service.url}" class="nav-link">
+                                ${service.inner_text}
+                            </a>
+                        </li>
+                    `;
+                });
+                $('#services-list-ul').empty();
+                $('#services-list-ul').append(services_list_html);
+                $('#servicesDropdownModal').modal('show');
+            }, 1000);
         })
         $('#services-dropdown-modal-close').click(e => {
             $('#servicesDropdownModal').modal('hide');
@@ -170,6 +174,10 @@ class NavigationBar extends React.Component
             }
             else // modal
             {
+                if(this.navigation_bar_modal_launch)
+                {
+                    $(`#${this.navigation_bar_modal_launch}`).remove();
+                }
                 // 0. Reset default list display
                 $('#navbar-list-group').css("display", "table-cell");
                 // 1. add modal properties
