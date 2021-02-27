@@ -54,6 +54,17 @@ class LocaleSettings extends React.Component
                                 <div>
                                     <table className="table">
                                         <tbody>
+                                            {
+                                                this.state.supported_languages.map((lc, idx) =>
+                                                    <tr key={`locale-section-tr-${idx}`}>
+                                                        <td id={lc.locale}
+                                                            onClick={se => this.onClickLocaleSectionCell(se)}
+                                                            onMouseOver={se => this.onMouseOverLocaleSectionCell(se)}>
+                                                            {lc.language} ({lc.country})
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -78,6 +89,47 @@ class LocaleSettings extends React.Component
         $('#action-response-section').modal('hide');
     }
 
+    onMouseOverLocaleSectionCell(e)
+    {
+        if(typeof(e) === 'undefined')
+        {
+            console.log('onMouseOverLocaleSectionCell: event object is not defined');
+            return;
+        }
+
+        let cell = e.target;
+        if(!cell)
+        {
+            console.log('onMouseOverLocaleSectionCell: clicked/tapped cell object is not defined');
+            return;
+        }
+
+        cell.style.cursor = "pointer";
+    }
+
+    onClickLocaleSectionCell(e)
+    {
+        if(typeof(this) === 'undefined')
+        {
+            console.log('onClickLocaleSectionCell: "this" object is not defined');
+            return;
+        }
+        if(typeof(e) === 'undefined')
+        {
+            console.log('onClickLocaleSectionCell: event object is not defined');
+            return;
+        }
+
+        let cell = e.target;
+        if(!cell)
+        {
+            console.log('onClickLocaleSectionCell: clicked/tapped cell object is not defined');
+            return;
+        }
+
+        this.sendLocaleSettings(e);
+    }
+
     setLocaleLanguage(e)
     {
         if(typeof(this) === 'undefined')
@@ -99,28 +151,9 @@ class LocaleSettings extends React.Component
         {
             this.localeInitSetElementId = button.id;
         }
-
-        let tbodyChildren = $('tbody').children();
-        if(tbodyChildren)
-        {
-            console.log('Languages modal is filled: ' + tbodyChildren.length + ' nodes.');
-        }
-        else
-        {
-            console.log('Languages modal is empty');
-        }
         // display languages modal
+
         $('#locale-section').modal('show');
-        this.state.supported_languages.map(ls => {
-            let innerHtml = `<tr> <td id="${ls.locale}"> ${ls.language} (${ls.country}) </td> </tr>`;
-            $('tbody').append(innerHtml);
-            $(`#${ls.locale}`).click(ee => {
-                this.sendLocaleSettings(ee);
-            });
-            $(`#${ls.locale}`).hover(eee => {
-                eee.target.style.cursor = 'pointer';
-            });
-        });
     }
 
     sendLocaleSettings(e)
@@ -135,7 +168,7 @@ class LocaleSettings extends React.Component
         {
             let locale = langSetting.id;
             let lregex = new RegExp("\s*([^\\(]+)\\(([^\\)]+)\\)");
-            let language = langSetting.innerText;
+            let language = langSetting.innerText.trim();
             let country = "";
             try
             {
@@ -159,7 +192,6 @@ class LocaleSettings extends React.Component
                 };
                 let localeJson = JSON.stringify(localeData);
                 console.log('Language settings to send: ' + localeJson);
-                $('tbody').empty();
                 $('#locale-section').modal('hide');
                 if(this.localeEndPoint)
                 {
