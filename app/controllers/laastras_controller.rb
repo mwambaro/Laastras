@@ -112,11 +112,6 @@ class LaastrasController < ApplicationController
 
   def init_parameters
     @action_name = params[:action].nil? ? '' : params[:action]
-    @contact_key = I18n.t 'contact_us'
-    @about_key = I18n.t 'about'
-    @cookies_key = I18n.t 'cookies'
-    @privacy_key = I18n.t 'privacy'
-    @terms_of_use_key = I18n.t 'terms_of_use'
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
     @home_label = I18n.t 'home_label'
@@ -227,6 +222,35 @@ class LaastrasController < ApplicationController
         data: ''
       }
     ])
+    @footer_actions = [
+      {
+        url: url_for(controller: 'laastras', action: 'about'),
+        inner_text: (I18n.t 'about')
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'terms_of_use'),
+        inner_text: (I18n.t 'terms_of_use')
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'privacy'),
+        inner_text: (I18n.t 'privacy')
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'cookies'),
+        inner_text: (I18n.t 'cookies')
+      },
+      {
+        url: url_for(controller: 'laastras', action: 'contact'),
+        inner_text: (I18n.t 'contact_us')
+      }
+    ]
+    @social_media_data = {
+      facebook: {
+        href: 'https://laastras.herokuapp.com',
+        hashtag: '#laas',
+        quote: (I18n.t 'site_meta_description')
+      }
+    }
     @laastras_sample_services = [
       (I18n.t 'iot'),
       (I18n.t 'means_of_exchange'),

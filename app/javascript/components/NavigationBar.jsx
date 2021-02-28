@@ -315,7 +315,7 @@ class NavigationBar extends React.Component
                 how_many = Math.floor(props.parent_max_width/maxWidth);
             }
 
-            console.log(`Parent max width (Nav): ${props.parent_max_width}; Total width: ${totalWidth}; Max width: ${maxWidth}; How many: ${how_many}`);
+            //console.log(`Parent max width (Nav): ${props.parent_max_width}; Total width: ${totalWidth}; Max width: ${maxWidth}; How many: ${how_many}`);
             if(props.parent_max_width >= totalWidth) // Flex
             {
                 this.navbar_state = {
