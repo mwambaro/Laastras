@@ -3,6 +3,7 @@
         <%= react_component('SiteHeader', {
             laastras_actions: @laastras_actions,
             locale_end_point: url_for(controller: 'laastras', action: 'locale'),
+            social_media_data: @social_media_data,
             supported_languages: @supported_languages
         }) %>
     </header>
@@ -39,23 +40,11 @@
             </div>
         </div>
     </main>
-    <footer class="shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="text-center"> &copy; <%= @copy_right %> </div>
-        <section>
-        
-            <%= react_component('SiteFooterLinks', {
-                footer_actions: @footer_actions
-                #parent_max_width: 1124
-            })%>
-            
-        </section>
-        <section>
-        
-            <%= react_component('SocialMediaShare', {
-                social_media_data: @social_media_data
-                #parent_max_width: 1124
-            })%>
-        
-        </section>
+    <footer>
+        <%= react_component('SiteFooter', {
+            footer_actions: @footer_actions,
+            social_media_data: @social_media_data,
+            copy_right_text: @copy_right
+        })%>
     </footer>
 </div>

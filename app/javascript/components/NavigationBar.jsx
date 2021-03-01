@@ -1,18 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import NavigationBarDropdownItem from "./NavigationBarDropdownItem"
+import HSpace from "./HorizontalSpace"
 
 class NavigationBar extends React.Component
 {
     constructor(props)
     {
         super(props);
-        this.navbar_state = {
-            navbar_ul_list_style: {
-                display: 'block'
-            },
-            navigation_bar_type: 'list'
-        };
         this.state = {
             rerender: false
         };
@@ -20,48 +14,84 @@ class NavigationBar extends React.Component
 
     render()
     {
-        if(this.state.rerender)
-        {
-            this.assessViewPortSize(this.props);
-        }
-
-        console.log('Type: ' + this.navbar_state.navigation_bar_type);
-
         let render_data = null;
+        let figure_it_out = true;
+        
+        if(this.props.display_type)
+        {
+            figure_it_out = false;
+            switch(this.props.display_type)
+            {
+                case 'flex':
+                    render_data = this.renderNavigationBarAsFlexList();
+                    break;
+                case 'block-list':
+                    render_data = this.renderNavigationBarAsModal();
+                    break;
+                case 'flex-block-list':
+                    render_data = this.renderNavigationBarAsModal();
+                    break;
+                default:
+                    figure_it_out = true;
+                    break;
+            }
+        }
 
-        if(this.navbar_state.navigation_bar_type === 'list') // Initial, not UX-valid
+        if(figure_it_out)
         {
-            render_data = this.renderNavigationBarAsList();
-        }
-        else if(this.navbar_state.navigation_bar_type === 'modal')
-        {
-            render_data = this.renderNavigationBarAsModal();
-        }
-        else if(this.navbar_state.navigation_bar_type === 'flex')
-        {
-            render_data = this.renderNavigationBarAsList();
-        }
-        else if(this.navbar_state.navigation_bar_type === 'flex-modal')
-        {
-            render_data = this.renderNavigationBarAsModal();
-        }
-        else
-        {
-            render_data = this.renderNavigationBarAsModal();
-        }
-
-        if(!render_data)
-        {
-            console.log("Oops, you are about to render invalid data");
+            if(this.state.rerender)
+            {
+                this.hspace = new HSpace('#navbar-list-group', this.props.parent_selector);
+            }
+            // Make sure 'this.state.rerender' state does not change between component
+            // construction and first render
+            if(!this.state.rerender) // just for precise size assessment
+            {
+                render_data = this.renderNavigationBarAsFlexList();
+            }
+            else if (this.hspace.horizontal_space_state.display_type === 'flex')
+            {
+                render_data = this.renderNavigationBarAsFlexList();
+            }
+            else if (this.hspace.horizontal_space_state.display_type === 'block-list')
+            {
+                render_data = this.renderNavigationBarAsModal();
+            }
+            else
+            {
+                render_data = this.renderNavigationBarAsModal();
+            }
         }
 
         return render_data;
     }
 
-    renderNavigationBarAsList()
+    renderNavigationBarAsFlexList()
+    {
+        let ul_style = {
+            display: 'flex'
+        };
+
+        return(this.renderNavigationBarAsList(ul_style));
+    }
+
+    renderNavigationBarAsBlockList()
+    {
+        let ul_style = {
+            display: 'block'
+        };
+
+        return(this.renderNavigationBarAsList(ul_style));
+    }
+
+    renderNavigationBarAsList(ul_style)
     {   
+        let navbar_ul_style = ul_style;
         let navbar_list_li_style = {
             listStyleType: 'none'
+        };
+        let text_style = {
+            whiteSpace: 'nowrap'
         };
 
         return(
@@ -86,7 +116,7 @@ class NavigationBar extends React.Component
                     </div>
                 </div>
                 <div>
-                    <ul id="navbar-list-group" style={this.navbar_state.navbar_ul_list_style}>
+                    <ul id="navbar-list-group" style={navbar_ul_style}>
                         {
                             this.props.laastras_actions.map((action, idx) =>
                                 <li className="nav-item"
@@ -96,7 +126,7 @@ class NavigationBar extends React.Component
                                        id={`navbar-nav-item-list-a-${idx}-${action.dropdown_boolean}`}
                                        href={action.url}
                                        onClick={se => this.onClickNavbarNavLink(se)}>
-                                        {action.inner_text}
+                                        <span style={text_style}> {action.inner_text} </span>
                                     </a>
                                 </li>
                             )
@@ -109,6 +139,9 @@ class NavigationBar extends React.Component
 
     renderNavigationBarAsModal()
     {
+        let text_style = {
+            whiteSpace: 'nowrap'
+        };
 
         return(
             <div>
@@ -151,7 +184,7 @@ class NavigationBar extends React.Component
                                                            id={`navbar-nav-item-modal-a-${idx}-${action.dropdown_boolean}`}
                                                            href={action.url}
                                                            onClick={se => this.onClickNavbarNavLink(se)}>
-                                                           {action.inner_text}
+                                                           <span style={text_style}> {action.inner_text} </span>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -176,7 +209,7 @@ class NavigationBar extends React.Component
 
     componentDidMount()
     {
-        this.setState({rerender: true}); // Leave the UX-invalid state
+        this.setState({rerender: true});
     }
 
     onClickNavbarDropdownModalCloseBtn(e)
@@ -213,9 +246,27 @@ class NavigationBar extends React.Component
             return;
         }
         e.preventDefault();
+
+        let boolean_id = null;
+        let href_url = null;
+        if(anchor.id)
+        {
+            boolean_id = anchor.id;
+            href_url = anchor.href;
+        }
+        else
+        {
+            boolean_id = anchor.parentElement.id;
+            href_url =  anchor.parentElement.href;
+        }
+        if(!boolean_id)
+        {
+            console.log('Dropdown boolean id could not be inferred. Damn!');
+            return;
+        }
         
-        //console.log(`${anchor.innerText.trim()} (id): ${anchor.id}`);
-        let m = anchor.id.match(/-(\d+)-(true|false)$/i);
+        //console.log(`${anchor.innerText.trim()} (id): ${boolean_id}`);
+        let m = boolean_id.match(/-(\d+)-(true|false)$/i);
         if(!m)
         {
             console.log('onClickNavbarNavLink: missing/invalid "dropdown_boolean" data in link object');
@@ -224,13 +275,12 @@ class NavigationBar extends React.Component
 
         if(m[2].match(/^true$/i)) // Has dropdown
         {
-            if(this.navbar_state.navigation_bar_type === 'modal')
+            if(this.hspace)
             {
-                $('#navbar-modal').modal('hide');
-            }
-            else if(this.navbar_state.navigation_bar_type === 'flex-modal')
-            {
-                $('#navbar-modal').modal('hide');
+                if(this.hspace.horizontal_space_state.display_type !== 'flex')
+                {
+                    $('#navbar-modal').modal('hide');
+                }
             }
 
             let html = "";
@@ -238,7 +288,7 @@ class NavigationBar extends React.Component
             {
                 let idx = parseInt(m[1]);
                 let action = this.props.laastras_actions[idx];
-                let inner_actions = JSON.parse(action.data);
+                let inner_actions = action.data;
                 inner_actions.map((action, i) => {
                     html += `
                         <tr>
@@ -262,96 +312,23 @@ class NavigationBar extends React.Component
         }
         else if(m[2].match(/^false$/i)) // Has no dropdown
         {
-            window.location = anchor.href;
-        }
-    }
-
-    assessViewPortSize(props)
-    {
-        if(typeof(this) === 'undefined')
-        {
-            console.log("assessViewPortSize: 'this' object is undefined.");
-            return;
-        }
-
-        try
-        {   
-            let maxWidth = 0;
-            let totalWidth = 0;
-            if(this.navigation_bar_total_width && this.navigation_bar_max_with)
+            if(!href_url)
             {
-                totalWidth = this.navigation_bar_total_width;
-                maxWidth = this.navigation_bar_max_with;
+                console.log('No url was found.');
             }
             else
             {
-                $('#navbar-list-group').children().each((idx, node) => {
-                
-                    let width = $(node).width();
-                    //console.log('width: ' + width);
-                    if(idx == 0)
-                    {
-                        maxWidth = width;
-                    }
-                    else
-                    {
-                        if(width > maxWidth)
-                        {
-                            maxWidth = width;
-                        }
-                    }
-                    totalWidth += width;
-                });
-                if(maxWidth>0 && totalWidth>0)
-                {
-                    this.navigation_bar_max_with = maxWidth;
-                    this.navigation_bar_total_width = totalWidth;
-                }
+                window.location = href_url;
             }
-
-            let how_many = 0;
-            if(maxWidth>0)
-            {
-                how_many = Math.floor(props.parent_max_width/maxWidth);
-            }
-
-            //console.log(`Parent max width (Nav): ${props.parent_max_width}; Total width: ${totalWidth}; Max width: ${maxWidth}; How many: ${how_many}`);
-            if(props.parent_max_width >= totalWidth) // Flex
-            {
-                this.navbar_state = {
-                    navbar_ul_list_style: {
-                        display: 'flex'
-                    },
-                    navigation_bar_type: 'flex'
-                };
-            }
-            else if(how_many>0) // flex + modal
-            {
-                this.navbar_state = {
-                    navbar_ul_list_style: {
-                        display: 'flex'
-                    },
-                    navigation_bar_type: 'flex-modal'
-                };
-            }
-            else // modal
-            {
-                this.navbar_state = {
-                    navbar_ul_list_style: {},
-                    navigation_bar_type: 'modal'
-                };
-            }
-        }
-        catch(error)
-        {
-            console.log("assessViewPortSize: " + error);
         }
     }
 }
 
 NavigationBar.propTypes = {
     laastras_actions: PropTypes.array, // array of {url: '', inner_text: '', dropdown_boolean: '', data: ''} hashes
-    parent_max_width: PropTypes.number // parent is an elt in which this component lives
+    parent_max_width: PropTypes.number, // parent is an elt in which this component lives
+    display_type: PropTypes.string, //one of these {null, 'flex', 'flex-block-list', 'block-list'}. Set to null to let the component decide
+    parent_selector: PropTypes.string
 };
 
 export default NavigationBar

@@ -6,9 +6,6 @@ class LocaleSettings extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = {
-            supported_languages: JSON.parse(this.props.supported_languages)
-        };
         this.localeEndPoint = this.props.locale_end_point;
         this.localeInitSetElementId = "";
     }
@@ -50,12 +47,18 @@ class LocaleSettings extends React.Component
                 <div id="locale-section" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
+                            <div className="modal-header">
+                                <button id="locale-section-modal-close" type="button" className="close" aria-label="Close"
+                                        onClick={se => this.onClickLocaleSectionModalCloseBtn(se)}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                             <div className="modal-body">
                                 <div>
                                     <table className="table">
                                         <tbody>
                                             {
-                                                this.state.supported_languages.map((lc, idx) =>
+                                                this.props.supported_languages.map((lc, idx) =>
                                                     <tr key={`locale-section-tr-${idx}`}>
                                                         <td id={lc.locale}
                                                             onClick={se => this.onClickLocaleSectionCell(se)}
@@ -87,6 +90,11 @@ class LocaleSettings extends React.Component
     {
         $('#action-response-message').empty();
         $('#action-response-section').modal('hide');
+    }
+
+    onClickLocaleSectionModalCloseBtn(e)
+    {
+        $('#locale-section').modal('hide');
     }
 
     onMouseOverLocaleSectionCell(e)
@@ -191,7 +199,7 @@ class LocaleSettings extends React.Component
                     country: country
                 };
                 let localeJson = JSON.stringify(localeData);
-                console.log('Language settings to send: ' + localeJson);
+                //console.log('Language settings to send: ' + localeJson);
                 $('#locale-section').modal('hide');
                 if(this.localeEndPoint)
                 {
@@ -210,7 +218,7 @@ class LocaleSettings extends React.Component
                         {
                             console.log('sendLocaleSettings#setTimeout#clearTimeout: ' + error);
                         }
-                    }, 6000);
+                    }, 3000);
 
                     try
                     {
@@ -304,7 +312,7 @@ class LocaleSettings extends React.Component
 }
 
 LocaleSettings.propTypes = {
-    supported_languages: PropTypes.string, // stringified array of {locale: '',  language: '', country: ''} hashes
+    supported_languages: PropTypes.array, // array of {locale: '',  language: '', country: ''} hashes
     locale_end_point: PropTypes.string
 };
 

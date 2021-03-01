@@ -4,6 +4,9 @@ import PropTypes from "prop-types"
 import NavigationBar from "./NavigationBar"
 import LaastrasLogo from "./LaastrasLogo"
 import LocaleSettings from "./LocaleSettings"
+import SocialMediaShare from "./SocialMediaShare"
+
+require("./CenterElement");
 
 class SiteHeader extends React.Component
 {
@@ -11,17 +14,8 @@ class SiteHeader extends React.Component
     {
         super(props);
         this.state = {
-            parent_max_width: window.innerWidth
-        }
-        try
-        {
-            //console.log('Laastras services: ' + this.props.laastras_services);
-            this.laastras_actions_array = JSON.parse(this.props.laastras_actions);
-        }
-        catch(error)
-        {
-            console.log('SiteHeader#constructor: ' + error);
-        }
+            rerender: 0
+        };
     }
 
     render()
@@ -37,12 +31,18 @@ class SiteHeader extends React.Component
                         <LaastrasLogo />  
                     </div>
                     <div id="site-header-navbar">
-                        <NavigationBar laastras_actions={this.laastras_actions_array}
-                                       parent_max_width={this.state.parent_max_width}/>
+                        <NavigationBar laastras_actions={this.props.laastras_actions}
+                                       parent_selector={'#site-header-navbar'}
+                                       display_type={null}/>
                     </div>
                     <div id="site-header-lang">
                         <LocaleSettings locale_end_point={this.props.locale_end_point}
                                         supported_languages={this.props.supported_languages} />
+                    </div>
+                    <div id="site-header-social-media-share">
+                        <SocialMediaShare social_media_data={this.props.social_media_data}
+                                          parent_selector={'#site-header-social-media-share'}
+                                          display_type={'block-list'}/>
                     </div>
                 </div>
             </div>
@@ -51,46 +51,36 @@ class SiteHeader extends React.Component
 
     componentDidMount()
     {
-        this.reactToParentSizeChange();
-        window.addEventListener('resize', e => this.orderElementsOnResize(e)); 
+        this.vCenterComponents();
+        window.addEventListener('resize', e => this.onResizeHandler(e)); 
     }
 
-    reactToParentSizeChange(e=null)
+    componentDidUpdate()
     {
-        if(typeof(this) === 'undefined')
-        {
-            console.log('reactToParentSizeChange: "this" object is not defined');
-        }
+        this.vCenterComponents();
+    }
 
-        let max_width = window.innerWidth - $('#site-header-lang').width() - $('#site-header-logo').width();
-        //console.log(`Parent max width: ${max_width}`);
+    vCenterComponents()
+    {
+        $('#site-header-logo').vcenter();
+        $('#site-header-navbar').vcenter();
+        $('#site-header-lang').vcenter();
+        $('#site-header-social-media-share').vcenter();
+    }
+
+    onResizeHandler(e)
+    {
         this.setState({
-            parent_max_width: max_width
+            rerender: 1
         });
-    }
-
-    orderElementsOnResize(e)
-    {
-        if(typeof(this) === 'undefined')
-        {
-            console.log('orderElementsOnResize: "this" object is not defined');
-        }
-
-        try
-        {
-            this.reactToParentSizeChange();
-        }
-        catch(error)
-        {
-            console.log('orderElementsOnResize: ' + error);
-        }
     }
 }
 
 SiteHeader.propTypes = {
-    laastras_actions: PropTypes.string, // stringified array of {url:, inner_text:, dropdown_boolean:, data: json-array-of-hashes} hashes
-    supported_languages: PropTypes.string, // stringified array of {locale: '',  language: '', country: ''} hashes 
-    locale_end_point: PropTypes.string
+    laastras_actions: PropTypes.array, // array of {url:, inner_text:, dropdown_boolean:, data: json-array-of-hashes} hashes
+    supported_languages: PropTypes.array, // array of {locale: '',  language: '', country: ''} hashes 
+    locale_end_point: PropTypes.string,
+    social_media_data: PropTypes.object
 };
 
 export default SiteHeader;

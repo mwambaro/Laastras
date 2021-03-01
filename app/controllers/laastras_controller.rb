@@ -121,7 +121,7 @@ class LaastrasController < ApplicationController
     @founder_and_ceo_contact_label = I18n.t 'founder_and_ceo_contact_label'
     @work_in_progress_description = I18n.t 'work_in_progress_description'
     @site_title = 'Laastras | ' + @action_name
-    @mission_kick_off_data = JSON.generate([
+    @mission_kick_off_data = [
       {
         url: (I18n.t 'homefinances_dfd_url'),
         description: (I18n.t 'homefinances_dfd_description').paragraphize
@@ -154,9 +154,9 @@ class LaastrasController < ApplicationController
         url: (I18n.t 'laastras_globalization_url'),
         description: (I18n.t 'laastras_globalization_description').paragraphize
       }
-    ])
+    ]
     @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
-    @laastras_services = JSON.generate([
+    @laastras_services = [
       {
         url: url_for(controller: 'e_commerce', action: 'job_offer_posting'),
         inner_text: (I18n.t 'job_offer_posting_label')
@@ -189,8 +189,8 @@ class LaastrasController < ApplicationController
         url: url_for(controller: 'logistics', action: 'bike_service'),
         inner_text: (I18n.t 'bike_service_label')
       }
-    ])
-    @laastras_actions = JSON.generate([
+    ]
+    @laastras_actions = [
       {
         url: url_for(controller: 'laastras', action: 'hire_us'),
         inner_text: (I18n.t 'hire_us_label'),
@@ -221,7 +221,7 @@ class LaastrasController < ApplicationController
         dropdown_boolean: 'false',
         data: ''
       }
-    ])
+    ]
     @footer_actions = [
       {
         url: url_for(controller: 'laastras', action: 'about'),
@@ -259,11 +259,11 @@ class LaastrasController < ApplicationController
       (I18n.t 'aori_globalization')
     ]
     @globalization_intro = (I18n.t 'mission_terms').paragraphize
-    @supported_languages = JSON.generate([
+    @supported_languages = [
       {locale: 'en_US', language: (I18n.t 'english'), country: (I18n.t 'usa')},
       {locale: 'ru_BI', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
       {locale: 'fr_FR', language: (I18n.t 'french'), country: (I18n.t 'france')},
       {locale: 'sw_TZ', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
-    ])
+    ]
   end
 end

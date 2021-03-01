@@ -8,8 +8,7 @@ class MissionKickOff extends React.Component
     {
         super(props);
         this.state = {
-            current_index: 0,
-            mission_kick_off_data: JSON.parse(this.props.mission_kick_off_data)
+            current_index: 0
         };
         this.timer = null;
         this.kick_off_button_clicked = false;
@@ -64,7 +63,7 @@ class MissionKickOff extends React.Component
                         <span style={section_title_style}> {this.props.section_title} </span>
                     </div>
                     <div className="text-center">
-                        <img src={this.state.mission_kick_off_data[this.state.current_index].url} 
+                        <img src={this.props.mission_kick_off_data[this.state.current_index].url} 
                              className="img-fluid"
                              id="kick-off-image"
                              onClick={(se) => this.goToImageDetails(se)} />
@@ -158,8 +157,8 @@ class MissionKickOff extends React.Component
         let image = e.target;
         if(image)
         {
-            let description = this.state.mission_kick_off_data[this.state.current_index].description;
-            let url = this.state.mission_kick_off_data[this.state.current_index].url;
+            let description = this.props.mission_kick_off_data[this.state.current_index].description;
+            let url = this.props.mission_kick_off_data[this.state.current_index].url;
             if(url !== image.src)
             {
                 console.log('goToImageDetails: Something is up. Image URLs mismatch. Current index state must be messed up.');
@@ -214,7 +213,7 @@ class MissionKickOff extends React.Component
         }
         else if(rightRegex.test(btnType))
         {
-            if(index === this.state.mission_kick_off_data.length-1)
+            if(index === this.props.mission_kick_off_data.length-1)
             {
                 console.log('kick off data index is last: ' + index);
                 return;
@@ -256,7 +255,7 @@ class MissionKickOff extends React.Component
                     console.log('onImgProgress#setTimeout#clearTimeout: ' + error);
                 }
             }, 
-            5000
+            3000
         );
         if(dis)
         {
@@ -272,7 +271,7 @@ class MissionKickOff extends React.Component
             return;
         }
 
-        console.log('Image data is loaded.');
+        //console.log('Image data is loaded.');
         $('#kick-off-image-onprogress-spinner').modal('hide');
         try
         {
@@ -300,7 +299,7 @@ class MissionKickOff extends React.Component
 }
 
 MissionKickOff.propTypes = {
-    mission_kick_off_data: PropTypes.string, // stringified array of {url: '', description: ''} hashes
+    mission_kick_off_data: PropTypes.array, // array of {url: '', description: ''} hashes
     section_title: PropTypes.string
 };
 
