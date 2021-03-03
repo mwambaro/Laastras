@@ -175,7 +175,7 @@ class HorizontalSpace
             let flexPossible = true;
             if(listPos && parentPos) 
             {
-                if(listPos.left < parentPos.left)
+                if(listPos.left < parentPos.left || this.mayHaveHorizontalScrollBar())
                 {
                     flexPossible = false;
                 }
@@ -219,6 +219,25 @@ class HorizontalSpace
         {
             console.log("assessViewPortSize: " + error);
         }
+    }
+
+    mayHaveHorizontalScrollBar()
+    {
+        let may = false;
+
+        try
+        {
+            if($('body').scrollLeft() > 0)
+            {
+                may = true;
+            }
+        }
+        catch(error)
+        {
+            console.log("mayHaveHorizontalScrollBar: " + error);
+        }
+
+        return may;
     }
 }
 
