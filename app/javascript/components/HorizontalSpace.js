@@ -227,10 +227,12 @@ class HorizontalSpace
 
         try
         {
+            $('body').scrollLeft(2);
             if($('body').scrollLeft() > 0)
             {
                 may = true;
             }
+            $('body').scrollLeft(0);
         }
         catch(error)
         {
