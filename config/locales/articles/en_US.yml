@@ -94,7 +94,7 @@ en_US:
       conflicts, as well as social inequalities, Laastras (one of LaaS applications) must define, build, and
       establish a trade system that allows all humankind to equally benefit from 'our things'.
   "
-  mission_terms: "
+  mission_terms: '
       Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
       Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),
       Communication as a Service (CaaS), and Legal Protection as a Service (PraaS) can turn malls, shops, 
@@ -104,4 +104,6 @@ en_US:
       on one side, and Virtual Money, on the other. We agree to disagree on everything else but one unrefutable 
       truth: We must equally share all resources that support our existence, present and future, discovered and 
       yet to be found. Laastras collection of IoT services offer the best policy to achieve that truth.
-  "
+      To learn more on the mission background, read <a href="https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service">
+      the technical document book </a> that inspired Laastras.
+ '
