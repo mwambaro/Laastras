@@ -1,4 +1,6 @@
 
+require("./MobileDevices");
+
 class HorizontalSpace
 {
     /// <summary>
@@ -184,7 +186,7 @@ class HorizontalSpace
 
             //console.log(`List end left pos (${this.items_list_selector}): ${listEndLeftPos}; Parent inner end left pos: ${parentInnerEndLeftPos}, Window inner end pos: ${windowInnerEndPos}; Flex possible: ${flexPossible}`);
 
-            if(parent_max_width > totalWidth && flexPossible && window.innerWidth>400)
+            if(parent_max_width > totalWidth && flexPossible && !$(window).isMobile())
             { // Flex
                 this.horizontal_space_state = {
                     list_display_style: {
