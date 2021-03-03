@@ -223,7 +223,7 @@ class NavigationBar extends React.Component
 
     componentDidUpdate()
     {
-        console.log('Navigation bar component did update.');
+        //console.log('Navigation bar component did update.');
     }
 
     onClickNavbarDropdownModalCloseBtn(e)
