@@ -41,7 +41,16 @@ class NavigationBar extends React.Component
         {
             if(this.state.rerender)
             {
-                this.hspace = new HSpace('#navbar-list-group', this.props.parent_selector);
+                if(!this.hspace)
+                {
+                    this.hspace = new HSpace('#navbar-ul-list-group', this.props.parent_selector);
+                }
+                this.hspace.assessViewPortSize(this.props.parent_max_width);
+            }
+
+            if(!this.hspace && this.state.rerender)
+            {
+                console.log('We are damned. Expect indefinite behavior');
             }
             // Make sure 'this.state.rerender' state does not change between component
             // construction and first render
@@ -116,7 +125,7 @@ class NavigationBar extends React.Component
                     </div>
                 </div>
                 <div>
-                    <ul id="navbar-list-group" style={navbar_ul_style}>
+                    <ul id="navbar-ul-list-group" style={navbar_ul_style}>
                         {
                             this.props.laastras_actions.map((action, idx) =>
                                 <li className="nav-item"
@@ -175,7 +184,7 @@ class NavigationBar extends React.Component
                             </div>
                             <div className="modal-body">
                                 <table className="table">
-                                    <tbody>
+                                    <tbody id="navbar-tr-list-group">
                                         {
                                             this.props.laastras_actions.map((action, idx) =>
                                                 <tr key={`navbar-nav-item-tr-${idx}`}>
@@ -210,6 +219,11 @@ class NavigationBar extends React.Component
     componentDidMount()
     {
         this.setState({rerender: true});
+    }
+
+    componentDidUpdate()
+    {
+        console.log('Navigation bar component did update.');
     }
 
     onClickNavbarDropdownModalCloseBtn(e)
@@ -328,7 +342,8 @@ NavigationBar.propTypes = {
     laastras_actions: PropTypes.array, // array of {url: '', inner_text: '', dropdown_boolean: '', data: ''} hashes
     parent_max_width: PropTypes.number, // parent is an elt in which this component lives
     display_type: PropTypes.string, //one of these {null, 'flex', 'flex-block-list', 'block-list'}. Set to null to let the component decide
-    parent_selector: PropTypes.string
+    parent_selector: PropTypes.string,
+    parent_max_width: PropTypes.number
 };
 
 export default NavigationBar

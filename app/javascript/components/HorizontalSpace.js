@@ -16,7 +16,7 @@ class HorizontalSpace
     ///      2. display_type: one of these {'flex', 'flex-block-list', 'block-list'}
     /// </return>
     /// NOTE: For optimality let me know where your parent is located given the current actual
-    ///       view port condition. Also, your list should be in its worst case span when you call upon me.
+    ///       view port condition. Also, your list should be in its worst case span when you construct me for the first time.
     ///       It is optimized to do heavy-lifting computation once in its life-cycle. Hence, if you
     ///       want fresh perspective, construct it again, esp. if parent changes.
     constructor(items_list_selector, parent_selector)
@@ -25,15 +25,19 @@ class HorizontalSpace
         {
             this.parent_selector = parent_selector;
             this.items_list_selector = items_list_selector;
-            this.assessViewPortSize();
         }
     }
 
-    assessViewPortSize()
+    assessViewPortSize(parent_max_width)
     {
         if(typeof(this) === 'undefined')
         {
             console.log("assessViewPortSize: 'this' object is undefined.");
+            return;
+        }
+        if(typeof(parent_max_width) === 'undefined')
+        {
+            console.log("assessViewPortSize: 'parent_max_width' is undefined.");
             return;
         }
 
@@ -41,48 +45,62 @@ class HorizontalSpace
         {   
             let parentInnerEndLeftPos = -1;
             let windowInnerEndPos = -1;
+            let parentPos = $(this.parent_selector).offset();
+            let listPos = $(this.items_list_selector).offset();
             let maxWidth = 0;
             let totalWidth = 0;
             let how_many = 0;
             let listEndLeftPos = 0;
-            if(this.navigation_bar_total_width) // do it once in your life cycle
+            let pLeftMargin = 0;
+            let pLeftPadding = 0;
+            let bRightMargin = 0;
+            let bRightPadding = 0;
+            
+            let ps = $(this.parent_selector).css('margin-left');
+            if(ps)
             {
-                totalWidth = this.navigation_bar_total_width;
-                maxWidth = this.navigation_bar_max_with;
+                pLeftMargin = parseFloat(ps.replace(/[^\d\.]+/, ""));
+            }
+            ps = $(this.parent_selector).css('padding-left');
+            if(ps)
+            {
+                pLeftPadding = parseFloat(ps.replace(/[^\d\.]+/, ""));
+            }
+            ps = $('body').css('margin-right');
+            if(ps)
+            {
+                bRightMargin = parseFloat(ps.replace(/[^\d\.]+/, ""));
+            }
+            ps = $('body').css('padding-right');
+            if(ps)
+            {
+                bRightPadding = parseFloat(ps.replace(/[^\d\.]+/, ""));
+            }
+            
+            if(this.list_bar_total_width) // do it once in your life cycle
+            {
+                totalWidth = this.list_bar_total_width;
+                maxWidth = this.list_bar_max_with;
                 how_many = this.how_many;
-                parentInnerEndLeftPos = this.parent_inner_end_left_pos;
-                windowInnerEndPos = this.window_inner_end_pos;
                 listEndLeftPos = this.list_end_left_pos;
+
+                parentInnerEndLeftPos = parentPos.left + pLeftMargin + pLeftPadding + parent_max_width;
+                windowInnerEndPos = window.outerWidth - bRightPadding - bRightMargin;
             }
             else 
             {
-                let pLeftMargin = 0;
-                let pLeftPadding = 0;
                 let lLeftMargin = 0;
                 let lLeftPadding = 0;
                 let lRightMargin = 0;
                 let lRightPadding = 0;
-                let bRightMargin = 0;
-                let bRightPadding = 0;
-                let pos = $(this.parent_selector).offset();
+                let pos = parentPos;
                 if(!pos)
                 {
                     console.log('Yikes! Could not get parent object position. This will taint the results');
                 }
                 else
                 {
-                    
-                    let s = $(this.parent_selector).css('margin-left');
-                    if(s)
-                    {
-                        pLeftMargin = parseFloat(s.replace(/[^\d\.]+/, ""));
-                    }
-                    s = $(this.parent_selector).css('padding-left');
-                    if(s)
-                    {
-                        pLeftPadding = parseFloat(s.replace(/[^\d\.]+/, ""));
-                    }
-                    s = $(this.items_list_selector).css('margin-left');
+                    let s = $(this.items_list_selector).css('margin-left');
                     if(s)
                     {
                         lLeftMargin = parseFloat(s.replace(/[^\d\.]+/, ""));
@@ -102,26 +120,16 @@ class HorizontalSpace
                     {
                         lRightPadding = parseFloat(s.replace(/[^\d\.]+/, ""));
                     }
-                    s = $('body').css('margin-right');
-                    if(s)
-                    {
-                        bRightMargin = parseFloat(s.replace(/[^\d\.]+/, ""));
-                    }
-                    s = $('body').css('padding-right');
-                    if(s)
-                    {
-                        bRightPadding = parseFloat(s.replace(/[^\d\.]+/, ""));
-                    }
                     
                     windowInnerEndPos = window.outerWidth - bRightPadding - bRightMargin;
                     //console.log(`Parent left margin: ${pLeftMargin}; Parent left padding: ${pLeftPadding}; List left margin: ${lLeftMargin}; List left padding: ${lLeftPadding}; List right margin: ${lRightMargin}; List right padding: ${lRightPadding}`);
-                    parentInnerEndLeftPos = pos.left + pLeftMargin + pLeftPadding + $(this.parent_selector).innerWidth();
+                    parentInnerEndLeftPos = pos.left + pLeftMargin + pLeftPadding + parent_max_width;
                     //console.log(`Parent inner end position: ${parentInnerEndLeftPos}`);
                 }
                 if(parentInnerEndLeftPos == -1)
                 {
                     console.log('parentInnerEndLeftPos is invalid. Setting it');
-                    parentInnerEndLeftPos = pos.left + $(this.parent_selector).innerWidth();
+                    parentInnerEndLeftPos = pos.left + pLeftMargin + pLeftPadding + parent_max_width;
                 }
 
                 let selector = $(this.items_list_selector).contents();
@@ -145,6 +153,7 @@ class HorizontalSpace
                         }
                     }
                     totalWidth += width;
+                    // ideally; actually should use listPos
                     listEndLeftPos = pos.left + pLeftMargin + pLeftPadding + lLeftMargin + lLeftPadding + totalWidth + lRightPadding + lRightMargin;
                     if(listEndLeftPos <= parentInnerEndLeftPos)
                     {
@@ -154,19 +163,31 @@ class HorizontalSpace
                 if(maxWidth>0 && totalWidth>0)
                 {
                     /// NOTE: Keep these definitions together
-                    this.navigation_bar_max_with = maxWidth;
-                    this.navigation_bar_total_width = totalWidth;
+                    this.list_bar_max_with = maxWidth;
+                    this.list_bar_total_width = totalWidth;
                     this.how_many = how_many;
                     this.list_end_left_pos = listEndLeftPos;
-                    this.window_inner_end_pos = windowInnerEndPos;
-                    this.parent_inner_end_left_pos = parentInnerEndLeftPos;
                 }
             }
-            //console.log(`List end left pos (HSPACE): ${listEndLeftPos}; Parent inner end left pos: ${parentInnerEndLeftPos}, Window inner end pos: ${windowInnerEndPos}`);
+            
+            // Actual
+            // An attempt to fix flex going flexing over parent on small devices like Infinix X625C
+            let flexPossible = true;
+            if(listPos && parentPos) 
+            {
+                if(listPos.left < parentPos.left)
+                {
+                    flexPossible = false;
+                }
+            }
+            // end Actual
+
+            //console.log(`List end left pos (${this.items_list_selector}): ${listEndLeftPos}; Parent inner end left pos: ${parentInnerEndLeftPos}, Window inner end pos: ${windowInnerEndPos}; Flex possible: ${flexPossible}`);
 
             if(
                 Math.floor(listEndLeftPos) <= Math.floor(parentInnerEndLeftPos) &&
-                Math.floor(parentInnerEndLeftPos) < Math.floor(windowInnerEndPos) 
+                //Math.floor(parentInnerEndLeftPos) < Math.floor(windowInnerEndPos) &&
+                flexPossible
             ){ // Flex
                 this.horizontal_space_state = {
                     list_display_style: {

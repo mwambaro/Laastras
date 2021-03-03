@@ -16,6 +16,7 @@ class SiteHeader extends React.Component
         this.state = {
             rerender: 0
         };
+        this.setParentMaxWidth();
     }
 
     render()
@@ -33,7 +34,8 @@ class SiteHeader extends React.Component
                     <div id="site-header-navbar">
                         <NavigationBar laastras_actions={this.props.laastras_actions}
                                        parent_selector={'#site-header-navbar'}
-                                       display_type={null}/>
+                                       display_type={null}
+                                       parent_max_width={this.parent_max_width}/>
                     </div>
                     <div id="site-header-lang">
                         <LocaleSettings locale_end_point={this.props.locale_end_point}
@@ -53,6 +55,12 @@ class SiteHeader extends React.Component
     {
         this.vCenterComponents();
         window.addEventListener('resize', e => this.onResizeHandler(e)); 
+
+        this.setParentMaxWidth();
+        this.setState({
+            rerender: 2
+        });
+
     }
 
     componentDidUpdate()
@@ -68,10 +76,26 @@ class SiteHeader extends React.Component
         $('#site-header-social-media-share').vcenter();
     }
 
+    setParentMaxWidth()
+    {
+        let display = $('#parent-site-header').css('display');
+        if(display === 'flex')
+        {
+            this.parent_max_width = window.innerWidth - $('#site-header-logo').outerWidth() 
+                                                      - $('#site-header-lang').outerWidth() 
+                                                      - $('#site-header-social-media-share').outerWidth(); 
+        }
+        else 
+        {
+            this.parent_max_width = window.innerWidth;
+        }
+    }
+
     onResizeHandler(e)
     {
+        this.setParentMaxWidth();
         this.setState({
-            rerender: 1
+            rerender: this.state.rerender+1
         });
     }
 }

@@ -42,7 +42,11 @@ class SiteFooterLinks extends React.Component
         {
             if(this.state.rerender)
             {
-                this.hspace = new HSpace('#footer-links-ul-list', this.props.parent_selector);
+                if(!this.hspace)
+                {
+                    this.hspace = new HSpace('#footer-links-ul-list', this.props.parent_selector);
+                }
+                this.hspace.assessViewPortSize(this.props.parent_max_width);
             }
         
             // Make sure 'this.state.rerender' state does not change between component
@@ -159,7 +163,8 @@ class SiteFooterLinks extends React.Component
 SiteFooterLinks.propTypes = {
     footer_actions: PropTypes.array, // an array of {url:, inner_text:} hashes
     parent_selector: PropTypes.string,
-    display_type: PropTypes.string //one of these {null, 'flex', 'flex-block-list', 'block-list'}. Set to null to let the component decide
+    display_type: PropTypes.string, //one of these {null, 'flex', 'flex-block-list', 'block-list'}. Set to null to let the component decide
+    parent_max_width: PropTypes.number
 };
 
 export default SiteFooterLinks
