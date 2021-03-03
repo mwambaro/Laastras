@@ -227,12 +227,12 @@ class HorizontalSpace
 
         try
         {
-            $('body').scrollLeft(2);
-            if($('body').scrollLeft() > 0)
-            {
-                may = true;
-            }
-            $('body').scrollLeft(0);
+            let left = 0;
+            let scrollL = left + 2;
+            $(window).scrollLeft(scrollL);
+            let currentScrollL = $(window).scrollLeft();
+            //console.log(`Scroll width: ${scrollL}; Current scroll width: ${currentScrollL}`);
+            may = (currentScrollL === scrollL) ? true : false;
         }
         catch(error)
         {
