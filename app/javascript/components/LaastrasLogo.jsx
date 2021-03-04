@@ -11,7 +11,7 @@ class LaastrasLogo extends React.Component
     render()
     {
         let logo_style = {
-            fontSize: '40px', 
+            fontSize: '30px', 
             fontWeight: 'bold'
         };
         
