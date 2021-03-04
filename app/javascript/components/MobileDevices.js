@@ -1,4 +1,4 @@
-
+// see https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device
 jQuery.fn.isMobile = function()
 {
     let isMob = false; //initiate as false

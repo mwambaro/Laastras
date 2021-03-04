@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+require("./CenterElement");
+
 class WorkInProgress extends React.Component
 {
     constructor(props)
@@ -15,14 +17,19 @@ class WorkInProgress extends React.Component
         };
 
         let section_title_style = {
-            fontSize: '28px', 
+            fontSize: '24px', 
             fontWeight: 'bold'
         };
 
+        let work_title_div_style = {
+            backgroundColor: '#82f38f'
+        };
+
         return(
-            <div>
+            <div id="work-in-progress-container">
                 <div className="shadow-lg p-3 mb-5 bg-white rounded">
-                    <div className="shadow-none p-1 mb-2 bg-light rounded">
+                    <div className="shadow-none p-1 mb-2 rounded"
+                         style={work_title_div_style}>
                         <span style={section_title_style}> {this.props.work_in_progress_section_title} </span>
                     </div>
                     <div>
@@ -45,6 +52,11 @@ class WorkInProgress extends React.Component
                 </div>
             </div>
         );
+    }
+
+    componentDidMount()
+    {
+        //$('#work-in-progress-container').hvcenter();
     }
 }
 

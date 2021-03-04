@@ -32,3 +32,28 @@ jQuery.fn.vcenter = function()
 
     return this;
 }
+
+jQuery.fn.hvcenter = function()
+{
+    try
+    {
+        if(this.parent())
+        {
+            //console.log('Position: ' + this.parent().css('position'));
+            //this.parent().css('position', 'relative');
+        }
+        
+        this.css({
+            'position': 'absolute',
+            'top': '50%',
+            'left': '50%',
+            'transform': 'translate(-50%, -50%)'
+        });
+    }
+    catch(error)
+    {
+        console.log('hvcenter: ' + error);
+    }
+
+    return this;
+}

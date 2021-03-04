@@ -25,23 +25,39 @@ class SiteHeader extends React.Component
             display: 'flex'
         }
 
+        let lang_bg_color = {
+            backgroundColor: '#eecbe9',
+            magin: '10px',
+            borderRadius: '5px'
+        };
+        let navbar_bg_color = {
+            backgroundColor: '#d1e3f1',
+            margin: '10px',
+            borderRadius: '5px'
+        };
+        let soms_bg_color = {
+            backgroundColor: '#cefbd3',
+            margin: '10px',
+            borderRadius: '5px'
+        };
+
         return(
             <div>
                 <div id="parent-site-header" style={header_style}>
                     <div id="site-header-logo"> 
                         <LaastrasLogo />  
                     </div>
-                    <div id="site-header-navbar">
+                    <div id="site-header-navbar" style={navbar_bg_color}>
                         <NavigationBar laastras_actions={this.props.laastras_actions}
                                        parent_selector={'#site-header-navbar'}
                                        display_type={null}
                                        parent_max_width={this.parent_max_width}/>
                     </div>
-                    <div id="site-header-lang">
+                    <div id="site-header-lang" style={lang_bg_color}>
                         <LocaleSettings locale_end_point={this.props.locale_end_point}
                                         supported_languages={this.props.supported_languages} />
                     </div>
-                    <div id="site-header-social-media-share">
+                    <div id="site-header-social-media-share" style={soms_bg_color}>
                         <SocialMediaShare social_media_data={this.props.social_media_data}
                                           parent_selector={'#site-header-social-media-share'}
                                           display_type={'block-list'}/>

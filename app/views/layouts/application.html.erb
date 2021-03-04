@@ -32,7 +32,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-image: url('<%= @site_background_image_url %>');
+               background-repeat: no-repeat;
+               background-attachment: fixed;
+               background-size: cover;">
     <%= yield %>
   </body>
 </html>

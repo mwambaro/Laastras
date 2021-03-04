@@ -110,10 +110,15 @@ class LaastrasController < ApplicationController
     
   end
 
+  def web_stats 
+    @web_statistics = ApplicationHelper.web_stats_code
+  end
+
   def init_parameters
     @action_name = params[:action].nil? ? '' : params[:action]
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
+    @vision = I18n.t 'vision'
     @home_label = I18n.t 'home_label'
     @site_description = I18n.t 'site_meta_description'
     @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'
@@ -259,11 +264,17 @@ class LaastrasController < ApplicationController
       (I18n.t 'aori_globalization')
     ]
     @globalization_intro = (I18n.t 'mission_terms').paragraphize
+    @laastras_vision = (I18n.t 'vision_terms')
     @supported_languages = [
       {locale: 'en_US', language: (I18n.t 'english'), country: (I18n.t 'usa')},
       {locale: 'ru_BI', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
       {locale: 'fr_FR', language: (I18n.t 'french'), country: (I18n.t 'france')},
       {locale: 'sw_TZ', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
     ]
+
+    #http://getwallpapers.com/wallpaper/full/f/9/0/838457-full-size-outdoors-wallpapers-1920x1200.jpg
+    @site_background_image_url = ApplicationHelper.image_asset_url(
+      request, '838457-default-background-image.jpg'
+    )
   end
 end

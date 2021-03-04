@@ -17,8 +17,12 @@ class MissionKickOff extends React.Component
     render()
     {
         let section_title_style = {
-            fontSize: '32px', 
-            fontWeight: 'bold'
+            fontSize: '24px', 
+            fontWeight: 'bold',
+            color: 'white'
+        };
+        let title_section_div_style = {
+            backgroundColor: '#0c60f3'
         };
         return(
             <div>
@@ -59,8 +63,12 @@ class MissionKickOff extends React.Component
                     </div>
                 </div>
                 <div id="kick-off-section" className="shadow p-1 mb-2 bg-white rounded">
-                    <div id="kick-off-title-section" className="shadow-none p-1 mb-2 bg-light rounded">
-                        <span style={section_title_style}> {this.props.section_title} </span>
+                    <div id="kick-off-title-section" 
+                        className="shadow-none p-1 mb-2 rounded"
+                        style={title_section_div_style}>
+                        <span style={section_title_style}> 
+                            {this.props.section_title} 
+                        </span>
                     </div>
                     <div className="text-center">
                         <img src={this.props.mission_kick_off_data[this.state.current_index].url} 

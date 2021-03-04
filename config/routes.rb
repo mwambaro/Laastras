@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'laastras/cookies'
   get 'laastras/contact'
   get 'laastras/about'
+  get 'laastras/web_stats'
 
   post 'laastras/locale'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

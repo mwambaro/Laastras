@@ -9,9 +9,9 @@
     </header>
     <hr>
     <main role="main">
-        <div class="text-center" style="background-color: #e3f2fd; border-radius: 3px;">
+        <div class="text-center" style="background-color: #c13ead; border-radius: 5px;">
             <div style="padding: 3px; margin: 3px;">
-                <p style="font-size: 18px; padding: 3px">
+                <p style="font-size: 18px; font-weight: bold; color: white; padding: 3px">
                     <% count = 0 %>
                     <% @laastras_sample_services.each do |service| %>  
                         <% if count == @laastras_sample_services.length-1 %>
@@ -29,17 +29,19 @@
             mission_kick_off_data: @mission_kick_off_data, 
             section_title: @kick_off
         }) %>
+        <hr>
         <div class="shadow-sm p-1 mb-2 bg-white rounded" style="margin: 4px">
-            <div class="shadow-none p-1 mb-2 bg-light rounded">
-                <span style="font-size: 32px; font-weight: bold"> <%= @mission %> </span>
+            <div class="shadow-none p-1 mb-2 rounded" style="background: #08f7ce;">
+                <span style="font-size: 24px; font-weight: bold; color: white"> <%= @vision %> </span>
             </div>
-            <div>
+            <div style="padding: 3px;">
                 <p> 
-                    <%= sanitize @globalization_intro %>
+                    <%= sanitize @laastras_vision %>
                 </p>
             </div>
         </div>
     </main>
+    <hr>
     <footer>
         <%= react_component('SiteFooter', {
             footer_actions: @footer_actions,
