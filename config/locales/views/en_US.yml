@@ -65,10 +65,11 @@ en_US:
   bike_service_label: "Bike service"
   copy_right: "Laastras. All Rights Reserved"
   iot: "Internet of our Things (IooT)"
-  means_of_exchange: "Services Exchange and Virtual Currency"
+  means_of_exchange: "Services Exchange and Virtual Currency (Morshux)"
   equality_policy: "Equality policy on global resources (LaaS)"
   logistics_ecommerce: "Logistics and E-commerce"
   aori_globalization: "Meet globalization challenges and constraints (Aori)"
+  opg_site_meta_title: "LaaS Policy Business Application"
   locale_set_success: "
       The language settings were set successfully as requested. You need to reload your pages for these settings to take effect
   "

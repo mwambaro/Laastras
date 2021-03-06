@@ -9,37 +9,13 @@
     </header>
     <hr>
     <main role="main">
-        <div class="text-center" style="background-color: #c13ead; border-radius: 5px;">
-            <div style="padding: 3px; margin: 3px;">
-                <p style="font-size: 18px; font-weight: bold; color: white; padding: 3px">
-                    <% count = 0 %>
-                    <% @laastras_sample_services.each do |service| %>  
-                        <% if count == @laastras_sample_services.length-1 %>
-                            <%= service %>  
-                        <% else %>
-                            <%= service + ' • ' %>
-                        <% end %>
-                        <% count += 1%>  
-                    <% end %>
-                </p>
-            </div>
-        </div>
-        <hr>
-        <%= react_component('MissionKickOff', {
-            mission_kick_off_data: @mission_kick_off_data, 
-            section_title: @kick_off
-        }) %>
-        <hr>
-        <div class="shadow-sm p-1 mb-2 bg-white rounded" style="margin: 4px">
-            <div class="shadow-none p-1 mb-2 rounded" style="background: #08f7ce;">
-                <span style="font-size: 24px; font-weight: bold; color: white"> <%= @vision %> </span>
-            </div>
-            <div style="padding: 3px;">
-                <p> 
-                    <%= sanitize @laastras_vision %>
-                </p>
-            </div>
-        </div>
+        <%= react_component('HomeMain', {
+            laastras_sample_services: @laastras_sample_services,
+            mission_kick_off_data: @mission_kick_off_data,
+            kick_off_section_title: @kick_off,
+            laastras_vision_html: (sanitize @laastras_vision),
+            vision_title_inner_text: @vision
+        })%>
     </main>
     <hr>
     <footer>

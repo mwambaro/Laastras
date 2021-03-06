@@ -2,6 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { clearTimeout } from "timers";
 
+require("./CenterElement");
+
 class MissionKickOff extends React.Component
 {
     constructor(props)
@@ -22,8 +24,12 @@ class MissionKickOff extends React.Component
             color: 'white'
         };
         let title_section_div_style = {
-            backgroundColor: '#0c60f3'
+            backgroundColor: '#0971b8' //'#0c60f3'
         };
+        let kick_off_arrow_section_style = {
+            display: 'flex'
+        };
+        
         return(
             <div>
                 <div id="kick-off-image-details-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
@@ -67,32 +73,33 @@ class MissionKickOff extends React.Component
                         className="shadow-none p-1 mb-2 rounded"
                         style={title_section_div_style}>
                         <span style={section_title_style}> 
-                            {this.props.section_title} 
+                            {this.props.kick_off_section_title} 
                         </span>
                     </div>
-                    <div className="text-center">
+                    <div id="kick-off-image-section"
+                         className="text-center">
                         <img src={this.props.mission_kick_off_data[this.state.current_index].url} 
                              className="img-fluid"
                              id="kick-off-image"
                              onClick={(se) => this.goToImageDetails(se)} />
                     </div>
-                    <div id="kick-off-arrow-section" className="row text-center">
-                        <div className="col-3"></div>
-                        <div className="col-3 text-center">
+                    <div id="kick-off-arrow-section" 
+                         className="text-center"
+                         style={kick_off_arrow_section_style}>
+                        <div id="kick-off-arrow-left">
                             <button type="button" className="btn btn-default arrow-left" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-left')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-left-circle" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                                 </svg>
                             </button>
                         </div>
-                        <div className="col-3 text-center">
+                        <div id="kick-off-arrow-right">
                             <button type="button" className="btn btn-default arrow-right" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-right')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                                 </svg>
                             </button>
                         </div>
-                        <div className="col-3"></div>
                     </div>
                 </div>
             </div>
@@ -101,29 +108,18 @@ class MissionKickOff extends React.Component
 
     componentDidMount()
     {
+        this.manageArrowSection();
         let img = document.getElementById('kick-off-image');
         if(img)
         {
             this.setKickOffImageHeight(img);
-            img.onload = e => {
-                if(typeof(this) === 'undefined')
-                {
-                    console.log('image onload event in componentDidMount: "this" object is undefined.');
-                    return;
-                }
-                $('#kick-off-image-onprogress-spinner').modal('hide');
-                this.onImgLoadedData(e, this);
-            };
             img.onerror = e => {
-                if(typeof(this) === 'undefined')
-                {
-                    console.log('image onerror event in componentDidMount: "this" object is undefined.');
-                    return;
-                }
                 console.log('image failed to load.');
             };
             img.style.cursor = "pointer";
         }
+
+        $('#kick-off-arrow-section').hcenter();
 
         window.addEventListener('resize', e => {
             if(typeof(this) === 'undefined')
@@ -135,6 +131,11 @@ class MissionKickOff extends React.Component
         });
     }
 
+    componentDidUpdate()
+    {
+        this.onImgLoadedData(null, this);
+    }
+
     setKickOffImageHeight(img=null)
     {
         if(!img)
@@ -142,11 +143,85 @@ class MissionKickOff extends React.Component
             img = document.getElementById('kick-off-image');
         }
         let maxH = (window.innerHeight*3)/4;
-        $('#kick-off-section').height(maxH);
-        let imgH = $('#kick-off-section').height() - 
-                   $('#kick-off-title-section').height() - 
-                   $('#kick-off-arrow-section').height();
+        $('#kick-off-section').outerHeight(maxH);
+        let imgH = $('#kick-off-section').innerHeight() - 
+                   $('#kick-off-title-section').outerHeight() - 
+                   $('#kick-off-arrow-section').outerHeight() - 10;
         $('#kick-off-image').height(imgH);
+        
+        $('#kick-off-arrow-section').hcenter();
+    }
+
+    manageArrowSection()
+    {
+        if(typeof(this) === 'undefined')
+        {
+            console.log("manageArrowSection: the 'this' object is not defined");
+            return;
+        }
+
+        let index = this.state.current_index;
+        if(this.props.mission_kick_off_data.length === 1) // Remove both arrows
+        {
+            this.kick_off_left_arrow_jquery = $('#kick-off-arrow-left');
+            $('#kick-off-arrow-left').remove();
+            this.kick_off_right_arrow_jquery = $('#kick-off-arrow-right');
+            $('#kick-off-arrow-right').remove();
+        }
+        else if(index === 0) // Remove arrow-left
+        {
+            this.kick_off_left_arrow_jquery = $('#kick-off-arrow-left');
+            $('#kick-off-arrow-left').remove();
+        }
+        else if(index === this.props.mission_kick_off_data.length-1) // Remove arrow-right
+        {
+            this.kick_off_right_arrow_jquery = $('#kick-off-arrow-right');
+            $('#kick-off-arrow-right').remove();
+        }
+        else // Make sure they both exist
+        {
+            if($('#kick-off-arrow-left').length === 0)
+            {
+                if(!this.kick_off_left_arrow_jquery)
+                {
+                    console.log('manageArrowSection: You should have stored arrow left data. You did not');
+                }
+                else
+                {
+                    if($('#kick-off-arrow-right').length > 0)
+                    {
+                        this.kick_off_left_arrow_jquery.insertBefore($('#kick-off-arrow-right'));
+                    }
+                    else
+                    {
+                        $('#kick-off-arrow-section').append(this.kick_off_left_arrow_jquery);
+                    }
+                }
+
+                this.kick_off_left_arrow_jquery = null;
+            }
+
+            if($('#kick-off-arrow-right').length === 0)
+            {
+                if(!this.kick_off_right_arrow_jquery)
+                {
+                    console.log('manageArrowSection: You should have stored arrow right data. You did not');
+                }
+                else
+                {
+                    if($('#kick-off-arrow-left').length > 0)
+                    {
+                        this.kick_off_right_arrow_jquery.insertAfter($('#kick-off-arrow-left'));
+                    }
+                    else
+                    {
+                        $('#kick-off-arrow-section').append(this.kick_off_right_arrow_jquery);
+                    }
+                }
+
+                this.kick_off_right_arrow_jquery = null;
+            }
+        }
     }
 
     goToImageDetails(e)
@@ -209,77 +284,62 @@ class MissionKickOff extends React.Component
         let index = this.state.current_index;
         let leftRegex = new RegExp('arrow-left');
         let rightRegex = new RegExp('arrow-right');
+        let updated = false;
         if(leftRegex.test(btnType))
         {
             if(index === 0)
             {
-                console.log('kick off data index === 0');
-                return;
+                //console.log('kick off data index === 0');
+                updated = false;
             }
-            index -= 1;
-            this.setState({current_index: index});
+            else
+            {
+                index -= 1;
+                updated = true;
+            }
         }
         else if(rightRegex.test(btnType))
         {
             if(index === this.props.mission_kick_off_data.length-1)
             {
-                console.log('kick off data index is last: ' + index);
-                return;
+                //console.log('kick off data index is last: ' + index);
+                updated = false;
             }
-            index += 1;
-            this.setState({current_index: index});
+            else
+            {
+                index += 1;
+                updated = true;
+            }
         }
         else
         {
             console.log(button.className + ' found no match amongst "arrow-right" and "arrow-left"');
+            updated = false;
         }
-        this.kick_off_button_clicked = true;
-        this.onImgProgress(e, this);
-    }
 
-    onImgProgress(e, dis)
-    {
-        if(!e)
+        if(updated)
         {
-            console.log('onImgProgress event object is null');
-            return;
-        }
-
-        console.log('The browser is in the process of getting the image data ...');
-
-        $('#kick-off-image-onprogress-spinner').modal('show');
-        let timer = setTimeout(function(e){
+            this.kick_off_button_clicked = true;
+            this.setState({
+                current_index: index
+            });
+            $('#kick-off-image-onprogress-spinner').modal('show');
+            this.timer = setTimeout((e) => {
                 $('#kick-off-image-onprogress-spinner').modal('hide');
-                try
-                {
-                    if(dis.timer)
-                    {
-                        clearTimeout(dis.timer);
-                        dis.timer = null;
-                    }
-                }
-                catch(error)
-                {
-                    console.log('onImgProgress#setTimeout#clearTimeout: ' + error);
-                }
-            }, 
-            3000
-        );
-        if(dis)
-        {
-            dis.timer = timer;
+            }, 1000);
         }
     }
 
     onImgLoadedData(e, dis)
     {
-        if(!e)
+        if(!dis)
         {
-            console.log('onImgLoadedData event object is null');
+            console.log('onImgLoadedData "this" object is null');
             return;
         }
 
         //console.log('Image data is loaded.');
+        dis.manageArrowSection();
         $('#kick-off-image-onprogress-spinner').modal('hide');
         try
         {
@@ -308,7 +368,7 @@ class MissionKickOff extends React.Component
 
 MissionKickOff.propTypes = {
     mission_kick_off_data: PropTypes.array, // array of {url: '', description: ''} hashes
-    section_title: PropTypes.string
+    kick_off_section_title: PropTypes.string
 };
 
 export default MissionKickOff;

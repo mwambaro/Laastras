@@ -116,6 +116,8 @@ class LaastrasController < ApplicationController
 
   def init_parameters
     @action_name = params[:action].nil? ? '' : params[:action]
+    @open_graph_proto_description = I18n.t 'opg_site_meta_description'
+    @open_graph_proto_title = I18n.t 'opg_site_meta_title'
     @kick_off = I18n.t 'kick_off'
     @mission = I18n.t 'mission'
     @vision = I18n.t 'vision'
