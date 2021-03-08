@@ -22,7 +22,8 @@ class HomeMain extends React.Component
                 <hr></hr>
                 <div>
                     <MissionKickOff mission_kick_off_data={this.props.mission_kick_off_data}
-                                    kick_off_section_title={this.props.kick_off_section_title}/>
+                                    kick_off_section_title={this.props.kick_off_section_title}
+                                    click_or_tap_image_text={this.props.click_or_tap_image_text}/>
                 </div>
                 <hr></hr>
                 <div>
@@ -38,6 +39,7 @@ HomeMain.propTypes = {
     laastras_sample_services: PropTypes.array,
     mission_kick_off_data: PropTypes.array,
     kick_off_section_title: PropTypes.string,
+    click_or_tap_image_text: PropTypes.string,
     laastras_vision_html: PropTypes.string,
     vision_title_inner_text: PropTypes.string
 };
