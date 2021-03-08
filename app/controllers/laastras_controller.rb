@@ -119,6 +119,7 @@ class LaastrasController < ApplicationController
     @open_graph_proto_description = I18n.t 'opg_site_meta_description'
     @open_graph_proto_title = I18n.t 'opg_site_meta_title'
     @kick_off = I18n.t 'kick_off'
+    @tap_click_image = I18n.t 'click_or_tap_image_text'
     @mission = I18n.t 'mission'
     @vision = I18n.t 'vision'
     @home_label = I18n.t 'home_label'
@@ -129,6 +130,10 @@ class LaastrasController < ApplicationController
     @work_in_progress_description = I18n.t 'work_in_progress_description'
     @site_title = 'Laastras | ' + @action_name
     @mission_kick_off_data = [
+      {
+        url: (I18n.t 'laastras_kick_off_with_yoola_url'),
+        description: (I18n.t 'laastras_kick_off_with_yoola_description').paragraphize
+      },
       {
         url: (I18n.t 'homefinances_dfd_url'),
         description: (I18n.t 'homefinances_dfd_description').paragraphize

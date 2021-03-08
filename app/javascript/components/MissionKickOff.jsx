@@ -26,6 +26,11 @@ class MissionKickOff extends React.Component
         let title_section_div_style = {
             backgroundColor: '#0971b8' //'#0c60f3'
         };
+        let kick_off_click_or_tap_section_style = {
+            margin: '5px',
+            padding: '4px',
+            color: '#11b624'
+        };
         let kick_off_arrow_section_style = {
             display: 'flex'
         };
@@ -75,6 +80,10 @@ class MissionKickOff extends React.Component
                         <span style={section_title_style}> 
                             {this.props.kick_off_section_title} 
                         </span>
+                    </div>
+                    <div id="kick-off-click-or-tap-section"
+                         style={kick_off_click_or_tap_section_style}>
+                        <span> {this.props.click_or_tap_image_text} </span>
                     </div>
                     <div id="kick-off-image-section"
                          className="text-center">
@@ -146,7 +155,8 @@ class MissionKickOff extends React.Component
         $('#kick-off-section').outerHeight(maxH);
         let imgH = $('#kick-off-section').innerHeight() - 
                    $('#kick-off-title-section').outerHeight() - 
-                   $('#kick-off-arrow-section').outerHeight() - 10;
+                   $('#kick-off-click-or-tap-section').outerHeight() -
+                   $('#kick-off-arrow-section').outerHeight() - 20;
         $('#kick-off-image').height(imgH);
         
         $('#kick-off-arrow-section').hcenter();
@@ -368,7 +378,8 @@ class MissionKickOff extends React.Component
 
 MissionKickOff.propTypes = {
     mission_kick_off_data: PropTypes.array, // array of {url: '', description: ''} hashes
-    kick_off_section_title: PropTypes.string
+    kick_off_section_title: PropTypes.string,
+    click_or_tap_image_text: PropTypes.string
 };
 
 export default MissionKickOff;
