@@ -135,6 +135,10 @@ class LaastrasController < ApplicationController
         description: (I18n.t 'laastras_kick_off_with_yoola_description').paragraphize
       },
       {
+        url: (I18n.t 'laastras_kick_off_with_aori_url'),
+        description: (I18n.t 'laastras_kick_off_with_aori_description').paragraphize
+      },
+      {
         url: (I18n.t 'homefinances_dfd_url'),
         description: (I18n.t 'homefinances_dfd_description').paragraphize
       },
