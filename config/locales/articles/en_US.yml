@@ -137,6 +137,7 @@ en_US:
   opg_site_meta_description: "Business financial security, self-sufficiency,  and no bankruptcy"
 
   vision_terms: "
+      <p>
       We have done trade for ages. The trade model has failed to give us financial security
       coupled with self-sufficiency. Let alone conflicts that result from attempts to secure
       and retain control of our businesses. We went a step further&#58; philanthropy. We believed it
@@ -144,7 +145,8 @@ en_US:
       trade model is adopted we cannot surround ourselves with financial security, self-sufficiency,
       equal opportunities, satisfying employment for all, and conflict-free businesses. How so?
       Laastras reforms trade by way of two impacts:
-      <br><br>
+      </p>
+      <p>
       <ul>
       <li>
          Replace remuneration-based work with Services Exchange. One job related to 'management
@@ -160,13 +162,14 @@ en_US:
          Logistics, pillars of any trade.
       </li>
       </ul>
+      </p>
       
       <div>
-        <br><br>
+        <br>
         <div class=\u0022text-center\u0022>
             <p> LaasOS video teaser </p>
         </div>
-        <br><br>
+        <br>
         <div class=\u0022embed-responsive embed-responsive-21by9 text-center\u0022>
             <iframe class=\u0022embed-responsive-item\u0022
                     src=\u0022https://onedrive.live.com/embed?cid=2E6EAD2D38E36D5A&resid=2E6EAD2D38E36D5A%2134687&authkey=AFo4A5bQlhZfLi4\u0022 
@@ -177,9 +180,9 @@ en_US:
                     allowfullscreen>
             </iframe>
         </div> 
-        <br><br>
+        <br>
       </div>
-
+      <p>
       Laastras is built on the principle of 'Internet of <u> our </u> Things' (IooT) and delivers services 
       that will, in the long run, fulfil the Morshux vision. For details on the Morshux 
       philosophy, please, support the project by buying 
@@ -188,4 +191,5 @@ en_US:
       written by Laastras Founder and CEO, 
       <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
        Obed-Edom Nkezabahizi </a>.
+      </p>
   "

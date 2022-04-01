@@ -7,10 +7,10 @@
 Rails.application.config.content_security_policy do |policy|
    policy.default_src :self, :https
    policy.font_src    :self, :https, :data
-   policy.img_src     :self, :https, :data
+   policy.img_src     :self, :https, :http, :data, "*"
    policy.object_src  :self, :https, :data
    policy.script_src  :self, :https
-   policy.style_src   :self, :https, :data
+   policy.style_src   :self, :https, :data, "*"
    # If you are using webpack-dev-server then specify webpack-dev-server host
    policy.connect_src :self, :https, "http://localhost:3000", "ws://localhost:3000" if Rails.env.development?
 
