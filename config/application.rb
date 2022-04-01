@@ -32,7 +32,7 @@ module Laastras
     #=> end I18n configs
 
     #=> X-Frame-Options
-    config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+    config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'SAMEORIGIN'})
     #=> end X-Frame-Options
 
   end
