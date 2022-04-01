@@ -23,7 +23,8 @@ class LocaleSettings extends React.Component
                             </div>
                             <div className="modal-footer">
                                 <div className="text-center">
-                                    <button type="button" className="btn btn-primary" onClick={(se) => this.actionResponseButton(se)}>
+                                    <button type="button" id="action-response-ok-button" className="btn btn-primary"
+                                            onClick={se => this.actionResponseButton(se)}>
                                         OK
                                     </button>
                                 </div>
@@ -88,6 +89,7 @@ class LocaleSettings extends React.Component
 
     actionResponseButton(e)
     {
+        console.log('Reloading for locale settings to take effect ... ');
         $('#action-response-message').empty();
         $('#action-response-section').modal('hide');
     }
@@ -233,8 +235,12 @@ class LocaleSettings extends React.Component
                                     let code = parseInt(data.code);
                                     let message = data.message;
                                     let html = "";
+                                    console.log("Locale settings response code: " + data.code);
                                     if(code === 1) // successfully set
                                     {
+                                        window.location.assign(window.location.href);
+                                        window.location.reload(true);
+                                        /*
                                         html = `
                                             <div class="text-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -244,6 +250,12 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
+
+                                        $('#action-response-message').append(html);
+                                        */
+                                        $('#set-locale-spinner-section').modal('hide');
+                                        //$('#action-response-section').modal('show');
+                                        
                                     }
                                     else if(code === 0) // failed to set
                                     {
@@ -256,6 +268,12 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
+
+                                        $('#action-response-message').append(html);
+
+                                        $('#set-locale-spinner-section').modal('hide');
+                                        $('#action-response-section').modal('show');
+
                                     }
                                     else // unknown code
                                     {
@@ -268,12 +286,12 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
+
+                                        $('#action-response-message').append(html);
+
+                                        $('#set-locale-spinner-section').modal('hide');
+                                        $('#action-response-section').modal('show');
                                     }
-
-                                    $('#action-response-message').append(html);
-
-                                    $('#set-locale-spinner-section').modal('hide');
-                                    $('#action-response-section').modal('show');
                                 }
                                 catch(error)
                                 {

@@ -117,6 +117,7 @@ class MissionKickOff extends React.Component
 
     componentDidMount()
     {
+        console.log('Mission kick off component did mount.');
         this.manageArrowSection();
         let img = document.getElementById('kick-off-image');
         if(img)

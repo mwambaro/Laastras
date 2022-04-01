@@ -37,12 +37,12 @@ class WorkInProgress extends React.Component
                     </div>
                     <div className="text-center">
                         <div className="row">
-                            <div className="col-sm-6 text-sm-right">
+                            <div className="col-sm-6 text-sm-right p-5">
                                 <a href={this.props.founder_and_ceo_contact_url}>
                                     {this.props.founder_and_ceo_contact_inner_text}
                                 </a>
                             </div>
-                            <div className="col-sm-6 text-sm-left">
+                            <div className="col-sm-6 text-sm-left p-5">
                                 <a href={this.props.information_desk_url}> 
                                     {this.props.information_desk_inner_text} 
                                 </a>

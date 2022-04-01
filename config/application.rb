@@ -27,9 +27,13 @@ module Laastras
       Rails.root.join('config', 'locales', 'models', '*.{rb,yml}'),
       Rails.root.join('config', 'locales', 'views', '*.{rb,yml}')
     ]
-    config.i18n.available_locales = [:en_US] # add (:ru_BI, :lg_UG, :sw_TZ, :fr_FR) ASAP
+    config.i18n.available_locales = [:en_US, :fr_FR] # add (:ru_BI, :lg_UG, :sw_TZ, :fr_FR) ASAP
     config.i18n.default_locale = :en_US
     #=> end I18n configs
+
+    #=> X-Frame-Options
+    #config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+    #=> end X-Frame-Options
 
   end
 end
