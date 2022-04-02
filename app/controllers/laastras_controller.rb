@@ -57,11 +57,13 @@ class LaastrasController < ApplicationController
                    ": #{lchash['language']} (#{lchash['country']})")
           }
           # create Active language record
-          ActiveLanguage.create(
-            :session => cookies[:session_id],
-            :language => I18.locale.to_s,
-            :user_ip => cookies[:user_id]
-          )
+          if(!cookies.nil?)
+            ActiveLanguage.create(
+              :session => cookies[:session_id],
+              :language => I18.locale.to_s,
+              :user_ip => cookies[:user_id]
+            )
+          end
         else
           data = {
             code: '0',
