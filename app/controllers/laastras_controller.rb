@@ -56,6 +56,12 @@ class LaastrasController < ApplicationController
             message: ((I18n.t 'locale_set_success').paragraphize + 
                    ": #{lchash['language']} (#{lchash['country']})")
           }
+          # create Active language record
+          ActiveLanguage.create(
+            :session => cookies[:session_id],
+            :language => I18.locale.to_s,
+            :user_ip => cookies[:user_id]
+          )
         else
           data = {
             code: '0',
@@ -116,6 +122,10 @@ class LaastrasController < ApplicationController
 
   def init_parameters
     @action_name = params[:action].nil? ? '' : params[:action]
+    if(!cookies.nil?)
+      @active_language = ActiveLanguage.first(:session => cookies[:session_id])
+      I18n.locale = @active_language.nil? ? I18n.locale : @active_language[:language].to_sym
+    end
     @open_graph_proto_description = I18n.t 'opg_site_meta_description'
     @open_graph_proto_title = I18n.t 'opg_site_meta_title'
     @kick_off = I18n.t 'kick_off'
@@ -296,5 +306,9 @@ class LaastrasController < ApplicationController
     @site_background_image_url = ApplicationHelper.image_asset_url(
       request, '838457-default-background-image.jpg'
     )
+  end
+
+  def handle_cookies
+    # use cookies hash
   end
 end
