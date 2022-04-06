@@ -35,5 +35,9 @@ module Laastras
     config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'SAMEORIGIN'})
     #=> end X-Frame-Options
 
+    # cookies
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_namespace_key'
+
   end
 end

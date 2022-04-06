@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :site_languages
   get 'logistics/shipment_service'
   get 'logistics/bus_service'
   get 'logistics/cab_service'

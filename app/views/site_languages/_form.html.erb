@@ -1,0 +1,37 @@
+<%= form_with(model: site_language) do |form| %>
+  <% if site_language.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(site_language.errors.count, "error") %> prohibited this site_language from being saved:</h2>
+
+      <ul>
+        <% site_language.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :language %>
+    <%= form.text_field :language %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_session %>
+    <%= form.text_field :user_session %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_ip %>
+    <%= form.text_field :user_ip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_browser %>
+    <%= form.text_field :user_browser %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

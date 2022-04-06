@@ -92,6 +92,7 @@ class LocaleSettings extends React.Component
         console.log('Reloading for locale settings to take effect ... ');
         $('#action-response-message').empty();
         $('#action-response-section').modal('hide');
+        window.location.reload(true);
     }
 
     onClickLocaleSectionModalCloseBtn(e)
@@ -224,6 +225,7 @@ class LocaleSettings extends React.Component
 
                     try
                     {
+                        let refreshUrl = window.location.href;
                         $.post(
                             this.localeEndPoint,
                             {locale: localeJson, sender_id: this.localeInitSetElementId},
@@ -238,9 +240,8 @@ class LocaleSettings extends React.Component
                                     console.log("Locale settings response code: " + data.code);
                                     if(code === 1) // successfully set
                                     {
-                                        window.location.assign(window.location.href);
+                                        window.location.assign(refreshUrl);
                                         window.location.reload(true);
-                                        /*
                                         html = `
                                             <div class="text-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -250,11 +251,6 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
-
-                                        $('#action-response-message').append(html);
-                                        */
-                                        $('#set-locale-spinner-section').modal('hide');
-                                        //$('#action-response-section').modal('show');
                                         
                                     }
                                     else if(code === 0) // failed to set
@@ -269,11 +265,6 @@ class LocaleSettings extends React.Component
                                             <div><p> ${message} </p></div>
                                         `;
 
-                                        $('#action-response-message').append(html);
-
-                                        $('#set-locale-spinner-section').modal('hide');
-                                        $('#action-response-section').modal('show');
-
                                     }
                                     else // unknown code
                                     {
@@ -286,12 +277,12 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
-
-                                        $('#action-response-message').append(html);
-
-                                        $('#set-locale-spinner-section').modal('hide');
-                                        $('#action-response-section').modal('show');
                                     }
+
+                                    $('#action-response-message').append(html);
+
+                                    $('#set-locale-spinner-section').modal('hide');
+                                    $('#action-response-section').modal('show');
                                 }
                                 catch(error)
                                 {

@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= @site_title.nil? ? 'Laastras' : @site_title %></title>
+    <%= favicon_link_tag 'favicon.svg' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="<%= @site_description.nil?  ? 'A collection of IoT services that aim at fulfilling LaaS policy' : @site_description %>">
     

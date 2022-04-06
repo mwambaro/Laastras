@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @site_language.language %>
+</p>
+
+<p>
+  <strong>User session:</strong>
+  <%= @site_language.user_session %>
+</p>
+
+<p>
+  <strong>User ip:</strong>
+  <%= @site_language.user_ip %>
+</p>
+
+<p>
+  <strong>User browser:</strong>
+  <%= @site_language.user_browser %>
+</p>
+
+<%= link_to 'Edit', edit_site_language_path(@site_language) %> |
+<%= link_to 'Back', site_languages_path %>

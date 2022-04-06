@@ -1,0 +1,2 @@
+module SiteLanguagesHelper
+end
