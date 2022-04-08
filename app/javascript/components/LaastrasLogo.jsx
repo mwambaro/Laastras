@@ -16,10 +16,13 @@ class LaastrasLogo extends React.Component
         };
         
         return(
-            <div>
-                <div>
+            <div className="row">
+                <div className="col-sm-8"> 
+                    <img src="/assets/Logo-01.png" alt="Laas Logo"/>
+                </div>
+                <div className="col-sm-4">
                     <span id="logo-span" className="shadow-lg p-3 mb-5 bg-white rounded" style={logo_style}>
-                        Laastras
+                        tras
                     </span> 
                 </div>
             </div>

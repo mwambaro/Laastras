@@ -119,17 +119,18 @@ class LaastrasController < ApplicationController
     def init_parameters
         @cache_store = Laastras::Application.config.action_controller.cache_store
         @action_name = params[:action].nil? ? '' : params[:action]
-        data = nil
-        begin
-            if(!cookies.nil?)
-                @active_language = SiteLanguage.first(:user_session => cookies[:user_cookies])
-                I18n.locale = @active_language.nil? ? I18n.locale : @active_language[:language].to_sym
+        if(!session.nil?)
+            sql_query = "SELECT * FROM site_languages WHERE user_session = '#{session[:user_cookies]}'"
+            active_language = SiteLanguage.find_by_sql(sql_query)
+            if(!active_language.nil?)
+                lang = active_language[0]
+                if(!lang.nil?)
+                    language = lang[:language]
+                    if(!language.nil?)
+                        I18n.locale = language.to_sym
+                    end
+                end
             end
-        rescue Exception => e
-            data = {
-                code: 0,
-                message: e.message
-            }
         end
         @open_graph_proto_description = I18n.t 'opg_site_meta_description'
         @open_graph_proto_title = I18n.t 'opg_site_meta_title'
@@ -318,11 +319,8 @@ class LaastrasController < ApplicationController
         ip = request.remote_ip
         browser = request.user_agent
         cookies_value = "#{locale.to_s}##{ip}##{browser}"
-        #if(!cookies.nil?)
-            cookies[:user_cookies] = {
-                :value => cookies_value,
-                :expires => 24.hours.from_now
-            }
+        #if(!session.nil?)
+            session[:user_cookies] = cookies_value
         #end
 
         @active_language = SiteLanguage.new(

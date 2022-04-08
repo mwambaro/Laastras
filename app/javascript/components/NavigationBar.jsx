@@ -105,7 +105,7 @@ class NavigationBar extends React.Component
 
         return(
             <div>
-                <div id="navbar-dropdown-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                <div id="navbar-dropdown-modal" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -154,7 +154,7 @@ class NavigationBar extends React.Component
 
         return(
             <div>
-                <div id="navbar-dropdown-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                <div id="navbar-dropdown-modal" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -173,7 +173,7 @@ class NavigationBar extends React.Component
                         </div>
                     </div>
                 </div>
-                <div id="navbar-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                <div id="navbar-modal" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
