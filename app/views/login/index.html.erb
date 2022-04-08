@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<h2>Please login to continue</h2>
+<%= form_tag :action => 'check_credentials' do %>
+    <p><%= label :login, 'E-mail' %></p>
+    <p><%= text_field 'login', 'email' %></p>
+    <p><%= label :login, 'Password' %></p>
+    <p><%= password_field 'login', 'password' %></p>
+    <p><%= submit_tag "Submit" %></p>
+<% end %>

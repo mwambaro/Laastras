@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'login/index'
+  get 'login/logout'
+  post 'login/check_credentials'
   resources :users
   resources :site_languages
   get 'logistics/shipment_service'
