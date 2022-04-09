@@ -18,11 +18,11 @@ class LaastrasController < ApplicationController
     end
 
     def sign_in
-    
+        redirect_to :controller => 'login', :action => 'index'
     end
 
     def sign_up
-    
+        redirect_to :controller => 'users', :action => 'new'
     end
 
     # See https://gist.github.com/mlanett/a31c340b132ddefa9cca
