@@ -1,6 +1,6 @@
 class LoginController < ApplicationController
     before_action :init_parameters
-    
+
     def index
     end
 
@@ -13,10 +13,10 @@ class LoginController < ApplicationController
         @user = User.authenticate(email, password)
         respond_to do |format|
             if !@user.nil?
-                format.html { redirect_to @user, notice: "Logged in OK? True" }
+                format.html { redirect_to @user, notice: (I18n.t 'logged_in_true') }
                 format.json { render :show, status: :ok, location: @user }
             else
-                format.html { redirect_to :controller => 'users', :action => 'new', notice: "Logged in OK? False" }
+                format.html { redirect_to :controller => 'users', :action => 'new', notice: (I18n.t 'logged_in_false') }
             end
         end
     end

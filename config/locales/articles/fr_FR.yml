@@ -103,6 +103,7 @@ fr_FR:
   opg_site_meta_description: "Business financial security, self-sufficiency,  and no bankruptcy"
 
   vision_terms: "
+      <p style=\u0022font-size: 13px\u0022>
       <p>
       Nous avons pratiqué le commerce depuis si longtemps. Le modèle de commerce a failli à nous procurer
       sécurité financiere ainsi que de l'auto-suffisance. Sans parler des conflits qui résultent du fait
@@ -158,5 +159,6 @@ fr_FR:
       le livre </a> derrière le projet Laastras, dont l'auteur est
       <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
       Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
+      </p>
       </p>
   "

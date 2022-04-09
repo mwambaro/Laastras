@@ -2,7 +2,7 @@
     <%= form_with(model: user, options: {role: 'form'}) do |form| %>
         <% if user.errors.any? %>
             <div id="error_explanation">
-                <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <h2><%= pluralize(user.errors.count, "error") %> <%= I18n.t 'model_error_message' %></h2>
 
                 <ul>
                     <% user.errors.each do |error| %>
@@ -13,22 +13,22 @@
         <% end %>
 
         <div class="field form-group">
-            <%= form.label :email %>
+            <%= form.label (I18n.t 'email') %>
             <%= form.text_field :email, options: {class: 'form-control'} %>
         </div>
 
         <div class="field from-group">
-            <%= form.label :first_name %>
+            <%= form.label (I18n.t 'first_name') %>
             <%= form.text_field :first_name, options: {class: 'form-control'} %>
         </div>
 
         <div class="field form-group">
-            <%= form.label :last_name %>
+            <%= form.label (I18n.t 'last_name') %>
             <%= form.text_field :last_name, options: {class: 'form-control'} %>
         </div>
 
         <div class="field form-group">
-            <%= form.label :password %>
+            <%= form.label (I18n.t 'password') %>
             <%= form.password_field :password, options: {class: 'form-control'} %>
         </div>
 

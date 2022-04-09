@@ -3,22 +3,22 @@
     <div class="text-center" style="background-color: white">
         <p id="notice"><%= notice %></p>
         <p>
-            <strong>Email:</strong>
+            <strong><%= I18n.t 'email' %>:</strong>
             <%= @user.email %>
         </p>
 
         <p>
-            <strong>First name:</strong>
+            <strong><%= I18n.t 'first_name' %>:</strong>
             <%= @user.first_name %>
         </p>
 
         <p>
-            <strong>Last name:</strong>
+            <strong><%= I18n.t 'last_name' %>:</strong>
             <%= @user.last_name %>
         </p>
 
-        <%= link_to 'Edit', edit_user_path(@user) %> |
-        <%= link_to 'Back', users_path %> | 
-        <%= link_to 'Home', root_path %>
+        <%= link_to (I18n.t 'edit_label'), edit_user_path(@user) %> |
+        <%= link_to (I18n.t 'back_label'), users_path %> | 
+        <%= link_to (I18n.t 'home_label'), root_path %>
     </div>
 </div>
