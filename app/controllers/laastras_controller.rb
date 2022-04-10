@@ -119,19 +119,7 @@ class LaastrasController < ApplicationController
     def init_parameters
         @cache_store = Laastras::Application.config.action_controller.cache_store
         @action_name = params[:action].nil? ? '' : params[:action]
-        if(!session.nil?)
-            sql_query = "SELECT * FROM site_languages WHERE user_session = '#{session[:user_cookies]}'"
-            active_language = SiteLanguage.find_by_sql(sql_query)
-            if(!active_language.nil?)
-                lang = active_language[0]
-                if(!lang.nil?)
-                    language = lang[:language]
-                    if(!language.nil?)
-                        I18n.locale = language.to_sym
-                    end
-                end
-            end
-        end
+        ApplicationHelper.set_user_set_locale(session)
         @open_graph_proto_description = I18n.t 'opg_site_meta_description'
         @open_graph_proto_title = I18n.t 'opg_site_meta_title'
         @kick_off = I18n.t 'kick_off'
@@ -262,6 +250,15 @@ class LaastrasController < ApplicationController
                 data: ''
             }
         ]
+        unless ApplicationHelper.who_is_logged_in?(session).nil?
+            @laastras_actions << {
+                url: url_for(controller: 'login', action: 'logout'),
+                inner_text: (I18n.t 'logout_label'),
+                dropdown_boolean: 'false',
+                data: ''
+            }
+        end
+
         @footer_actions = [
             {
                 url: url_for(controller: 'laastras', action: 'about'),

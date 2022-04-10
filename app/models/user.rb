@@ -4,6 +4,7 @@ class User < ApplicationRecord
     validates_presence_of :email
     validates_uniqueness_of :email 
     validates_presence_of :password
+    validates_presence_of :role
 
     def password=(pwd)
         write_attribute('password', Digest::SHA1.hexdigest(pwd))

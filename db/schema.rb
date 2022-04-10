@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_080620) do
     t.string "last_name"
     t.string "password"
     t.string "role"
+    t.datetime "last_login"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
