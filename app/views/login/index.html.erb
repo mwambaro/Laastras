@@ -17,10 +17,12 @@
                     <%= password_field 'login', 'password', options: {class: 'form-control'} %>
                 </div>
                 <div class="actions">
-                    <%= submit_tag (I18n.t 'submit_label') %> | 
-                    <%= link_to (I18n.t 'home_label'), root_path %>
+                    <%= submit_tag (I18n.t 'submit_label') %>
                 </div>
             <% end %>
+        </div>
+        <div>
+            <%= link_to (I18n.t 'home_label'), root_path %>
         </div>
     </div>
 </div>

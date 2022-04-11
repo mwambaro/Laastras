@@ -220,7 +220,7 @@ class LaastrasController < ApplicationController
         ]
         @laastras_actions = [
             {
-                url: url_for(controller: 'laastras', action: 'hire_us'),
+                url: 'mailto:onkezabahizi@gmail.com',
                 inner_text: (I18n.t 'hire_us_label'),
                 dropdown_boolean: 'false',
                 data: ''

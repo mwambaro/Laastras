@@ -13,7 +13,7 @@ class LoginController < ApplicationController
 
     def logout
         ApplicationHelper.logout_user(session)
-        redirect_to :back
+        redirect_to controller: 'laastras', action: 'home'
     end
 
     def check_credentials

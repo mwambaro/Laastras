@@ -28,6 +28,10 @@ class LaastrasVision extends React.Component
             padding: '3px'
         };
 
+        let box_body_text_style = {
+            fontSize: '20px'
+        };
+
         return(
             <div className="shadow-sm p-1 mb-2 bg-white rounded" 
                  style={outer_box_style}>
@@ -38,7 +42,7 @@ class LaastrasVision extends React.Component
                     </span>
                 </div>
                 <div style={box_body_style_div}>
-                    <p id="box-body-text-p">          
+                    <p id="box-body-text-p" style={box_body_text_style}>          
                     </p>
                 </div>
             </div>
