@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'money_transfer/payment_method'
+  get 'money_transfer/payment_information'
+  get 'money_transfer/receive_payment_information'
+  get 'money_transfer/payment_review'
+  get 'money_transfer/payment_confirmation'
   get 'login/index'
   get 'login/logout'
   post 'login/check_credentials'

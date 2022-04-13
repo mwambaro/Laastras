@@ -133,6 +133,12 @@ class LaastrasController < ApplicationController
         @founder_and_ceo_contact_label = I18n.t 'founder_and_ceo_contact_label'
         @work_in_progress_description = I18n.t 'work_in_progress_description'
         @site_title = 'Laastras | ' + @action_name
+        @hire_us_software_solutions_architect = (I18n.t 'hire_us_software_solutions_architect')
+        @hire_us_cross_platform_software_engineer = (I18n.t 'hire_us_cross_platform_software_engineer')
+        @hire_us_software_project_manager = (I18n.t 'hire_us_software_project_manager')
+        @hire_us_laas_leader = (I18n.t 'hire_us_laas_leader')
+        @hire_us_contact_string = I18n.t 'contact_us'
+        @hire_us_email = 'onkezabahizi@gmail.com'
         @mission_kick_off_data = [
             {
                 url: (I18n.t 'laastras_kick_off_with_yoola_url'),
@@ -220,7 +226,7 @@ class LaastrasController < ApplicationController
         ]
         @laastras_actions = [
             {
-                url: 'mailto:onkezabahizi@gmail.com',
+                url: url_for(controller: 'laastras', action: 'hire_us'),
                 inner_text: (I18n.t 'hire_us_label'),
                 dropdown_boolean: 'false',
                 data: ''
