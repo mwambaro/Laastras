@@ -139,6 +139,10 @@ class LaastrasController < ApplicationController
         @hire_us_laas_leader = (I18n.t 'hire_us_laas_leader')
         @hire_us_contact_string = I18n.t 'contact_us'
         @hire_us_email = 'onkezabahizi@gmail.com'
+        @hire_us_solutions_architect_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
+        @hire_us_software_engineer_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
+        @hire_us_project_manager_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
+        @hire_us_laas_leader_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
         @mission_kick_off_data = [
             {
                 url: (I18n.t 'laastras_kick_off_with_yoola_url'),
