@@ -11,6 +11,7 @@ fr_FR:
   destroy_label: "Détruire"
   new_user: "Nouvel Utilisateur"
   users_label: "Utilisateurs"
+  phone_label: "Téléphone"
   logout_label: "Sortir"
   usa: "Etats-Unis d'Amérique"
   burundi: "Burundi"

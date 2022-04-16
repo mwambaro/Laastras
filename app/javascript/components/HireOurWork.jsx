@@ -33,6 +33,9 @@ class HireOurWork extends React.Component
                     </div>
                 </div>
                 <div style={p_style}>
+                    <p> <a href={`mailto:${this.props.hire_us_email}`}> {this.props.hire_us_contact_string} </a></p>
+                </div>
+                <div style={p_style}>
                     <div id="software_engineer_div"></div>
                     <div className="hire_us_image_section" id="software_engineer_img">
                         <img src={this.props.hire_us_software_engineer_img_url}
@@ -41,12 +44,18 @@ class HireOurWork extends React.Component
                     </div>
                 </div>
                 <div style={p_style}>
+                    <p> <a href={`mailto:${this.props.hire_us_email}`}> {this.props.hire_us_contact_string} </a></p>
+                </div>
+                <div style={p_style}>
                     <div id="project_manager_div"></div>
                     <div className="hire_us_image_section" id="project_manager_img">
                         <img src={this.props.hire_us_project_manager_img_url}
                              className="img-fluid"
                              id="hire-us-project-manager-image" />
                     </div>
+                </div>
+                <div style={p_style}>
+                    <p> <a href={`mailto:${this.props.hire_us_email}`}> {this.props.hire_us_contact_string} </a></p>
                 </div>
                 <div style={p_style}>
                     <div id="laas_leader_div"></div>

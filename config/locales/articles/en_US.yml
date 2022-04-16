@@ -68,15 +68,18 @@ en_US:
   "
   laastras_mission_terms_url: ""
   laastras_mission_terms_description: "
-      Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
-      Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),
-      Communication as a Service (CaaS), and Legal Protection as a Service (PraaS) can turn malls, shops, 
-      and market places into trans-shipment warehouses and divert manpower and resources therein to actual production. 
-      This IoT will then curb unemployment, poverty, and conflicts. Welcome to Laastras (LaaS trade system), 
-      a collection of IoT services that lead to a world of plenty for all. Our money is Services Exchange, 
-      on one side, and Virtual Currency, on the other. We agree to disagree on everything else but one unrefutable 
-      truth: We must equally share all resources that support our existence, present and future, discovered and 
-      yet to be found. Laastras collection of IoT services offer the best policy to achieve that truth.
+      <p><h3> Our Mission </h3></p>
+      <p>
+        Meet globalization challenges and constraints by leveraging the power of Internet of our Things (IoT).
+        Equality policy on global resources, Logistics, E-commerce, Leadership as a Service (LaaS),
+        Communication as a Service (CaaS), and Legal Protection as a Service (PraaS) can turn malls, shops, 
+        and market places into trans-shipment warehouses and divert manpower and resources therein to actual production. 
+        This IoT will then curb unemployment, poverty, and conflicts. Welcome to Laastras (LaaS trade system), 
+        a collection of IoT services that lead to a world of plenty for all. Our money is Services Exchange, 
+        on one side, and Virtual Currency, on the other. We agree to disagree on everything else but one unrefutable 
+        truth: We must equally share all resources that support our existence, present and future, discovered and 
+        yet to be found. Laastras collection of IoT services offer the best policy to achieve that truth.
+      </p>
  "
   homefinances_dfd_url: "https://am3pap006files.storage.live.com/y4mEb_w-eUT4VHKpBfGtuL_fkJaaJXK3IabRMUGuq9__nYRVBt606ORjnk_u9qplvxk4UpQh22qmoXWYOciUSZExaOpMmjpDbmPQtliRNkZ5mxkKAs-cw7G6HNOqoZyxh0YmXXC0kDJ5ijQr7XjR-JY3E01yeL3G-nda1zQyQ7zk8Op7b_51aizik_hZiK_li-T?width=2045&height=1457&cropmode=none"
   homefinances_dfd_description: "
@@ -166,9 +169,50 @@ en_US:
       Internet of Things (IoT)
       </p>
   "
+  cookies_policy_body_text: "
+      <p><h3> Cookies Policy </h3></p>
+      <p>
+        For good user experience, we use cookies all over our web site to store some user details that are important
+        for the smooth experience of the Web UI's. By clicking OK at the bottom, you agree to our Cookies Policy as
+        described here.
+      </p>
+  "
+  privacy_policy_body_text: "
+      <p><h3> Privacy Policy </h3></p>
+      <p>
+        We do not collect any private data except explicitly requested through our forms. Private data like money
+        transfer details are not disclosed to any third parties at all. In fact, they are handled using secure API's.
+        Our web site does not do any background data collection to be sent for site maintenance or any suchlike
+        usage.
+      </p>
+  "
+  terms_of_use_body_text: "
+      <p><h3> Terms of Use </h3></p>
+      <p>
+        When you use our Website you agree to the following terms of use:
+            <ul>
+                <li>
+                    We can collect data from you as we request that you fill in our forms such as sign-up forms,
+                    money tansfer forms, and any necessary forms needed to fullfil our site functionalities.
+                </li>
+                <li>
+                    Our site use cookies to improve user experience. You must have agreed to both our Cookies Policy
+                    and our Privacy Policy at the base of our home page.
+                </li>
+                <li>
+                    When you register to our site, the information given can be used for log in so that you can
+                    access more features of our Website.
+                </li>
+                <li>
+                    All the materials on the Website are private intellectual properties of the owner of the Website.
+                    You can share links to them as they appear on our Website and use them on social media sites.
+                    In no way are you allowed to download them and share them around offline.
+                </li>
+            </ul>
+      </p>"
 
   vision_terms: "
-      <p style=\u0022font-size: '14px'\u0022>
+      <p>
       <p>
       We have done trade for ages. The trade model has failed to give us financial security
       coupled with self-sufficiency. Let alone conflicts that result from attempts to secure
@@ -207,12 +251,12 @@ en_US:
         </div>
         <br>
         <div class=\u0022embed-responsive embed-responsive-21by9 text-center\u0022>
-            <iframe class=\u0022embed-responsive-item\u0022
-                    src=\u0022https://www.youtube.com/watch?v=kGewdXaC8L8\u0022 
-                    frameborder=\u00220\u0022
-                    scrolling=\u0022no\u0022
-                    allowfullscreen>
-            </iframe>
+            <video class=\u0022embed-responsive-item\u0022
+                   controls=\u0022controls\u0022>
+                <source src=\u0022https://onedrive.live.com/embed?cid=2E6EAD2D38E36D5A&resid=2E6EAD2D38E36D5A%2134687&authkey=AFo4A5bQlhZfLi4\u0022 type=\u0022video/mp4\u0022>
+                <source src=\u0022https://onedrive.live.com/embed?cid=2E6EAD2D38E36D5A&residey=APSwQ8YK6-ikFBA\u0022 type=\u0022video/ogg\u0022>
+                    LaasOS Video Teaser
+            </video>
         </div> 
         <br>
       </div>

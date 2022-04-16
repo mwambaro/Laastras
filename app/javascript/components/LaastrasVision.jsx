@@ -29,7 +29,8 @@ class LaastrasVision extends React.Component
         };
 
         let box_body_text_style = {
-            fontSize: '20px'
+            fontSize: '16px',
+            padding: '10px'
         };
 
         return(

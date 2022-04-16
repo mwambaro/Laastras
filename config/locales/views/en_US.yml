@@ -43,6 +43,7 @@ en_US:
   destroy_label: "Destroy"
   new_user: "New User"
   users_label: "Users"
+  phone_label: "Phone"
   logout_label: "Logout"
   usa: "United States of America"
   burundi: "Burundi"

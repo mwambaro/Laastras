@@ -2,7 +2,7 @@ require 'json'
 require 'core_ext/string'
 
 class LaastrasController < ApplicationController
-    before_action :init_parameters
+    before_action :init_parameters, :corb_disable
 
     def home
     
@@ -109,7 +109,6 @@ class LaastrasController < ApplicationController
     end
 
     def contact
-    
     end
 
     def web_stats 
@@ -127,8 +126,13 @@ class LaastrasController < ApplicationController
         @mission = I18n.t 'mission'
         @vision = I18n.t 'vision'
         @home_label = I18n.t 'home_label'
+        @cookies_policy_body_text = I18n.t 'cookies_policy_body_text'
+        @privacy_policy_body_text = I18n.t 'privacy_policy_body_text'
+        @about_our_mission_body_text = I18n.t 'laastras_mission_terms_description'
+        @terms_of_use_body_text = I18n.t 'terms_of_use_body_text'
         @site_description = I18n.t 'site_meta_description'
         @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'
+        @contact_us_email_link = 'mailto:onkezabahizi@gmail.com'
         @work_in_progress_label = I18n.t 'work_in_progress_label'
         @founder_and_ceo_contact_label = I18n.t 'founder_and_ceo_contact_label'
         @work_in_progress_description = I18n.t 'work_in_progress_description'
@@ -139,10 +143,10 @@ class LaastrasController < ApplicationController
         @hire_us_laas_leader = (I18n.t 'hire_us_laas_leader')
         @hire_us_contact_string = I18n.t 'contact_us'
         @hire_us_email = 'onkezabahizi@gmail.com'
-        @hire_us_solutions_architect_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
-        @hire_us_software_engineer_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
-        @hire_us_project_manager_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
-        @hire_us_laas_leader_img_url = 'file:///C:/Users/Obed-Edom/Pictures/Saved Pictures/hire_us_software_engineer.JPG'
+        @hire_us_solutions_architect_img_url = 'https://am3pap006files.storage.live.com/y4mwskT2q4ZgXD1irXGA_xPIVIZsb--D3xw49lo1x_5k2bKQ76xsdum-MdE5lFMlRSwXSCcaSh-80-hsLRlrXXhK3sJsYdRaBXwNRp_5-5N0UuEfpnTqVuwkcEZNu1HR2qqCIHHPZJ_MU-mxOx1nFdC7Tx0nsPsybeAB4LTAjYiU-zPBsmdw6A_lwKllhMAysts?width=2039&height=1493&cropmode=none'
+        @hire_us_software_engineer_img_url = 'https://am3pap006files.storage.live.com/y4mhHyrSJhoBQWPjClAp7I4E9fIE2cW0hKxyc0SxtcYir29h4jAqUHKV-q9_IuCXeFTVDjshOHYCpOp_tSAKwsgbADmucy_wu6_sKnNGQITarG0sx4U-YRiA900RfOQmOKBXh7fgxPQf3IAY8lWlRaTPieHaWEVcUNJKSTuZoI1BzgL9LMkWIY8A2vwYBcq5e2S?width=1345&height=633&cropmode=none'
+        @hire_us_project_manager_img_url = 'https://am3pap006files.storage.live.com/y4mVfrEMzWBkglexn__TISejwsZ1bkj3iEtLbcorFTCwpIXvaV5Y3jgplxX89u2ma5jk6ZKr6mdnTN8uh6Q92SVIsqikBxOUxWSGHb_-ZfT6jPxWH1Vl-PisYr5OqcVvl4GC-0jPQLX138gbSYauG6nQ1ERQ_RdR-U2GGyazgeJfhVjjojlU9OSuExGn4zRHfbp?width=2038&height=1558&cropmode=none'
+        @hire_us_laas_leader_img_url = 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none'
         @mission_kick_off_data = [
             {
                 url: (I18n.t 'laastras_kick_off_with_yoola_url'),
@@ -337,5 +341,21 @@ class LaastrasController < ApplicationController
             :user_browser => browser
         )
         @active_language.save
+    end
+
+    def corb_disable
+        response.headers.merge!(
+            'Access-Control-Allow-Origin' => request.headers['Origin'].presence || '',
+            'Access-Control-Allow-Credentials' => 'true',
+        )
+
+        if request.method_symbol == :options
+            response.headers.delete('X-Content-Type-Options') ## THIS IS THE IMPORTANT BIT
+            response.headers.merge!(
+                'Access-Control-Allow-Methods' => 'HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers' => request.headers['Access-Control-Request-Headers'].presence || 'Origin, X-Requested-With, Content-Type, Accept',
+                'Access-Control-Max-Age' => 14.days.to_s
+            )
+        end
     end
 end
