@@ -250,13 +250,16 @@ en_US:
             </p>
         </div>
         <br>
-        <div class=\u0022embed-responsive embed-responsive-21by9 text-center\u0022>
-            <video class=\u0022embed-responsive-item\u0022
-                   controls=\u0022controls\u0022>
-                <source src=\u0022https://onedrive.live.com/embed?cid=2E6EAD2D38E36D5A&resid=2E6EAD2D38E36D5A%2134687&authkey=AFo4A5bQlhZfLi4\u0022 type=\u0022video/mp4\u0022>
-                <source src=\u0022https://onedrive.live.com/embed?cid=2E6EAD2D38E36D5A&residey=APSwQ8YK6-ikFBA\u0022 type=\u0022video/ogg\u0022>
-                    LaasOS Video Teaser
-            </video>
+        <div class=\u0022container\u0022>
+            <div class=\u0022embed-responsive embed-responsive-25by13 text-center\u0022>
+                <iframe class=\u0022embed-responsive-item\u0022
+                        src=\u0022https://www.youtube.com/embed/kGewdXaC8L8\u0022
+                        title=\u0022YouTube video player\u0022 
+                        frameborder=\u00220\u0022
+                        allow=\u0022accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\u0022 
+                        allowfullscreen>
+                </iframe>
+            </div>
         </div> 
         <br>
       </div>
