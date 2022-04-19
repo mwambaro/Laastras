@@ -1,44 +1,12 @@
-<div class="text-center">
-    <%= form_with(model: user, options: {role: 'form'}) do |form| %>
-        <% if user.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(user.errors.count, "error") %> <%= I18n.t 'model_error_message' %></h2>
-
-                <ul>
-                    <% user.errors.each do |error| %>
-                        <li><%= error.full_message %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-
-        <div class="field form-group">
-            <%= form.label (I18n.t 'email') %>
-            <%= form.text_field :email, options: {class: 'form-control'} %>
-        </div>
-
-        <div class="field from-group">
-            <%= form.label (I18n.t 'first_name') %>
-            <%= form.text_field :first_name, options: {class: 'form-control'} %>
-        </div>
-
-        <div class="field form-group">
-            <%= form.label (I18n.t 'last_name') %>
-            <%= form.text_field :last_name, options: {class: 'form-control'} %>
-        </div>
-
-        <div class="field form-group">
-            <%= form.label (I18n.t 'password') %>
-            <%= form.password_field :password, options: {class: 'form-control'} %>
-        </div>
-
-        <div class="field form-group">
-            <%= form.label (I18n.t 'password_confirmation') %>
-            <%= form.password_field :password_confirmation, options: {class: 'form-control'} %>
-        </div>
-
-        <div class="actions">
-            <%= form.submit %>
-        </div>
-    <% end %>
+<br>
+<div class="container">
+    <div style="background-color: white">
+        <%= react_component('UserSignUp', {
+            email: (I18n.t 'email'),
+            first_name: (I18n.t 'first_name'),
+            last_name: (I18n.t 'last_name'),
+            password: (I18n.t 'password'),
+            password_confirmation: (I18n.t 'password_confirmation')
+        }) %>
+    </div>
 </div>

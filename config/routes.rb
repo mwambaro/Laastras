@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   get 'laastras/web_stats'
 
   post 'laastras/locale'
+  post 'users/sign_up'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

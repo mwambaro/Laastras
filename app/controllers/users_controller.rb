@@ -32,37 +32,72 @@ class UsersController < ApplicationController
     # GET /users/1/edit
     def edit
     end
+    
+    # POST /users/sign_up
+    def sign_up 
+        init_parameters
+        
+        dataToSend = nil
+
+        begin
+            if params[:password].match?(/\A#{params[:password_confirmation]}\Z/)
+                @user = User.new({
+                    password: params[:password],
+                    email: params[:email],
+                    first_name: params[:first_name],
+                    last_name: params[:last_name]
+                })
+                if(@user.email.match?(/\Aonkezabahizi@gmail.com\Z/i))
+                    @user.role = 'Admin'
+                else 
+                    @user.role = 'Client'
+                end
+
+                if @user.save # Success
+                    dataToSend = {
+                        code: 1,
+                        message: (I18n.t 'model_create_success')
+                    }
+                else # Failed
+                    msg = pluralize(@user.errors.count, "error") + " prohibited this site_language from being saved:"
+                    msg += "<ul>"
+                    @user.errors.each do |error|
+                        msg += "<li>" + error.full_message + "</li>"
+                    end
+                    msg += "</ul>"
+                    dataToSend = {
+                        code: 0,
+                        message: msg
+                    }
+                end
+            else
+                dataToSend = {
+                    code: 0,
+                    message: (I18n.t 'model_create_mismatch')
+                }
+            end
+        rescue Exception => e 
+            dataToSend = {
+                code: 0,
+                message: e.message
+            }
+        end 
+        
+        # send data to caller
+        render plain: JSON.generate(dataToSend) if(!dataToSend.nil?)
+    end
 
     # POST /users or /users.json
     def create
-        init_parameters
+        @user = User.new(site_language_params)
 
-        if user_params[:password].match?(/\A#{user_params[:password_confirmation]}\Z/)
-            params = {
-                password: user_params[:password],
-                email: user_params[:email],
-                first_name: user_params[:first_name],
-                last_name: user_params[:last_name]
-            }
-            @user = User.new(params)
-            if(@user.email.match?(/\Aonkezabahizi@gmail.com\Z/i))
-                @user.role = 'Admin'
-            else 
-                @user.role = 'Client'
-            end
-
-            respond_to do |format|
-                if @user.save
-                    format.html { redirect_to @user, notice: (I18n.t 'model_create_success') }
-                    format.json { render :show, status: :created, location: @user }
-                else
-                    format.html { render :new, status: :unprocessable_entity }
-                    format.json { render json: @user.errors, status: :unprocessable_entity }
-                end
-            end
-        else
-            respond_to do |format|
-                format.html { redirect_to controller: 'users', action: 'new', notice: (I18n.t 'model_create_mismatch') }
+        respond_to do |format|
+            if @user.save
+                format.html { redirect_to @site_language, notice: "User was successfully created." }
+                format.json { render :show, status: :created, location: @user }
+            else
+                format.html { render :new, status: :unprocessable_entity }
+                format.json { render json: @user.errors, status: :unprocessable_entity }
             end
         end
     end
