@@ -57,3 +57,16 @@ jQuery.fn.hvcenter = function()
 
     return this;
 }
+
+jQuery.fn.center = function(){
+    var $foo = jQuery(this);
+    $foo.css({
+        'position' : 'absolute',
+        'left' : '50%',
+        'top' : '50%',
+        'margin-left' : -$foo.width()/2,
+        'margin-top' : -$foo.height()/2
+    });
+
+    return $foo;
+}

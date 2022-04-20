@@ -54,12 +54,14 @@ class UsersController < ApplicationController
                 end
 
                 if @user.save # Success
+                    # Log them in? No.
+                    # Prepare data to send back
                     dataToSend = {
                         code: 1,
                         message: (I18n.t 'model_create_success')
                     }
                 else # Failed
-                    msg = pluralize(@user.errors.count, "error") + " prohibited this site_language from being saved:"
+                    msg = "#{@user.errors.count} error(s) prohibited this user from being saved:"
                     msg += "<ul>"
                     @user.errors.each do |error|
                         msg += "<li>" + error.full_message + "</li>"
@@ -82,7 +84,7 @@ class UsersController < ApplicationController
                 message: e.message
             }
         end 
-        
+
         # send data to caller
         render plain: JSON.generate(dataToSend) if(!dataToSend.nil?)
     end
@@ -135,8 +137,11 @@ class UsersController < ApplicationController
     private
         # Use callbacks to share common setup or constraints between actions.
         def set_user
-            @user = User.find(params[:id])
-            init_parameters
+            begin 
+                @user = User.find(params[:id])
+                init_parameters
+            rescue Exception => e 
+            end
         end
 
         # Only allow a list of trusted parameters through.

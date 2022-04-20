@@ -1,28 +1,14 @@
 
-<br>
-<div class="container">
-    <div class="text-center" style="background-color: white">
-        <p id="notice"><%= @notice %></p>
-        <div>
-            <h2><%= I18n.t 'login_capture' %></h2>
-        </div>
-        <div>
-            <%= form_tag :action => 'check_credentials', options: {role: 'form'} do %>
-                <div class="field form-group">
-                    <%= label :login, (I18n.t 'email') %>
-                    <%= text_field 'login', 'email', options: {class: 'form-control'} %>
-                </div>
-                <div class="field form-group">
-                    <%= label :login, (I18n.t 'password') %>
-                    <%= password_field 'login', 'password', options: {class: 'form-control'} %>
-                </div>
-                <div class="actions">
-                    <%= submit_tag (I18n.t 'submit_label') %>
-                </div>
-            <% end %>
-        </div>
-        <div>
-            <%= link_to (I18n.t 'home_label'), root_path %>
-        </div>
-    </div>
+<div class="container" id="user_sign_in_container_div" style="background-color: white">
+    <%= react_component('UserSignIn', {
+        email: (I18n.t 'email'),
+        password: (I18n.t 'password'),
+        submit_label: (I18n.t 'submit_label'),
+        login_capture: (I18n.t 'login_capture'),
+        home_label: (I18n.t 'home_label'),
+        home_url: (url_for(controller: 'laastras', action: 'home')),
+        sign_up_label: (I18n.t 'sign_up'),
+        sign_up_url: (url_for(controller: 'laastras', action: 'sign_up')),
+        sign_in_post_action_url: (url_for(controller: 'login', action: 'check_credentials'))
+    }) %>
 </div>

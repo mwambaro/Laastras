@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 require('./CenterElement.js')
 
-class UserSignUp extends React.Component
+class UserSignIn extends React.Component
 {
     constructor(props)
     {
@@ -20,71 +20,60 @@ class UserSignUp extends React.Component
         }
 
         return(
-            <div id="user_sign_up_main_div" style={form_div_style}>
-                <form role="form"
-                      name="user_sign_up_form"
-                      id="money-transfer-sender-wu-form"
-                      action="/users/sign_up">
+            <div id="user_sign_in_main_div" style={form_div_style}>
+                <div id="user_sign_in_form_div">
+                    <div><p><h3>{this.props.login_capture}</h3></p></div>
+                    <form role="form"
+                          name="user_sign_in_form"
+                          action={this.props.sign_in_post_action_url}>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="email"
-                               className="form-control" id="email_sign_up"
-                               placeholder={this.props.email}/>
-                    </div>
+                        <div className="form-group" style={form_elt_div_style}>
+                            <input type="text" name="email"
+                                   className="form-control" id="email_sign_in"
+                                   placeholder={this.props.email}/>
+                        </div>
+
+                        <div className="form-group" style={form_elt_div_style}>
+                            <input type="password" name="password"
+                                   className="form-control" id="password_sign_in"
+                                   placeholder={this.props.password}/>
+                        </div>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="first_name"
-                               className="form-control" id="first_name_sign_up"
-                               placeholder={this.props.first_name}/>
-                    </div>
-                    
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="last_name"
-                               className="form-control" id="last_name_sign_up"
-                               placeholder={this.props.last_name}/>
-                    </div>
-                    
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="password" name="password"
-                               className="form-control" id="password_sign_up"
-                               placeholder={this.props.password}/>
-                    </div>
-                    
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="password" name="password_confirmation" 
-                               className="form-control" id="password_confirmation_sign_up"
-                               placeholder={this.props.password_confirmation}/>
-                    </div>
-                    
-                    <div className="text-center" style={form_elt_div_style}>             
-                        <button type="submit" 
-                            className="btn btn-default">
+                        <div className="text-center" style={form_elt_div_style}>             
+                            <button type="submit" 
+                                    className="btn btn-default">
                                 {this.props.submit_label}
-                        </button>
-                    </div>
+                            </button>
+                        </div>
                     
-                </form>
+                    </form>
+                    <div style={form_elt_div_style}>
+                        <a href={this.props.home_url}>
+                            {this.props.home_label}
+                        </a>
+                    </div>
+                </div>
             </div>
         );
     }
 
     componentDidMount()
     {
-        this.fixUserSignUpBoxWidth();
-        $('#user_sign_up_container_div').center();
+        this.fixUserSignInBoxWidth();
+        $('#user_sign_in_container_div').center();
         
         window.addEventListener('resize', (event)=>{
-            this.fixUserSignUpBoxWidth();
+            this.fixUserSignInBoxWidth();
         });
 
         this.hijackFormSubmitEvent();
     }
 
-    fixUserSignUpBoxWidth()
+    fixUserSignInBoxWidth()
     {
         if(jQuery(window).width() > 400)
         {
-            $('#user_sign_up_container_div').width(400);
+            $('#user_sign_in_container_div').width(400);
         }
     }
 
@@ -104,13 +93,10 @@ class UserSignUp extends React.Component
                     // this tells the server-side process that Ajax was used
                     $('input[name="usingAJAX"]',$this).val('true');
                     var url = $this.attr('action');
-                    //console.log(`E-mail:${document.user_sign_up_form.email.value}`);
+                    //console.log(`E-mail:${document.user_sign_in_form.email.value}`);
                     var form_data = {
-                        email: document.user_sign_up_form.email.value,
-                        first_name: document.user_sign_up_form.first_name.value,
-                        last_name: document.user_sign_up_form.last_name.value,
-                        password: document.user_sign_up_form.password.value,
-                        password_confirmation: document.user_sign_up_form.password_confirmation.value
+                        email: document.user_sign_in_form.email.value,
+                        password: document.user_sign_in_form.password.value
                     };
                     var dataToSend = form_data;
                     var callback = (dataReceived, status, xq) => {
@@ -120,9 +106,10 @@ class UserSignUp extends React.Component
                         let html = '';
                         if(code === 1) // success
                         {
-                            $this.hide();
+                            $('#user_sign_in_form_div').hide();
                             html = `
-                                <div class="row" style="background-color: white; padding: 10px" id="verbose-message-div">
+                                <div style="background-color: white; padding: 10px" id="verbose-message-div">
+                                <div class="row">
                                     <div class="col-sm-1 text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -130,12 +117,15 @@ class UserSignUp extends React.Component
                                         </svg>
                                     </div>
                                     <div class="col-sm-11"> <p> ${message} </p> </div>
+                                </div>
+                                <div><a href="${this.props.home_url}">${this.props.home_label}</a></div>
                                 </div>`;
                         }
                         else // failure
                         {
                             html = `
-                                <div class="row" id="verbose-message-div">
+                                <div style="background-color: white; padding: 10px" id="verbose-message-div">
+                                <div class="row">
                                     <div class="col-sm-1 text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -143,12 +133,14 @@ class UserSignUp extends React.Component
                                         </svg>
                                     </div>
                                     <div class="col-sm-11"> <p> ${message} </p> </div>
+                                </div>
+                                <div><a href="${this.props.sign_up_url}">${this.props.sign_up_label}</a></div>
                                 </div>`;
                         }
 
                         $('#verbose-message-div').remove();
                         //console.log('Feedback message removed');
-                        $('#user_sign_up_main_div').prepend(html);
+                        $('#user_sign_in_main_div').prepend(html);
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -156,7 +148,7 @@ class UserSignUp extends React.Component
                     var typeOfDataToReceive = 'json';
                     $.post(url, dataToSend, callback, typeOfDataToReceive)
                     .fail((error) => {
-                        let message = `Failed to post sign up form: ${error}`;
+                        let message = `Failed to post sign in form: ${error}`;
                         let html = `
                             <div class="row" id="verbose-message-div">
                                 <div class="col-sm-1 text-center">
@@ -168,7 +160,7 @@ class UserSignUp extends React.Component
                                 <div class="col-sm-11"> <p> ${message} </p> </div>
                             </div>`;
                         $('#verbose-message-div').remove();
-                        $('#user_sign_up_main_div').prepend(html);
+                        $('#user_sign_in_main_div').prepend(html);
                     });
                 }
                 catch(error)
@@ -185,7 +177,7 @@ class UserSignUp extends React.Component
                             <div class="col-sm-11"> <p> ${message} </p> </div>
                         </div>`;
                     $('#verbose-message-div').remove();
-                    $('#user_sign_up_main_div').prepend(html);
+                    $('#user_sign_in_main_div').prepend(html);
                 }
             });
         }
@@ -196,13 +188,16 @@ class UserSignUp extends React.Component
     }
 }
 
-UserSignUp.propTypes = {
+UserSignIn.propTypes = {
     email: PropTypes.string,
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
     password: PropTypes.string,
     submit_label: PropTypes.string,
-    password_confirmation: PropTypes.string
+    home_label: PropTypes.string,
+    home_url: PropTypes.string,
+    sign_up_label: PropTypes.string,
+    sign_up_url: PropTypes.string,
+    login_capture: PropTypes.string,
+    sign_in_post_action_url: PropTypes.string
 };
 
-export default UserSignUp;
+export default UserSignIn;

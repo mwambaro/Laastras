@@ -5,7 +5,6 @@ class LaastrasController < ApplicationController
     before_action :init_parameters, :corb_disable
 
     def home
-    
     end
 
     def services

@@ -17,25 +17,36 @@ class LoginController < ApplicationController
     end
 
     def check_credentials
-        email = params[:login][:email]
-        password = params[:login][:password] 
+        email = params[:email]
+        password = params[:password] 
+        dataToSend = nil
         @user = User.authenticate(email, password)
         unless session.nil?
             session[:logged_in] = false
-            respond_to do |format|
-                unless @user.nil?
-                    @user.last_login = Time.now
-                    @user.save
-                    session[:logged_in] = true 
-                    session[:user_id] = @user.id
-                    format.html { redirect_to @user, notice: (I18n.t 'logged_in_true') }
-                    format.json { render :show, status: :ok, location: @user }
-                else
-                    @notice = (I18n.t 'logged_in_false')
-                    format.html { redirect_to action: 'index', notice: @notice }
-                end
+            unless @user.nil?
+                @user.last_login = Time.now
+                @user.save
+                session[:logged_in] = true 
+                session[:user_id] = @user.id
+                dataToSend = {
+                    code: 1,
+                    message: (I18n.t 'logged_in_true')
+                }
+            else
+                dataToSend = {
+                    code: 0,
+                    message: (I18n.t 'logged_in_false')
+                }
             end
+        else
+            dataToSend = {
+                code: 0,
+                message: (I18n.t 'logged_in_false')
+            }
         end
+
+        # send data to caller
+        render plain: JSON.generate(dataToSend) if(!dataToSend.nil?)
     end
 
     def init_parameters 

@@ -1,11 +1,12 @@
 <br>
-<div class="container">
+<div>
     <div style="background-color: white">
         <%= react_component('UserSignUp', {
             email: (I18n.t 'email'),
             first_name: (I18n.t 'first_name'),
             last_name: (I18n.t 'last_name'),
             password: (I18n.t 'password'),
+            submit_label: (I18n.t 'submit_label'),
             password_confirmation: (I18n.t 'password_confirmation')
         }) %>
     </div>
