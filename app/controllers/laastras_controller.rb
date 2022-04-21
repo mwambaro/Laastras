@@ -322,6 +322,9 @@ class LaastrasController < ApplicationController
         @site_background_image_url = ApplicationHelper.image_asset_url(
             request, '838457-default-background-image.jpg'
         )
+        @logo_image_url = ApplicationHelper.image_asset_url(
+            request, 'Logo-02.svg'
+        )
     end
 
     def handle_cookies(locale)

@@ -307,7 +307,9 @@ class NavigationBar extends React.Component
                     html += `
                         <tr>
                             <td>
-                                <a href="${action.url}" class="nav-link">
+                                <a href="${action.url}" 
+                                   class="nav-link action-inner-link"
+                                   id="action-inner-link-${i}">
                                     ${action.inner_text}
                                 </a>
                             </td>

@@ -163,7 +163,7 @@ class SocialMediaShare extends React.Component
 
         return(
             <div id="social-media-component">
-                <div id="social-media-share-modal" className="modal fade" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                <div id="social-media-share-modal" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
