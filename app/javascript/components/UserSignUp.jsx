@@ -23,7 +23,7 @@ class UserSignUp extends React.Component
             <div id="user_sign_up_main_div" style={form_div_style}>
                 <form role="form"
                       name="user_sign_up_form"
-                      id="money-transfer-sender-wu-form"
+                      id="user-sign-up-form"
                       action="/users/sign_up">
                     
                     <div className="form-group" style={form_elt_div_style}>
@@ -71,7 +71,7 @@ class UserSignUp extends React.Component
     componentDidMount()
     {
         this.fixUserSignUpBoxWidth();
-        $('#user_sign_up_container_div').center();
+        //$('#user_sign_up_container_div').hcenter();
         
         window.addEventListener('resize', (event)=>{
             this.fixUserSignUpBoxWidth();
@@ -93,7 +93,7 @@ class UserSignUp extends React.Component
         try 
         {
             //console.log("processing sign up form.");
-            var $form = $('form');
+            var $form = $('#user-sign-up-form');
             $form.submit((event) => {
                 try 
                 {

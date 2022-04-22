@@ -127,10 +127,29 @@ class UsersController < ApplicationController
     end
 
     def init_parameters 
+        @headerData = ApplicationHelper::SiteHeaderData.new(request)
+        @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
+        @laastras_actions = @headerData.laastras_actions
+        unless ApplicationHelper.who_is_logged_in?(session).nil?
+            @laastras_actions << {
+                url: url_for(controller: 'login', action: 'logout'),
+                inner_text: (I18n.t 'logout_label'),
+                dropdown_boolean: 'false',
+                data: ''
+            }
+        end
+
+        @footer_actions = @headerData.footer_actions
+        @social_media_data = @headerData.social_media_data
         ApplicationHelper.set_user_set_locale(session)
+        @supported_languages = @headerData.supported_languages
+
         #http://getwallpapers.com/wallpaper/full/f/9/0/838457-full-size-outdoors-wallpapers-1920x1200.jpg
         @site_background_image_url = ApplicationHelper.image_asset_url(
             request, '838457-default-background-image.jpg'
+        )
+        @logo_image_url = ApplicationHelper.image_asset_url(
+            request, 'Logo-03.svg'
         )
     end
 

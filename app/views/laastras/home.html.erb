@@ -1,16 +1,17 @@
-<div class="container">
+<div class="container-fluid">
     <header>
-        <%= react_component('SiteHeader', {
+        <%= react_component('ToggleNavigationBar', {
             laastras_actions: @laastras_actions,
+            logo_image_url: @logo_image_url,
+            supported_languages: @supported_languages, 
             locale_end_point: url_for(controller: 'laastras', action: 'locale'),
             social_media_data: @social_media_data,
-            supported_languages: @supported_languages
+            home_action_url: url_for(controller: 'laastras', action: 'home'),
+            active_language_locale: I18n.locale.to_s
         }) %>
     </header>
 
-    <hr>
-
-    <main role="main">
+    <main role="main" style="margin: 5px">
         <%= react_component('HomeMain', {
             laastras_sample_services: @laastras_sample_services,
             mission_kick_off_data: @mission_kick_off_data,
@@ -20,8 +21,6 @@
             vision_title_inner_text: @vision
         })%>
     </main>
-
-    <hr>
 
     <footer>
         <%= react_component('SiteFooter', {

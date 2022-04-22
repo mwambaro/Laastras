@@ -1,18 +1,35 @@
 
-<div  class="container">
+<div  class="container-fluid">
     
+    <header>
+        <%= react_component('ToggleNavigationBar', {
+            laastras_actions: @laastras_actions,
+            logo_image_url: @logo_image_url,
+            supported_languages: @supported_languages, 
+            locale_end_point: url_for(controller: 'laastras', action: 'locale'),
+            social_media_data: @social_media_data,
+            home_action_url: url_for(controller: 'laastras', action: 'home'),
+            active_language_locale: I18n.locale.to_s
+        }) %>
+    </header>
+
+    <br>
+
     <%= react_component('WorkInProgress', {
         work_in_progress_description: @work_in_progress_description,
         work_in_progress_section_title: @work_in_progress_label,
         founder_and_ceo_contact_url: @founder_and_ceo_contact_email,
         founder_and_ceo_contact_inner_text: @founder_and_ceo_contact_label,
         information_desk_url: url_for(controller: 'laastras', action: 'home'),
-        information_desk_inner_text: @home_label,
-        laastras_actions: @laastras_actions,
-        logo_image_url: @logo_image_url,
-        supported_languages: @supported_languages, 
-        locale_end_point: url_for(controller: 'laastras', action: 'locale'),
-        social_media_data: @social_media_data
+        information_desk_inner_text: @home_label
     }) %>
+
+    <footer>
+        <%= react_component('SiteFooter', {
+            footer_actions: @footer_actions,
+            social_media_data: @social_media_data,
+            copy_right_text: @copy_right
+        })%>
+    </footer>
 
 </div>

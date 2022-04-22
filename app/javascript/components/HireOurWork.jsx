@@ -75,7 +75,7 @@ class HireOurWork extends React.Component
     componentDidMount()
     {
         this.setImageSectionSize();
-        $('#solutions_architect_div').css('font-size', '24px');
+        //$('#solutions_architect_div').css('font-size', '14px');
         $('#solutions_architect_div').append(this.props.hire_us_software_solutions_architect);
         $('#software_engineer_div').append(this.props.hire_us_cross_platform_software_engineer);
         $('#project_manager_div').append(this.props.hire_us_software_project_manager);

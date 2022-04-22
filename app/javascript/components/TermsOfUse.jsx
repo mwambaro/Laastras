@@ -1,18 +1,22 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {Modal} from "bootstrap"
 
 class TermsOfUse extends React.Component
 {
     constructor(props)
     {
         super(props);
-    }
+        this.termsOfUseSectionModal = null;
+
+    } // constructor
 
     render()
     {
         return(
             <div>
-                <div id="terms-of-use-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
+                <div id="terms-of-use-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true"
+                     onBlur={(se) => this.onFocusOutHandler(se)}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header text-right">
@@ -37,20 +41,58 @@ class TermsOfUse extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // render
 
     componentDidMount()
     {
         $('#terms-of-use-body').append(this.props.terms_of_use_body_text);
-        $('#terms-of-use-section').modal('show');
-    }
+        this.termsOfUseSectionModal = new Modal(
+            document.getElementById('terms-of-use-section')
+        );
+        this.termsOfUseSectionModal.show();
+
+        window.addEventListener('click', (event) => {
+            let object = event.target;
+            let id = 'terms-of-use-section';
+            if(event)
+            {
+                if(object.id != id)
+                {
+                    let parent = object.parentElement;
+                    let isChild = false;
+                    while(parent)
+                    {
+                        if(parent.id === id)
+                        {
+                            isChild = true;
+                            break;
+                        }
+                        parent = parent.parentElement;
+                    }
+                    if(!isChild)
+                    { 
+                        this.onFocusOutHandler(event);
+                    }
+                }
+            }
+        });
+
+    } // componentDidMount
 
     leaveTermsOfUse(e)
     {
-        $('#terms-of-use-section').modal('hide');
+        this.termsOfUseSectionModal.hide();
         // go back
         window.location.assign('/laastras/home');
-    }
+
+    } // leaveTermsOfUse
+
+    onFocusOutHandler(e)
+    {
+        window.location.assign('/laastras/home');
+
+    } // onFocusOutHandler
 }
 
 TermsOfUse.propTypes = {

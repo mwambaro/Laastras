@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {Modal} from "bootstrap"
 
 class LocaleSettings extends React.Component
 {
@@ -7,8 +8,17 @@ class LocaleSettings extends React.Component
     {
         super(props);
         this.localeEndPoint = this.props.locale_end_point;
+        this.refreshUrl = null;
+        this.localeData = null;
+        this.state = {
+            active_language_locale: this.props.active_language_locale
+        };
         this.localeInitSetElementId = "";
-    }
+        this.actionResponseSectionModal = null;
+        this.localeSectionModal = null;
+        this.setLocaleSpinnerSection = null;
+
+    } // constructor
 
     render()
     {
@@ -85,20 +95,73 @@ class LocaleSettings extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // render
+
+    componentDidMount()
+    {
+        this.setLocaleButtonContents();
+        this.actionResponseSectionModal = new Modal(
+            document.getElementById('action-response-section')
+        );
+        this.localeSectionModal = new Modal(document.getElementById('locale-section'));
+        this.setLocaleSpinnerSection = new Modal(
+            document.getElementById('set-locale-spinner-section')
+        );
+
+    } // componentDidMount
+
+    setLocaleButtonContents()
+    {
+        let html = null;
+        if(this.state.active_language_locale === 'en_US')
+        {
+            html = `
+                <img src="https://flagcdn.com/us.svg" 
+                     width="50"
+                     alt="${this.state.active_language_locale}" />
+            `;
+        }
+        else if(this.state.active_language_locale === 'fr_FR')
+        {
+            html = `
+                <img src="https://flagcdn.com/fr.svg" 
+                     width="50"
+                     alt="${this.state.active_language_locale}" />
+            `;
+        }
+
+        if(html)
+        {
+            $('#set-locale-button').empty();
+            $('#set-locale-button').append(html);
+        }
+
+    } // setLocaleButtonContents
 
     actionResponseButton(e)
     {
-        console.log('Reloading for locale settings to take effect ... ');
+        //console.log('Reloading for locale settings to take effect ... ');
         $('#action-response-message').empty();
-        $('#action-response-section').modal('hide');
+        this.actionResponseSectionModal.hide();
+        if(this.refreshUrl)
+        {
+            window.location.assign(this.refreshUrl);
+        }
         window.location.reload(true);
-    }
+
+        // NOTE: This is where we should set state and leverage React.js responsiveness but
+        // we do not know which page is reloading, whether it has this component. Even
+        // if we knew, the reload will refresh locale with new data from server, so 
+        // no worries.
+
+    } // actionResponseButton
 
     onClickLocaleSectionModalCloseBtn(e)
     {
-        $('#locale-section').modal('hide');
-    }
+        this.localeSectionModal.hide();
+
+    } // onClickLocaleSectionModalCloseBtn
 
     onMouseOverLocaleSectionCell(e)
     {
@@ -116,7 +179,8 @@ class LocaleSettings extends React.Component
         }
 
         cell.style.cursor = "pointer";
-    }
+
+    } // onMouseOverLocaleSectionCell
 
     onClickLocaleSectionCell(e)
     {
@@ -139,7 +203,8 @@ class LocaleSettings extends React.Component
         }
 
         this.sendLocaleSettings(e);
-    }
+
+    } // onClickLocaleSectionCell
 
     setLocaleLanguage(e)
     {
@@ -164,8 +229,9 @@ class LocaleSettings extends React.Component
         }
         // display languages modal
 
-        $('#locale-section').modal('show');
-    }
+        this.localeSectionModal.show();
+
+    } // setLocaleLanguage
 
     sendLocaleSettings(e)
     {
@@ -196,21 +262,22 @@ class LocaleSettings extends React.Component
             }
             finally
             {
-                let localeData = {
+                this.localeData = {
                     locale: locale, 
                     language: language, 
                     country: country
                 };
-                let localeJson = JSON.stringify(localeData);
+                let localeJson = JSON.stringify(this.localeData);
                 //console.log('Language settings to send: ' + localeJson);
-                $('#locale-section').modal('hide');
+                this.localeSectionModal.hide();
                 if(this.localeEndPoint)
                 {
-                    $('#set-locale-spinner-section').modal('show');
+                    var modal = this.setLocaleSpinnerSection;
+                    modal.show();
                     this.timer = setTimeout(() => {
                         try
                         {
-                            $('#set-locale-spinner-section').modal('hide');
+                            modal.hide(); // spinner
                             if(this.timer)
                             {
                                 clearTimeout(this.timer);
@@ -225,14 +292,15 @@ class LocaleSettings extends React.Component
 
                     try
                     {
-                        let refreshUrl = window.location.href;
+                        this.refreshUrl = window.location.href;
+                        var actionResponseMdl = this.actionResponseSectionModal;
                         $.post(
                             this.localeEndPoint,
                             {locale: localeJson, sender_id: this.localeInitSetElementId},
                             (data, status, xq) => {
                                 try
                                 {
-                                    $('#set-locale-spinner-section').modal('hide');
+                                    modal.hide(); // spinner
                                     
                                     let code = parseInt(data.code);
                                     let message = data.message;
@@ -240,8 +308,6 @@ class LocaleSettings extends React.Component
                                     console.log("Locale settings response code: " + data.code);
                                     if(code === 1) // successfully set
                                     {
-                                        window.location.assign(refreshUrl);
-                                        window.location.reload(true);
                                         html = `
                                             <div class="text-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -281,29 +347,29 @@ class LocaleSettings extends React.Component
 
                                     $('#action-response-message').append(html);
 
-                                    $('#set-locale-spinner-section').modal('hide');
-                                    $('#action-response-section').modal('show');
+                                    modal.hide(); // spinner
+                                    actionResponseMdl.show();
                                 }
                                 catch(error)
                                 {
                                     console.log('sendLocaleSettings#post#success: ' + error);
                                 }
                                 
-                                $('#set-locale-spinner-section').modal('hide');
+                                modal.hide(); // spinner
                             },
                             "json"
                         )
                         .fail(() => {
-                            $('#set-locale-spinner-section').modal('hide');
+                            modal.hide(); // spinner
                             
                             let message = "An error occurred while attempting to set language settings."
                             let html = `<div><p> ${message} </p></div>`;
                             $('#action-response-message').append(html);
-                            $('#action-response-section').modal('show');
+                            actionResponseMdl.show();
                             
                             console.log(`Post request failed. Data: ${localeJson}; End point: ${this.localeEndPoint}`);
                         });
-                        $('#set-locale-spinner-section').modal('hide');
+                        modal.hide(); // spinner
                     }
                     catch(error)
                     {
@@ -311,18 +377,20 @@ class LocaleSettings extends React.Component
                     }
                     finally
                     {
-                        $('#set-locale-spinner-section').modal('hide');
+                        modal.hide(); // spinner
                     }
                 }
             }
 
         }
-    }
+
+    } // sendLocaleSettings
 }
 
 LocaleSettings.propTypes = {
     supported_languages: PropTypes.array, // array of {locale: '',  language: '', country: ''} hashes
-    locale_end_point: PropTypes.string
+    locale_end_point: PropTypes.string,
+    active_language_locale: PropTypes.string
 };
 
 export default LocaleSettings;

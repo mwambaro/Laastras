@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {Modal} from "bootstrap"
 import HSpace from "./HorizontalSpace"
 
 require("./CenterElement");
@@ -12,7 +13,8 @@ class SocialMediaShare extends React.Component
         this.state = {
             rerender: false
         };
-    }
+        this.socialMediaShareModal = null;
+    } // constructor
 
     render()
     {
@@ -70,7 +72,8 @@ class SocialMediaShare extends React.Component
         }
 
         return render_data;
-    }
+
+    } // render
 
     renderSocialMediaShareAsBlockList()
     {
@@ -79,7 +82,8 @@ class SocialMediaShare extends React.Component
         };
 
         return(this.renderSocialMediaShareAsList(ul_style));
-    }
+
+    } // renderSocialMediaShareAsBlockList
 
     renderSocialMediaShareAsFlexList()
     {
@@ -88,7 +92,8 @@ class SocialMediaShare extends React.Component
         };
 
         return(this.renderSocialMediaShareAsList(ul_style));
-    }
+
+    } // renderSocialMediaShareAsFlexList
 
     renderSocialMediaShareAsList(ul_style)
     {
@@ -152,7 +157,8 @@ class SocialMediaShare extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // renderSocialMediaShareAsList
 
     renderSocialMediaShareAsModal()
     {
@@ -259,23 +265,27 @@ class SocialMediaShare extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // renderSocialMediaShareAsModal
 
     componentDidMount()
     {
         this.setState({
             rerender: true
         });
-    }
+        this.socialMediaShareModal = new Modal(document.getElementById('social-media-share-modal'));
+
+    } // componentDidMount
 
     onClickSocialMediaShareModalCloseBtn(e)
     {
-        $('#social-media-share-modal').modal('hide');
-    }
+        this.socialMediaShareModal.hide();
+
+    } // onClickSocialMediaShareModalCloseBtn
 
     onClickSocialMediaIconCell(e)
     {
-        $('#social-media-share-modal').modal('hide');
+        this.socialMediaShareModal.hide();
 
         if(typeof(e) === 'undefined')
         {
@@ -355,7 +365,8 @@ class SocialMediaShare extends React.Component
         {
             console.log('Could not find social media platform according to: ' + soms_type);
         }
-    }
+
+    } // onClickSocialMediaIconCell
 
     onMouseOverSocialMediaIconCell(e)
     {
@@ -372,12 +383,14 @@ class SocialMediaShare extends React.Component
         }
 
         cell.style.cursor = "pointer";
-    }
+
+    } // onMouseOverSocialMediaIconCell
 
     onClickSocialMediaModalLaunch(e)
     {
-        $('#social-media-share-modal').modal('show');
-    }
+        this.socialMediaShareModal.show();
+
+    } // onClickSocialMediaModalLaunch
 
     onHoverSocialMediaModalLaunch(e)
     {
@@ -394,7 +407,8 @@ class SocialMediaShare extends React.Component
         }
 
         cell.style.cursor = "pointer";
-    }
+
+    } // onHoverSocialMediaModalLaunch
 }
 
 SocialMediaShare.propTypes = {

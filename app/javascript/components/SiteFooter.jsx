@@ -14,7 +14,8 @@ class SiteFooter extends React.Component
             rerender: 0
         };
         this.setParentMaxWidth();
-    }
+
+    } // constructor
 
     render()
     {
@@ -38,7 +39,8 @@ class SiteFooter extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // render
 
     componentDidMount()
     {
@@ -48,18 +50,20 @@ class SiteFooter extends React.Component
         this.setState({
             rerender: 2
         });
-    }
+
+    } // componentDidMount
 
     componentDidUpdate()
     {
         this.hCenterComponents();
-    }
+
+    } // componentDidUpdate
 
     hCenterComponents()
     {
         $('#site-footer-div-links').hcenter()
         $('#site-footer-div-social-media-share').hcenter();
-    }
+    } // hCenterComponents
 
     setParentMaxWidth()
     {
@@ -78,7 +82,8 @@ class SiteFooter extends React.Component
             this.site_footer_links_parent_max_width = window.innerWidth;
             this.site_footer_social_media_parent_max_width = window.innerWidth;
         }
-    }
+
+    } // setParentMaxWidth
 
     onResizeHandler(e)
     {
@@ -86,7 +91,8 @@ class SiteFooter extends React.Component
         this.setState({
             rerender: this.state.rerender+1
         });
-    }
+
+    } // onResizeHandler
 }
 
 SiteFooter.propTypes = {

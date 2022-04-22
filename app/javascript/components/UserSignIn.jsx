@@ -7,7 +7,8 @@ class UserSignIn extends React.Component
     constructor(props)
     {
         super(props);
-    }
+
+    } // constructor
 
     render()
     {
@@ -25,6 +26,7 @@ class UserSignIn extends React.Component
                     <div><p><h3>{this.props.login_capture}</h3></p></div>
                     <form role="form"
                           name="user_sign_in_form"
+                          id="user_sign_in_form"
                           action={this.props.sign_in_post_action_url}>
                     
                         <div className="form-group" style={form_elt_div_style}>
@@ -55,19 +57,21 @@ class UserSignIn extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // render
 
     componentDidMount()
     {
         this.fixUserSignInBoxWidth();
-        $('#user_sign_in_container_div').center();
+        //$('#user_sign_in_container_div').center();
         
         window.addEventListener('resize', (event)=>{
             this.fixUserSignInBoxWidth();
         });
 
         this.hijackFormSubmitEvent();
-    }
+
+    } // componentDidMount
 
     fixUserSignInBoxWidth()
     {
@@ -75,14 +79,15 @@ class UserSignIn extends React.Component
         {
             $('#user_sign_in_container_div').width(400);
         }
-    }
+
+    } // fixUserSignInBoxWidth
 
     hijackFormSubmitEvent()
     {
         try 
         {
             //console.log("processing sign up form.");
-            var $form = $('form');
+            var $form = $('#user_sign_in_form');
             $form.submit((event) => {
                 try 
                 {
@@ -185,7 +190,8 @@ class UserSignIn extends React.Component
         {
             console.log(`Exception: ${error}`);
         }
-    }
+
+    } // hijackFormSubmitEvent
 }
 
 UserSignIn.propTypes = {

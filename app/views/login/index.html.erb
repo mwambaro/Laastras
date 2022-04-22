@@ -1,14 +1,36 @@
 
-<div class="container" id="user_sign_in_container_div" style="background-color: white">
-    <%= react_component('UserSignIn', {
-        email: (I18n.t 'email'),
-        password: (I18n.t 'password'),
-        submit_label: (I18n.t 'submit_label'),
-        login_capture: (I18n.t 'login_capture'),
-        home_label: (I18n.t 'home_label'),
-        home_url: (url_for(controller: 'laastras', action: 'home')),
-        sign_up_label: (I18n.t 'sign_up'),
-        sign_up_url: (url_for(controller: 'laastras', action: 'sign_up')),
-        sign_in_post_action_url: (url_for(controller: 'login', action: 'check_credentials'))
-    }) %>
+<div class="container-fluid">
+    <header>
+        <%= react_component('ToggleNavigationBar', {
+            laastras_actions: @laastras_actions,
+            logo_image_url: @logo_image_url,
+            supported_languages: @supported_languages, 
+            locale_end_point: url_for(controller: 'laastras', action: 'locale'),
+            social_media_data: @social_media_data,
+            home_action_url: url_for(controller: 'laastras', action: 'home'),
+            active_language_locale: I18n.locale.to_s
+        }) %>
+    </header>
+
+    <div style="background-color: white; margin: 10px">
+        <%= react_component('UserSignIn', {
+            email: (I18n.t 'email'),
+            password: (I18n.t 'password'),
+            submit_label: (I18n.t 'submit_label'),
+            login_capture: (I18n.t 'login_capture'),
+            home_label: (I18n.t 'home_label'),
+            home_url: (url_for(controller: 'laastras', action: 'home')),
+            sign_up_label: (I18n.t 'sign_up'),
+            sign_up_url: (url_for(controller: 'laastras', action: 'sign_up')),
+            sign_in_post_action_url: (url_for(controller: 'login', action: 'check_credentials'))
+        }) %>
+    </div>
+
+    <footer>
+        <%= react_component('SiteFooter', {
+            footer_actions: @footer_actions,
+            social_media_data: @social_media_data,
+            copy_right_text: @copy_right
+        })%>
+    </footer>
 </div>

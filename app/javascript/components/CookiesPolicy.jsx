@@ -1,18 +1,22 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {Modal} from "bootstrap"
 
 class CookiesPolicy extends React.Component
 {
     constructor(props)
     {
         super(props);
-    }
+        this.cookiesPolicySectionModal = null;
+
+    } // constructor
 
     render()
     {
         return(
             <div>
-                <div id="cookies-policy-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
+                <div id="cookies-policy-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true"
+                     onBlur={(se) => this.onFocusOutHandler(se)}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header text-right">
@@ -37,20 +41,58 @@ class CookiesPolicy extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // render
 
     componentDidMount()
     {
         $('#cookies-policy-body').append(this.props.cookies_policy_body_text);
-        $('#cookies-policy-section').modal('show');
-    }
+        this.cookiesPolicySectionModal = new Modal(
+            document.getElementById('cookies-policy-section')
+        );
+        this.cookiesPolicySectionModal.show();
+
+        window.addEventListener('click', (event) => {
+            let object = event.target;
+            let id = 'cookies-policy-section';
+            if(event)
+            {
+                if(object.id != id)
+                {
+                    let parent = object.parentElement;
+                    let isChild = false;
+                    while(parent)
+                    {
+                        if(parent.id === id)
+                        {
+                            isChild = true;
+                            break;
+                        }
+                        parent = parent.parentElement;
+                    }
+                    if(!isChild)
+                    { 
+                        this.onFocusOutHandler(event);
+                    }
+                }
+            }
+        });
+
+    } // componentDidMount
 
     leaveCookiesPolicy(e)
     {
-        $('#cookies-policy-section').modal('hide');
+        this.cookiesPolicySectionModal.hide();
         // go back
         window.location.assign('/laastras/home');
-    }
+
+    } // leaveCookiesPolicy
+
+    onFocusOutHandler(e)
+    {
+        window.location.assign('/laastras/home');
+
+    } // onFocusOutHandler
 }
 
 CookiesPolicy.propTypes = {

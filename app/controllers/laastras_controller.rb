@@ -115,6 +115,7 @@ class LaastrasController < ApplicationController
     end
 
     def init_parameters
+        @headerData = ApplicationHelper::SiteHeaderData.new(request)
         @cache_store = Laastras::Application.config.action_controller.cache_store
         @action_name = params[:action].nil? ? '' : params[:action]
         ApplicationHelper.set_user_set_locale(session)
@@ -197,72 +198,8 @@ class LaastrasController < ApplicationController
             }
         ]
         @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
-        @laastras_services = [
-            {
-                url: url_for(controller: 'e_commerce', action: 'job_offer_posting'),
-                inner_text: (I18n.t 'job_offer_posting_label')
-            },
-            {
-                url: url_for(controller: 'e_commerce', action: 'real_estate_posting'),
-                inner_text: (I18n.t 'real_estate_posting_label')
-            },
-            {
-                url: url_for(controller: 'e_commerce', action: 'online_shopping_service'),
-                inner_text: (I18n.t 'online_shopping_label')
-            },
-            {
-                url: url_for(controller: 'e_commerce', action: 'sofware_solutions_service'),
-                inner_text: (I18n.t 'software_solutions_service_label')
-            },
-            {
-                url: url_for(controller: 'logistics', action: 'shipment_service'),
-                inner_text: (I18n.t 'shipment_service_label')
-            },
-            {
-                url: url_for(controller: 'logistics', action: 'bus_service'),
-                inner_text: (I18n.t 'bus_service_label')
-            },
-            {
-                url: url_for(controller: 'logistics', action: 'cab_service'),
-                inner_text: (I18n.t 'cab_service_label')
-            },
-            {
-                url: url_for(controller: 'logistics', action: 'bike_service'),
-                inner_text: (I18n.t 'bike_service_label')
-            }
-        ]
-        @laastras_actions = [
-            {
-                url: url_for(controller: 'laastras', action: 'hire_us'),
-                inner_text: (I18n.t 'hire_us_label'),
-                dropdown_boolean: 'false',
-                data: ''
-            },
-            {
-                url: '',
-                inner_text: (I18n.t 'services_label'),
-                dropdown_boolean: 'true',
-                data: @laastras_services
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'donate'),
-                inner_text: (I18n.t 'donate_label'),
-                dropdown_boolean: 'false',
-                data: ''
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'sign_in'),
-                inner_text: (I18n.t 'sign_in'),
-                dropdown_boolean: 'false',
-                data: ''
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'sign_up'),
-                inner_text: (I18n.t 'sign_up'),
-                dropdown_boolean: 'false',
-                data: ''
-            }
-        ]
+        @laastras_services = @headerData.laastras_services
+        @laastras_actions = @headerData.laastras_actions
         unless ApplicationHelper.who_is_logged_in?(session).nil?
             @laastras_actions << {
                 url: url_for(controller: 'login', action: 'logout'),
@@ -272,35 +209,8 @@ class LaastrasController < ApplicationController
             }
         end
 
-        @footer_actions = [
-            {
-                url: url_for(controller: 'laastras', action: 'about'),
-                inner_text: (I18n.t 'about')
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'terms_of_use'),
-                inner_text: (I18n.t 'terms_of_use')
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'privacy'),
-                inner_text: (I18n.t 'privacy')
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'cookies'),
-                inner_text: (I18n.t 'cookies')
-            },
-            {
-                url: url_for(controller: 'laastras', action: 'contact'),
-                inner_text: (I18n.t 'contact_us')
-            }
-        ]
-        @social_media_data = {
-            facebook: {
-                href: 'https://laastras.herokuapp.com',
-                hashtag: '#laas',
-                quote: (I18n.t 'site_meta_description')
-            }
-        }
+        @footer_actions = @headerData.footer_actions
+        @social_media_data = @headerData.social_media_data
         @laastras_sample_services = [
             (I18n.t 'iot'),
             (I18n.t 'means_of_exchange'),
@@ -310,20 +220,14 @@ class LaastrasController < ApplicationController
         ]
         @globalization_intro = (I18n.t 'mission_terms').paragraphize
         @laastras_vision = (I18n.t 'vision_terms')
-        @supported_languages = [
-            {locale: 'en_US', language: (I18n.t 'english'), country: (I18n.t 'usa')},
-            {locale: 'ru_BI', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
-            {locale: 'lg_UG', language: (I18n.t 'luganda'), country: (I18n.t 'uganda')},
-            {locale: 'fr_FR', language: (I18n.t 'french'), country: (I18n.t 'france')},
-            {locale: 'sw_TZ', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
-        ]
+        @supported_languages = @headerData.supported_languages
 
         #http://getwallpapers.com/wallpaper/full/f/9/0/838457-full-size-outdoors-wallpapers-1920x1200.jpg
         @site_background_image_url = ApplicationHelper.image_asset_url(
             request, '838457-default-background-image.jpg'
         )
         @logo_image_url = ApplicationHelper.image_asset_url(
-            request, 'Logo-02.svg'
+            request, 'Logo-03.svg'
         )
     end
 

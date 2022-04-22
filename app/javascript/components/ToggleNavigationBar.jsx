@@ -15,7 +15,8 @@ class ToggleNavigationBar extends React.Component
     render()
     {
         let text_style = {
-            whiteSpace: 'nowrap'
+            whiteSpace: 'nowrap',
+            fontWeight: 'bold'
         };
 
         let div_flex_style = {
@@ -47,7 +48,7 @@ class ToggleNavigationBar extends React.Component
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">
+                            <a className="navbar-brand" href={this.props.home_action_url}>
                                 <img src={this.props.logo_image_url} 
                                      alt="" 
                                      width="80" 
@@ -91,11 +92,12 @@ class ToggleNavigationBar extends React.Component
                                     </div>
                                     <div style={div_flex_style}>
                                         <LocaleSettings locale_end_point={this.props.locale_end_point}
-                                                        supported_languages={this.props.supported_languages}/>
+                                                        supported_languages={this.props.supported_languages}
+                                                        active_language_locale={this.props.active_language_locale}/>
                                     </div>
-                                    <div style={div_flex_style}>
+                                    <div id="toggle-navbar-social-media-share" style={div_flex_style}>
                                         <SocialMediaShare social_media_data={this.props.social_media_data}
-                                                          parent_selector={'#site-header-social-media-share'}
+                                                          parent_selector={'#toggle-navbar-social-media-share'}
                                                           display_type={'block-list'}/>
                                     </div>
                                 </div>
@@ -235,7 +237,9 @@ ToggleNavigationBar.propTypes = {
     logo_image_url: PropTypes.string,
     supported_languages: PropTypes.array, // array of {locale: '',  language: '', country: ''} hashes 
     locale_end_point: PropTypes.string,
-    social_media_data: PropTypes.object
+    social_media_data: PropTypes.object,
+    home_action_url: PropTypes.string,
+    active_language_locale: PropTypes.string
 };
 
 export default ToggleNavigationBar;
