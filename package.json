@@ -22,7 +22,10 @@
   "devDependencies": {
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.8.1"
+    "webpack-dev-server": "^4.8.1",
+    "babel": "^5.8.23",
+    "babel-core": "^5.0.0",
+    "babel-loader": "^5.3.2"
   },
   "scripts": {
     "postinstall": "npm rebuild node-sass",
