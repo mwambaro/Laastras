@@ -25,6 +25,19 @@ const customConfig = {
   environment.config.delete('node.child_process')
   
   environment.config.merge(customConfig);
-  /** END solution to bug */
+  /** END solution to  '[webpack-cli] ...' bug */
+  
+  /** 
+   * Solution to: JQuery is not defined and failing to load some react components
+   * See: https://www.codegrepper.com/code-examples/javascript/rails+6+jquery+%24+is+not+defined
+  */
+  const webpack = require('webpack')
+  environment.plugins.prepend('Provide',
+    new webpack.ProvidePlugin({
+        $: 'jquery/src/jquery',
+        jQuery: 'jquery/src/jquery'
+    })
+  )
+  /** END solution to 'jQuery is not defined ...' */
 
 module.exports = environment
