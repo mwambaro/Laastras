@@ -12,14 +12,24 @@
     </header>
 
     <main role="main" style="margin: 5px">
-        <%= react_component('HomeMain', {
-            laastras_sample_services: @laastras_sample_services,
-            mission_kick_off_data: @mission_kick_off_data,
-            kick_off_section_title: @kick_off,
-            click_or_tap_image_text: @tap_click_image,
-            laastras_vision_html: (sanitize @laastras_vision),
-            vision_title_inner_text: @vision
-        })%>
+        <div style="margin: 5px">
+            <%= react_component('LaastrasIntroCapture', {
+                laastras_sample_services: @laastras_sample_services
+            })%>
+        </div>
+        <div style="margin: 5px">
+            <%= react_component('MissionKickOff', {
+                mission_kick_off_data: @mission_kick_off_data,
+                kick_off_section_title: @kick_off,
+                click_or_tap_image_text: @tap_click_image
+            })%>
+        </div>
+        <div style="margin: 5px">
+            <%= react_component('LaastrasVision', {
+                laastras_vision_html: (sanitize @laastras_vision),
+                vision_title_inner_text: @vision
+            })%>
+        </div>
     </main>
 
     <footer>

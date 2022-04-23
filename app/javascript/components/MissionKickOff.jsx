@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { clearTimeout } from "timers";
+import { clearTimeout } from "timers"
+import {Modal} from "bootstrap"
 
 require("./CenterElement");
 
@@ -14,7 +15,10 @@ class MissionKickOff extends React.Component
         };
         this.timer = null;
         this.kick_off_button_clicked = false;
-    }
+        this.kickOffImageDetailsSectionModal = null;
+        this.kickOffImageOnprogressSpinnerModal = null;
+
+    } // constructor
 
     render()
     {
@@ -113,7 +117,8 @@ class MissionKickOff extends React.Component
                 </div>
             </div>
         );
-    }
+
+    } // render
 
     componentDidMount()
     {
@@ -139,12 +144,21 @@ class MissionKickOff extends React.Component
             }
             this.setKickOffImageHeight();
         });
-    }
+
+        this.kickOffImageDetailsSectionModal = new Modal(
+            document.getElementById('kick-off-image-details-section')
+        );
+        this.kickOffImageOnprogressSpinnerModal = new Modal(
+            document.getElementById('kick-off-image-onprogress-spinner')
+        );
+
+    } // componentDidMount
 
     componentDidUpdate()
     {
         this.onImgLoadedData(null, this);
-    }
+
+    } // componentDidUpdate
 
     setKickOffImageHeight(img=null)
     {
@@ -161,7 +175,8 @@ class MissionKickOff extends React.Component
         $('#kick-off-image').height(imgH);
         
         $('#kick-off-arrow-section').hcenter();
-    }
+
+    } // setKickOffImageHeight
 
     manageArrowSection()
     {
@@ -233,7 +248,8 @@ class MissionKickOff extends React.Component
                 this.kick_off_right_arrow_jquery = null;
             }
         }
-    }
+
+    } // manageArrowSection
 
     goToImageDetails(e)
     {
@@ -264,15 +280,17 @@ class MissionKickOff extends React.Component
                 <div class="text-center"> <img src="${url}" class="img-fluid" /> </div>
             `;
             $('#kick-off-image-details-body').append(html);
-            $('#kick-off-image-details-section').modal('show');
+            this.kickOffImageDetailsSectionModal.show();
         }
-    }
+
+    } // goToImageDetails
 
     leaveImageDetails(e)
     {
         $('#kick-off-image-details-body').empty();
-        $('#kick-off-image-details-section').modal('hide');
-    }
+        this.kickOffImageDetailsSectionModal.hide();
+
+    } // leaveImageDetails
 
     onNextPreviousClicked(e, btnType)
     {
@@ -334,12 +352,14 @@ class MissionKickOff extends React.Component
             this.setState({
                 current_index: index
             });
-            $('#kick-off-image-onprogress-spinner').modal('show');
+            var spinnerModal = this.kickOffImageOnprogressSpinnerModal;
+            spinnerModal.show();
             this.timer = setTimeout((e) => {
-                $('#kick-off-image-onprogress-spinner').modal('hide');
+                spinnerModal.hide();
             }, 1000);
         }
-    }
+
+    } // onNextPreviousClicked
 
     onImgLoadedData(e, dis)
     {
@@ -351,7 +371,7 @@ class MissionKickOff extends React.Component
 
         //console.log('Image data is loaded.');
         dis.manageArrowSection();
-        $('#kick-off-image-onprogress-spinner').modal('hide');
+        this.kickOffImageOnprogressSpinnerModal.hide();
         try
         {
             if(dis.timer)
@@ -374,7 +394,8 @@ class MissionKickOff extends React.Component
                 dis.kick_off_button_clicked = false;
             }
         }
-    }
+
+    } // onImgLoadedData
 }
 
 MissionKickOff.propTypes = {

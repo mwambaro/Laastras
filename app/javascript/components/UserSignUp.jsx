@@ -7,7 +7,8 @@ class UserSignUp extends React.Component
     constructor(props)
     {
         super(props);
-    }
+
+    } // constructor
 
     render()
     {
@@ -66,7 +67,8 @@ class UserSignUp extends React.Component
                 </form>
             </div>
         );
-    }
+
+    } // render
 
     componentDidMount()
     {
@@ -78,7 +80,8 @@ class UserSignUp extends React.Component
         });
 
         this.hijackFormSubmitEvent();
-    }
+
+    } // componentDidMount
 
     fixUserSignUpBoxWidth()
     {
@@ -86,7 +89,8 @@ class UserSignUp extends React.Component
         {
             $('#user_sign_up_container_div').width(400);
         }
-    }
+
+    } // fixUserSignUpBoxWidth
 
     hijackFormSubmitEvent()
     {
@@ -193,7 +197,8 @@ class UserSignUp extends React.Component
         {
             console.log(`Exception: ${error}`);
         }
-    }
+
+    } // hijackFormSubmitEvent
 }
 
 UserSignUp.propTypes = {
