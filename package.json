@@ -29,6 +29,6 @@
   },
   "scripts": {
     "postinstall": "npm rebuild node-sass",
-    "heroku-prebuild": "npm install --dev"
+    "heroku-prebuild": "npm install --save-dev webpack"
   }
 }
