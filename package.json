@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.8.1"
   },
   "scripts": {
-    "postinstall": "npm rebuild node-sass"
+    "postinstall": "npm rebuild node-sass",
+    "heroku-prebuild": "npm install --dev"
   }
 }
