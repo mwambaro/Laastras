@@ -70,7 +70,7 @@ class Milestones extends React.Component
                                 this.props.carousel_milestones_image_data.map((image_data, idx) =>
                                     <div key={`carousel-image-data-div-${idx}`} 
                                          className={idx === 0 ? 'carousel-item active' : 'carousel-item'}>
-                                        <p id={`carousel-milestones-image-description-${idx}`}
+                                        <p id={`carousel-milestone-image-description-${idx}`}
                                            style={carousel_milestone_image_description_style}>
                                         </p>
                                         <img src={image_data.url} 
@@ -100,6 +100,7 @@ class Milestones extends React.Component
                         </button>
                     </div>
                 </div>
+                
             </div>
         );
 
@@ -110,7 +111,7 @@ class Milestones extends React.Component
         var carouselComponentId = 'milestones-view-div';
         var actualCarouselComponentId = 'carouselExampleIndicators';
         this.appendCarouselMilestonesViewImageDescription();
-        this.verticallyRepositioningNextSiblings(carouselComponentId);
+        this.verticallyRepositioningNextSiblings(carouselComponentId, null);
         
         var $this = this;
         window.addEventListener('resize', () => {
@@ -121,8 +122,8 @@ class Milestones extends React.Component
         let carousel = document.getElementById(actualCarouselComponentId);
         if(carousel)
         {
-            carousel.addEventListener('slide.bs.carousel', () =>{
-                $this.verticallyRepositioningNextSiblings(carouselComponentId);
+            carousel.addEventListener('slide.bs.carousel', (event) =>{
+                $this.verticallyRepositioningNextSiblings(carouselComponentId, event);
                 //console.log('carousel container transitioned.');
             });
         }
@@ -132,11 +133,11 @@ class Milestones extends React.Component
     getCarouselMilestonesViewStyle()
     {
         let styles = null;
-        let height = ($(window).height()*1)/2;
+        let height = ($(window).height()*3)/4;
         let width = ($(window).width()*2)/3;
         if($(window).isMobile())
         {
-            width = ($(window).width()*4)/5;
+            width = ($(window).width()*5)/6;
         }
         let parent = $('body');
         if(parent)
@@ -147,7 +148,8 @@ class Milestones extends React.Component
             styles = {
                 position: 'absolute',
                 left: left,
-                width: width
+                width: width,
+                height: height
             }
         }
 
@@ -158,13 +160,13 @@ class Milestones extends React.Component
     appendCarouselMilestonesViewImageDescription()
     {
         this.props.carousel_milestones_image_data.map((data, idx) => {
-            let id = `carousel-milestones-image-description-${idx}`;
+            let id = `carousel-milestone-image-description-${idx}`;
             $(`#${id}`).append(data.description);
         });
 
     } // appendCarouselMilestonesViewImageDescription
 
-    verticallyRepositioningNextSiblings(carouselComponentId)
+    verticallyRepositioningNextSiblings(carouselComponentId, carouselEvent)
     {
         let selector = $(`#${carouselComponentId}`);
         if(!selector)
@@ -176,6 +178,11 @@ class Milestones extends React.Component
         {
             return;
         }
+        if(nextSiblings.length === 0)
+        {
+            return;
+        }
+
         let top = selector.position().top;
         let paddings = parseInt(selector.css('padding-left').replace("px", "")) + 
                        parseInt(selector.css('padding-right').replace("px", "")) + 
@@ -186,10 +193,31 @@ class Milestones extends React.Component
                       parseInt(selector.css("margin-left").replace("px", "")) +
                       parseInt(selector.css("margin-right").replace("px", ""));
         
+        // use carousel container
+        let carouselHeight = selector.height();
+        //console.log("selector: " + carouselHeight);
+        // use image and text
+        try 
+        {
+            let target = carouselEvent.relatedTarget;
+            if(target != 'undefined')
+            {
+                let h = $(target).height();
+                if(h != 'undefined')
+                {
+                    carouselHeight = h;
+                    //console.log("Image and text: " + h);
+                }
+            }
+        }
+        catch(error)
+        {}
+        
         $.each(nextSiblings, (idx, value) => {
+            // set sibling position
             $(value).css({
                 position: 'absolute',
-                top: (top + selector.height() + paddings + margins)
+                top: (top + carouselHeight + paddings + margins)
             });
             let paddingv = parseInt($(value).css('padding-left').replace("px", "")) + 
                           parseInt($(value).css('padding-right').replace("px", "")) + 
@@ -199,6 +227,7 @@ class Milestones extends React.Component
                           parseInt($(value).css("margin-bottom").replace("px", "")) +
                           parseInt($(value).css("margin-left").replace("px", "")) +
                           parseInt($(value).css("margin-right").replace("px", ""));
+            // increment sibling height for next sibling position set
             top += $(value).height() + paddingv + marginv;
         });
 
