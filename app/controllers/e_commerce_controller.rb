@@ -17,6 +17,7 @@ class ECommerceController < ApplicationController
     end
 
     def init_parameters
+        @action_name = params[:action].nil? ? '' : params[:action]
         @cache_store = Laastras::Application.config.action_controller.cache_store
         @home_label = I18n.t 'home_label'
         @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'

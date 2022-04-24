@@ -11,6 +11,25 @@ class LaastrasController < ApplicationController
     end
 
     def hire_us
+        @hire_us_carousel_milestones_image_data = [
+            {
+                url: @hire_us_solutions_architect_img_url,
+                description: (I18n.t 'hire_us_software_solutions_architect')
+            },
+            {
+                url: @hire_us_software_engineer_img_url,
+                description: (I18n.t 'hire_us_cross_platform_software_engineer')
+            },
+            {
+                url: @hire_us_project_manager_img_url,
+                description: (I18n.t 'hire_us_software_project_manager')
+            },
+            {
+                url: @hire_us_laas_leader_img_url,
+                description: (I18n.t 'hire_us_laas_leader')
+            }
+        ]
+        @hire_us_carousel_section_title = (I18n.t 'hire_us_label')
     end
 
     def donate
@@ -115,10 +134,10 @@ class LaastrasController < ApplicationController
     end
 
     def init_parameters
+        ApplicationHelper.set_user_set_locale(session)
         @headerData = ApplicationHelper::SiteHeaderData.new(request)
         @cache_store = Laastras::Application.config.action_controller.cache_store
         @action_name = params[:action].nil? ? '' : params[:action]
-        ApplicationHelper.set_user_set_locale(session)
         @open_graph_proto_description = I18n.t 'opg_site_meta_description'
         @open_graph_proto_title = I18n.t 'opg_site_meta_title'
         @kick_off = I18n.t 'kick_off'

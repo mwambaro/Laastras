@@ -127,6 +127,8 @@ class UsersController < ApplicationController
     end
 
     def init_parameters 
+        ApplicationHelper.set_user_set_locale(session)
+        @action_name = params[:action].nil? ? '' : params[:action]
         @headerData = ApplicationHelper::SiteHeaderData.new(request)
         @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
         @laastras_actions = @headerData.laastras_actions
@@ -141,7 +143,6 @@ class UsersController < ApplicationController
 
         @footer_actions = @headerData.footer_actions
         @social_media_data = @headerData.social_media_data
-        ApplicationHelper.set_user_set_locale(session)
         @supported_languages = @headerData.supported_languages
 
         #http://getwallpapers.com/wallpaper/full/f/9/0/838457-full-size-outdoors-wallpapers-1920x1200.jpg

@@ -17,6 +17,8 @@ class MoneyTransferController < ApplicationController
     end
 
     def init_parameters 
+        ApplicationHelper.set_user_set_locale(session)
+        @action_name = params[:action].nil? ? '' : params[:action]
         @money_transfer_options = [
             'Western Union',
             'PayPal',

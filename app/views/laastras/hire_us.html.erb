@@ -13,7 +13,14 @@
         }) %>
     </header>
 
-    <div style="margin: 10px">
+        <%= react_component('Milestones', {
+            carousel_milestones_image_data: @hire_us_carousel_milestones_image_data,
+            carousel_section_title: @hire_us_carousel_section_title,
+            click_or_tap_image_text: @tap_click_image
+        })%>
+
+    <% if false %>
+    <div style="margin: 5px">
         <%= react_component('HireOurWork', {
             hire_us_software_solutions_architect: (sanitize @hire_us_software_solutions_architect),
             hire_us_cross_platform_software_engineer: (sanitize @hire_us_cross_platform_software_engineer),
@@ -35,5 +42,6 @@
             copy_right_text: @copy_right
         })%>
     </footer>
+    <% end %>
 
 </div>

@@ -140,14 +140,20 @@ en_US:
   opg_site_meta_description: "Nutrition.Equality.Financial Security.Capitalism Order"
 
   hire_us_software_solutions_architect: "
-    <p> <strong>Software Solutions Architect </strong></p>
+    <p> 
+    <strong>Software Solutions Architect </strong> | 
+    <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> Contact us: onkezabahizi@gmail.com </a>
+    </p>
     <p>
     Our Software Solutions Architect studies and analyzes requirements from our clients, and writes software specifications.
     He then sits and builds software designs, sketches, and wireframes according to the problem and solution specifications.
     </p>
   "
   hire_us_cross_platform_software_engineer: "
-      <p> <strong> Software Engineer </strong></p>
+      <p> 
+        <strong> Software Engineer </strong> | 
+        <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> Contact us: onkezabahizi@gmail.com </a>
+      </p>
       <p>
       Applications for all platforms: Mobile and Desktop. Our engineer has got extensive experience using a diversity of
       technology stacks in software applications development. You can order android, iOS, and Windows applications. Linux
@@ -155,14 +161,20 @@ en_US:
       </p>
   "
   hire_us_software_project_manager: "
-      <p><strong> Project Manager </strong></p>
+      <p>
+        <strong> Project Manager </strong> | 
+        <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> Contact us: onkezabahizi@gmail.com </a>
+      </p>
       <p>
       Agile methodologies are used in software development projects. Our engineer leads a team of developers through the
       full life cycle of software development project.
       </p>
   "
   hire_us_laas_leader: "
-      <p><strong> Leadership as a Service </strong></p>
+      <p>
+        <strong> Leadership as a Service </strong> | 
+        <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> Contact us: onkezabahizi@gmail.com </a>
+      </p>
       <p>
       Democracy has got its flaws, like the fact that some minorities' interests are not fully represented. Our engineer
       has worked on a project called Leadership as a Service that fixes Democracy flaws using Software technologies and
