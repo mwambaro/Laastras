@@ -3,7 +3,20 @@ import PropTypes from "prop-types"
 import {Modal} from "bootstrap"
 
 require("./CenterElement");
+require("./MobileDevices")
 
+/// <summary>
+///     It sets in motion a carousel of images along with their description text. Since the text
+///     is put above the image. It should not be too long to push the image outside the viewport.
+/// </summary>
+/// <details>
+///     To avoid seeing subsequent elements' positions getting messed up, we assume that this component
+///     is a direct child of the outermost parent, which is 'body'. The positions of elements in the 
+///     document can then be guaranteed, at best. Otherwise, the behavior of elements gets unpredictable.
+///     If you have a lengthy description, put it in 'detailed_description' and keep a short description 
+///     in 'description' text to be put above its corresponding image. 'detailed_description' might be
+///     supported in the subsequent versions of this react component.
+/// </details>
 class Milestones extends React.Component
 {
     constructor(props)
@@ -26,6 +39,12 @@ class Milestones extends React.Component
             backgroundColor: 'white',
             fontWeight: 'bold',
             padding: '20px'
+        }
+        let dummy_div_style = {
+            backgroundColor: 'white',
+            fontWeight: 'bold',
+            padding: '10px',
+            margin: '5px'
         }
 
         return(
@@ -81,8 +100,6 @@ class Milestones extends React.Component
                         </button>
                     </div>
                 </div>
-                <div>
-                </div>
             </div>
         );
 
@@ -90,13 +107,25 @@ class Milestones extends React.Component
 
     componentDidMount()
     { 
+        var carouselComponentId = 'milestones-view-div';
+        var actualCarouselComponentId = 'carouselExampleIndicators';
         this.appendCarouselMilestonesViewImageDescription();
+        this.verticallyRepositioningNextSiblings(carouselComponentId);
         
         var $this = this;
         window.addEventListener('resize', () => {
             let styles = $this.getCarouselMilestonesViewStyle();
             $('#milestones-view-div').css(styles);
+            //console.log('window container resized.');
         })
+        let carousel = document.getElementById(actualCarouselComponentId);
+        if(carousel)
+        {
+            carousel.addEventListener('slide.bs.carousel', () =>{
+                $this.verticallyRepositioningNextSiblings(carouselComponentId);
+                //console.log('carousel container transitioned.');
+            });
+        }
 
     } // componentDidMount
 
@@ -105,6 +134,10 @@ class Milestones extends React.Component
         let styles = null;
         let height = ($(window).height()*1)/2;
         let width = ($(window).width()*2)/3;
+        if($(window).isMobile())
+        {
+            width = ($(window).width()*4)/5;
+        }
         let parent = $('body');
         if(parent)
         {
@@ -114,8 +147,7 @@ class Milestones extends React.Component
             styles = {
                 position: 'absolute',
                 left: left,
-                width: width,
-                height: height
+                width: width
             }
         }
 
@@ -131,6 +163,46 @@ class Milestones extends React.Component
         });
 
     } // appendCarouselMilestonesViewImageDescription
+
+    verticallyRepositioningNextSiblings(carouselComponentId)
+    {
+        let selector = $(`#${carouselComponentId}`);
+        if(!selector)
+        {
+            return;
+        }
+        let nextSiblings = selector.nextAll();
+        if(!nextSiblings)
+        {
+            return;
+        }
+        let top = selector.position().top;
+        let paddings = parseInt(selector.css('padding-left').replace("px", "")) + 
+                       parseInt(selector.css('padding-right').replace("px", "")) + 
+                       parseInt(selector.css('padding-top').replace("px", "")) +
+                       parseInt(selector.css('padding-bottom').replace("px", ""));
+        let margins = parseInt(selector.css("margin-top").replace("px", "")) + 
+                      parseInt(selector.css("margin-bottom").replace("px", "")) +
+                      parseInt(selector.css("margin-left").replace("px", "")) +
+                      parseInt(selector.css("margin-right").replace("px", ""));
+        
+        $.each(nextSiblings, (idx, value) => {
+            $(value).css({
+                position: 'absolute',
+                top: (top + selector.height() + paddings + margins)
+            });
+            let paddingv = parseInt($(value).css('padding-left').replace("px", "")) + 
+                          parseInt($(value).css('padding-right').replace("px", "")) + 
+                          parseInt($(value).css('padding-top').replace("px", "")) +
+                          parseInt($(value).css('padding-bottom').replace("px", ""));
+            let marginv = parseInt($(value).css("margin-top").replace("px", "")) + 
+                          parseInt($(value).css("margin-bottom").replace("px", "")) +
+                          parseInt($(value).css("margin-left").replace("px", "")) +
+                          parseInt($(value).css("margin-right").replace("px", ""));
+            top += $(value).height() + paddingv + marginv;
+        });
+
+    } // verticallyRepositioningNextSiblings
 
 }
 
