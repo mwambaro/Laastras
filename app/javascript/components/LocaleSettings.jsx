@@ -67,18 +67,8 @@ class LocaleSettings extends React.Component
                             <div className="modal-body">
                                 <div>
                                     <table className="table">
-                                        <tbody>
-                                            {
-                                                this.props.supported_languages.map((lc, idx) =>
-                                                    <tr key={`locale-section-tr-${idx}`}>
-                                                        <td id={lc.locale}
-                                                            onClick={se => this.onClickLocaleSectionCell(se)}
-                                                            onMouseOver={se => this.onMouseOverLocaleSectionCell(se)}>
-                                                            {lc.language} ({lc.country})
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            }
+                                        <tbody id="locale-settings-tbody">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -101,6 +91,7 @@ class LocaleSettings extends React.Component
     componentDidMount()
     {
         this.setLocaleButtonContents();
+        this.setLocaleSettingsLanguages();
         this.actionResponseSectionModal = new Modal(
             document.getElementById('action-response-section')
         );
@@ -111,25 +102,31 @@ class LocaleSettings extends React.Component
 
     } // componentDidMount
 
+    setLocaleSettingsLanguages()
+    {
+        let html = '';
+        let clss = 'locale-settings-language';
+        this.props.supported_languages.map((lc, idx) => {
+            html += `<tr>
+                        <td id="${lc.locale}"
+                            class="${clss}">
+                            <div>
+                                ${this.localeToEmbeddedHtmlForFlag(lc.locale)}
+                                <span> ${lc.language} (${lc.country}) </span>
+                            </div>
+                        </td>
+                    </tr>`
+        });
+
+        $('#locale-settings-tbody').append(html);
+        $(`.${clss}`)
+            .on('click', (e) => this.onClickLocaleSectionCell(e))
+            .on('mouseover', (e) => this.onMouseOverLocaleSectionCell(e));
+    }
+
     setLocaleButtonContents()
     {
-        let html = null;
-        if(this.state.active_language_locale === 'en_US')
-        {
-            html = `
-                <img src="https://flagcdn.com/us.svg" 
-                     width="50"
-                     alt="${this.state.active_language_locale}" />
-            `;
-        }
-        else if(this.state.active_language_locale === 'fr_FR')
-        {
-            html = `
-                <img src="https://flagcdn.com/fr.svg" 
-                     width="50"
-                     alt="${this.state.active_language_locale}" />
-            `;
-        }
+        let html = this.localeToEmbeddedHtmlForFlag(this.state.active_language_locale);
 
         if(html)
         {
@@ -138,6 +135,62 @@ class LocaleSettings extends React.Component
         }
 
     } // setLocaleButtonContents
+
+    localeToEmbeddedHtmlForFlag(locale, width=50)
+    {
+        let html = null;
+        if(locale === 'ru_BI')
+        {
+            html = `
+            <img src="https://flagcdn.com/bi.svg"
+                 width="${width}"
+                 alt="${locale}"> 
+            `;
+        }
+        else if(locale === 'en_US')
+        {
+            html = `
+                <img src="https://flagcdn.com/us.svg" 
+                     width="${width}"
+                     alt="${locale}" />
+            `;
+        }
+        else if(locale === 'fr_FR')
+        {
+            html = `
+                <img src="https://flagcdn.com/fr.svg" 
+                     width="${width}"
+                     alt="${locale}" />
+            `;
+        }
+        else if(locale === 'sw_TZ') 
+        {
+            html = `
+            <img src="https://flagcdn.com/tz.svg"
+                 width="${width}"
+                 alt="${locale}">
+            `;
+        }
+        else if(locale === 'lg_UG') 
+        {
+            html = `
+            <img src="https://flagcdn.com/ug.svg"
+                 width="${width}"
+                 alt="${locale}">
+            `;
+        }
+        else if(locale === 'rw_RW') 
+        {
+            html = `
+            <img src="https://flagcdn.com/rw.svg"
+                 width="${width}"
+                 alt="${locale}">
+            `;
+        }
+
+        return html;
+
+    } // localeToEmbeddedHtmlForFlag
 
     actionResponseButton(e)
     {
