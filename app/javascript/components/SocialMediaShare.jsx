@@ -329,8 +329,9 @@ class SocialMediaShare extends React.Component
 
         if(soms_type.match(/\Wfacebook\W*/i))
         {
-            console.log('We have facebook social media');
+            //console.log('We have facebook social media');
             let data = this.props.social_media_data.facebook;
+            let href = encodeURIComponent(window.location.href);
             if(data)
             {
                 /*
@@ -343,6 +344,8 @@ class SocialMediaShare extends React.Component
                     console.log('FB.ui: ' + response.error_message);
                 });
                 */
+               // https://stackoverflow.com/questions/5340109/sharing-articles-on-facebook-using-the-facebook-api
+               window.location = `http://www.facebook.com/sharer.php?u=${href}`;
             }
         }
         else if(soms_type.match(/\Wlinkedin\W*/i))

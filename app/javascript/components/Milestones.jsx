@@ -114,7 +114,7 @@ class Milestones extends React.Component
         this.verticallyRepositioningNextSiblings(carouselComponentId, null);
         
         var $this = this;
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', e => {
             let styles = $this.getCarouselMilestonesViewStyle();
             $('#milestones-view-div').css(styles);
             //console.log('window container resized.');
@@ -137,7 +137,7 @@ class Milestones extends React.Component
         let width = ($(window).width()*2)/3;
         if($(window).isMobile())
         {
-            width = ($(window).width()*5)/6;
+            width = ($(window).width()*11)/12;
         }
         let parent = $('body');
         if(parent)

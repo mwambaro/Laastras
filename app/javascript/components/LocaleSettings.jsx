@@ -200,8 +200,8 @@ class LocaleSettings extends React.Component
         if(this.refreshUrl)
         {
             window.location.assign(this.refreshUrl);
+            window.location.reload(true);
         }
-        window.location.reload(true);
 
         // NOTE: This is where we should set state and leverage React.js responsiveness but
         // we do not know which page is reloading, whether it has this component. Even
@@ -286,6 +286,70 @@ class LocaleSettings extends React.Component
 
     } // setLocaleLanguage
 
+    identifyLocaleObjectClicked(event)
+    {
+        if(!event)
+        {
+            return null;
+        }
+
+        let localeData = null;
+        let target = event.target;
+        let id = target.id; // td ?
+        let inner = target.innerText;
+        let src = target.src;
+        if(inner && inner != '' && inner != 'undefined') // span
+        {
+            id = target.parentElement.parentElement.id;
+        }
+        if(src && src != '' && src != 'undefined') // flag img
+        {
+            id = target.parentElement.parentElement.id;
+        }
+        if(!id || id === '' || id === 'undefined') // div ?
+        {
+            id = target.parentElement.id;
+        }
+        
+        if(id && id != '' && id != 'undefined')
+        {
+            let locale = id;
+
+            //console.log('Locale: ' + locale);
+
+            let language = $(`#${id} div span`)[0].innerHTML;
+            if(!language || language === '' || language === 'undefined')
+            {
+                console.log('identifyLocaleObjectClicked: failed to get language data; id: ' + id);
+                return localeData;
+            }
+            let lregex = new RegExp("\s*([^\\(]+)\\(([^\\)]+)\\)");
+            let match = language.match(lregex);
+            if(match)
+            {
+                language = match[1].trim();
+                let country = match[2].trim();
+                localeData = {
+                    locale: locale, 
+                    language: language, 
+                    country: country
+                };
+            }
+            else 
+            {
+                console.log('Language data: "' + language + '" does not match standard regex');
+                return localeData;
+            }
+        }
+        else 
+        {
+            console.log("identifyLocaleObjectClicked: failed to identify id of clicked locale object");
+        }
+
+        return localeData;
+
+    } // identifyLocaleObjectClicked
+
     sendLocaleSettings(e)
     {
         if(!e)
@@ -296,30 +360,17 @@ class LocaleSettings extends React.Component
         let langSetting = e.target;
         if(langSetting)
         {
-            let locale = langSetting.id;
-            let lregex = new RegExp("\s*([^\\(]+)\\(([^\\)]+)\\)");
-            let language = langSetting.innerText.trim();
-            let country = "";
             try
             {
-                let match = language.match(lregex);
-                if(match)
-                {
-                    language = match[1].trim();
-                    country = match[2].trim();
-                }
+                this.localeData = this.identifyLocaleObjectClicked(e);
             }
             catch(error)
             {
                 console.log("sendLocaleSettings: " + error);
             }
-            finally
+
+            if(this.localeData)
             {
-                this.localeData = {
-                    locale: locale, 
-                    language: language, 
-                    country: country
-                };
                 let localeJson = JSON.stringify(this.localeData);
                 //console.log('Language settings to send: ' + localeJson);
                 this.localeSectionModal.hide();
@@ -383,6 +434,7 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
+                                        this.refreshUrl = null;
 
                                     }
                                     else // unknown code
@@ -396,6 +448,7 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
+                                        this.refreshUrl = null;
                                     }
 
                                     $('#action-response-message').append(html);
@@ -419,7 +472,7 @@ class LocaleSettings extends React.Component
                             let html = `<div><p> ${message} </p></div>`;
                             $('#action-response-message').append(html);
                             actionResponseMdl.show();
-                            
+                            this.refreshUrl = null;
                             console.log(`Post request failed. Data: ${localeJson}; End point: ${this.localeEndPoint}`);
                         });
                         modal.hide(); // spinner
