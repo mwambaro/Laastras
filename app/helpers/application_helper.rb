@@ -227,6 +227,7 @@ module ApplicationHelper
             [
                 {locale: 'en_US', language: (I18n.t 'english'), country: (I18n.t 'usa')},
                 {locale: 'ru_BI', language: (I18n.t 'kirundi'), country: (I18n.t 'burundi')},
+                {locale: 'rw_RW', language: (I18n.t 'rwandan'), country: (I18n.t 'rwanda')},
                 {locale: 'lg_UG', language: (I18n.t 'luganda'), country: (I18n.t 'uganda')},
                 {locale: 'fr_FR', language: (I18n.t 'french'), country: (I18n.t 'france')},
                 {locale: 'sw_TZ', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}

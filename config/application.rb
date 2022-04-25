@@ -27,7 +27,7 @@ module Laastras
       Rails.root.join('config', 'locales', 'models', '*.{rb,yml}'),
       Rails.root.join('config', 'locales', 'views', '*.{rb,yml}')
     ]
-    config.i18n.available_locales = [:en_US, :fr_FR] # add (:ru_BI, :lg_UG, :sw_TZ, :fr_FR) ASAP
+    config.i18n.available_locales = [:en_US, :fr_FR] # add (:ru_BI, :lg_UG, :rw_RW, :sw_TZ, :fr_FR) ASAP
     config.i18n.default_locale = :en_US
     #=> end I18n configs
 
