@@ -5,6 +5,13 @@ import HSpace from "./HorizontalSpace"
 
 require("./CenterElement");
 
+// Due to ambiguities in modal id's more than one of these components
+// appear in the same document of the same page. So this global scope
+// variable help add singularity to the internal state of each class
+// by incrementing this variable before setting the state that
+// requires singularity.
+var gSocialMediaComponentCounter = 0;
+
 class SocialMediaShare extends React.Component
 {
     constructor(props)
@@ -14,6 +21,7 @@ class SocialMediaShare extends React.Component
             rerender: false
         };
         this.socialMediaShareModal = null;
+        this.socialMediaComponentCounter = 0;
     } // constructor
 
     render()
@@ -167,9 +175,12 @@ class SocialMediaShare extends React.Component
             justifyContent: 'center'
         };
 
+        gSocialMediaComponentCounter += 1;
+        this.socialMediaComponentCounter = gSocialMediaComponentCounter;
+
         return(
             <div id="social-media-component">
-                <div id="social-media-share-modal" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
+                <div id={`social-media-share-modal-${this.socialMediaComponentCounter}`} className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="servicesDropdownList" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -273,7 +284,11 @@ class SocialMediaShare extends React.Component
         this.setState({
             rerender: true
         });
-        this.socialMediaShareModal = new Modal(document.getElementById('social-media-share-modal'));
+        this.socialMediaShareModal = new Modal(
+            document.getElementById(
+                `social-media-share-modal-${this.socialMediaComponentCounter}`
+            )
+        );
 
     } // componentDidMount
 

@@ -34,7 +34,7 @@ class SiteFooter extends React.Component
                 <div id="site-footer-div-social-media-share" className="text-center">
                     <SocialMediaShare social_media_data={this.props.social_media_data}
                                       parent_selector={'#site-footer-div-social-media-share'}
-                                      display_type={null}
+                                      display_type={"block-list"}
                                       parent_max_width={this.site_footer_social_media_parent_max_width}/>
                 </div>
             </div>
