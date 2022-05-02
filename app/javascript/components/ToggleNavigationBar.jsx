@@ -46,7 +46,7 @@ class ToggleNavigationBar extends React.Component
                     </div>
                 </div>
                 <div>
-                    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <nav id="toggle-navigation-bar-nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
                         <div className="container-fluid">
                             <a className="navbar-brand" href={this.props.home_action_url}>
                                 <img src={this.props.logo_image_url} 
@@ -63,7 +63,7 @@ class ToggleNavigationBar extends React.Component
                                     {
                                         this.props.laastras_actions.map((action, idx) => 
                                             <li key={`toggle-navbar-nav-item-${idx}`}
-                                                className="nav-item">
+                                                className="nav-item toggle-navigation-nav-item">
                                             <a className="nav-link"
                                                id={`toggle-navbar-nav-item-list-a-${idx}-${action.dropdown_boolean}`}
                                                href={action.url}

@@ -366,6 +366,17 @@ class SocialMediaShare extends React.Component
         else if(soms_type.match(/\Wlinkedin\W*/i))
         {
             console.log('We have linkedin social media');
+            // 0. Create LinkedIn App at https://developer.linkedin.com/
+            // 1. Get Authorization Code
+            // See https://medium.com/@9cv9official/understanding-apis-and-using-linkedins-api-to-make-a-post-1563cb3b0064
+            // Scopes: https://stackoverflow.com/questions/62390915/cant-add-oauth-2-0-scopes-linkedin
+            let client_id = "78sdfr1etqdjwp";
+            let redirect_uri = encodeURIComponent("https://laastras.herokuapp.com/laastras/social_media_share");
+            let current_location = encodeURIComponent(window.location.href);
+            let state = `${client_id}${current_location}`;
+            let scopes = encodeURIComponent("r_emailaddress r_liteprofile w_member_social");
+            let response_type = 'code';
+            window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=${response_type}&client_id=${client_id}&redirect_uri=${redirect_uri}&state=${state}&scope=${scopes}`;
         }
         else if(soms_type.match(/\Winstagram\W*/i))
         {

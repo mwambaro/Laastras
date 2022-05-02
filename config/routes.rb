@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'laastras/contact'
   get 'laastras/about'
   get 'laastras/web_stats'
+  get 'laastras/social_media_share'
 
   post 'laastras/locale'
   post 'users/sign_up'

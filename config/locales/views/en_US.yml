@@ -67,6 +67,8 @@ en_US:
   kick_off: "Milestones"
   mission: "Mission"
   vision: "Vision"
+  post_to_linkedin_succeeded: "Your data was successfully posted to LinkedIn. Well done!"
+  post_to_linkedin_failed: "Yikes! Something went wrong. We failed to post your data to LinkedIn."
   login_capture: "Please login to continue"
   model_error_message: "prohibited this user from being saved:"
   model_confirm_capture: "Are you sure?"

@@ -35,6 +35,8 @@ fr_FR:
   kick_off: "Etapes"
   mission: "Mission"
   vision: "Vision"
+  post_to_linkedin_succeeded: "Vos données ont été postées sur LinkedIn avec succès. Bravo!"
+  post_to_linkedin_failed: "Désolé! Quelque chose de ça ne va pas. On n'a pas pu poster vos données sur LinkedIn!"
   login_capture: "Veuillez entrer pour continuer"
   model_error_message: ", cet utilisateur ne peut être sauvegardé:"
   model_confirm_capture: "Etes-vous sûre?"

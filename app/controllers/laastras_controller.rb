@@ -7,6 +7,18 @@ class LaastrasController < ApplicationController
     def home
     end
 
+    # Is redirected to after OAuth 2.0 authorization code
+    def social_media_share
+        log_message = "social_media_share parameters: #{params.inspect}"
+        logger.debug log_message
+        # LinkedIn
+        client_id = '78sdfr1etqdjwp' # Linkedin App id
+        if params[:state] =~ /\A#{client_id}/i
+            @back_url, @status, @log_message = LaastrasHelper.share_to_linkedin(params, logger)
+        end
+
+    end # social_media_share
+
     def services
     end
 
@@ -30,7 +42,8 @@ class LaastrasController < ApplicationController
             }
         ]
         @hire_us_carousel_section_title = (I18n.t 'hire_us_label')
-    end
+
+    end # hire_us
 
     def donate
     end

@@ -106,7 +106,7 @@ jQuery.fn.vcenter2 = function(height=0, relativeElement=null)
     {
         if(!parent)
         {
-            parent = jQuery('body');
+            parent = jQuery(window);
         }
         if(h === 0)
         {

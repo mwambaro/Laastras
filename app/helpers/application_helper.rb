@@ -1,7 +1,54 @@
 
 include ActionView::Helpers::AssetUrlHelper
+require 'net/http'
 
 module ApplicationHelper
+    def self.http_get(url_link, custom_headers=nil, logger=nil)
+        res = nil 
+        begin
+            url = URI.parse(url_link)
+            req = Net::HTTP::Get.new(url.to_s)
+            unless custom_headers.nil?
+                custom_headers.keys.each do |key|
+                    value = custom_headers[key]
+                    req[key.to_s] = value if !value.nil? && !value.blank?
+                end
+            end
+            res = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') do |http|
+                http.request(req)
+            end
+        rescue Exception => e 
+            unless logger.nil?
+                logger.debug "ApplicationHelper.http_get: #{e.message}"
+            end
+        end
+        res
+    end
+
+    def self.http_post(url_link, custom_headers=nil, body=nil, logger=nil)
+        res = nil
+        begin
+            uri = URI.parse(url_link)
+            req = Net::HTTP.new(uri.host, uri.port)
+            req.use_ssl = true
+            headers = {
+                "Content-Type" => "application/json", 
+                "Accept" => "application/json"
+            }
+            unless custom_headers.nil?
+                headers.merge!(custom_headers)
+            end
+            unless body.nil?
+                res = req.post(uri, body.to_json, headers)
+            end
+        rescue Exception => e 
+            unless logger.nil?
+                logger.debug "ApplicationHelper.http_get: #{e.message}"
+            end
+        end
+        res
+    end
+
     def self.web_stats_code
         code =<<-HERE
             <!-- Begin Web-Stat code v 7.0 -->
