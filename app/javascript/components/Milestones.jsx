@@ -100,7 +100,20 @@ class Milestones extends React.Component
                         </button>
                     </div>
                 </div>
-                
+                <div style={dummy_div_style}>
+                    <p> 
+                        Where does this one go since it is sibling to the carousel?
+                        Does it shift vertical position and penetrate the carousel area?
+                        We need to research on the reason why this happens.
+                    </p>
+                </div>
+                <div style={dummy_div_style}>
+                    <p> 
+                        Where does this one go since it is sibling to the carousel?
+                        Does it shift vertical position and penetrate the carousel area?
+                        We need to research on the reason why this happens.
+                    </p>
+                </div>
             </div>
         );
 

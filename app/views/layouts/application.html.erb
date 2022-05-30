@@ -30,6 +30,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body style="background-image: url('<%= @site_background_image_url %>');
@@ -37,6 +38,41 @@
                background-attachment: fixed;
                background-size: cover;
                background-color: #464c94">
+      <div class="container-fluid" style="background-color: white">
+          <div class="text-center">
+              <img src="<%= @laastras_banner_image %>" class="img-fluid banner-image" />
+          </div>
+          <hr style="color: red; margin: 3px; height: 5px"> 
+          <hr style="color: green; margin: 3px; height: 5px"> 
+      </div>
     <%= yield %>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        try 
+        {
+            if(AOS && AOS != 'undefined')
+            {
+                AOS.init();
+            }
+        }
+        catch(e)
+        {
+            console.log("AOS: " + e);
+        }
+        let banners = document.getElementsByClassName('banner-image');
+        let blength = banners.length;
+        if(blength > 0)
+        {
+            for(let i=0; i<blength; i++)
+            {
+                banners[i].onclick = function(){
+                    window.location = '/laastras/home';
+                }
+                banners[i].onmouseover = function(e){
+                    e.target.style.cursor = 'pointer';
+                }
+            }
+        }
+    </script>
   </body>
 </html>
