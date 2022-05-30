@@ -22,6 +22,7 @@ class Milestones extends React.Component
     constructor(props)
     {
         super(props);
+        this.show_trail = false;
 
     } // constructor
 
@@ -100,20 +101,30 @@ class Milestones extends React.Component
                         </button>
                     </div>
                 </div>
-                <div style={dummy_div_style}>
-                    <p> 
-                        Where does this one go since it is sibling to the carousel?
-                        Does it shift vertical position and penetrate the carousel area?
-                        We need to research on the reason why this happens.
-                    </p>
-                </div>
-                <div style={dummy_div_style}>
-                    <p> 
-                        Where does this one go since it is sibling to the carousel?
-                        Does it shift vertical position and penetrate the carousel area?
-                        We need to research on the reason why this happens.
-                    </p>
-                </div>
+                {
+                    this.show_trail === true ?
+                    (
+                        <div>
+                            <div style={dummy_div_style}>
+                                <p> 
+                                Where does this one go since it is sibling to the carousel?
+                                Does it shift vertical position and penetrate the carousel area?
+                                We need to research on the reason why this happens.
+                                </p>
+                            </div>
+                            <div style={dummy_div_style}>
+                                <p> 
+                                Where does this one go since it is sibling to the carousel?
+                                Does it shift vertical position and penetrate the carousel area?
+                                We need to research on the reason why this happens.
+                                </p>
+                            </div>
+                        </div>
+                    ):
+                    (
+                        <div></div>
+                    )
+                }
             </div>
         );
 

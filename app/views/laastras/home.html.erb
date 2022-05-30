@@ -12,19 +12,19 @@
     </header>
 
     <main role="main" style="margin-top: 5px">
-        <div style="margin-top: 5px; margin-bottom: 5px">
+        <div style="margin-top: 5px; margin-bottom: 5px" data-aos="fade-up">
             <%= react_component('LaastrasIntroCapture', {
                 laastras_sample_services: @laastras_sample_services
             })%>
         </div>
-        <div style="margin-top: 5px; margin-bottom: 5px">
+        <div style="margin-top: 5px; margin-bottom: 5px" data-aos="fade-up">
             <%= react_component('MissionKickOff', {
                 mission_kick_off_data: @mission_kick_off_data,
                 kick_off_section_title: @kick_off,
                 click_or_tap_image_text: @tap_click_image
             })%>
         </div>
-        <div style="margin-top: 5px; margin-bottom: 5px; background-color: white">
+        <div style="margin-top: 5px; margin-bottom: 5px; background-color: white" data-aos="fade-up">
             <%= react_component('LaastrasVision', {
                 laastras_vision_html: (sanitize @laastras_vision),
                 vision_title_inner_text: @vision
@@ -32,7 +32,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer data-aos="fade-up">
         <%= react_component('SiteFooter', {
             footer_actions: @footer_actions,
             social_media_data: @social_media_data,
