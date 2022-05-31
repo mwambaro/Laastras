@@ -1,6 +1,19 @@
-<h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= react_component('LaastrasUserSignUp', {
+    email: (I18n.t 'email_label'),
+    first_name: (I18n.t 'first_name_label'),
+    last_name: (I18n.t 'last_name_label'),
+    user_name: (I18n.t 'username_label'),
+    password: (I18n.t 'password_label'),
+    submit_label: (I18n.t 'submit_label'),
+    password_confirmation: (I18n.t 'password_confirmation_label'),
+    laastras_user_sign_up_form_label: (I18n.t 'laastras_user_sign_up_form_label'),
+    are_you_laastras_employee_label: (I18n.t 'are_you_laastras_employee_label'),
+    no_label: (I18n.t 'no_label'),
+    yes_label: (I18n.t 'yes_label'),
+    laastras_user_sign_up_action_url: url_for(controller: 'users', action: 'sign_up'),
+    laastras_user_update_action_url: url_for(controller: 'users', action: 'update', id: @laastras_user.id),
+    edit_mode: true.to_s,
+    laastras_user: @laastras_object
+}) %>

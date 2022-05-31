@@ -49,78 +49,19 @@ class LaastrasController < ApplicationController
     end
 
     def sign_in
-        redirect_to :controller => 'login', :action => 'index'
     end
 
     def sign_up
-        redirect_to :controller => 'users', :action => 'new'
     end
 
-    # See https://gist.github.com/mlanett/a31c340b132ddefa9cca
-    # for HTTP status codes and symbols.
-    def locale
-        lc = params[:locale]
-        lchash = nil
-        data = nil
-        options = {
-            type: :json,
-            disposition: 'inline',
-            status: (Rack::Utils::SYMBOL_TO_STATUS_CODE[:ok])
-        }
+    def sign_out 
+        ApplicationHelper.logout_user(session)
+        redirect_to controller: 'laastras', action: 'home'
+    end # sign_out
 
-        begin
-
-            if(lc.nil?)
-      
-            data = {
-                code: '0',
-                message: (I18n.t 'locale_set_no_locale_settings').paragraphize
-            }
-            #options[:status] = Rack::Utils::SYMBOL_TO_STATUS_CODE[:bad_request]
-
-            else
-                lchash = JSON.parse(lc)
-                if(!lchash['locale'].blank?)
-                    I18n.locale = lchash['locale'].to_sym
-                    data = {
-                        code: '1',
-                        message: ((I18n.t 'locale_set_success').paragraphize + 
-                                  ": #{lchash['language']} (#{lchash['country']})")
-                    }
-                    # fill cookies and create Active language record
-                    handle_cookies(I18n.locale)
-                else
-                    data = {
-                        code: '0',
-                        message: ((I18n.t 'locale_set_failure').paragraphize + 
-                                  ": #{lchash['language']} (#{lchash['country']})")
-                    }
-                    #options[:status] = Rack::Utils::SYMBOL_TO_STATUS_CODE[:not_acceptable]
-                end
-            end
-
-        rescue I18n::InvalidLocale
-
-            message = (I18n.t 'locale_set_failure').paragraphize
-            if(!lchash.nil?)
-                message += ": #{lchash['language']} (#{lchash['country']})"
-            end
-
-            data = {
-                code: 0,
-                message: message             
-            }
-
-        rescue Exception => e
-
-            data = {
-                code: 0,
-                message: e.message
-            }
-
-        end
-        # send data to caller
-        render plain: JSON.generate(data) if(!data.nil?)
+    def locale 
+        data = ApplicationHelper.set_locale(params, session)
+        render plain: JSON.generate(data) unless data.nil?
     end
 
     def terms_of_use
@@ -147,14 +88,44 @@ class LaastrasController < ApplicationController
     end
 
     def init_parameters
-        ApplicationHelper.set_user_set_locale(session)
+        I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+        ApplicationHelper.harvest_analytics(session, request)
+        @site_title = "Laastras | #{params[:action]}"
         @laastras_banner_image = ApplicationHelper.image_asset_url(
             request, 'Laastras-e-banner-lg.JPG'
         )
         @open_graph_proto_image_url = ApplicationHelper.image_asset_url(
             request, 'Laastras-e-banner-lg.JPG'
         )
+
         @headerData = ApplicationHelper::SiteHeaderData.new(request)
+        @laastras_actions = @headerData.laastras_actions
+
+        @laastras_user_is_logged_in = false.to_s 
+        @profile_photo_url = '#'
+        @show_profile_url = '#'
+        laastras_user = ApplicationHelper.who_is_logged_in?(session)
+        unless laastras_user.nil?
+            @laastras_user_is_logged_in = true.to_s
+            @profile_photo_url = url_for(controller: 'users', action: 'profile_image_show', id: laastras_user.id)
+            @show_profile_url = url_for(controller: 'users', action: 'show', id: laastras_user.id)
+        end
+
+        if ApplicationHelper.user_has_admin_role?(session)
+            @laastras_actions << {
+                url: url_for(controller: 'users', action: 'index'),
+                inner_text: (I18n.t 'laastras_users_label'),
+                dropdown_boolean: 'false',
+                data: ''
+            }
+            @laastras_actions << {
+                url: url_for(controller: 'laastras_page_views', action: 'analytics'),
+                inner_text: (I18n.t 'website_statistics'),
+                dropdown_boolean: 'false',
+                data: ''
+            }
+        end
+
         @cache_store = Laastras::Application.config.action_controller.cache_store
         @action_name = params[:action].nil? ? '' : params[:action]
         @open_graph_proto_description = I18n.t 'opg_site_meta_description'
@@ -237,15 +208,6 @@ class LaastrasController < ApplicationController
         ]
         @copy_right = "#{Time.now.year} #{I18n.t 'copy_right'}."
         @laastras_services = @headerData.laastras_services
-        @laastras_actions = @headerData.laastras_actions
-        unless ApplicationHelper.who_is_logged_in?(session).nil?
-            @laastras_actions << {
-                url: url_for(controller: 'login', action: 'logout'),
-                inner_text: (I18n.t 'logout_label'),
-                dropdown_boolean: 'false',
-                data: ''
-            }
-        end
 
         @footer_actions = @headerData.footer_actions
         @social_media_data = @headerData.social_media_data

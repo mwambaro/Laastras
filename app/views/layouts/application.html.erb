@@ -37,7 +37,7 @@
                background-repeat: no-repeat;
                background-attachment: fixed;
                background-size: cover;
-               background-color: #464c94">
+               background-color: white">
       <div class="container-fluid" style="background-color: white">
           <div class="text-center">
               <img src="<%= @laastras_banner_image %>" class="img-fluid banner-image" />
@@ -59,20 +59,25 @@
         {
             console.log("AOS: " + e);
         }
-        let banners = document.getElementsByClassName('banner-image');
-        let blength = banners.length;
-        if(blength > 0)
+        
+        function manageBanner()
         {
-            for(let i=0; i<blength; i++)
+            let banners = document.getElementsByClassName('banner-image');
+            let blength = banners.length;
+            if(blength > 0)
             {
-                banners[i].onclick = function(){
-                    window.location = '/laastras/home';
-                }
-                banners[i].onmouseover = function(e){
-                    e.target.style.cursor = 'pointer';
+                for(let i=0; i<blength; i++)
+                {
+                    banners[i].onclick = function(){
+                        window.location = '/laastras/home';
+                    }
+                    banners[i].onmouseover = function(e){
+                        e.target.style.cursor = 'pointer';
+                    }
                 }
             }
-        }
+        }  
+        manageBanner();
     </script>
   </body>
 </html>

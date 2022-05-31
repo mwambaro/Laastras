@@ -1,47 +1,6 @@
 
-<div  class="container-fluid">
-
-    <header>
-        <%= react_component('ToggleNavigationBar', {
-            laastras_actions: @laastras_actions,
-            logo_image_url: @logo_image_url,
-            supported_languages: @supported_languages, 
-            locale_end_point: url_for(controller: 'laastras', action: 'locale'),
-            social_media_data: @social_media_data,
-            home_action_url: url_for(controller: 'laastras', action: 'home'),
-            active_language_locale: I18n.locale.to_s
-        }) %>
-    </header>
-
-        <%= react_component('Milestones', {
-            carousel_milestones_image_data: @hire_us_carousel_milestones_image_data,
-            carousel_section_title: @hire_us_carousel_section_title,
-            click_or_tap_image_text: @tap_click_image
-        })%>
-
-    <% if false %>
-    <div style="margin: 5px">
-        <%= react_component('HireOurWork', {
-            hire_us_software_solutions_architect: (sanitize @hire_us_software_solutions_architect),
-            hire_us_cross_platform_software_engineer: (sanitize @hire_us_cross_platform_software_engineer),
-            hire_us_software_project_manager: (sanitize @hire_us_software_project_manager),
-            hire_us_laas_leader: (sanitize @hire_us_laas_leader),
-            hire_us_contact_string: @hire_us_contact_string,
-            hire_us_email: @hire_us_email,
-            hire_us_solutions_architect_img_url: @hire_us_solutions_architect_img_url,
-            hire_us_software_engineer_img_url: @hire_us_software_engineer_img_url,
-            hire_us_project_manager_img_url: @hire_us_project_manager_img_url,
-            hire_us_laas_leader_img_url: @hire_us_laas_leader_img_url
-        }) %>
-    </div>
-
-    <footer>
-        <%= react_component('SiteFooter', {
-            footer_actions: @footer_actions,
-            social_media_data: @social_media_data,
-            copy_right_text: @copy_right
-        })%>
-    </footer>
-    <% end %>
-
-</div>
+<%= react_component('Milestones', {
+    carousel_milestones_image_data: @hire_us_carousel_milestones_image_data,
+    carousel_section_title: @hire_us_carousel_section_title,
+    click_or_tap_image_text: @tap_click_image
+})%>

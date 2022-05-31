@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 require('./CenterElement.js')
 
-class UserSignUp extends React.Component
+class LaastrasUserSignIn extends React.Component
 {
     constructor(props)
     {
@@ -21,40 +21,24 @@ class UserSignUp extends React.Component
         }
 
         return(
-            <div id="user_sign_up_main_div" style={form_div_style}>
+            <div id="laastras_user_sign_in_main_div" className="container-fluid shadow p-3 mb-5 bg-body rounded" style={form_div_style}>
+                <h3 className="text-center"> {this.props.laastras_user_sign_in_form_label} </h3>
                 <form role="form"
-                      name="user_sign_up_form"
-                      id="user-sign-up-form"
-                      action="/users/sign_up">
+                      name="laastras_user_sign_in_form"
+                      id="laastras-user-sign-in-form"
+                      action={this.props.laastras_user_sign_in_action_url}
+                      style={{backgroundColor: '#944653'}}>
                     
                     <div className="form-group" style={form_elt_div_style}>
                         <input type="text" name="email"
-                               className="form-control" id="email_sign_up"
+                               className="form-control" id="email_sign_in"
                                placeholder={this.props.email}/>
                     </div>
                     
                     <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="first_name"
-                               className="form-control" id="first_name_sign_up"
-                               placeholder={this.props.first_name}/>
-                    </div>
-                    
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="last_name"
-                               className="form-control" id="last_name_sign_up"
-                               placeholder={this.props.last_name}/>
-                    </div>
-                    
-                    <div className="form-group" style={form_elt_div_style}>
                         <input type="password" name="password"
-                               className="form-control" id="password_sign_up"
+                               className="form-control" id="password_sign_in"
                                placeholder={this.props.password}/>
-                    </div>
-                    
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="password" name="password_confirmation" 
-                               className="form-control" id="password_confirmation_sign_up"
-                               placeholder={this.props.password_confirmation}/>
                     </div>
                     
                     <div className="text-center" style={form_elt_div_style}>             
@@ -72,32 +56,38 @@ class UserSignUp extends React.Component
 
     componentDidMount()
     {
-        this.fixUserSignUpBoxWidth();
-        //$('#user_sign_up_container_div').hcenter();
+        this.fixLaastrasUserSignInBoxWidth();
+        $('#laastras_user_sign_in_main_div').hvcenter();
         
         window.addEventListener('resize', (event)=>{
-            this.fixUserSignUpBoxWidth();
+            this.fixLaastrasUserSignInBoxWidth();
+            $('#laastras_user_sign_in_main_div').hvcenter();
         });
 
         this.hijackFormSubmitEvent();
 
     } // componentDidMount
 
-    fixUserSignUpBoxWidth()
+    fixLaastrasUserSignInBoxWidth()
     {
-        if(jQuery(window).width() > 400)
+        if(jQuery(window).width() > 800)
         {
-            $('#user_sign_up_container_div').width(400);
+            $('#laastras_user_sign_in_main_div').width(800);
+        }
+        else 
+        {
+            let width = jQuery(window).width() - 60;
+            $('#laastras_user_sign_in_main_div').width(width);
         }
 
-    } // fixUserSignUpBoxWidth
+    } // fixLaastrasUserSignInBoxWidth
 
     hijackFormSubmitEvent()
     {
         try 
         {
             //console.log("processing sign up form.");
-            var $form = $('#user-sign-up-form');
+            var $form = $('#laastras-user-sign-in-form');
             $form.submit((event) => {
                 try 
                 {
@@ -108,13 +98,10 @@ class UserSignUp extends React.Component
                     // this tells the server-side process that Ajax was used
                     $('input[name="usingAJAX"]',$this).val('true');
                     var url = $this.attr('action');
-                    //console.log(`E-mail:${document.user_sign_up_form.email.value}`);
+                    //console.log(`E-mail:${document.laastras_user_sign_in_form.email.value}`);
                     var form_data = {
-                        email: document.user_sign_up_form.email.value,
-                        first_name: document.user_sign_up_form.first_name.value,
-                        last_name: document.user_sign_up_form.last_name.value,
-                        password: document.user_sign_up_form.password.value,
-                        password_confirmation: document.user_sign_up_form.password_confirmation.value
+                        email: document.laastras_user_sign_in_form.email.value,
+                        password: document.laastras_user_sign_in_form.password.value
                     };
                     var dataToSend = form_data;
                     var callback = (dataReceived, status, xq) => {
@@ -152,7 +139,7 @@ class UserSignUp extends React.Component
 
                         $('#verbose-message-div').remove();
                         //console.log('Feedback message removed');
-                        $('#user_sign_up_main_div').prepend(html);
+                        $('#laastras_user_sign_in_main_div').prepend(html);
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -172,7 +159,7 @@ class UserSignUp extends React.Component
                                 <div class="col-sm-11"> <p> ${message} </p> </div>
                             </div>`;
                         $('#verbose-message-div').remove();
-                        $('#user_sign_up_main_div').prepend(html);
+                        $('#laastras_user_sign_in_main_div').prepend(html);
                     });
                 }
                 catch(error)
@@ -189,7 +176,7 @@ class UserSignUp extends React.Component
                             <div class="col-sm-11"> <p> ${message} </p> </div>
                         </div>`;
                     $('#verbose-message-div').remove();
-                    $('#user_sign_up_main_div').prepend(html);
+                    $('#laastras_user_sign_in_main_div').prepend(html);
                 }
             });
         }
@@ -201,13 +188,12 @@ class UserSignUp extends React.Component
     } // hijackFormSubmitEvent
 }
 
-UserSignUp.propTypes = {
+LaastrasUserSignIn.propTypes = {
     email: PropTypes.string,
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
     password: PropTypes.string,
     submit_label: PropTypes.string,
-    password_confirmation: PropTypes.string
+    laastras_user_sign_in_form_label: PropTypes.string,
+    laastras_user_sign_in_action_url: PropTypes.string
 };
 
-export default UserSignUp;
+export default LaastrasUserSignIn;

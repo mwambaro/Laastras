@@ -1,0 +1,40 @@
+
+<div style="margin: 10px">
+    <% if @require_confirmation %>
+        <div class="d-flex flex-row justify-content-center">
+            <div>
+                <p style="color: red"> <%= @message %> </p>
+                <div style="margin: 10px" class="d-flex flex-row justify-content-center">
+                    <button id="yes" class="btn btn-primary" type="button" style="background-color: black; color: white; font-weight: bold; margin: 10px">
+                        <%= I18n.t 'yes_label' %>
+                    </button>
+                    <button id="no" class="btn btn-primary" type="button" style="background-color: black; color: white; font-weight: bold; margin: 10px">
+                        <%= I18n.t 'no_label' %>
+                    </button>
+                </div>
+            </div>
+        </div>
+    <% else %>
+        <div style="margin: 10px" class="d-flex flex-row justify-content-center">
+            <div>
+                <p style="color: green; margin: 10px"> <%= @message %> </p>
+                <p> 
+                    <a href="<%= url_for(controller: 'laastras', action: 'home') %>"> <%= I18n.t 'home_label' %> </a>
+                </p>
+            </div>
+        </div>
+    <% end %>
+</div>
+<script>
+    var yesBtn = document.getElementById('yes');
+    var noBtn = document.getElementById('no');
+    if(yesBtn)
+    {
+        yesBtn.onclick = function(e){
+            window.location = "/users/destroy?id=<%= @laastras_user.id %>&confirm=yes"
+        }
+        noBtn.onclick = function(e){
+            window.location = "<%= url_for(controller: 'users', action: 'show', id: @laastras_user.id) %>"
+        }
+    }
+</script>

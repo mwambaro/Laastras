@@ -1,0 +1,2 @@
+class LaastrasPageView < ApplicationRecord
+end

@@ -1,24 +1,16 @@
-<br>
-<div class="container">
-    <div class="text-center" style="background-color: white">
-        <p id="notice"><%= notice %></p>
-        <p>
-            <strong><%= I18n.t 'email' %>:</strong>
-            <%= @user.email %>
-        </p>
 
-        <p>
-            <strong><%= I18n.t 'first_name' %>:</strong>
-            <%= @user.first_name %>
-        </p>
-
-        <p>
-            <strong><%= I18n.t 'last_name' %>:</strong>
-            <%= @user.last_name %>
-        </p>
-
-        <%= link_to (I18n.t 'edit_label'), edit_user_path(@user) %> |
-        <%= link_to (I18n.t 'back_label'), users_path %> | 
-        <%= link_to (I18n.t 'home_label'), root_path %>
-    </div>
-</div>
+<%= react_component('LaastrasUserShow', {
+    full_name: @full_name,
+    role_label: (I18n.t 'role_label'),
+    role: @role,
+    email_label: (I18n.t 'email_label'),
+    email: @email,
+    edit_label: (I18n.t 'edit_label'),
+    destroy_label: (I18n.t 'destroy_label'),
+    edit_url: url_for(controller: 'users', action: 'edit', id: @laastras_user.id),
+    destroy_url: url_for(controller: 'users', action: 'destroy', id: @laastras_user.id),
+    submit_label: (I18n.t 'submit_label'),
+    profile_photo_url: url_for(controller: 'users', action: 'profile_image_show', id: @laastras_user.id),
+    upload_profile_photo_action_url: url_for(controller: 'users', action: 'profile_image_update', id: @laastras_user.id),
+    view_mode: @view_mode
+})%>

@@ -1,2 +1,0 @@
-class SiteLanguage < ApplicationRecord
-end

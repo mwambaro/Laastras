@@ -1,13 +1,18 @@
 
-<div  class="container">
-    
-    <%= react_component('WorkInProgress', {
-        work_in_progress_description: @work_in_progress_description,
-        work_in_progress_section_title: @work_in_progress_label,
-        founder_and_ceo_contact_url: @founder_and_ceo_contact_email,
-        founder_and_ceo_contact_inner_text: @founder_and_ceo_contact_label,
-        information_desk_url: url_for(controller: 'laastras', action: 'home'),
-        information_desk_inner_text: @home_label
-    }) %>
-
-</div>
+<%= react_component('LaastrasUserSignUp', {
+    email: (I18n.t 'email_label'),
+    first_name: (I18n.t 'first_name_label'),
+    last_name: (I18n.t 'last_name_label'),
+    user_name: (I18n.t 'username_label'),
+    password: (I18n.t 'password_label'),
+    submit_label: (I18n.t 'submit_label'),
+    password_confirmation: (I18n.t 'password_confirmation_label'),
+    laastras_user_sign_up_form_label: (I18n.t 'laastras_user_sign_up_form_label'),
+    are_you_laastras_employee_label: (I18n.t 'are_you_laastras_employee_label'),
+    no_label: (I18n.t 'no_label'),
+    yes_label: (I18n.t 'yes_label'),
+    laastras_user_sign_up_action_url: url_for(controller: 'users', action: 'sign_up'),
+    laastras_user_update_action_url: url_for(controller: 'users', action: 'update'),
+    edit_mode: false.to_s,
+    obem_user: nil
+}) %>

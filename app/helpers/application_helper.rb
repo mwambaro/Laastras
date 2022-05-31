@@ -3,6 +3,99 @@ include ActionView::Helpers::AssetUrlHelper
 require 'net/http'
 
 module ApplicationHelper
+    def self.harvest_analytics(session, request)
+        user_id = nil
+        user = self.who_is_logged_in?(session)
+        user_id = user.id unless user.nil?
+        session_string = session[:session_id]
+        ip_address = request.remote_ip
+        user_agent = request.user_agent 
+        referer = request.referer
+        request_url = request.original_url
+                        .gsub(/http(s)*:\/\//i, '')
+                        .gsub(/obem_main\/home/i, '')
+                        .gsub(/(\A\s+)|(\s+\Z)/, '')
+                        .split(/[\?\#]/)[0]
+        LaastrasPageView.new({
+            user_id: user_id,
+            session: session_string,
+            ip_address: ip_address,
+            request_url: request_url,
+            user_agent: user_agent,
+            referer: referer
+        }).save
+
+    end # harvest_analytics
+
+    def self.profile_photo_data(request)
+        data = URI.open(
+            ApplicationHelper.image_asset_url(
+                request, 'profile_photo.JPG'
+            )
+        ){ |io| io.read }
+
+    end # profile_photo_data
+
+    def self.set_locale(params, session)
+        lc = params[:locale]
+        lchash = nil
+        data = nil
+
+        begin
+
+            if(lc.nil?)
+      
+            data = {
+                code: '0',
+                message: (I18n.t 'locale_set_no_locale_settings').paragraphize
+            }
+
+            else
+                lchash = JSON.parse(lc)
+                if(!lchash['locale'].blank?)
+                    I18n.locale = lchash['locale'].to_sym
+                    data = {
+                        code: '1',
+                        message: ((I18n.t 'locale_set_success').paragraphize + 
+                                  ": #{lchash['language']} (#{lchash['country']})")
+                    }
+                    # fill it in session
+                    session[:active_language] = I18n.locale.to_s unless session.nil?
+                else
+                    data = {
+                        code: '0',
+                        message: ((I18n.t 'locale_set_failure').paragraphize + 
+                                  ": #{lchash['language']} (#{lchash['country']})")
+                    }
+                    #options[:status] = Rack::Utils::SYMBOL_TO_STATUS_CODE[:not_acceptable]
+                end
+            end
+
+        rescue I18n::InvalidLocale
+
+            message = (I18n.t 'locale_set_failure').paragraphize
+            if(!lchash.nil?)
+                message += ": #{lchash['language']} (#{lchash['country']})"
+            end
+
+            data = {
+                code: 0,
+                message: message             
+            }
+
+        rescue Exception => e
+
+            data = {
+                code: 0,
+                message: e.message
+            }
+
+        end
+        # return data to caller
+        data
+
+    end # set_locale
+
     def self.http_get(url_link, custom_headers=nil, logger=nil)
         res = nil 
         begin
@@ -180,18 +273,6 @@ module ApplicationHelper
                 {
                     url: url_for(controller: 'laastras', action: 'donate'),
                     inner_text: (I18n.t 'donate_label'),
-                    dropdown_boolean: 'false',
-                    data: ''
-                },
-                {
-                    url: url_for(controller: 'laastras', action: 'sign_in'),
-                    inner_text: (I18n.t 'sign_in'),
-                    dropdown_boolean: 'false',
-                    data: ''
-                },
-                {
-                    url: url_for(controller: 'laastras', action: 'sign_up'),
-                    inner_text: (I18n.t 'sign_up'),
                     dropdown_boolean: 'false',
                     data: ''
                 }

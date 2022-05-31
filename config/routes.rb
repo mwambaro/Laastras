@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
+  get 'laastras_page_views/analytics'
   get 'money_transfer/payment_method'
   get 'money_transfer/payment_information'
   get 'money_transfer/receive_payment_information'
   get 'money_transfer/payment_review'
   get 'money_transfer/payment_confirmation'
-  get 'login/index'
-  get 'login/logout'
-  post 'login/check_credentials'
-  resources :users
-  resources :site_languages
+
+  get 'users/index'
+  get 'users/show'
+  get 'users/profile_image_show'
+  get 'users/edit'
+  get 'users/destroy'
+  
   get 'logistics/shipment_service'
   get 'logistics/bus_service'
   get 'logistics/cab_service'
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
   get 'laastras/donate'
   get 'laastras/sign_in'
   get 'laastras/sign_up'
+  get 'laastras/sign_out'
   get 'laastras/terms_of_use'
   get 'laastras/privacy'
   get 'laastras/cookies'
@@ -35,5 +39,8 @@ Rails.application.routes.draw do
 
   post 'laastras/locale'
   post 'users/sign_up'
+  post 'users/sign_in'
+  post 'users/update'
+  post 'users/profile_image_update'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

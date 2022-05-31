@@ -1,38 +1,31 @@
 
-<br>
-<div class="container">
-    <div style="background-color: white">
-        <p id="notice"><%= notice %></p>
+<div class="text-center"> <h1> <%= (I18n.t 'laastras_users_label') + ': ' + @laastras_users.count.to_s %> </h1> </div>
 
-        <h1><%= I18n.t 'users_label' %></h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th><%= I18n.t 'email' %></th>
-                    <th><%= I18n.t 'first_name' %></th>
-                    <th><%= I18n.t 'last_name' %></th>
-                    <th colspan="3"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <% @users.each do |user| %>
-                    <tr>
-                        <td><%= user.email %></td>
-                        <td><%= user.first_name %></td>
-                        <td><%= user.last_name %></td>s
-                        <td><%= link_to (I18n.t 'show_label'), user %></td>
-                        <td><%= link_to (I18n.t 'edit_label'), edit_user_path(user) %></td>
-                        <td><%= link_to (I18n.t 'destroy_label'), user, method: :delete, data: { confirm: (I18n.t 'model_confirm_capture') } %></td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-
-        <br>
-
-        <%= link_to (I18n.t 'new_user'), new_user_path %> | 
-        <%= link_to (I18n.t 'home_label'), root_path %>
+<% email_label = I18n.t 'email_label' %>
+<% role_label = I18n.t 'role_label' %>
+<% edit_label = I18n.t 'edit_label' %>
+<% destroy_label = I18n.t 'destroy_label' %>
+<% submit_label = I18n.t 'submit_label' %>
+<% counter = 1 %>
+<% @laastras_users.each do |laastras_user| %>
+    <div style="margin: 5px">
+        <% full_name = laastras_user.first_name + ' ' + laastras_user.last_name %>
+        <% tr_role = I18n.t laastras_user.role %>
+        <%= react_component('LaastrasUserShow', {
+            full_name: full_name,
+            role_label: role_label,
+            role: tr_role,
+            email_label: email_label,
+            email: laastras_user.email,
+            edit_label: edit_label,
+            destroy_label: destroy_label,
+            edit_url: url_for(controller: 'users', action: 'edit', id: laastras_user.id),
+            destroy_url: url_for(controller: 'users', action: 'destroy', id: laastras_user.id),
+            submit_label: submit_label,
+            profile_photo_url: url_for(controller: 'users', action: 'profile_image_show', id: laastras_user.id),
+            upload_profile_photo_action_url: url_for(controller: 'users', action: 'profile_image_update', id: laastras_user.id),
+            view_mode: 'true'
+        })%>
     </div>
-</div>
+    <% counter += 1 %>
+<% end %>

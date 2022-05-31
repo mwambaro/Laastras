@@ -50,7 +50,9 @@ class LoginController < ApplicationController
     end
 
     def init_parameters 
-        ApplicationHelper.set_user_set_locale(session)
+        I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+        ApplicationHelper.harvest_analytics(session, request)
+        @site_title = "Laastras | #{params[:action]}"
         @laastras_banner_image = ApplicationHelper.image_asset_url(
             request, 'Laastras-e-banner-lg.JPG'
         )

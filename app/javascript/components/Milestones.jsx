@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {Modal} from "bootstrap"
+import {Carousel} from "bootstrap"
 
 require("./CenterElement");
 require("./MobileDevices")
@@ -49,7 +50,7 @@ class Milestones extends React.Component
         }
 
         return(
-            <div>
+            <div id="milestones-main-container-div" className="container-fluid">
                 <div id="milestones-view-div" style={styles === null ? "" : styles}>
                     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-indicators" style={carousel_indicators_style}>
@@ -152,7 +153,20 @@ class Milestones extends React.Component
             });
         }
 
+        this.cycleThroughElements();
+
     } // componentDidMount
+
+    cycleThroughElements()
+    {
+        const myCarouselElement = document.querySelector('#carouselExampleIndicators');
+        const carousel = new Carousel(myCarouselElement, {
+            interval: 4000,
+            wrap: true
+        });
+        carousel.cycle();
+
+    } // cycleThroughElements
 
     getCarouselMilestonesViewStyle()
     {

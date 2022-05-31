@@ -1,13 +1,21 @@
 <div class="container-fluid">
     <header>
-        <%= react_component('ToggleNavigationBar', {
+        <%= react_component('LaastrasNavigationBar', {
             laastras_actions: @laastras_actions,
             logo_image_url: @logo_image_url,
+            laastras_user_is_logged_in: @laastras_user_is_logged_in,
             supported_languages: @supported_languages, 
             locale_end_point: url_for(controller: 'laastras', action: 'locale'),
-            social_media_data: @social_media_data,
-            home_action_url: url_for(controller: 'laastras', action: 'home'),
-            active_language_locale: I18n.locale.to_s
+            active_language_locale: I18n.locale.to_s,
+            sign_in_label: (I18n.t 'sign_in_label'),
+            sign_in_url: url_for(controller: 'laastras', action: 'sign_in'),
+            sign_up_label: (I18n.t 'sign_up_label'),
+            sign_up_url: url_for(controller: 'laastras', action: 'sign_up'),
+            sign_out_label: (I18n.t 'sign_out_label'),
+            sign_out_url: url_for(controller: 'laastras', action: 'sign_out'),
+            profile_photo_url: @profile_photo_url,
+            show_profile_url: @show_profile_url,
+            home_action_url: url_for(controller: 'laastras', action: 'home')
         }) %>
     </header>
 

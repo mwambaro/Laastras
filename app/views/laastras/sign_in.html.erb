@@ -1,13 +1,8 @@
 
-<div  class="container">
-    
-    <%= react_component('WorkInProgress', {
-        work_in_progress_description: @work_in_progress_description,
-        work_in_progress_section_title: @work_in_progress_label,
-        founder_and_ceo_contact_url: @founder_and_ceo_contact_email,
-        founder_and_ceo_contact_inner_text: @founder_and_ceo_contact_label,
-        information_desk_url: url_for(controller: 'laastras', action: 'home'),
-        information_desk_inner_text: @home_label
-    }) %>
-
-</div>
+<%= react_component('LaastrasUserSignIn', {
+    email: (I18n.t 'email_label'),
+    password: (I18n.t 'password_label'),
+    submit_label: (I18n.t 'submit_label'),
+    laastras_user_sign_in_form_label: (I18n.t 'laastras_user_sign_in_form_label'),
+    laastras_user_sign_in_action_url: url_for(controller: 'users', action: 'sign_in')
+}) %>
