@@ -13,7 +13,7 @@ module ApplicationHelper
         referer = request.referer
         request_url = request.original_url
                         .gsub(/http(s)*:\/\//i, '')
-                        .gsub(/obem_main\/home/i, '')
+                        .gsub(/laastras\/home/i, '')
                         .gsub(/(\A\s+)|(\s+\Z)/, '')
                         .split(/[\?\#]/)[0]
         LaastrasPageView.new({

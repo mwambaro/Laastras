@@ -18,14 +18,15 @@
             home_action_url: url_for(controller: 'laastras', action: 'home')
         }) %>
     </header>
-
+    <div class="row justify-content-center">
+    <div class="col-md-8">
     <main role="main" style="margin-top: 5px">
-        <div style="margin-top: 5px; margin-bottom: 5px" data-aos="fade-up">
+        <div style="margin-top: 5px; margin-bottom: 5px">
             <%= react_component('LaastrasIntroCapture', {
                 laastras_sample_services: @laastras_sample_services
             })%>
         </div>
-        <div style="margin-top: 5px; margin-bottom: 5px" data-aos="fade-up">
+        <div style="margin-top: 5px; margin-bottom: 5px">
             <%= react_component('MissionKickOff', {
                 mission_kick_off_data: @mission_kick_off_data,
                 kick_off_section_title: @kick_off,
@@ -33,18 +34,47 @@
             })%>
         </div>
         <div style="margin-top: 5px; margin-bottom: 5px; background-color: white" data-aos="fade-up">
-            <%= react_component('LaastrasVision', {
-                laastras_vision_html: (sanitize @laastras_vision),
-                vision_title_inner_text: @vision
-            })%>
+            <div class="shadow-sm p-1 mb-2 bg-white rounded" 
+                 style="margin: 4px">
+                <div class="shadow-none p-1 mb-2 rounded" 
+                     style="background-color: #08f7ce">
+                    <span style="font-size: 24px; font-weight: bold; color: white"> 
+                        <%= @vision %>
+                    </span>
+                </div>
+                <div>
+                    <p id="box-body-text-p" style="font-size: 12px">   
+                        <%= sanitize @laastras_vision, tags: %w(div a ul li iframe p br), attributes: %w(class src href allowfullscreen) %>       
+                    </p>
+                </div>
+            </div>
         </div>
     </main>
+    </div>
+    </div>
 
-    <footer data-aos="fade-up">
+    <footer>
         <%= react_component('SiteFooter', {
             footer_actions: @footer_actions,
             social_media_data: @social_media_data,
             copy_right_text: @copy_right
         })%>
     </footer>
+
+    <script>
+        let iframe_elt = document.getElementById('embedded-video-teaser');
+        if(iframe_elt)
+        {
+            iframe_elt.allowFullscreen = true;
+        }
+        else
+        {
+            iframe_elt = document.getElementsByClassName('embedded-video-teaser')[0];
+            if(iframe_elt)
+            {
+                iframe_elt.allowFullscreen = true;
+            }
+        }
+    </script>
+
 </div>

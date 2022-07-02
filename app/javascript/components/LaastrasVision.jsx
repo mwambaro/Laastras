@@ -53,6 +53,7 @@ class LaastrasVision extends React.Component
     componentDidMount()
     {
         $('#box-body-text-p').append(this.props.laastras_vision_html);
+        $('#embedded-video-teaser').attr('allowfullscreen', 'true');
     }
 }
 

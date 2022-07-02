@@ -225,7 +225,6 @@ en_US:
 
   vision_terms: "
       <p>
-      <p>
       We have done trade for ages. The trade model has failed to give us financial security
       coupled with self-sufficiency. Let alone conflicts that result from attempts to secure
       and retain control of our businesses. We went a step further&#58; philanthropy. We believed it
@@ -264,7 +263,8 @@ en_US:
         <br>
         <div class=\u0022container\u0022>
             <div class=\u0022embed-responsive embed-responsive-23by12 text-center\u0022>
-                <iframe class=\u0022embed-responsive-item\u0022
+                <iframe class=\u0022embed-responsive-item embedded-video-teaser\u0022
+                        id=\u0022embedded-video-teaser\u0022
                         src=\u0022https://www.youtube.com/embed/kGewdXaC8L8\u0022
                         title=\u0022YouTube video player\u0022 
                         frameborder=\u00220\u0022
@@ -284,6 +284,5 @@ en_US:
       written by Laastras Founder and CEO, 
       <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
        Obed-Edom Nkezabahizi </a>.
-      </p>
       </p>
   "
