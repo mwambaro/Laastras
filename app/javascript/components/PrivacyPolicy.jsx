@@ -52,45 +52,19 @@ class PrivacyPolicy extends React.Component
         );
         this.privacyPolicySectionModal.show();
 
-        window.addEventListener('click', (event) => {
-            let object = event.target;
-            let id = 'privacy-policy-section';
-            if(event)
-            {
-                if(object.id != id)
-                {
-                    let parent = object.parentElement;
-                    let isChild = false;
-                    while(parent)
-                    {
-                        if(parent.id === id)
-                        {
-                            isChild = true;
-                            break;
-                        }
-                        parent = parent.parentElement;
-                    }
-                    if(!isChild)
-                    { 
-                        this.onFocusOutHandler(event);
-                    }
-                }
-            }
-        });
-
     } // componentDidMount
 
     leavePrivacyPolicy(e)
     {
         this.privacyPolicySectionModal.hide();
         // go back
-        window.location.assign('/laastras/home');
+        window.location.assign('/laastras/home#laastras-home-footer');
 
     } // leavePrivacyPolicy
 
     onFocusOutHandler(e)
     {
-        window.location.assign('/laastras/home');
+        window.location.assign('/laastras/home#laastras-home-footer');
 
     } // onFocusOutHandler
 }

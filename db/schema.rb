@@ -47,8 +47,12 @@ ActiveRecord::Schema.define(version: 2022_05_31_132122) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
+    t.string "user_name"
     t.string "password"
     t.string "role"
+    t.datetime "last_login"
+    t.datetime "last_logout"
+    t.binary "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

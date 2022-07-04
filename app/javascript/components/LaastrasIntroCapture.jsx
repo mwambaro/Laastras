@@ -38,13 +38,19 @@ class LaastrasIntroCapture extends React.Component
         });
 
         return(
-            <div className="text-center" 
+            <div className="justify-content-center" 
                  style={outer_box_style}>
                 <div style={text_body_div_style}>
                     <p style={text_body_p_style}>
+                        <ul>
                         {
-                            capture_text
+                            this.props.laastras_sample_services.map((service, idx) =>
+                                <li key={`capture-${idx}`}>
+                                    {service}
+                                </li>
+                            )
                         }
+                        </ul>
                     </p>
                 </div>
             </div>

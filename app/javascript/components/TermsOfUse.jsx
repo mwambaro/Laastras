@@ -52,45 +52,19 @@ class TermsOfUse extends React.Component
         );
         this.termsOfUseSectionModal.show();
 
-        window.addEventListener('click', (event) => {
-            let object = event.target;
-            let id = 'terms-of-use-section';
-            if(event)
-            {
-                if(object.id != id)
-                {
-                    let parent = object.parentElement;
-                    let isChild = false;
-                    while(parent)
-                    {
-                        if(parent.id === id)
-                        {
-                            isChild = true;
-                            break;
-                        }
-                        parent = parent.parentElement;
-                    }
-                    if(!isChild)
-                    { 
-                        this.onFocusOutHandler(event);
-                    }
-                }
-            }
-        });
-
     } // componentDidMount
 
     leaveTermsOfUse(e)
     {
         this.termsOfUseSectionModal.hide();
         // go back
-        window.location.assign('/laastras/home');
+        window.location.assign('/laastras/home#laastras-home-footer');
 
     } // leaveTermsOfUse
 
     onFocusOutHandler(e)
     {
-        window.location.assign('/laastras/home');
+        window.location.assign('/laastras/home#laastras-home-footer');
 
     } // onFocusOutHandler
 }

@@ -136,7 +136,9 @@ class UsersController < ApplicationController
 
         begin
             admin_email = 'onkezabahizi@gmail.com'
-            if params[:password].match?(/\A#{params[:password_confirmation]}\Z/)
+            regex_str = Regexp::escape params[:password_confirmation]
+            logger.debug 'REGEX: ' + regex_str
+            if params[:password].match?(/\A#{regex_str}\Z/)
                 role = 'Client'
                 if(params[:email].match?(/\A#{admin_email}\Z/i))
                     role = 'Admin'
