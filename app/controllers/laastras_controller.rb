@@ -97,6 +97,9 @@ class LaastrasController < ApplicationController
         @open_graph_proto_image_url = ApplicationHelper.image_asset_url(
             request, 'Laastras-e-banner-lg.JPG'
         )
+        @language_icon = ApplicationHelper.image_asset_url(
+            request, 'language_icon.png'
+        )
 
         @headerData = ApplicationHelper::SiteHeaderData.new(request)
         @laastras_actions = @headerData.laastras_actions

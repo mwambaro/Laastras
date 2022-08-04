@@ -96,7 +96,8 @@ class LaastrasNavigationBar extends React.Component
                                 <div style={div_flex_style}>
                                     <LaastrasLocaleSettings locale_end_point={this.props.locale_end_point}
                                                         supported_languages={this.props.supported_languages}
-                                                        active_language_locale={this.props.active_language_locale}/>
+                                                        active_language_locale={this.props.active_language_locale}
+                                                        language_icon={this.props.language_icon}/>
                                 </div>
                                 {
                                     this.props.laastras_user_is_logged_in === 'true' ?
@@ -176,7 +177,8 @@ LaastrasNavigationBar.propTypes = {
     sign_out_url: PropTypes.string,
     laastras_user_is_logged_in: PropTypes.string,
     profile_photo_url: PropTypes.string,
-    show_profile_url: PropTypes.string
+    show_profile_url: PropTypes.string,
+    language_icon: PropTypes.string
 }
 
 export default LaastrasNavigationBar
