@@ -42,15 +42,32 @@ class LaastrasIntroCapture extends React.Component
                  style={outer_box_style}>
                 <div style={text_body_div_style}>
                     <p style={text_body_p_style}>
-                        <ul>
-                        {
-                            this.props.laastras_sample_services.map((service, idx) =>
-                                <li key={`capture-${idx}`}>
-                                    {service}
-                                </li>
-                            )
-                        }
-                        </ul>
+                        <p>
+                            <p><u>{this.props.job_offers_label}</u>:</p>
+                            <p>
+                                <ol>
+                                    <li>
+                                        <a href={this.props.project_manager_assistant_offer_url}> 
+                                            {this.props.project_manager_assistant} 
+                                        </a>
+                                    </li>
+                                </ol>
+                            </p>
+                        </p>
+                        <p>
+                            <p><u>{this.props.key_services_label}</u>:</p>
+                            <p>
+                                <ul>
+                                {
+                                    this.props.laastras_sample_services.map((service, idx) =>
+                                        <li key={`capture-${idx}`}>
+                                            {service}
+                                        </li>
+                                    )
+                                }
+                                </ul>
+                            </p>
+                        </p>
                     </p>
                 </div>
             </div>
@@ -59,7 +76,11 @@ class LaastrasIntroCapture extends React.Component
 }
 
 LaastrasIntroCapture.propTypes = {
-    laastras_sample_services: PropTypes.array
+    laastras_sample_services: PropTypes.array,
+    job_offers_label: PropTypes.string,
+    project_manager_assistant_offer_url: PropTypes.string,
+    project_manager_assistant: PropTypes.string,
+    key_services_label: PropTypes.string
 };
 
 export default LaastrasIntroCapture

@@ -66,3 +66,6 @@ gem 'autoprefixer-rails'
 
 gem 'react-rails'
 gem 'jquery-rails'
+
+gem 'city-state'
+gem 'geocoder'

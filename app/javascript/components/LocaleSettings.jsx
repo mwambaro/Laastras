@@ -77,7 +77,7 @@ class LocaleSettings extends React.Component
                     </div>
                 </div>
                 <div>
-                    <img id="set-locale-button" className="img-fluid" width="30px" onClick={se => this.setLocaleLanguage(se)} />
+                    <img src={this.props.language_icon} id="set-locale-button" className="img-fluid" width="30px" onClick={se => this.setLocaleLanguage(se)} style={{'position': 'absolute', 'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%)'}}/>
                 </div>
             </div>
         );
@@ -493,7 +493,7 @@ LocaleSettings.propTypes = {
     supported_languages: PropTypes.array, // array of {locale: '',  language: '', country: ''} hashes
     locale_end_point: PropTypes.string,
     active_language_locale: PropTypes.string,
-    language_icon: PropTypes.icon
+    language_icon: PropTypes.string
 };
 
 export default LocaleSettings;

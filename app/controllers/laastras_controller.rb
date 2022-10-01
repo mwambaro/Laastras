@@ -22,6 +22,10 @@ class LaastrasController < ApplicationController
     def services
     end
 
+    def job_offer_description
+        @job_offer = I18n.t 'hiring_message'
+    end
+
     def hire_us
         @hire_us_carousel_milestones_image_data = [
             {
