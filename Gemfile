@@ -67,5 +67,8 @@ gem 'autoprefixer-rails'
 gem 'react-rails'
 gem 'jquery-rails'
 
+# https://stackoverflow.com/questions/36736195/how-to-get-list-of-all-countries-and-cities-in-rails
+# https://github.com/thecodecrate/city-state
 gem 'city-state'
+# https://stackoverflow.com/questions/32102967/rails-4-how-would-i-automatically-detect-a-users-location-and-display-it-on-t
 gem 'geocoder'
