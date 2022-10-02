@@ -225,6 +225,20 @@ class LaastrasController < ApplicationController
             (I18n.t 'logistics_ecommerce'),
             (I18n.t 'aori_globalization')
         ]
+        @laastras_e_logo_urls = [
+            ApplicationHelper.image_asset_url(
+                request, 'Logo-e-grocery.svg'
+            ),
+            ApplicationHelper.image_asset_url(
+                request, 'Logo-e-card.svg'
+            ),
+            ApplicationHelper.image_asset_url(
+                request, 'Logo-e-logistics.svg'
+            ),
+            ApplicationHelper.image_asset_url(
+                request, 'Logo-e-alliances.svg'
+            )
+        ]
         @globalization_intro = (I18n.t 'mission_terms').paragraphize
         @laastras_vision = (I18n.t 'vision_terms')
         @supported_languages = @headerData.supported_languages

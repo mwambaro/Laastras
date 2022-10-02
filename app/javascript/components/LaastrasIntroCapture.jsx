@@ -58,13 +58,41 @@ class LaastrasIntroCapture extends React.Component
                             <p><u>{this.props.key_services_label}</u>:</p>
                             <p>
                                 <ul>
-                                {
-                                    this.props.laastras_sample_services.map((service, idx) =>
-                                        <li key={`capture-${idx}`}>
-                                            {service}
-                                        </li>
-                                    )
-                                }
+                                    <li>
+                                        <p>
+                                            <img src={this.props.laastras_e_logo_urls[0]} width="50" className="img-fluid" />
+                                        </p>
+                                        <p>
+                                            {this.props.laastras_sample_services[0]}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <img src={this.props.laastras_e_logo_urls[1]} width="50" className="img-fluid" />
+                                        </p>
+                                        <p>
+                                            {this.props.laastras_sample_services[1]}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <img src={this.props.laastras_e_logo_urls[2]} width="50" className="img-fluid" />
+                                        </p>
+                                        <p>
+                                            {this.props.laastras_sample_services[3]}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <img src={this.props.laastras_e_logo_urls[3]} width="50" className="img-fluid" />
+                                        </p>
+                                        <p>
+                                            {this.props.laastras_sample_services[2]}
+                                        </p>
+                                        <p>
+                                            {this.props.laastras_sample_services[4]}
+                                        </p>
+                                    </li>
                                 </ul>
                             </p>
                         </p>
@@ -77,6 +105,7 @@ class LaastrasIntroCapture extends React.Component
 
 LaastrasIntroCapture.propTypes = {
     laastras_sample_services: PropTypes.array,
+    laastras_e_logo_urls: PropTypes.array,
     job_offers_label: PropTypes.string,
     project_manager_assistant_offer_url: PropTypes.string,
     project_manager_assistant: PropTypes.string,

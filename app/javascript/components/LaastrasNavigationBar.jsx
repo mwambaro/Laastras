@@ -93,7 +93,7 @@ class LaastrasNavigationBar extends React.Component
                                         </div>
                                     )
                                 }
-                                <div style={div_flex_style}>
+                                <div style={div_flex_style} onMouseOver={(se) => this.onMouseOverLocaleSection(se)}>
                                     <LaastrasLocaleSettings locale_end_point={this.props.locale_end_point}
                                                         supported_languages={this.props.supported_languages}
                                                         active_language_locale={this.props.active_language_locale}
@@ -132,6 +132,12 @@ class LaastrasNavigationBar extends React.Component
         this.manageProfilePhoto();
         
     } // componentDidMount
+
+    onMouseOverLocaleSection(e)
+    {
+        e.target.style.cursor = 'pointer';
+
+    } // onMouseOverLocaleSection
 
     onClickSignInButton(e)
     {

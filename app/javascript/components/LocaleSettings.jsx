@@ -417,7 +417,9 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
-                                        
+                                        modal.hide(); // spinner
+                                        window.location.assign(this.refreshUrl);
+                                        window.location.reload(true);
                                     }
                                     else if(code === 0) // failed to set
                                     {
@@ -431,7 +433,9 @@ class LocaleSettings extends React.Component
                                             <div><p> ${message} </p></div>
                                         `;
                                         this.refreshUrl = null;
-
+                                        $('#action-response-message').append(html);
+                                        modal.hide(); // spinner
+                                        actionResponseMdl.show();
                                     }
                                     else // unknown code
                                     {
@@ -445,12 +449,11 @@ class LocaleSettings extends React.Component
                                             <div><p> ${message} </p></div>
                                         `;
                                         this.refreshUrl = null;
+                                        $('#action-response-message').append(html);
+
+                                        modal.hide(); // spinner
+                                        actionResponseMdl.show();
                                     }
-
-                                    $('#action-response-message').append(html);
-
-                                    modal.hide(); // spinner
-                                    actionResponseMdl.show();
                                 }
                                 catch(error)
                                 {
