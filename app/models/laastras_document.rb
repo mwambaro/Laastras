@@ -1,0 +1,2 @@
+class LaastrasDocument < ApplicationRecord
+end

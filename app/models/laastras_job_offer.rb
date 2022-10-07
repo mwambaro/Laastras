@@ -1,0 +1,2 @@
+class LaastrasJobOffer < ApplicationRecord
+end

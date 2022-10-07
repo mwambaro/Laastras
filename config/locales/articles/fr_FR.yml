@@ -167,16 +167,17 @@ fr_FR:
   terms_of_use_body_text: "
       <p><h3> Termes d'Utilisation </h3></p>
       <p>
-        Lorsque vous utilisez notre Site Web, vous acceptez les termes d'utilisation suivantes:
+        Lorsque vous utilisez notre Site Web, vous acceptez les termes d'utilisation suivants:
+      </p>
             <ul>
                 <li>
-                    Nous pouvons receuillir des données de vous quand nous vous demandons de remplir nos
+                    Nous pouvons recueillir des données de vous quand nous vous demandons de remplir nos
                     formulaires tels que ceux d'inscription, de transfert d'argent, et d'autres formulaires
                     nécessaires pour le bon fonctionnement de notre site.
                 </li>
                 <li>
                     Notre site utilise des cookies pour améliorer l'expérience d'utilisateur. Vous devez avoir accepté
-                    la politique d'utilisation de Cookies et la politique de vie privée, au pied de la page d'acceuil.
+                    la politique d'utilisation de Cookies et la politique de vie privée, au pied de la page d'accueil.
                 </li>
                 <li>
                     Quand vous vous inscrivez sur notre site, l'information que vous nous donnez peut être utilisée
@@ -190,10 +191,9 @@ fr_FR:
                     hors ligne.
                 </li>
             </ul>
-      </p>"
+  "
 
   vision_terms: "
-      <p>
       <p>
       Nous avons pratiqué le commerce depuis si longtemps. Le modèle de commerce a failli à nous procurer
       sécurité financière ainsi que de l'auto-suffisance. Sans parler des conflits qui résultent du fait
@@ -203,7 +203,6 @@ fr_FR:
       sécurité financière, de l'auto-suffisance, égales opportunités, de l'emploi satisfaisant pour tous,
       et des businesses sans conflits. Comment? Laastras réforme le commerce par biais de deux objectifs:
       </p>
-      <p>
       <ul>
       <li>
          Remplacer la rémunération par les Echanges de Services. Un seul emploi lié au 'management
@@ -219,7 +218,6 @@ fr_FR:
          convenable dans la Logistique et E-Commerce, pilliers de tout commerce.
       </li>
       </ul>
-      </p>
 
       <div>
         <br>
@@ -253,7 +251,6 @@ fr_FR:
       <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
       Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
       </p>
-      </p>
   "
   hiring_message: "
       Nous cherchons une <strong>Assistante du Chef de Projet</strong> qui remplit les qualifications suivantes: 
@@ -265,7 +262,7 @@ fr_FR:
           Sans emploi mais désireuse de lancer un 'start-up' selon nos directives.
         </li>
         <li>
-          Ou, employée dans une entreprise légallement enregistrée qui voudrait être notre partenaire.
+          Ou, employée dans une entreprise légallement enregistrée qui voudrait être notre partenaire à fin de s'expandre.
         </li>
       </ol>
       <p>

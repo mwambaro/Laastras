@@ -112,3 +112,5 @@ fr_FR:
   job_offers_label: "Offres d'Emploi"
   project_manager_assistant: "Assistante du Chef de Projet"
   key_services_label: "Services Majeurs"
+  fail_safe_title: "Laastras - Message de Maintenance"
+  fail_safe_message: "Oops! Il se pourrait que l’on ait eu un problème. Si vous êtes propriétaire du site, veuillez consulter les documents ’log’!"

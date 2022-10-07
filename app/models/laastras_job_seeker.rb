@@ -1,0 +1,2 @@
+class LaastrasJobSeeker < ApplicationRecord
+end

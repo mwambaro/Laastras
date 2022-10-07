@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'laastras_documents/show_laastras_document'
+  get 'maintenance/fail_safe'
   get 'laastras_page_views/analytics'
   get 'money_transfer/payment_method'
   get 'money_transfer/payment_information'

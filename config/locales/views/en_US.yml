@@ -142,3 +142,5 @@ en_US:
   job_offers_label: "Job Offers"
   project_manager_assistant: "Project Manager Assistant"
   key_services_label: "Key Services"
+  fail_safe_title: "Laastras - Maintenance Message"
+  fail_safe_message: "Oops! Something must have gone wrong. If you are the site owner or maintainer, please, check the logs!"

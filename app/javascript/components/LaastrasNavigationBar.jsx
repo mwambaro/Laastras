@@ -65,7 +65,7 @@ class LaastrasNavigationBar extends React.Component
                                     )
                                 }
                             </ul>
-                            <div className="d-flex justify-content-end">
+                            <div className="d-flex flex-column justify-content-end">
                                 {
                                     this.props.laastras_user_is_logged_in === 'true' ?
                                     (

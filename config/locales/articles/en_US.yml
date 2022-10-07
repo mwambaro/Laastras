@@ -202,6 +202,7 @@ en_US:
       <p><h3> Terms of Use </h3></p>
       <p>
         When you use our Website you agree to the following terms of use:
+      </p>
             <ul>
                 <li>
                     We can collect data from you as we request that you fill in our forms such as sign-up forms,
@@ -221,7 +222,7 @@ en_US:
                     In no way are you allowed to download them and share them around offline.
                 </li>
             </ul>
-      </p>"
+  "
 
   vision_terms: "
       <p>
@@ -233,7 +234,6 @@ en_US:
       equal opportunities, satisfying employment for all, and conflict-free businesses. How so?
       Laastras reforms trade by way of two impacts:
       </p>
-      <p>
       <ul>
       <li>
          Replace remuneration-based work with Services Exchange. One job related to 'management
@@ -249,7 +249,6 @@ en_US:
          Logistics, pillars of any trade.
       </li>
       </ul>
-      </p>
       
       <div>
         <br>

@@ -41,10 +41,10 @@ class LaastrasIntroCapture extends React.Component
             <div className="justify-content-center" 
                  style={outer_box_style}>
                 <div style={text_body_div_style}>
-                    <p style={text_body_p_style}>
-                        <p>
+                    <div style={text_body_p_style}>
+                        <div>
                             <p><u>{this.props.job_offers_label}</u>:</p>
-                            <p>
+                            <div>
                                 <ol>
                                     <li>
                                         <a href={this.props.project_manager_assistant_offer_url}> 
@@ -52,11 +52,11 @@ class LaastrasIntroCapture extends React.Component
                                         </a>
                                     </li>
                                 </ol>
-                            </p>
-                        </p>
-                        <p>
+                            </div>
+                        </div>
+                        <div>
                             <p><u>{this.props.key_services_label}</u>:</p>
-                            <p>
+                            <div>
                                 <ul>
                                     <li>
                                         <p>
@@ -94,9 +94,9 @@ class LaastrasIntroCapture extends React.Component
                                         </p>
                                     </li>
                                 </ul>
-                            </p>
-                        </p>
-                    </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

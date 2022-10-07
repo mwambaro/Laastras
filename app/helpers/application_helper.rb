@@ -177,6 +177,10 @@ module ApplicationHelper
     def self.image_asset_url(request, file)
         request.protocol + request.host_with_port + path_to_image(file)
     end
+
+    def self.document_asset_url(file)
+        Rails.root.join('storage', 'laastras_documents', file)
+    end
     
     # <summary>
     #       Given a user session, has the user set any particular language settings? If so, retrieve

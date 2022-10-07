@@ -40,18 +40,25 @@
     </style>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body style="/*background-image: url('<%= @site_background_image_url %>');
-               background-repeat: no-repeat;
-               background-attachment: fixed;
-               background-size: cover;
-               background-color: white*/">
+  <body>
+      <!-- Older Banner
       <div class="container-fluid" style="background-color: white">
           <div class="text-center">
               <img src="<%= @laastras_banner_image %>" class="img-fluid banner-image" />
           </div>
-          <hr style="color: red; margin: 3px; height: 3px"> 
-          <hr style="color: green; margin: 3px; height: 3px"> 
+          <hr style="font-weight: bold; color: rgb(192,0,0); margin: 1px; height: 3px" />
+          <hr style="font-weight: bold; color: rgb(0,176,80); margin: 1px; height: 3px" />
       </div>
+      -->
+      <%= react_component('Banner', {
+          laastras_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-03.svg'),
+          e_grocery_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery.svg'),
+          e_card_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-card.svg'),
+          e_logistics_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
+          e_alliances_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
+          e_homocracy_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-homocracy.svg'),
+          home_url: url_for(controller: 'laastras', action: 'home')
+      })%>
     <%= yield %>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
