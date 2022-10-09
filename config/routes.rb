@@ -43,7 +43,6 @@ Rails.application.routes.draw do
   get 'laastras/about'
   get 'laastras/web_stats'
   get 'laastras/social_media_share'
-  get 'laastras/job_offer_description'
 
   post 'laastras/locale'
   post 'users/sign_up'

@@ -46,11 +46,15 @@ class LaastrasIntroCapture extends React.Component
                             <p><u>{this.props.job_offers_label}</u>:</p>
                             <div>
                                 <ol>
-                                    <li>
-                                        <a href={this.props.project_manager_assistant_offer_url}> 
-                                            {this.props.project_manager_assistant} 
-                                        </a>
-                                    </li>
+                                    {
+                                        this.props.featured_job_offers.map((job_offer, idx) => 
+                                            <li key={`job-offer-${idx}`}>
+                                                <a href={job_offer.show_url}> 
+                                                    {job_offer.title}
+                                                </a>
+                                            </li>
+                                        )
+                                    }
                                 </ol>
                             </div>
                         </div>
@@ -107,8 +111,7 @@ LaastrasIntroCapture.propTypes = {
     laastras_sample_services: PropTypes.array,
     laastras_e_logo_urls: PropTypes.array,
     job_offers_label: PropTypes.string,
-    project_manager_assistant_offer_url: PropTypes.string,
-    project_manager_assistant: PropTypes.string,
+    featured_job_offers: PropTypes.array,
     key_services_label: PropTypes.string
 };
 

@@ -140,7 +140,7 @@ en_US:
   last_name_label: "Last name"
   password_label: "Password"
   password_confirmation_label: "Confirm Password"
-  job_offers_label: "Job Offers"
+  job_offers_label: "Featured job offers"
   project_manager_assistant: "Project Manager Assistant"
   career_label: "Career"
   key_services_label: "Key Services"

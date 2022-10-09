@@ -110,7 +110,7 @@ fr_FR:
   last_name_label: "Nom"
   password_label: "Mot de passe"
   password_confirmation_label: "Confirmer le mot de passe"
-  job_offers_label: "Offres d'Emploi"
+  job_offers_label: "Offres d'emploi remarquables"
   project_manager_assistant: "Assistante du Chef de Projet"
   career_label: "Carrière"
   key_services_label: "Services Majeurs"

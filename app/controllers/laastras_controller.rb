@@ -22,10 +22,6 @@ class LaastrasController < ApplicationController
     def services
     end
 
-    def job_offer_description
-        @job_offer = I18n.t 'hiring_message'
-    end
-
     def hire_us
         @hire_us_carousel_milestones_image_data = [
             {
@@ -242,6 +238,7 @@ class LaastrasController < ApplicationController
         @globalization_intro = (I18n.t 'mission_terms').paragraphize
         @laastras_vision = (I18n.t 'vision_terms')
         @supported_languages = @headerData.supported_languages
+        @featured_job_offers = @headerData.featured_job_offers
 
         #http://getwallpapers.com/wallpaper/full/f/9/0/838457-full-size-outdoors-wallpapers-1920x1200.jpg
         @site_background_image_url = ApplicationHelper.image_asset_url(

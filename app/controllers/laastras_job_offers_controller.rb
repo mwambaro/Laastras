@@ -1,5 +1,5 @@
 class LaastrasJobOffersController < ApplicationController
-    before_action :init_parameters, :seed 
+    before_action :init_parameters
 
     def index 
         language = I18n.locale.to_s
@@ -67,56 +67,9 @@ class LaastrasJobOffersController < ApplicationController
             request, 'Logo-03.svg'
         )
 
+        @headerData = ApplicationHelper::SiteHeaderData.new(request)
+        @headerData.seed_job_offers
+
     end # init_parameters
-
-    def seed 
-        # Have we seeded the database ?
-        # We assume all went well first time we seeded.
-        # Please, restart seeding from scratch if you add more job offers
-        title = (I18n.t 'project_manager_assistant')
-        sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{title}'"
-        count = LaastrasJobOffer.find_by_sql(sql_query).count
-        if count > 0 
-            logger.debug '---> No need to seed laastras_job_offers database table. Looks already seeded'
-            return nil
-        end
-
-        job_offers = []
-        original_language = I18n.locale
-        I18n.available_locales.each do |lang|
-            I18n.locale = lang.to_sym
-            job_offers << {  
-                title: (I18n.t 'project_manager_assistant'),
-                description: (I18n.t 'project_manager_assistant_offer'),
-                language: lang.to_s,
-                application_uri: nil           
-            }
-            # add more job offers below
-        end
-        I18n.locale = original_language
-
-        job_offers.each do |offer|
-            job_offer = LaastrasJobOffer.new({
-                title: offer[:title],
-                description: offer[:description],
-                application_uri: offer[:application_uri],
-                language: offer[:language]
-            })
-            if job_offer.save
-                sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{job_offer.title}'"
-                db_offer = LaastrasJobOffer.find_by_sql(sql_query).first
-                db_offer.update({
-                    application_uri: url_for(
-                        controller: 'laastras_job_offers',
-                        action: 'apply',
-                        id: db_offer.id
-                    )
-                })
-            else
-                logger.debug "--- We failed to save to database the job offer: #{job_offer.title}"
-            end
-        end
-
-    end # seed
 
 end
