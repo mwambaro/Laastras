@@ -83,6 +83,7 @@ class UsersController < ApplicationController
     def sign_in
         email = params[:email]
         password = params[:password] 
+        redirect_uri = params[:redirect_uri]
         dataToSend = nil
         @laastras_user = User.authenticate(email, password)
         unless session.nil?
@@ -94,18 +95,21 @@ class UsersController < ApplicationController
                 session[:user_id] = @laastras_user.id
                 dataToSend = {
                     code: 1,
-                    message: (I18n.t 'logged_in_true')
+                    message: (I18n.t 'logged_in_true'),
+                    redirect_uri: redirect_uri
                 }
             else
                 dataToSend = {
                     code: 0,
-                    message: (I18n.t 'logged_in_false')
+                    message: (I18n.t 'logged_in_false'),
+                    redirect_uri: redirect_uri
                 }
             end
         else
             dataToSend = {
                 code: 0,
-                message: (I18n.t 'logged_in_false')
+                message: (I18n.t 'logged_in_false'),
+                redirect_uri: redirect_uri
             }
         end
 

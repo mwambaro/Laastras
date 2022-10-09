@@ -27,6 +27,51 @@ module ApplicationHelper
 
     end # harvest_analytics
 
+    def self.build_send_data_options(request, fname, type)
+        options = {
+            disposition: 'attachment',
+            filename: fname,
+            type: type
+        }
+        agent = request.user_agent 
+        if /firefox[\\\/](\d+)\.(\d+)/i =~ agent
+            r_maj = 105
+            r_min = 0
+            major = $1.to_i
+            minor = $2.to_i 
+            if (major >= r_maj) 
+                options[:disposition] = 'inline'
+            end
+        elsif /edg[\\\/](\d+)\.(\d+)\.(\d*)\.(\d*)/i =~ agent
+            r_maj = 100
+            r_min = 0
+            r_build = 1185
+            r_rev = 50
+            major = $1.to_i
+            minor = $2.to_i 
+            build = $3.to_i
+            revision = $4.to_i
+            if (major >= r_maj && minor >= r_min && build >= r_build && revision >= r_rev) 
+                options[:disposition] = 'inline'
+            end
+        elsif /chrome[\\\/](\d+)\.(\d+)\.(\d*)\.(\d*)/i =~ agent
+            r_maj = 100
+            r_min = 0
+            r_build = 0
+            r_rev = 0
+            major = $1.to_i
+            minor = $2.to_i 
+            build = $3.to_i
+            revision = $4.to_i
+            if (major >= r_maj && minor >= r_min && build >= r_build && revision >= r_rev) 
+                options[:disposition] = 'inline'
+            end
+        end
+
+        options
+
+    end # build_send_data_options
+
     def self.profile_photo_data(request)
         data = URI.open(
             ApplicationHelper.image_asset_url(
@@ -263,8 +308,20 @@ module ApplicationHelper
         def laastras_actions
             [
                 {
+                    url: url_for(controller: 'laastras_job_offers', action: 'index'),
+                    inner_text: (I18n.t 'career_label'),
+                    dropdown_boolean: 'false',
+                    data: ''
+                },
+                {
                     url: url_for(controller: 'laastras', action: 'hire_us'),
                     inner_text: (I18n.t 'hire_us_label'),
+                    dropdown_boolean: 'false',
+                    data: ''
+                },
+                {
+                    url: url_for(controller: 'laastras', action: 'donate'),
+                    inner_text: (I18n.t 'donate_label'),
                     dropdown_boolean: 'false',
                     data: ''
                 },
@@ -273,12 +330,6 @@ module ApplicationHelper
                     inner_text: (I18n.t 'services_label'),
                     dropdown_boolean: 'true',
                     data: self.laastras_services
-                },
-                {
-                    url: url_for(controller: 'laastras', action: 'donate'),
-                    inner_text: (I18n.t 'donate_label'),
-                    dropdown_boolean: 'false',
-                    data: ''
                 }
             ]
         end

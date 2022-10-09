@@ -1,10 +1,11 @@
 require 'net/http'
 
 class LaastrasDocumentsController < ApplicationController
-    before_action :seed, :init_parameters 
+    before_action :init_parameters, :seed 
 
     def show_laastras_document
         sha256 = params[:doc_id]
+
         failed = false
         unless sha256
             logger.debug 'No valid document id or hash was provided.' +  
@@ -16,9 +17,16 @@ class LaastrasDocumentsController < ApplicationController
             doc = LaastrasDocument.find_by_sql(sql_query).first
             if doc 
                 uri = doc.uri 
-                data = URI.open(uri){ |io| io.read }
+                data = File.open(uri, 'rb'){ |io| io.read }
                 if data
-                    send_data data, :type => doc.mime_type, :disposition => 'inline'
+                    fname = Pathname.new(uri).basename.to_s
+                    options = ApplicationHelper.build_send_data_options(request, fname, doc.mime_type)
+
+                    logger.debug '.... Sending file: ' + options[:filename] + 
+                                 ', with mime type: ' + options[:type] +
+                                 ', in data disposition: ' + options[:disposition]
+
+                    send_data data, options
                 else 
                     logger.debug 'Failed to read data from file: ' + 
                                  Pathname.new(uri).basename.to_s

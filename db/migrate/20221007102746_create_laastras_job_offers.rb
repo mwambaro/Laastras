@@ -3,6 +3,7 @@ class CreateLaastrasJobOffers < ActiveRecord::Migration[6.1]
     create_table :laastras_job_offers do |t|
       t.string :title
       t.text :description
+      t.string :language
       t.string :application_uri
 
       t.timestamps

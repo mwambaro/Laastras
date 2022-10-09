@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'laastras_job_seekers/fill_in_form'
+  get 'laastras_job_seekers/store_form'
+  get 'laastras_job_offers/index'
+  get 'laastras_job_offers/show'
+  get 'laastras_job_offers/apply'
   get 'laastras_documents/show_laastras_document'
   get 'maintenance/fail_safe'
   get 'laastras_page_views/analytics'

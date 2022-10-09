@@ -7,6 +7,7 @@ class LaastrasUserSignIn extends React.Component
     constructor(props)
     {
         super(props);
+        this.redirect_uri = null;
 
     } // constructor
 
@@ -22,7 +23,7 @@ class LaastrasUserSignIn extends React.Component
 
         return(
             <div id="laastras_user_sign_in_main_div" className="container-fluid shadow p-3 mb-5 bg-body rounded" style={form_div_style}>
-                <h3 className="text-center"> {this.props.laastras_user_sign_in_form_label} </h3>
+                <h3 className="text-center" id="form-label"> {this.props.laastras_user_sign_in_form_label} </h3>
                 <form role="form"
                       name="laastras_user_sign_in_form"
                       id="laastras-user-sign-in-form"
@@ -43,7 +44,8 @@ class LaastrasUserSignIn extends React.Component
                     
                     <div className="text-center" style={form_elt_div_style}>             
                         <button type="submit" 
-                            className="btn btn-default">
+                            className="btn btn-default"
+                            style={{backgroundColor: 'white'}}>
                                 {this.props.submit_label}
                         </button>
                     </div>
@@ -82,6 +84,23 @@ class LaastrasUserSignIn extends React.Component
 
     } // fixLaastrasUserSignInBoxWidth
 
+    get_redirect_uri()
+    {
+        let uri = null;
+        if(window.location.search)
+        {
+            let match = /\?[redirect_uri]+=([^&]+)/.exec(window.location.search);
+            if(match)
+            {
+                uri = decodeURIComponent(match[1]);
+                console.log('Redirect URI: ' + uri);
+            }
+        }
+
+        return uri;
+
+    } // get_redirect_uri
+
     hijackFormSubmitEvent()
     {
         try 
@@ -101,17 +120,20 @@ class LaastrasUserSignIn extends React.Component
                     //console.log(`E-mail:${document.laastras_user_sign_in_form.email.value}`);
                     var form_data = {
                         email: document.laastras_user_sign_in_form.email.value,
-                        password: document.laastras_user_sign_in_form.password.value
+                        password: document.laastras_user_sign_in_form.password.value,
+                        redirect_uri: this.get_redirect_uri()
                     };
                     var dataToSend = form_data;
                     var callback = (dataReceived, status, xq) => {
                         // use the data received
                         let code = parseInt(dataReceived.code);
                         let message = dataReceived.message;
+                        this.redirect_uri = dataReceived.redirect_uri;
                         let html = '';
                         if(code === 1) // success
                         {
                             $this.hide();
+                            $('#form-label').remove();
                             html = `
                                 <div class="row" style="background-color: white; padding: 10px" id="verbose-message-div">
                                     <div class="col-sm-1 text-center">
@@ -134,12 +156,20 @@ class LaastrasUserSignIn extends React.Component
                                         </svg>
                                     </div>
                                     <div class="col-sm-11"> <p id="verbose-p"> ${message} </p> </div>
-                                </div>`;
+                                </div>
+                                `;
                         }
 
-                        $('#verbose-message-div').remove();
-                        //console.log('Feedback message removed');
-                        $('#laastras_user_sign_in_main_div').prepend(html);
+                        if(this.redirect_uri)
+                        {
+                            window.location = this.redirect_uri;
+                        }
+                        else 
+                        {
+                            $('#verbose-message-div').remove();
+                            //console.log('Feedback message removed');
+                            $('#laastras_user_sign_in_main_div').prepend(html);
+                        }
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -186,6 +216,7 @@ class LaastrasUserSignIn extends React.Component
         }
 
     } // hijackFormSubmitEvent
+
 }
 
 LaastrasUserSignIn.propTypes = {

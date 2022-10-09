@@ -1,0 +1,2 @@
+module LaastrasJobSeekersHelper
+end
