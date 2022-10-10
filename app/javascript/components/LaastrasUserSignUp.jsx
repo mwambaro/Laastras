@@ -21,66 +21,84 @@ class LaastrasUserSignUp extends React.Component
         }
 
         return(
-            <div id="laastras_user_sign_up_main_div" className="container-fluid shadow p-3 mb-5 bg-body rounded" style={form_div_style}>
-                <h3 className="text-center"> {this.props.laastras_user_sign_up_form_label} </h3>
-                <form role="form"
-                      name="laastras_user_sign_up_form"
-                      id="laastras-user-sign-up-form"
-                      action={this.props.laastras_user_sign_up_action_url}
-                      style={{backgroundColor: '#464c94'}}>
+            <div id="laastras_user_sign_up_main_div" className="container-fluid" style={form_div_style}>
+                <div className="row justify-content-center shadow p-3 mb-5 bg-body rounded">
+                    <div className="col-md-8">
+                        <div id="feedback" className="text-center"></div>
+                        <h3 className="text-center"> {this.props.laastras_user_sign_up_form_label} </h3>
+                        <form role="form"
+                              name="laastras_user_sign_up_form"
+                              id="laastras-user-sign-up-form"
+                              action={this.props.laastras_user_sign_up_action_url}
+                              style={{backgroundColor: '#464c94'}}>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="email"
-                               className="form-control" id="email_sign_up"
-                               placeholder={this.props.email}/>
-                    </div>
+                            <div className="form-group" style={form_elt_div_style}>
+                                <input type="text" name="email"
+                                       className="form-control" id="email_sign_up"
+                                       placeholder={this.props.email}/>
+                            </div>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="first_name"
-                               className="form-control" id="first_name_sign_up"
-                               placeholder={this.props.first_name}/>
-                    </div>
+                            <div className="form-group" style={form_elt_div_style}>
+                                <input type="text" name="first_name"
+                                       className="form-control" id="first_name_sign_up"
+                                       placeholder={this.props.first_name}/>
+                            </div>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="last_name"
-                               className="form-control" id="last_name_sign_up"
-                               placeholder={this.props.last_name}/>
-                    </div>
+                            <div className="form-group" style={form_elt_div_style}>
+                                <input type="text" name="last_name"
+                                       className="form-control" id="last_name_sign_up"
+                                       placeholder={this.props.last_name}/>
+                            </div>
 
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="text" name="user_name"
-                               className="form-control" id="user_name_sign_up"
-                               placeholder={this.props.user_name}/>
-                    </div>
+                            <div className="form-group" style={form_elt_div_style}>
+                                <input type="text" name="user_name"
+                                       className="form-control" id="user_name_sign_up"
+                                       placeholder={this.props.user_name}/>
+                            </div>
 
-                    <div style={form_elt_div_style}>
-                        <label> {this.props.are_you_laastras_employee_label} </label>
-                        <select className="form-select" aria-label="Laastras employee select" id="laastras-sign-up-employee">
-                            <option value={this.props.no_label}>{this.props.no_label}</option>
-                            <option value={this.props.yes_label}>{this.props.yes_label}</option>
-                        </select>
-                    </div>
+                            <div style={form_elt_div_style}>
+                                <label> {this.props.are_you_laastras_employee_label} </label>
+                                <select className="form-select" aria-label="Laastras employee select" id="laastras-sign-up-employee">
+                                    <option value={this.props.no_label}>{this.props.no_label}</option>
+                                    <option value={this.props.yes_label}>{this.props.yes_label}</option>
+                                </select>
+                            </div>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="password" name="password"
-                               className="form-control" id="password_sign_up"
-                               placeholder={this.props.password}/>
-                    </div>
+                            <div className="form-group" style={form_elt_div_style}>
+                                <input type="password" name="password"
+                                       className="form-control" id="password_sign_up"
+                                       placeholder={this.props.password}/>
+                            </div>
                     
-                    <div className="form-group" style={form_elt_div_style}>
-                        <input type="password" name="password_confirmation" 
-                               className="form-control" id="password_confirmation_sign_up"
-                               placeholder={this.props.password_confirmation}/>
-                    </div>
+                            <div className="form-group" style={form_elt_div_style}>
+                                <input type="password" name="password_confirmation" 
+                                       className="form-control" id="password_confirmation_sign_up"
+                                       placeholder={this.props.password_confirmation}/>
+                            </div>
                     
-                    <div className="text-center" style={form_elt_div_style}>             
-                        <button type="submit" 
-                            className="btn btn-default">
-                                {this.props.submit_label}
-                        </button>
+                            <div className="text-center" style={form_elt_div_style}>             
+                                <button type="submit" 
+                                        className="btn btn-default"
+                                        style={{backgroundColor: 'white'}}>
+                                    {this.props.submit_label}
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    
-                </form>
+                </div>
+                <div id="laastras-wait-uploads-spinner" 
+                    style={{
+                        display: 'none',
+                        zIndex: '99',
+                        border: 'none',
+                        outline: 'none',
+                        backgroundColor: 'transparent',
+                        position: 'fixed'
+                }}>
+                    <div className="spinner-border text-success" role="status" style={{width: '100px', height: '100px'}}>
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
             </div>
         );
 
@@ -88,11 +106,9 @@ class LaastrasUserSignUp extends React.Component
 
     componentDidMount()
     {
-        this.fixLaastrasUserSignUpBoxWidth();
         $('#laastras_user_sign_up_main_div').hvcenter();
         
         window.addEventListener('resize', (event)=>{
-            this.fixLaastrasUserSignUpBoxWidth();
             $('#laastras_user_sign_up_main_div').hvcenter();
         });
 
@@ -100,20 +116,6 @@ class LaastrasUserSignUp extends React.Component
         this.hijackFormSubmitEvent();
 
     } // componentDidMount
-
-    fixLaastrasUserSignUpBoxWidth()
-    {
-        if(jQuery(window).width() > 800)
-        {
-            $('#laastras_user_sign_up_main_div').width(800);
-        }
-        else 
-        {
-            let width = jQuery(window).width() - 60;
-            $('#laastras_user_sign_up_main_div').width(width);
-        }
-
-    } // fixLaastrasUserSignUpBoxWidth
 
     manageEditMode()
     {
@@ -176,32 +178,32 @@ class LaastrasUserSignUp extends React.Component
                             $this.hide();
                             html = `
                                 <div class="row" style="background-color: white; padding: 10px" id="verbose-message-div">
-                                    <div class="col-sm-1 text-center">
+                                    <div class="col-sm-1 justify-content-end">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
                                         </svg>
                                     </div>
-                                    <div class="col-sm-11"> <p id="verbose-p"> ${message} </p> </div>
+                                    <div class="col-sm-11 justify-content-start"> <p id="verbose-p"> ${message} </p> </div>
                                 </div>`;
                         }
                         else // failure
                         {
                             html = `
                                 <div class="row" id="verbose-message-div">
-                                    <div class="col-sm-1 text-center">
+                                    <div class="col-sm-1 justify-content-end">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                         </svg>
                                     </div>
-                                    <div class="col-sm-11"> <p id="verbose-p"> ${message} </p> </div>
+                                    <div class="col-sm-11 justify-content-start"> <p id="verbose-p"> ${message} </p> </div>
                                 </div>`;
                         }
 
                         $('#verbose-message-div').remove();
                         //console.log('Feedback message removed');
-                        $('#laastras_user_sign_up_main_div').prepend(html);
+                        $('#feedback').append(html);
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -212,16 +214,16 @@ class LaastrasUserSignUp extends React.Component
                         let message = `Failed to post sign up form: ${error}`;
                         let html = `
                             <div class="row" id="verbose-message-div">
-                                <div class="col-sm-1 text-center">
+                                <div class="col-sm-1 justify-content-end">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </div>
-                                <div class="col-sm-11"> <p id="verbose-p"> ${message} </p> </div>
+                                <div class="col-sm-11 justify-content-start"> <p id="verbose-p"> ${message} </p> </div>
                             </div>`;
                         $('#verbose-message-div').remove();
-                        $('#laastras_user_sign_up_main_div').prepend(html);
+                        $('#feedback').append(html);
                     });
                 }
                 catch(error)
@@ -238,7 +240,7 @@ class LaastrasUserSignUp extends React.Component
                             <div class="col-sm-11"> <p id="verbose-p"> ${message} </p> </div>
                         </div>`;
                     $('#verbose-message-div').remove();
-                    $('#laastras_user_sign_up_main_div').prepend(html);
+                    $('#feedback').append(html);
                 }
             });
         }
@@ -248,6 +250,50 @@ class LaastrasUserSignUp extends React.Component
         }
 
     } // hijackFormSubmitEvent
+
+    show_wait_spinner()
+    {
+        let spinner = document.getElementById('laastras-wait-uploads-spinner');
+        if(spinner)
+        {
+            spinner.style.display = "block";
+            $('#laastras-wait-uploads-spinner').css({  
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)'
+            });
+            $('body').css('opacity', '0.5');
+            this.center_spinner_in_the_viewport();
+        }
+
+    } // show_wait_spinner
+
+    hide_wait_spinner()
+    {
+        let spinner = document.getElementById('laastras-wait-uploads-spinner');
+        if(spinner)
+        {
+            spinner.style.position = 'fixed';
+            spinner.style.display = "none";
+            $('body').css('opacity', '1.0');
+        }
+
+    } // hide_wait_spinner
+
+    center_spinner_in_the_viewport()
+    {
+        var viewportWidth = jQuery(window).width(),
+        viewportHeight = jQuery(window).height(),
+        $foo = jQuery('#laastras-wait-uploads-spinner'),
+        elWidth = $foo.width(),
+        elHeight = $foo.height(),
+        elOffset = $foo.offset();
+        jQuery(window)
+            .scrollTop(elOffset.top + (elHeight/2) - (viewportHeight/2))
+            .scrollLeft(elOffset.left + (elWidth/2) - (viewportWidth/2));
+
+    } // center_spinner_in_the_viewport
 }
 
 LaastrasUserSignUp.propTypes = {

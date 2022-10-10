@@ -34,7 +34,8 @@ class LaastrasJobOffersController < ApplicationController
             if job_offer 
                 next_url = url_for(
                     controller: 'laastras_job_seekers', 
-                    action: 'fill_in_form'
+                    action: 'fill_in_form',
+                    job_offer_id: job_offer.id
                 )
             else
                 next_url = url_for(

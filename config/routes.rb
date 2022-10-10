@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'laastras_job_seekers/fill_in_form'
-  get 'laastras_job_seekers/store_form'
   get 'laastras_job_offers/index'
   get 'laastras_job_offers/show'
   get 'laastras_job_offers/apply'
@@ -49,5 +48,6 @@ Rails.application.routes.draw do
   post 'users/sign_in'
   post 'users/update'
   post 'users/profile_image_update'
+  post 'laastras_job_seekers/store_form'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

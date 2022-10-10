@@ -21,6 +21,7 @@
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+!/storage/laastras_documents
 
 /public/assets
 .byebug_history

@@ -224,7 +224,19 @@ module ApplicationHelper
     end
 
     def self.document_asset_url(file)
+        path = Pathname.new(Rails.root.join('storage', 'laastras_documents'))
+        unless path.exist?
+            path.mkpath
+        end
         Rails.root.join('storage', 'laastras_documents', file)
+    end
+
+    def self.job_seeker_asset_url(fname)
+        path = Pathname.new(Rails.root.join('storage', 'laastras_job_seekers_documents'))
+        unless path.exist?
+            path.mkpath
+        end
+        Rails.root.join('storage', 'laastras_job_seekers_documents', fname)
     end
     
     # <summary>

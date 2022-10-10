@@ -622,10 +622,13 @@ ActiveRecord::Schema.define(version: 2022_10_07_103342) do
 
   create_table "laastras_job_seekers", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "job_offer_id"
     t.string "location"
     t.string "phone_number"
     t.string "cv_uri"
+    t.string "cv_mime_type"
     t.string "cover_letter_uri"
+    t.string "cover_letter_mime_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
