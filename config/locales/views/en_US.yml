@@ -152,4 +152,11 @@ en_US:
   phone_number_label: "phone number"
   job_seeker_form_success: "Job seeker form successfully saved to database"
   job_seeker_form_failure: "We failed to save the job seeker form to database"
-
+  job_offer_title_label: "Job offer title"
+  full_name_label: "Full name"
+  phone_number_label: "Phone number"
+  cv_label: "CV or Resume"
+  cover_letter_label: "Cover letter"
+  applicants_label: "Applicants"
+  no_user_logged_in: "It seems no user is logged in"
+  already_applied_for_job: "You have already applied for the job"

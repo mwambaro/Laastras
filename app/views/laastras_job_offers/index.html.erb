@@ -1,10 +1,9 @@
 
-<% apply_label = I18n.t 'apply_label' %>
 <% @all_job_offers.each do |offer| %>
     <%= react_component('LaastrasJobOfferShow', {
-        job_offer_title: offer.title,
-        apply_label: apply_label,
-        job_offer_description: offer.description,
-        application_url: offer.application_uri
+        job_offer_title: offer[:job_offer_title],
+        apply_label: offer[:apply_label],
+        job_offer_description: offer[:job_offer_description],
+        application_url: offer[:application_url]
     })%>
 <% end %>

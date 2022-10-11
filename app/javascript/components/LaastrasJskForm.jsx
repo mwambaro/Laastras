@@ -23,8 +23,8 @@ class LaastrasJskForm extends React.Component
 
         return(
             <div id="laastras_jsk_form_main_div" className="container-fluid" style={form_div_style}>
-                <div className="row justify-content-center shadow p-3 mb-5 bg-body rounded">
-                    <div className="col-md-8">
+                <div className="row justify-content-center">
+                    <div className="col-md-8 shadow p-3 mb-5 bg-body rounded">
                         <div id="feedback" className="text-center"></div>
                         <h3 className="text-center" id="form-label"> {this.props.laastras_jsk_form_label} </h3>
                         <form role="form"
@@ -145,7 +145,7 @@ class LaastrasJskForm extends React.Component
         let uri = null;
         if(window.location.search)
         {
-            let match = /\?[redirect_uri]+=([^&]+)/.exec(window.location.search);
+            let match = /\?redirect_uri=([^&]+)/.exec(window.location.search);
             if(match)
             {
                 uri = decodeURIComponent(match[1]);
@@ -156,6 +156,22 @@ class LaastrasJskForm extends React.Component
         return uri;
 
     } // get_redirect_uri
+
+    get_job_offer_id()
+    {
+        let id = null;
+        if(window.location.search)
+        {
+            let match = /\?job_offer_id=([^&]+)/.exec(window.location.search);
+            if(match)
+            {
+                id = parseInt(match[1]);
+            }
+        }
+
+        return id;
+
+    } // get_job_offer_id
 
     hijackFormSubmitEvent()
     {
@@ -198,15 +214,15 @@ class LaastrasJskForm extends React.Component
                         document.getElementById('jsk_cover_letter_file').files[0]
                     );
                     form_data.append(
-                        'redirect_uri', 
-                        this.get_redirect_uri()
+                        'job_offer_id', 
+                        this.get_job_offer_id()
                     );
                     
                     var dataToSend = form_data;
                     var callback = (dataReceived) => {
                         // use the data received
                         //console.log(`RECEIVED: ${JSON.stringify(dataReceived)}`);
-                        let data = dataReceived;
+                        let data = JSON.parse(dataReceived);
                         let code = data.code;
                         let message = data.message;
                         this.redirect_uri = data.redirect_uri;

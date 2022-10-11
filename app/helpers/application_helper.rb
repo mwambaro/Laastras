@@ -312,77 +312,104 @@ module ApplicationHelper
 
     # Site header data
     class SiteHeaderData < ApplicationController
-        def initialize(rqst)
+        def initialize(rqst, logg=nil)
             @request = rqst
             self.request = @request
+            self.logger = logg
         end
 
         def featured_job_offers
-
-            self.seed_job_offers
-
             featured_job_offers = []
-            # 1.
-            language = I18n.locale.to_s
-            title = (I18n.t 'project_manager_assistant')
-            sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND title = '#{title}'"
-            job_offer = LaastrasJobOffer.find_by_sql(sql_query).first
-            featured_job_offers << {
-                show_url: url_for(controller: 'laastras_job_offers', action: 'show', id: job_offer.id),
-                title: job_offer.title
-            }
-            # 2.
+            begin
+                self.seed_job_offers
+
+                # 1.
+                language = I18n.locale.to_s
+                title = (I18n.t 'project_manager_assistant')
+                sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND title = '#{title}'"
+                job_offer = LaastrasJobOffer.find_by_sql(sql_query).first
+                if job_offer
+                    featured_job_offers << {
+                        show_url: url_for(controller: 'laastras_job_offers', action: 'show', id: job_offer.id),
+                        title: job_offer.title
+                    }
+                end
+                # 2.
+            rescue Exception => e 
+                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                logger.debug message unless logger.nil?
+            end
     
             featured_job_offers
     
         end # featured_job_offers
 
         def seed_job_offers
-            # Have we seeded the database ?
-            # We assume all went well first time we seeded.
-            # Please, restart seeding from scratch if you add more job offers
-            title = (I18n.t 'project_manager_assistant')
-            sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{title}'"
-            count = LaastrasJobOffer.find_by_sql(sql_query).count
-            if count > 0 
-                logger.debug '---> No need to seed laastras_job_offers database table. Looks already seeded'
-                return nil
-            end
-    
-            job_offers = []
-            original_language = I18n.locale
-            I18n.available_locales.each do |lang|
-                I18n.locale = lang.to_sym
-                job_offers << {  
-                    title: (I18n.t 'project_manager_assistant'),
-                    description: (I18n.t 'project_manager_assistant_offer'),
-                    language: lang.to_s,
-                    application_uri: nil           
-                }
-                # add more job offers below
-            end
-            I18n.locale = original_language
-    
-            job_offers.each do |offer|
-                job_offer = LaastrasJobOffer.new({
-                    title: offer[:title],
-                    description: offer[:description],
-                    application_uri: offer[:application_uri],
-                    language: offer[:language]
-                })
-                if job_offer.save
-                    sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{job_offer.title}'"
-                    db_offer = LaastrasJobOffer.find_by_sql(sql_query).first
-                    db_offer.update({
-                        application_uri: url_for(
-                            controller: 'laastras_job_offers',
-                            action: 'apply',
-                            id: db_offer.id
-                        )
-                    })
-                else
-                    logger.debug "--- We failed to save to database the job offer: #{job_offer.title}"
+            begin
+                # Have we seeded the database ?
+                # We assume all went well first time we seeded.
+                # Please, restart seeding from scratch if you add more job offers
+                title = (I18n.t 'project_manager_assistant')
+                sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{title}'"
+                count = LaastrasJobOffer.find_by_sql(sql_query).count
+                if count > 0 
+                    logger.debug '---> No need to seed laastras_job_offers database table. Looks already seeded'
+                    return nil
                 end
+    
+                job_offers = []
+                original_language = I18n.locale
+                I18n.available_locales.each do |lang|
+                    I18n.locale = lang.to_sym
+                    job_offers << {  
+                        title: (I18n.t 'project_manager_assistant'),
+                        description: (I18n.t 'project_manager_assistant_offer'),
+                        language: lang.to_s,
+                        application_uri: nil           
+                    }
+                    # add more job offers below
+                end
+                I18n.locale = original_language
+    
+                job_offers.each do |offer|
+                    job_offer = LaastrasJobOffer.new({
+                        title: offer[:title],
+                        description: offer[:description],
+                        application_uri: offer[:application_uri],
+                        language: offer[:language]
+                    })
+                    if job_offer.save
+                        sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{job_offer.title}'"
+                        db_offer = LaastrasJobOffer.find_by_sql(sql_query).first
+                        db_offer.update({
+                            application_uri: url_for(
+                                controller: 'laastras_job_offers',
+                                action: 'apply',
+                                id: db_offer.id
+                            )
+                        })
+                    else
+                        if job_offer.errors.count > 0 
+                            message = ""
+                            job_offer.errors.each do |error| 
+                                message += "\r\n#{error.full_message}"
+                            end
+                            msg = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + message
+                            logger.debug msg
+                        end
+                        message = "We failed to save to database the job offer: #{job_offer.title}"
+                        msg = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + message
+                        logger.debug msg
+                    end
+                end
+
+            rescue Exception => e 
+                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                logger.debug message unless logger.nil?
             end
     
         end # seed_job_offers

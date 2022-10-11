@@ -1,7 +1,7 @@
 
 <%= react_component('LaastrasJobOfferShow', {
     job_offer_title: @job_offer.title,
-    apply_label: (I18n.t 'apply_label'),
+    apply_label: @apply_label,
     job_offer_description: @job_offer.description,
-    application_url: @job_offer.application_uri
+    application_url: @application_url
 })%>
