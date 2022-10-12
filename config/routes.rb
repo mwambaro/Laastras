@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'services/e_grocery'
+  get 'services/e_card'
+  get 'services/e_logistics'
+  get 'services/e_alliances'
+  get 'services/e_myth'
+  get 'services/e_phylosophy'
   get 'laastras_job_seekers/fill_in_form'
   get 'laastras_job_seekers/show_jsk_doc'
   get 'laastras_job_seekers/show_jsk'

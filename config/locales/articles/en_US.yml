@@ -321,3 +321,283 @@ en_US:
         </li>
       </ol>
   "
+  detailed_cv_data: "
+        <div style=\u0022font-weight: bold; margin-top: 20px;\u0022>
+            Obed-Edom Nkezabahizi
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <p style=\u0022background-color: #303037; border-radius: 5px; padding: 3px; margin: 3px; color: #ededed\u0022>
+            10 years of in-depth hands-on experience in software engineering 
+            (software development, system and network administration), business ideation,
+            leadership policy making, translation of myths into innovation tech
+            </p>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div>
+                <strong>Phone:</strong> 
+                +257 76 17 71 86
+            </div>
+            <div>
+                <strong>E-mail:</strong> 
+                <a href=\u0022mailto:onkezabahizi@gmail.com\u0022
+                   style=\u0022text-decoration: none\u0022>onkezabahizi@gmail.com</a>
+            </div>
+            <div>
+                <strong>LinkedIn:</strong> 
+                <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022
+                   style=\u0022text-decoration: none\u0022>
+                    Obed-Edom on LinkedIn
+                </a>
+            </div>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            WORK EXPERIENCE
+            </div>
+            <hr style=\u0022height: 3px; margin: 1px; font-weight: bold; color: grey\u0022/>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>August 2019 - Present (Part-time)</div>
+                            <div><strong>Lead Software Engineer</strong>  |  Laastras, Bujumbura, Burundi </div>
+                            <div>
+                            <div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>
+                            Laastras project. I cycle from problem analysis 
+                            to software solution design and development. Using DevOps, tasks related to 
+                            the software solution are assigned to various developers on the team that I lead. 
+                            <i><u>Our code base applies</i></u>: .NET Framework, ASP.NET, Ruby, Ruby on Rails, Nodejs, React, 
+                            Vuejs, Typescript, Webflow, AWS, GCP, Firebase, QA with RSpec & Capybarra & Selenium QA, 
+                            and other technologies.
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>June 2022 - Present (Part-time)</div>
+                            <div><strong>Software Engineering Content Writer</strong>  |  DRAFT.DEV, Chicago, IL, US</div>
+                            <div><div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>Technical content writing in all aspects of software engineering.</div></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>February 2022 - Present (Part-time)</div>
+                            <div><strong>Fullstack Developer</strong>  |  PPHT, Bujumbura, Burundi</div>
+                            <div>
+                                <div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>
+                                <a style=\u0022text-decoration: none;\u0022 href=\u0022https://obemain.herokuapp.com\u0022>OBEM website project (hosted by Heroku)</a>. 
+                                Migrated OBEM project <a style=\u0022text-decoration: none;\u0022 href=\u0022https://obem.bi\u0022>from Ruby on Rails (Heroku) to Laravel 
+                                (hosted by Afriregister)</a>. Contracts to build software solutions, 
+                                from design to development, in all fields such as web design, graphic design, 
+                                mobile development, fintech, etc. <i><u>Tech stacks</u></i>: Ruby on Rails, Laravel PHP, 
+                                Nodejs, React, Vuejs, Typescript, Webflow, AWS, GCP, Firebase, Xamarin, 
+                                and .NET. QA automation using RSpec, Capybarra, Selenium, and, 
+                                on the flip side, NUnit.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>May 2018 - July 2019 (1 year, 2 months)</div>
+                            <div><strong>Software Developer</strong>  |  WTS LLC, Saint Paul, MN, USA</div>
+                            <div>
+                                <div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>
+                                <a style=\u0022text-decoration: none;\u0022 href=\u0022https://lema.io/\u0022>LEMA solar micro-grid project</a> involved me in full life cycle 
+                                development of LEMA utility software. I designed and implemented code for 
+                                electronic card readers, for the SMA solar inverter, for 
+                                the mesh-network of Zigbee radios, for the analytics of data from LEMA nodes, 
+                                and for the API for mobile money payment. The full stack <i><u>technologies 
+                                used were</u></i>: C/C++, Git, Xamarin, Android development, .NET Framework, C#, 
+                                Powershell and Bash scripting, DevOps & Jira, GCP, and both Linux and 
+                                Windows system administration.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>July 2012 - May 2018 (6 years)</div>
+                            <div><strong>System and Network Administrator</strong>  |  UBMA, Annaba, Algeria</div>
+                            <div>
+                                <div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>
+                                A large infrastructure of student hostels that relied on networked computers 
+                                for network and upgrades. I administered and maintained the network and made 
+                                sure all staff’s systems work well and are up to date. I performed security 
+                                checks and network monitoring using penetration tools like Backtrack. 
+                                <i><u>Technologies involved were</u></i>: Powershell and Bash scripting, software solution 
+                                development using C/C++, C#, Java, Ruby, Perl. I also worked on the design 
+                                and development of web sites using PHP and Ruby on Rails. QA automation 
+                                using RSpec, Minitest, and Guard.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            EDUCATION
+            </div>
+            <hr style=\u0022height: 3px; margin: 1px; font-weight: bold; color: grey\u0022/>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>October 2009 - July 2012 (3 years) | UBMA, Annaba, Algeria</div>
+                            <div><strong>Bachelor in Electronics - Communication and Digital Processing</strong></div>
+                            <div>
+                            <div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>
+                            Digital and analogical electronics, advanced communication and networking, 
+                            electrotechnique and software engineering.
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style=\u0022color: grey\u0022>September 2005 - August 2008 (3 years) | L.T.Saint Luc, Buja, Burundi</div>
+                            <div><strong>Diploma in Electromechanics</strong></div>
+                            <div>
+                            <div style=\u0022margin-top: 5px; margin-bottom: 15px\u0022>
+                            Installation and maintenance of electric machines, power-plant maintenance 
+                            and monitoring, and building electricity installments.
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            LICENSES & CERTIFICATIONS
+            </div>
+            <hr style=\u0022height: 3px; margin: 1px; font-weight: bold; color: grey\u0022/>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style=\u0022margin-top: 10px\u0022>
+                            <div><strong>Silver Award The Matrix 2021 | <a style=\u0022text-decoration: none;\u0022 href=\u0022https://www.codility.com\u0022>Codility</a></strong></div>
+                            <div style=\u0022color: grey\u0022>Issued Jan 2021 － Expires Jan 2023</div>
+                            <div>Credential ID: <a style=\u0022text-decoration: none;\u0022 href=\u0022https://app.codility.com/cert/view/cert4GMVFZ-35KM5FDF9N7NX9RH/\u0022>cert4GMVFZ-35KM5FDF9N7NX9RH</a></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style=\u0022margin-top: 10px\u0022>
+                            <div><strong>C# Certificate | <a style=\u0022text-decoration:none\u0022 href=\u0022https://www.hackerrank.com\u0022>HackerRank</a></strong></div>
+                            <div style=\u0022color: grey\u0022>Issued Jan 2021 － Indefinite</div>
+                            <div>Credential ID: <a style=\u0022text-decoration: none\u0022 href=\u0022https://www.hackerrank.com/certificates/504328e121c6/\u0022>504328E121C6</a></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style=\u0022margin-top: 10px\u0022>
+                            <div style=\u0022margin-top: 10px\u0022>
+                            <div><strong>Basic Problem Solving Certificate | <a style=\u0022text-decoration: none\u0022 href=\u0022https://www.hackerrank.com\u0022>HackerRank</a></strong></div>
+                            <div style=\u0022color: grey\u0022>Issued Jan 2021 － Indefinite</div>
+                            <div>Credential ID: <a style=\u0022text-decoration: none\u0022 href=\u0022https://www.hackerrank.com/certificates/03b50ecdd810\u0022>03B50ECDD810</a></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            SKILLS
+            </div>
+        </div>
+        <div>
+            <ul style=\u0022padding: 10px; margin-left: 10px\u0022>
+                <li>Software design and development</li>
+                <li>Mobile software development</li>
+                <li>Algorithms and data structures</li>
+                <li>Information and Communication Technology (ICT)</li>
+                <li>System and network administration</li>
+                <li>Business Ideation</li>
+                <li>Strategic planning</li>
+                <li>Project management</li>
+                <li>Tech evangelization</li>
+                <li>Software engineering content writing</li>
+                <li>ICT teaching and tutoring</li>
+            </ul>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            LANGUAGE SKILLS
+            </div>
+        </div>
+        <div>
+            <ul style=\u0022padding: 10px; margin-left: 10px\u0022>
+                <li>
+                    <div style=\u0022font-weight: bold\u0022><u>English</u></div>
+                    <div>Spoken: fluent</div>
+                    <div>Written: fluent</div>
+                </li>
+                <li>
+                    <div style=\u0022font-weight: bold\u0022><u>French</u></div>
+                    <div>Spoken: fluent</div>
+                    <div>Written: fluent</div>
+                </li>
+                <li>
+                    <div style=\u0022font-weight: bold\u0022><u>Swahili</u></div>
+                    <div>Spoken: intermediate</div>
+                    <div>Written: intermediate</div>
+                </li>
+            </ul>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            HOBBIES
+            </div>
+        </div>
+        <div>
+            <span style=\u0022margin-left: 10px\u0022>
+            Biking - Hiking - Basketball - Jogging
+            </span>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            ASSOCIATIONS & CLUBS
+            </div>
+        </div>
+        <div>
+            <span style=\u0022margin-left: 10px\u0022>
+            <strong>ARDE</strong> - Association for Reconciliation and Development through English
+            </span>
+        </div>
+        <div style=\u0022margin-top: 20px\u0022>
+            <div style=\u0022font-weight: bold; color: #10a7ec\u0022>
+            REFERENCES
+            </div>
+        </div>
+        <div>
+            <div><strong>Andrew Gikling</strong> (August 2019) </div>
+            <div style=\u0022color: grey\u0022>Software Engineer, WTS LLC, Saint Paul, MN, US</div>
+            <div><strong>E-mail: </strong><a href=\u0022mailto:asgikling@gmail.com\u0022 style=\u0022text-decoration: none\u0022>asgikling@gmail.com</a></div>
+            <div>
+                <div><u>Endorsement</u>:</div>
+                <div>
+                Obed is a strong C++ programmer. This means he will be able to adapt his skills to 
+                many other languages as need, quickly. At WTS LLC, while working on the LEMA project, 
+                Obed was asked to learn C# and the Prism framework - two extremely sophisticated 
+                software technologies. He was able to on-board into a new language and a new framework 
+                in just a few weeks and he was very quickly effective for us! Obed is passionate 
+                about software, takes direction well and has a unique ability to solve hard software 
+                problems quickly.
+            </div>
+            </div>
+        </div> 
+  "

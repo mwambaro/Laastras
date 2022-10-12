@@ -7,7 +7,7 @@
 <% cover_letter_label = I18n.t 'cover_letter_label' %>
 
 <% @laastras_jskers.each do |laastras_jsker| %>
-    <% laastras_user = User.find(jsker.user_id) %>
+    <% laastras_user = User.find(laastras_jsker.user_id) %>
     <%= react_component('LaastrasJobSeekerShow', {
         profile_photo_url: url_for(
             controller: 'users', 

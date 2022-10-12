@@ -124,8 +124,11 @@ class UsersController < ApplicationController
         begin
             # logger.debug "---> PARAMS: #{params.inspect}"
             unless @laastras_user.nil?
-                unless @laastras_user.photo.nil?
-                    send_data @laastras_user.photo, :type => 'image/jpeg', :disposition => 'inline'
+                unless @laastras_user.photo_uri.nil?
+                    uri = @laastras_user.photo_uri
+                    mime_type = @laastras_user.photo_mime_type
+                    data = File.open(uri, 'rb'){ |io| io.read }
+                    send_data data, :type => mime_type, :disposition => 'inline'
                 else 
                     send_data ApplicationHelper.profile_photo_data(request), :type => 'image/jpeg', :disposition => 'inline'
                 end
@@ -319,7 +322,7 @@ class UsersController < ApplicationController
 
     # POST /laastras_users/update_profile_image?id=1
     def profile_image_update
-        logger.debug "---> PARAMS: #{params.inspect}"
+        #logger.debug "---> PARAMS: #{params.inspect}"
         dataToSend = nil
         begin
             if params[:file].nil?
@@ -328,9 +331,18 @@ class UsersController < ApplicationController
                     message: (I18n.t 'profile_photo_absent')
                 }
             else
-                data = params[:file][:uploaded_profile_photo_file].read
+                # Photo
+                photo_data = store_profile_photo(params)
+                raise 'Something went wrong saving profile photo' if photo_data.nil?
+
                 unless @laastras_user.nil?
-                    if @laastras_user.update({photo: data})
+                    if File.exists? photo_data[:photo_full_path]
+                        File.delete(@laastras_user.photo_uri) 
+                    end
+                    if @laastras_user.update({
+                        photo_uri: photo_data[:photo_full_path],
+                        photo_mime_type: photo_data[:photo_mime_type]
+                    })
                         dataToSend = {
                             code: 1,
                             message: (I18n.t 'profile_photo_create_success')
@@ -419,6 +431,35 @@ class UsersController < ApplicationController
             end   
 
         end # set_laastras_user
+
+        def store_profile_photo(req_params)
+            photo_data = nil 
+            begin 
+                fname = req_params[:file][:uploaded_profile_photo_file].original_filename
+                photo_full_path = ApplicationHelper.user_profile_photo_asset_url(fname)
+                photo_mime_type = req_params[:file][:uploaded_profile_photo_file].content_type
+                data = req_params[:file][:uploaded_profile_photo_file].read
+                begin
+                    File.open(photo_full_path, "wb"){|io| io.write(data)}
+                rescue Exception => e
+                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + e.message 
+                    logger.debug message unless logger.nil?
+                end
+
+                photo_data = {
+                    photo_full_path: photo_full_path,
+                    photo_mime_type: photo_mime_type
+                }
+            rescue Exception => e 
+                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                        __method__.to_s + "--- " + e.message 
+                logger.debug message unless logger.nil?
+            end 
+
+            photo_data
+
+        end # store_profile_photo
 
         # Only allow a list of trusted parameters through.
         def user_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_07_103342) do
+ActiveRecord::Schema.define(version: 2022_04_06_080620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -599,49 +599,6 @@ ActiveRecord::Schema.define(version: 2022_10_07_103342) do
     t.integer "taggings_count", default: 0, null: false
     t.index ["name"], name: "index_gutentag_tags_on_name", unique: true
     t.index ["taggings_count"], name: "index_gutentag_tags_on_taggings_count"
-  end
-
-  create_table "laastras_documents", force: :cascade do |t|
-    t.string "sha256"
-    t.string "title"
-    t.string "language"
-    t.string "uri"
-    t.string "mime_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "laastras_job_offers", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "language"
-    t.string "application_uri"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "laastras_job_seekers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "job_offer_id"
-    t.string "location"
-    t.string "phone_number"
-    t.string "cv_uri"
-    t.string "cv_mime_type"
-    t.string "cover_letter_uri"
-    t.string "cover_letter_mime_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "laastras_page_views", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "request_url"
-    t.string "session"
-    t.string "ip_address"
-    t.string "referer"
-    t.string "user_agent"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "obem_users", force: :cascade do |t|

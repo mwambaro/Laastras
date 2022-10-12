@@ -5,7 +5,7 @@ class LaastrasJobSeekersController < ApplicationController
         next_uri = nil
         begin
             job_offer_id = params[:job_offer_id]
-            if job_offer_id
+            if false#job_offer_id
                 @laastras_jskers = []
                 LaastrasJobSeeker.all.each do |jsker| 
                     if jsker.job_offer_id == job_offer_id

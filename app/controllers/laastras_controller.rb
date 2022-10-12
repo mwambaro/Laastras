@@ -37,25 +37,25 @@ class LaastrasController < ApplicationController
     def hire_us
         next_uri = nil 
         begin 
-            @hire_us_carousel_milestones_image_data = [
-                {
-                    url: @hire_us_solutions_architect_img_url,
-                    description: (I18n.t 'hire_us_software_solutions_architect')
-                },
-                {
-                    url: @hire_us_software_engineer_img_url,
-                    description: (I18n.t 'hire_us_cross_platform_software_engineer')
-                },
-                {
-                    url: @hire_us_project_manager_img_url,
-                    description: (I18n.t 'hire_us_software_project_manager')
-                },
-                {
-                    url: @hire_us_laas_leader_img_url,
-                    description: (I18n.t 'hire_us_laas_leader')
-                }
-            ]
-            @hire_us_carousel_section_title = (I18n.t 'hire_us_label')
+            @expertise_fields = {
+                expertise_capture: 'You can hire us in the following fields of expertise',
+                software_engineering_expertise: 'Software Engineering',
+                business_ideation_expertise: 'Business Ideation',
+                policy_making_expertise: 'Development, Peace, and Conflict Resolution Policy',
+                tech_evangelization_expertise: 'Tech Evangelization'
+            }
+
+            @expertise_details = {
+                software_engineering_expertise_details: (I18n.t 'software_engineering_expertise_details'),
+                business_ideation_expertise_details: (I18n.t 'business_ideation_expertise_details'),
+                policy_making_expertise_details: (I18n.t 'policy_making_expertise_details'),
+                tech_evangelization_expertise_details: (I18n.t 'tech_evangelization_expertise_details')
+            }
+
+            @detailed_cv = {
+                cv_title: 'Detailed Curriculum Vitae (CV)',
+                detailed_cv_data: (I18n.t 'detailed_cv_data')
+            }
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -177,16 +177,19 @@ class LaastrasController < ApplicationController
 
             if ApplicationHelper.user_has_admin_role?(session)
                 @laastras_actions << {
-                    url: url_for(controller: 'users', action: 'index'),
-                    inner_text: (I18n.t 'laastras_users_label'),
-                    dropdown_boolean: 'false',
-                    data: ''
-                }
-                @laastras_actions << {
-                    url: url_for(controller: 'laastras_page_views', action: 'analytics'),
-                    inner_text: (I18n.t 'website_statistics'),
-                    dropdown_boolean: 'false',
-                    data: ''
+                    url: '',
+                    inner_text: (I18n.t 'laastras_admin_dashboard_label'),
+                    dropdown_boolean: 'true',
+                    data: [
+                        {
+                            url: url_for(controller: 'users', action: 'index'),
+                            inner_text: (I18n.t 'laastras_users_label')
+                        },
+                        {
+                            url: url_for(controller: 'laastras_page_views', action: 'analytics'),
+                            inner_text: (I18n.t 'website_statistics')
+                        }
+                    ]
                 }
             end
 

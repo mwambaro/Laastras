@@ -7,9 +7,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :user_name
       t.string :password
       t.string :role
+      t.string :photo_uri 
+      t.string :photo_mime_type
       t.datetime :last_login
       t.datetime :last_logout
-      t.binary :photo
 
       t.timestamps
     end

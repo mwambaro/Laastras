@@ -29,7 +29,7 @@ class LaastrasJobOffersController < ApplicationController
                         job_offer_title: job_offer.title,
                         job_offer_description: job_offer.description,
                         apply_label: apply_label,
-                        application_url: @job_offer.application_uri
+                        application_url: job_offer.application_uri
                     }
                 end
             end

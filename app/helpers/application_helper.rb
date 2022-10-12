@@ -221,7 +221,8 @@ module ApplicationHelper
 
     def self.image_asset_url(request, file)
         request.protocol + request.host_with_port + path_to_image(file)
-    end
+
+    end # image_asset_url
 
     def self.document_asset_url(file)
         path = Pathname.new(Rails.root.join('storage', 'laastras_documents'))
@@ -229,7 +230,8 @@ module ApplicationHelper
             path.mkpath
         end
         Rails.root.join('storage', 'laastras_documents', file)
-    end
+
+    end # document_asset_url
 
     def self.job_seeker_asset_url(fname)
         path = Pathname.new(Rails.root.join('storage', 'laastras_job_seekers_documents'))
@@ -237,7 +239,17 @@ module ApplicationHelper
             path.mkpath
         end
         Rails.root.join('storage', 'laastras_job_seekers_documents', fname)
-    end
+
+    end # job_seeker_asset_url
+
+    def self.user_profile_photo_asset_url(fname)
+        path = Pathname.new(Rails.root.join('storage', 'laastras_users_profile_photos'))
+        unless path.exist?
+            path.mkpath
+        end
+        Rails.root.join('storage', 'laastras_users_profile_photos', fname)
+
+    end # user_profile_photo_asset_url
     
     # <summary>
     #       Given a user session, has the user set any particular language settings? If so, retrieve
@@ -471,36 +483,28 @@ module ApplicationHelper
         def laastras_services 
             [
                 {
-                    url: url_for(controller: 'e_commerce', action: 'job_offer_posting'),
-                    inner_text: (I18n.t 'job_offer_posting_label')
+                    url: url_for(controller: 'services', action: 'e_grocery'),
+                    inner_text: (I18n.t 'food_source_and_water_label')
                 },
                 {
-                    url: url_for(controller: 'e_commerce', action: 'real_estate_posting'),
-                    inner_text: (I18n.t 'real_estate_posting_label')
+                    url: url_for(controller: 'services', action: 'e_card'),
+                    inner_text: (I18n.t 'caas_label')
                 },
                 {
-                    url: url_for(controller: 'e_commerce', action: 'online_shopping_service'),
-                    inner_text: (I18n.t 'online_shopping_label')
+                    url: url_for(controller: 'services', action: 'e_logistics'),
+                    inner_text: (I18n.t 'free_trade_capability_label')
                 },
                 {
-                    url: url_for(controller: 'e_commerce', action: 'sofware_solutions_service'),
-                    inner_text: (I18n.t 'software_solutions_service_label')
+                    url: url_for(controller: 'services', action: 'e_alliances'),
+                    inner_text: (I18n.t 'leadership_in_globalization_label')
                 },
                 {
-                    url: url_for(controller: 'logistics', action: 'shipment_service'),
-                    inner_text: (I18n.t 'shipment_service_label')
+                    url: url_for(controller: 'services', action: 'e_myth'),
+                    inner_text: (I18n.t 'mythology_label')
                 },
                 {
-                    url: url_for(controller: 'logistics', action: 'bus_service'),
-                    inner_text: (I18n.t 'bus_service_label')
-                },
-                {
-                    url: url_for(controller: 'logistics', action: 'cab_service'),
-                    inner_text: (I18n.t 'cab_service_label')
-                },
-                {
-                    url: url_for(controller: 'logistics', action: 'bike_service'),
-                    inner_text: (I18n.t 'bike_service_label')
+                    url: url_for(controller: 'services', action: 'e_phylosophy'),
+                    inner_text: (I18n.t 'morshux_label')
                 }
             ]
         end
