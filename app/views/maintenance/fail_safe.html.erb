@@ -1,7 +1,7 @@
 
 <%= react_component('FailSafe', {
-    card_title: (I18n.t 'fail_safe_title'),
-    card_body: (I18n.t 'fail_safe_message'),
+    card_title: @fail_safe_title,
+    card_body: @fail_safe_message,
     card_image: ApplicationHelper.image_asset_url(
         request, 'Laastras-e-banner-lg.JPG'
     )
