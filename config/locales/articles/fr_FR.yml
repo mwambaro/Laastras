@@ -826,6 +826,32 @@ fr_FR:
                 <div>Nous avons fait la résolution d'être Laastrasiens, notre ceinture de sécurité</div>
                 <div>“Défenseurs de la planète terre, sur ce champ de bataille nous vivrons ou nous mourrons!”</div>
             </p> 
-            <div class="d-flex flex-row justify-content-end"> <strong>C-Alpha</strong> </div>
+            <div class=\u0022d-flex flex-row justify-content-end\u0022> <strong>C-Alpha</strong> </div>
+        </div>
+  "
+  beyond_max_profile_photo_size_title: "Taille de la Photo de Profil Dépassée"
+  beyond_max_profile_photo_size_message: "
+    Votre photo de profil ne devrait pas dépasser 2 MB. Veuillez la redimensionner our la réduire.
+  "
+  beyond_max_number_of_users_title: "Nombre d'Utilisateurs Dépassé"
+  beyond_max_number_of_users_message: "
+    Désolé nous avons dépasser la capacité de notre base de données. Veuillez 
+    <a href=\u0022mailto:onkezabahizi@gmail.com\u0022>nous envoyer un email</a>! 
+    Nous serons ravis de nous aoccuper de vos besoins.
+  "
+  beyond_max_job_seeker_doc_size_message: "
+    Le document donné dépasse la taille maximum acceptée (2MB) par notre système. Veuillez réduire son contenu.
+  "
+  laastras_foundation_contact_information_title: "Détails de Contact"
+  laastras_foundation_contact_information_text: "
+        <div>
+            <ul>
+                <li><strong>Nom complet:</strong> Nkezabahizi Obed-Edom</li>
+                <li><strong>Date de naissance:</strong> 26 Janvier 1987 </li>
+                <li><strong>Adresse:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
+                <li><strong>E-mail:</strong> <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> onkezabahizi@gmail.com </a> </li>
+                <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022> Profil LinkedIn </a> </li>
+            </ul>
         </div>
   "

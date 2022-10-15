@@ -239,7 +239,16 @@ class UsersController < ApplicationController
     def sign_up 
         next_uri = nil 
         begin 
-            data = persist_to_database(false)
+            n_users = User.all.count 
+            data = nil
+            if n_users > ApplicationHelper.max_number_of_users 
+                data = {
+                    code: 0,
+                    message: (I18n.t 'beyond_max_number_of_users_message')
+                }
+            else
+                data = persist_to_database(false)
+            end
             # send data to caller
             render plain: JSON.generate(data) unless data.nil?
         rescue Exception => e 
@@ -361,6 +370,7 @@ class UsersController < ApplicationController
     def profile_image_update
         #logger.debug "---> PARAMS: #{params.inspect}"
         dataToSend = nil
+        next_uri = nil
         begin
             if params[:file].nil?
                 dataToSend = {
@@ -369,32 +379,40 @@ class UsersController < ApplicationController
                 }
             else
                 # Photo
-                photo_data = store_profile_photo(params)
+                photo_data = store_profile_photo(params) 
                 raise 'Something went wrong saving profile photo' if photo_data.nil?
-
-                unless @laastras_user.nil?
-                    if File.exists? @laastras_user.photo_uri
-                        File.delete(@laastras_user.photo_uri) 
-                    end
-                    if @laastras_user.update({
-                        photo_uri: photo_data[:photo_full_path],
-                        photo_mime_type: photo_data[:photo_mime_type]
-                    })
-                        dataToSend = {
-                            code: 1,
-                            message: (I18n.t 'profile_photo_create_success')
-                        }
-                    else 
-                        dataToSend = {
-                            code: 0,
-                            message: (I18n.t 'profile_photo_update_failure')
-                        }
-                    end
-                else
+                
+                if photo_data.empty? 
                     dataToSend = {
                         code: 0,
-                        message: (I18n.t 'profile_photo_user_absent')
+                        message: (I18n.t 'beyond_max_profile_photo_size_message')
                     }
+                else
+
+                    unless @laastras_user.nil?
+                        if File.exists? @laastras_user.photo_uri
+                            File.delete(@laastras_user.photo_uri) 
+                        end
+                        if @laastras_user.update({
+                            photo_uri: photo_data[:photo_full_path],
+                            photo_mime_type: photo_data[:photo_mime_type]
+                        })
+                            dataToSend = {
+                                code: 1,
+                                message: (I18n.t 'profile_photo_create_success')
+                            }
+                        else 
+                            dataToSend = {
+                                code: 0,
+                                message: (I18n.t 'profile_photo_update_failure')
+                            }
+                        end
+                    else
+                        dataToSend = {
+                            code: 0,
+                            message: (I18n.t 'profile_photo_user_absent')
+                        }
+                    end 
                 end
             end
         rescue Exception => e 
@@ -405,6 +423,10 @@ class UsersController < ApplicationController
                 code: 0,
                 message: e.message
             }
+        end
+
+        if next_uri 
+            redirect_to next_uri
         end
 
         # send data to caller
@@ -475,20 +497,25 @@ class UsersController < ApplicationController
             begin 
                 fname = req_params[:file][:uploaded_profile_photo_file].original_filename
                 photo_full_path = ApplicationHelper.user_profile_photo_asset_url(fname)
-                photo_mime_type = req_params[:file][:uploaded_profile_photo_file].content_type
+                photo_mime_type = req_params[:file][:uploaded_profile_photo_file].content_type 
                 data = req_params[:file][:uploaded_profile_photo_file].read
-                begin
-                    File.open(photo_full_path, "wb"){|io| io.write(data)}
-                rescue Exception => e
-                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
-                                __method__.to_s + "--- " + e.message 
-                    logger.debug message unless logger.nil?
-                end
+                size = data.size 
+                if size > ApplicationHelper.max_profile_photo_size
+                    photo_data = {}
+                else 
+                    begin
+                        File.open(photo_full_path, "wb"){|io| io.write(data)}
+                    rescue Exception => e
+                        message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + e.message 
+                        logger.debug message unless logger.nil?
+                    end
 
-                photo_data = {
-                    photo_full_path: photo_full_path,
-                    photo_mime_type: photo_mime_type
-                }
+                    photo_data = {
+                        photo_full_path: photo_full_path,
+                        photo_mime_type: photo_mime_type
+                    }
+                end
             rescue Exception => e 
                 message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                         __method__.to_s + "--- " + e.message 

@@ -825,7 +825,7 @@ en_US:
                 <div>Dead bodies on thoroughfares told the stories</div>
                 <div>Of what was happening as people went about their work</div>
                 <div>Kingdoms rose and fell, leaving ruins behind</div>
-                <div>Minds developed building on top the work of our ancestors </div>
+                <div>Minds developed building on top of the work of our ancestors </div>
                 <div>We could see marks of civilizations as they had existed </div>
                 <div>It simply felt absurd that we had to pass away</div>
                 <div>Having toiled so much and having come to enjoy life</div>
@@ -851,6 +851,33 @@ en_US:
                 <div>We have made a resolve to be Laastrasians, our safety belt</div>
                 <div>“Planet earth defenders, on this battlefield we live or die!”</div>
             </p> 
-            <div class="d-flex flex-row justify-content-end"> <strong>C-Alpha</strong> </div>
+            <div class=\u0022d-flex flex-row justify-content-end\u0022> <strong>C-Alpha</strong> </div>
         </div>
   "
+  beyond_max_profile_photo_size_title: "Beyond Max Profile Photo Size"
+  beyond_max_profile_photo_size_message: "
+    Your profile photo should not be bigger than 2 megabytes. Please, crop it or reduce it.
+  "
+  beyond_max_number_of_users_title: "Beyond Max Number of Users"
+  beyond_max_number_of_users_message: "
+    Sorry but we have gone beyond the capacity of our database. Please, do 
+    <a href=\u0022mailto:onkezabahizi@gmail.com\u0022>send us an email</a>! 
+    We will be happy to get back to you and tend to your needs.
+  "
+  beyond_max_job_seeker_doc_size_message: "
+    The document given is bigger than the maximum size accepted (2MB) by our system. Please, reduce its contents!
+  "
+  laastras_foundation_contact_information_title: "Contact Details"
+  laastras_foundation_contact_information_text: "
+        <div>
+            <ul>
+                <li><strong>Full name:</strong> Obed-Edom Nkezabahizi</li>
+                <li><strong>Birth date:</strong> January 26, 1987 </li>
+                <li><strong>Address:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Phone number:</strong> +257 76 177 186 </li>
+                <li><strong>E-mail:</strong> <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> onkezabahizi@gmail.com </a> </li>
+                <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022> LinkedIn Profile </a> </li>
+            </ul>
+        </div>
+  "
+

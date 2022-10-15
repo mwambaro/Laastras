@@ -3,6 +3,18 @@ include ActionView::Helpers::AssetUrlHelper
 require 'net/http'
 
 module ApplicationHelper
+    def self.max_number_of_users 
+        max = 20
+    end
+
+    def self.max_profile_photo_size 
+        max = 2.megabytes
+    end
+
+    def self.max_job_seeker_doc_size 
+        mex = 2.megabyte
+    end
+
     def self.harvest_analytics(session, request)
         user_id = nil
         user = self.who_is_logged_in?(session)

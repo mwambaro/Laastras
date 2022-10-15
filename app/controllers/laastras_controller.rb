@@ -286,18 +286,42 @@ class LaastrasController < ApplicationController
                 (I18n.t 'aori_globalization')
             ]
             @laastras_e_logo_urls = [
-                ApplicationHelper.image_asset_url(
-                    request, 'Logo-e-grocery.svg'
-                ),
-                ApplicationHelper.image_asset_url(
-                    request, 'Logo-e-card.svg'
-                ),
-                ApplicationHelper.image_asset_url(
-                    request, 'Logo-e-logistics.svg'
-                ),
-                ApplicationHelper.image_asset_url(
-                    request, 'Logo-e-alliances.svg'
-                )
+                {
+                    image_url: ApplicationHelper.image_asset_url(
+                        request, 'Logo-e-grocery.svg'
+                    ),
+                    service_url: url_for(
+                        controller: 'services',
+                        action: 'e_grocery'
+                    )
+                },
+                {
+                    image_url: ApplicationHelper.image_asset_url(
+                        request, 'Logo-e-card.svg'
+                    ),
+                    service_url: url_for(
+                        controller: 'services',
+                        action: 'e_card'
+                    )
+                },
+                {
+                    image_url: ApplicationHelper.image_asset_url(
+                        request, 'Logo-e-logistics.svg'
+                    ),
+                    service_url: url_for(
+                        controller: 'services',
+                        action: 'e_logistics'
+                    )
+                },
+                {
+                    image_url: ApplicationHelper.image_asset_url(
+                        request, 'Logo-e-alliances.svg'
+                    ),
+                    service_url: url_for(
+                        controller: 'services',
+                        action: 'e_alliances'
+                    )
+                }
             ]
             @globalization_intro = (I18n.t 'mission_terms').paragraphize
             @laastras_vision = (I18n.t 'vision_terms')

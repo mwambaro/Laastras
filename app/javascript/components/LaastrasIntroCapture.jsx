@@ -64,7 +64,10 @@ class LaastrasIntroCapture extends React.Component
                                 <ul>
                                     <li>
                                         <p>
-                                            <img src={this.props.laastras_e_logo_urls[0]} width="50" className="img-fluid" />
+                                            <img src={this.props.laastras_e_logo_urls[0].image_url} 
+                                                 width="50" 
+                                                 className="img-fluid brand-logo-image"
+                                                 data-url={this.props.laastras_e_logo_urls[0].service_url}/>
                                         </p>
                                         <p>
                                             {this.props.laastras_sample_services[0]}
@@ -72,7 +75,10 @@ class LaastrasIntroCapture extends React.Component
                                     </li>
                                     <li>
                                         <p>
-                                            <img src={this.props.laastras_e_logo_urls[1]} width="50" className="img-fluid" />
+                                            <img src={this.props.laastras_e_logo_urls[1].image_url} 
+                                                 width="50" 
+                                                 className="img-fluid brand-logo-image"
+                                                 data-url={this.props.laastras_e_logo_urls[1].service_url} />
                                         </p>
                                         <p>
                                             {this.props.laastras_sample_services[1]}
@@ -80,7 +86,10 @@ class LaastrasIntroCapture extends React.Component
                                     </li>
                                     <li>
                                         <p>
-                                            <img src={this.props.laastras_e_logo_urls[2]} width="50" className="img-fluid" />
+                                            <img src={this.props.laastras_e_logo_urls[2].image_url} 
+                                                 width="50" 
+                                                 className="img-fluid brand-logo-image"
+                                                 data-url={this.props.laastras_e_logo_urls[2].service_url} />
                                         </p>
                                         <p>
                                             {this.props.laastras_sample_services[3]}
@@ -88,7 +97,10 @@ class LaastrasIntroCapture extends React.Component
                                     </li>
                                     <li>
                                         <p>
-                                            <img src={this.props.laastras_e_logo_urls[3]} width="50" className="img-fluid" />
+                                            <img src={this.props.laastras_e_logo_urls[3].image_url} 
+                                                 width="50" 
+                                                 className="img-fluid brand-logo-image"
+                                                 data-url={this.props.laastras_e_logo_urls[3].service_url} />
                                         </p>
                                         <p>
                                             {this.props.laastras_sample_services[2]}
@@ -104,7 +116,19 @@ class LaastrasIntroCapture extends React.Component
                 </div>
             </div>
         );
-    }
+    } // render 
+
+    componentDidMount()
+    {
+        $('.brand-logo-image').on('click', (e) => {
+            window.location = $(e.target).attr('data-url');
+        });
+        $('.brand-logo-image').on('mouseover', (e) => {
+            e.target.style.cursor = 'pointer';
+        });
+
+    } // componentDidMount
+
 }
 
 LaastrasIntroCapture.propTypes = {

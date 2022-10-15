@@ -1,13 +1,5 @@
-<br>
-<div  class="container">
-    
-    <div style="background-color: white; padding: 10px; font-size: 24px">
-        <p>
-            <strong><%= I18n.t 'email' %> </strong>: <a href="<%= @contact_us_email_link %>"> <%= I18n.t 'contact_us' %></a>
-        </p>
-        <p>
-            <strong><%= I18n.t 'phone_label' %> </strong>: +257 76 177 186
-        </p>
-    </div>
 
-</div>
+<%= react_component('LaastrasContactInformation', {
+    contact_information_title: (I18n.t 'laastras_foundation_contact_information_title'),
+    contact_information_text: (I18n.t 'laastras_foundation_contact_information_text')
+}) %>
