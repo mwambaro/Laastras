@@ -14,8 +14,17 @@ class User < ApplicationRecord
     end
 
     def self.authenticate(email, pwd)
+        user_email = nil
         hashed_pwd = Digest::SHA1.hexdigest(pwd)
         user = self.find_by_email_and_password(email, hashed_pwd)
-        return user
+
+        if user.nil?
+            user = self.find_by_email(email)
+            if user 
+                user_email = email
+            end
+        end
+
+        return user, user_email
     end
 end

@@ -182,8 +182,9 @@ class LaastrasJskForm extends React.Component
             $form.submit((event) => {
                 try 
                 {
-                    this.show_wait_spinner();
                     event.preventDefault();
+                    this.show_wait_spinner();
+                    
                     var $this = $form;
                     // Validation code
                     //...

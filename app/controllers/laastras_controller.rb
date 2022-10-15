@@ -38,11 +38,11 @@ class LaastrasController < ApplicationController
         next_uri = nil 
         begin 
             @expertise_fields = {
-                expertise_capture: 'You can hire us in the following fields of expertise',
-                software_engineering_expertise: 'Software Engineering',
-                business_ideation_expertise: 'Business Ideation',
-                policy_making_expertise: 'Development, Peace, and Conflict Resolution Policy',
-                tech_evangelization_expertise: 'Tech Evangelization'
+                expertise_capture: (I18n.t 'hire_us_capture'),
+                software_engineering_expertise: (I18n.t 'software_engineering_label'),
+                business_ideation_expertise: (I18n.t 'business_ideation_label'),
+                policy_making_expertise: (I18n.t 'policy_making_expertise'),
+                tech_evangelization_expertise: (I18n.t 'tech_evang_expertise')
             }
 
             @expertise_details = {

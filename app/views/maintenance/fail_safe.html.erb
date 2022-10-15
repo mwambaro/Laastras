@@ -2,7 +2,5 @@
 <%= react_component('FailSafe', {
     card_title: @fail_safe_title,
     card_body: @fail_safe_message,
-    card_image: ApplicationHelper.image_asset_url(
-        request, 'Laastras-e-banner-lg.JPG'
-    )
+    card_image: ApplicationHelper.banner_image_asset_url(request)
 })%>

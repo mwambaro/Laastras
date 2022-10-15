@@ -49,7 +49,8 @@ class LaastrasUserShow extends React.Component
 
                                                 <div className="text-center" style={form_elt_div_style}>             
                                                     <button type="submit" 
-                                                            className="btn btn-default">
+                                                            className="btn btn-default"
+                                                            style={{backgroundColor: 'white'}}>
                                                         {this.props.submit_label}
                                                     </button>
                                                 </div>

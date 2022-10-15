@@ -1,2 +1,7 @@
-<h1>Services#e_logistics</h1>
-<p>Find me in app/views/services/e_logistics.html.erb</p>
+
+<%= react_component('LaastrasService', {
+    laastras_service_title: (I18n.t 'free_trade_capability_cooperative_title'),
+    laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
+    laastras_service_description: (I18n.t 'free_trade_capability_cooperative_description'),
+    service_id: @service_id
+})%>

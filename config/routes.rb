@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'laastras_job_offers/index'
   get 'laastras_job_offers/show'
   get 'laastras_job_offers/apply'
+  get 'laastras_job_offers/close'
   get 'laastras_documents/show_laastras_document'
   get 'maintenance/fail_safe'
   get 'laastras_page_views/analytics'
@@ -20,12 +21,14 @@ Rails.application.routes.draw do
   get 'money_transfer/receive_payment_information'
   get 'money_transfer/payment_review'
   get 'money_transfer/payment_confirmation'
+  get 'money_transfer/donate'
 
   get 'users/index'
   get 'users/show'
   get 'users/profile_image_show'
   get 'users/edit'
   get 'users/destroy'
+  get 'users/reset_password'
   
   get 'logistics/shipment_service'
   get 'logistics/bus_service'

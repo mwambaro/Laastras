@@ -6,6 +6,7 @@ class MaintenanceController < ApplicationController
             unless session[:fail_safe_message].nil? 
                 unless session[:fail_safe_message].blank?
                     @fail_safe_message = session[:fail_safe_message]
+                    session[:fail_safe_message] = nil
                 end 
             end
             if @fail_safe_message.nil? || @fail_safe_message.blank? 
@@ -15,6 +16,7 @@ class MaintenanceController < ApplicationController
             unless session[:fail_safe_title].nil? 
                 unless session[:fail_safe_title].blank?
                     @fail_safe_title = session[:fail_safe_title]
+                    session[:fail_safe_title] = nil
                 end 
             end
             if @fail_safe_title.nil? || @fail_safe_title.blank?

@@ -21,8 +21,8 @@ class Banner extends React.Component
                     </div>
                     <div id="from" className="col-sm-3 d-flex flex-column align-items-center justify-content-center" style={{fontSize: '18px', fontWeight: 'bold', color: 'rgb(192,0,0)'}}>
                         <div id="f-text">
-                            <div className="text-center"> From </div>
-                            <div className="text-center"> Democracy </div>
+                            <div className="text-center"> {this.props.from} </div>
+                            <div className="text-center"> {this.props.democracy} </div>
                         </div>
                     </div>
                     <div className="col-sm-2" style={{backgroundColor: 'black'}}>
@@ -43,8 +43,8 @@ class Banner extends React.Component
                         </div>
                     </div>
                     <div id="to" className="col-sm-3 d-flex flex-column align-items-center justify-content-center" style={{fontSize: '18px', fontWeight: 'bold', color: 'rgb(0,176,80)'}}>
-                        <div className="text-center"> To </div>
-                        <div className="text-center"> Homocracy </div>
+                        <div className="text-center"> {this.props.to} </div>
+                        <div className="text-center"> {this.props.homocracy} </div>
                     </div>
                     <div className="col-sm-2 d-flex flex-column align-items-center justify-content-center">
                         <img src={this.props.e_homocracy_logo_url} className="img-fluid" />
@@ -76,7 +76,11 @@ Banner.propTypes = {
     e_logistics_logo_url: PropTypes.string,
     e_alliances_logo_url: PropTypes.string,
     e_homocracy_logo_url: PropTypes.string,
-    home_url: PropTypes.string
+    home_url: PropTypes.string,
+    from: PropTypes.string,
+    democracy: PropTypes.string,
+    to: PropTypes.string,
+    homocracy: PropTypes.string
 };
 
 export default Banner

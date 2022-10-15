@@ -218,6 +218,19 @@ module ApplicationHelper
         url = "/#{options[:controller]}/#{options[:action]}"
     end
     
+    def self.banner_image_asset_url(request)
+        url = ApplicationHelper.image_asset_url(
+            request, 'Laastras-e-banner-lg-en.JPG'
+        )
+        if /\Afr|fr_FR\Z/i =~ I18n.locale.to_s
+            url = ApplicationHelper.image_asset_url(
+                request, 'Laastras-e-banner-lg-fr.JPG'
+            )
+        end
+
+        url 
+
+    end # banner_image_asset_url
 
     def self.image_asset_url(request, file)
         request.protocol + request.host_with_port + path_to_image(file)
@@ -328,12 +341,12 @@ module ApplicationHelper
             @request = rqst
             self.request = @request
             self.logger = logg
-        end
+
+        end # initialize
 
         def featured_job_offers
             featured_job_offers = []
             begin
-                self.seed_job_offers
 
                 # 1.
                 language = I18n.locale.to_s
@@ -357,75 +370,6 @@ module ApplicationHelper
     
         end # featured_job_offers
 
-        def seed_job_offers
-            begin
-                # Have we seeded the database ?
-                # We assume all went well first time we seeded.
-                # Please, restart seeding from scratch if you add more job offers
-                title = (I18n.t 'project_manager_assistant')
-                sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{title}'"
-                count = LaastrasJobOffer.find_by_sql(sql_query).count
-                if count > 0 
-                    logger.debug '---> No need to seed laastras_job_offers database table. Looks already seeded'
-                    return nil
-                end
-    
-                job_offers = []
-                original_language = I18n.locale
-                I18n.available_locales.each do |lang|
-                    I18n.locale = lang.to_sym
-                    job_offers << {  
-                        title: (I18n.t 'project_manager_assistant'),
-                        description: (I18n.t 'project_manager_assistant_offer'),
-                        language: lang.to_s,
-                        application_uri: nil           
-                    }
-                    # add more job offers below
-                end
-                I18n.locale = original_language
-    
-                job_offers.each do |offer|
-                    job_offer = LaastrasJobOffer.new({
-                        title: offer[:title],
-                        description: offer[:description],
-                        application_uri: offer[:application_uri],
-                        language: offer[:language]
-                    })
-                    if job_offer.save
-                        sql_query = "SELECT * FROM laastras_job_offers WHERE title = '#{job_offer.title}'"
-                        db_offer = LaastrasJobOffer.find_by_sql(sql_query).first
-                        db_offer.update({
-                            application_uri: url_for(
-                                controller: 'laastras_job_offers',
-                                action: 'apply',
-                                id: db_offer.id
-                            )
-                        })
-                    else
-                        if job_offer.errors.count > 0 
-                            message = ""
-                            job_offer.errors.each do |error| 
-                                message += "\r\n#{error.full_message}"
-                            end
-                            msg = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
-                                    __method__.to_s + "--- " + message
-                            logger.debug msg
-                        end
-                        message = "We failed to save to database the job offer: #{job_offer.title}"
-                        msg = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
-                                __method__.to_s + "--- " + message
-                        logger.debug msg
-                    end
-                end
-
-            rescue Exception => e 
-                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
-                            __method__.to_s + "--- " + e.message 
-                logger.debug message unless logger.nil?
-            end
-    
-        end # seed_job_offers
-
         def laastras_actions
             [
                 {
@@ -441,7 +385,7 @@ module ApplicationHelper
                     data: ''
                 },
                 {
-                    url: url_for(controller: 'laastras', action: 'donate'),
+                    url: url_for(controller: 'money_transfer', action: 'donate'),
                     inner_text: (I18n.t 'donate_label'),
                     dropdown_boolean: 'false',
                     data: ''
@@ -453,7 +397,8 @@ module ApplicationHelper
                     data: self.laastras_services
                 }
             ]
-        end
+
+        end # laastras_actions
 
         def footer_actions
             [
@@ -478,7 +423,8 @@ module ApplicationHelper
                     inner_text: (I18n.t 'contact_us')
                 }
             ]
-        end
+
+        end # footer_actions
 
         def laastras_services 
             [
@@ -507,7 +453,8 @@ module ApplicationHelper
                     inner_text: (I18n.t 'morshux_label')
                 }
             ]
-        end
+
+        end # laastras_services
 
         def social_media_data
             {
@@ -517,7 +464,8 @@ module ApplicationHelper
                     quote: (I18n.t 'site_meta_description')
                 }
             }
-        end
+
+        end # social_media_data
 
         def supported_languages 
             [
@@ -528,6 +476,18 @@ module ApplicationHelper
                 {locale: 'fr_FR', language: (I18n.t 'french'), country: (I18n.t 'france')},
                 {locale: 'sw_TZ', language: (I18n.t 'swahili'), country: (I18n.t 'tanzania')}
             ]
-        end
+
+        end # supported_languages 
+
+        def laastras_roles 
+            {
+                client: 'Client',
+                admin: 'Admin',
+                employee: 'employee',
+                job_seeker: 'Job seeker',
+                associate: 'Associate',
+                partner_to_be: 'Partner-to-be'
+            }
+        end # laastras_roles
     end
 end

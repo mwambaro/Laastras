@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import WaitSpinner from "./WaitSpinner.js"
 require('./CenterElement.js')
 
 class LaastrasUserSignIn extends React.Component
@@ -8,6 +9,7 @@ class LaastrasUserSignIn extends React.Component
     {
         super(props);
         this.redirect_uri = null;
+        this.wait_spinner = null;
 
     } // constructor
 
@@ -80,7 +82,7 @@ class LaastrasUserSignIn extends React.Component
         window.addEventListener('resize', (event)=>{
             $('#laastras_user_sign_in_main_div').hvcenter();
         });
-
+        this.wait_spinner = new WaitSpinner();
         this.hijackFormSubmitEvent();
 
     } // componentDidMount
@@ -113,7 +115,7 @@ class LaastrasUserSignIn extends React.Component
                 {
                     event.preventDefault();
                     
-                    this.show_wait_spinner();
+                    this.wait_spinner.show_wait_spinner();
 
                     var $this = $form;
                     // Validation code
@@ -133,6 +135,7 @@ class LaastrasUserSignIn extends React.Component
                         let code = parseInt(dataReceived.code);
                         let message = dataReceived.message;
                         this.redirect_uri = dataReceived.redirect_uri;
+                        //console.log('Message: ' + message + '; Code: ' + code);
                         let html = '';
                         if(code === 1) // success
                         {
@@ -175,7 +178,7 @@ class LaastrasUserSignIn extends React.Component
                             $('#feedback').append(html);
                         }
 
-                        this.hide_wait_spinner();
+                        this.wait_spinner.hide_wait_spinner();
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -196,7 +199,7 @@ class LaastrasUserSignIn extends React.Component
                             </div>`;
                         $('#verbose-message-div').remove();
                         $('#feedback').append(html);
-                        this.hide_wait_spinner();
+                        this.wait_spinner.hide_wait_spinner();
                     });
                 }
                 catch(error)
@@ -214,7 +217,7 @@ class LaastrasUserSignIn extends React.Component
                         </div>`;
                     $('#verbose-message-div').remove();
                     $('#feedback').append(html);
-                    this.hide_wait_spinner();
+                    this.wait_spinner.hide_wait_spinner();
                 }
             });
         }

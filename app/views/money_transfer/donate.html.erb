@@ -1,0 +1,10 @@
+
+<% @money_transfer_options.each do |option| %>
+
+    <%= react_component('LaastrasDonate', {
+        money_transfer_option_title: option[:money_transfer_option_title],
+        money_transfer_option_description: option[:money_transfer_option_description],
+        option_id: option[:option_id]
+    }) %>
+
+<% end %>

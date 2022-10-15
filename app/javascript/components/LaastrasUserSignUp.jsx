@@ -25,7 +25,7 @@ class LaastrasUserSignUp extends React.Component
                 <div className="row justify-content-center">
                     <div className="col-md-8 shadow p-3 mb-5 bg-body rounded">
                         <div id="feedback" className="text-center"></div>
-                        <h3 className="text-center"> {this.props.laastras_user_sign_up_form_label} </h3>
+                        <h3 className="text-center" id="form-label"> {this.props.laastras_user_sign_up_form_label} </h3>
                         <form role="form"
                               name="laastras_user_sign_up_form"
                               id="laastras-user-sign-up-form"
@@ -143,6 +143,8 @@ class LaastrasUserSignUp extends React.Component
                 try 
                 {
                     event.preventDefault();
+                    this.show_wait_spinner();
+
                     var $this = $form;
                     // Validation code
                     //...
@@ -176,6 +178,7 @@ class LaastrasUserSignUp extends React.Component
                         if(code === 1) // success
                         {
                             $this.hide();
+                            $('#form-label').remove();
                             html = `
                                 <div class="row" style="background-color: white; padding: 10px" id="verbose-message-div">
                                     <div class="col-sm-1 justify-content-end">
@@ -204,6 +207,7 @@ class LaastrasUserSignUp extends React.Component
                         $('#verbose-message-div').remove();
                         //console.log('Feedback message removed');
                         $('#feedback').append(html);
+                        this.hide_wait_spinner();
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -224,6 +228,7 @@ class LaastrasUserSignUp extends React.Component
                             </div>`;
                         $('#verbose-message-div').remove();
                         $('#feedback').append(html);
+                        this.hide_wait_spinner();
                     });
                 }
                 catch(error)
@@ -241,6 +246,7 @@ class LaastrasUserSignUp extends React.Component
                         </div>`;
                     $('#verbose-message-div').remove();
                     $('#feedback').append(html);
+                    this.hide_wait_spinner();
                 }
             });
         }

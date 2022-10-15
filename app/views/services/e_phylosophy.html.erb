@@ -1,2 +1,7 @@
-<h1>Services#e_phylosophy</h1>
-<p>Find me in app/views/services/e_phylosophy.html.erb</p>
+
+<%= react_component('LaastrasService', {
+    laastras_service_title: (I18n.t 'morshux_phylosophy_service_title'),
+    laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-morshux.svg'),
+    laastras_service_description: (I18n.t 'morshux_phylosophy_service_description'),
+    service_id: @service_id
+})%>

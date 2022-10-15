@@ -601,3 +601,256 @@ en_US:
             </div>
         </div> 
   "
+  offer_to_sign_up: "Try Signing Up"
+  offer_to_sign_up_message: "
+        <div>
+            We have evidence that you have not signed up yet.
+            Well, we could not find your e-mail in our database.
+            Please, kindly sign up <a href=\u0022/laastras/sign_up\u0022>here</a>
+        </div>
+  "
+  offer_to_reset_password: "Try Resetting your Password"
+  offer_to_reset_password_message: "
+        <div>
+            You certainly have an account with us, so no worries.
+            Just one thing, you must have forgotten your password.
+            Kindly reset your password following <a href=\u0022/users/reset_password\u0022>this link</a>
+        </div>
+  "
+  western_union_option: "Western Union"
+  western_union_option_description: "
+        <div>
+            <div> You must bear the following information: </div>
+            <ul>
+                <li><strong>Full name:</strong> Obed-Edom Nkezabahizi </li>
+                <li><strong>Date of birth:</strong> January 26, 1987 </li>
+                <li><strong>Destination country:</strong> Burundi </li>
+                <li><strong>Address:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Reception mode:</strong> Cash pick-up </li>
+                <li><strong>Destination currency:</strong> Burundian Francs (BIF) </li>
+                <li><strong>Phone number:</strong> +257 76 177 186 </li>
+            </ul>
+            <div>
+                You should communicate to our institution the needed information (MTCN and Payout Amount) to do the cash 
+                pick-up. Use <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> his email </a>.
+            </div>
+        </div>
+  "
+  mobile_wallet_option: "Mobile Money Wallet"
+  mobile_wallet_option_description: "
+        <div>
+            <div>
+                My country supports mobile money wallet transfer. We can receive the transfer 
+                in local currency, that is, Burundian Francs (BIF). Please, use the services of 
+                <a href=\u0022https://www.worldremit.com/en/how-it-works-mobile-money\u0022 style=\u0022text-decoration: none\u0022> 
+                    World Remit 
+                </a> 
+                to transfer the money to my mobile account. Get any needed information below:
+            </div>
+            <ul>
+                <li><strong>Full name:</strong> Obed-Edom Nkezabahizi </li>
+                <li><strong>Date of birth:</strong> January 26, 1987 </li>
+                <li><strong>Destination country:</strong> Burundi </li>
+                <li><strong>Address:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Reception mode:</strong> Mobile Money Wallet </li>
+                <li><strong>Destination currency:</strong> Burundian Francs (BIF) </li>
+                <li><strong>Account phone number:</strong> +257 76 177 186 </li>
+            </ul>
+        </div>
+  "
+  software_engineering_expertise_details: "
+        Our lead software engineer has excellence in software problem solving. The software solutions
+        design created are elegant and focused. We do full-stack development, mobile development,
+        and desktop development. We develop back-end, front-end, and API solutions. We are also 
+        great ICT engineers and can turn abstract ideas and behaviors into software applications.
+  "
+  business_ideation_expertise_details: "
+        We have travelled a lot and still do. As we meet and talk to people, we gather bright and
+        fresh ideas that we turn into innovation projects. We could advise you in areas of investment.
+        In fact, the business idea we are proud of is Laastras. You must have seen how wide but
+        simple LaaS phylosophy is. We would love to guide you in aspects of LaaS where you would 
+        want to invest
+  "
+  policy_making_expertise_details: "
+        Most people have comme to abhor politics but you and I know they are in a better position 
+        to spearhead any revolution or change for the better. We have targetted and isolated 
+        issues that should be the focus of policy making. We dug deep and found practical 
+        ways to tackle these issues using mainstream technology. As we did, we became adepts 
+        in policy making.
+  "
+  tech_evangelization_expertise_details: "
+        Tech is at the heart of modern industrialization. It has simplified our lives and has 
+        alleviated our burden. Still, we have got to defend it and find optimal applications of 
+        technology, especially in making our planet a haven of peace, happiness, and tranquility.
+        Laastras is one such application. So, let us know if you need tech to translate ideas 
+        and concepts that may be hard to wrap round the head into technology.
+  "
+  food_source_and_water_cooperative_title: "Foodstuffs and Household Items"
+  food_source_and_water_cooperative_description: "
+        <div>
+            We have a grocery list of items to buy when we go shopping. On the other side,
+            the grocer goes to the supplier with a list of stuffs to purchase. We would like
+            to have both lists so as to computerize the process. This will give us the capability 
+            to form cooperatives according to sale categories. We will focus mainly on 
+            foods and drinks. That is why we refer to this cooperative as “food source and water”.
+            We will require the buyer, the grocer, and the supplier to register with our App. 
+            The services included are: nutrition, revenue cycle management, clients distribution, etc. 
+            We will add packaging, storage, and a farm, at last. Come 
+            <a href=\u0022/laastras/sign_in?service_id=food_source_and_water\u0022 style=\u0022text-decoration: none\u0022> 
+                join our cooperative 
+            </a> 
+            if you deal in this sector.
+        </div>
+  "
+  communication_as_a_service_cooperative_title: "Creator Economy Cooperative"
+  communication_as_a_service_cooperative_description: "
+        <div>
+            Homocracy is a trade system that makes sure every Major Human Individual (MHI) 
+            has there share on all resources that support human existence, in the country, first, then 
+            on earth. To achieve this goal, we must harness the full power of a cell phone, 
+            a personal computer, servers, and cloud computing. The economy that goes from a 
+            sensor-like device, like a cell phone, all the way into the cloud is called 
+            “creator economy”. We will associate an MHI to a cell phone so as to migrate all the 
+            trade system into the cloud. Hence, we can turn a cell phone into currency, id card,
+            passport, driver's licence, and more, paving the way for World Federal Government. 
+            All of the other cooperatives will become a reality, creating a single trade system cloud,
+            per nation, then a single global cloud. Afterwards, we shall say: “Come. Somebody save, we pray! 
+            We have done our part.” Why not 
+            <a href=\u0022/laastras/sign_in?service_id=communication_as_a_service\u0022 style=\u0022text-decoration: none\u0022> 
+                join our cooperative 
+            </a> 
+            if yours is a creator economy enterprise?
+        </div>
+  "
+  free_trade_capability_cooperative_title: "Logistics Yielding Free Trade Capability"
+  free_trade_capability_cooperative_description: "
+        <div>
+            Let us assume that “food source and water” as well as “communication as a service” 
+            cooperatives are running as need. We have data in the cloud and enough 
+            computation power to orchestrate the delivery of goods and services to every person involved in 
+            Laastras. For example, we know who needs what, where, and when. Should we 
+            order from abroad or should we just increase production? This encourages trade 
+            and equips everyone with what to deal in, freely. This cooperative is named 
+            “free trade capability” and uses logistics infrastructures and equipment to 
+            help up achieve Laastras vision. In the end, the local trade system cloud 
+            can communicate with the clouds in the rest of the world. If you run logistics 
+            infrastructures, please, consider 
+            <a href=\u0022/laastras/sign_in?service_id=free_trade_capability\u0022 style=\u0022text-decoration: none\u0022> 
+                joining our cooperative 
+            </a>.
+        </div>
+  "
+  e_alliances_service_title: "Acquire or Integrate"
+  e_alliances_service_description: "
+        <div>
+            This service is termed AORI (Acquire or Integrate). The integrate part requires that 
+            your enterprise uses our transaction portal. Acquire means that we fuse our enterprises,
+            making it a bigger whole. Why so? Our society is getting more and more divided 
+            economically, creating a deep and wide gap amongst us all. We have come to feel 
+            so uncertain about our wealth even when we have it. Alliances, especially, through 
+            the “creator economy” are our only safety belt. These alliances get easier using 
+            the power of cloud computing and Internet of Things (IoT). Why would you 
+            <a href=\u0022/laastras/sign_in?service_id=acquire_or_integrate\u0022 style=\u0022text-decoration: none\u0022> 
+                rally with us
+            </a>
+            if you feel economically stable and secure? Could you reassure anyone about your 
+            financial security? How much do you invest in security and stability? How much personal toll 
+            does it take? Again, no help in matters beyond our control is ever going to get to us 
+            unless we reach a global alliance, the kind that ends poverty, unemployment, inequality, etc.
+        </div>
+  "
+  morshux_phylosophy_service_title: "Morshux"
+  morshux_phylosophy_service_description: "
+        <div>
+            <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022>
+                AORI
+            </a>
+            aims for globalization and does not necessarily steer the flagship towards the 
+            Services Exchange milestone. Morshux, however, adds a level of precision to AORI to make 
+            sure the enterprises targetted are the kind that can yield “Self-Contained Personal Space (SCoPS)”.
+            They must ultimately create a conglomerate called 
+            “management of resources that support human existence (Morshux)”. The goal is: You need a single 
+            job in Morshux to get everything else that you need to live a healthy and wholesome life. 
+            In this case, the currency is dully named “Services Exchange”, as opposed to 
+            “Virtual Currency”. Morshux will get us financial security, self-sufficiency, conflict-free 
+            businesses, equality, justice, etc. Simply put, life. So, if you are already consuming 
+            our AORI services, may you not jump ship. If you are not, 
+            <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022>
+                please, do
+            </a>!
+        </div>
+  "
+  mythology_and_fiction_service_title: "Mythology and Fiction"
+  mythology_and_fiction_service_description: "
+        <div>
+            <h3> We who have lived </h3>
+            <p>
+                <div>Mayday, Mayday, Mayday, somebody copy!</div>
+                <div>Mayday, Mayday, Mayday, somebody copy!</div>
+                <div>We started off at the dawn of civilization </div>
+                <div>There was so much silence we felt so overwhelmed </div>
+                <div>In between the silence, breezes, sounds, and a heartbeat </div>
+                <div>Then trek, trek, trek, that big space pulling us away </div>
+                <div>Tongue-tied, but with the head full of words</div>
+                <div>Nature could speak to us, we knew it as a fact</div>
+                <div>Was I alone, I could not tell, but I saw no one </div>
+                <div>Beasts and animals could stare at us </div>
+                <div>Should we have panicked, there was no reason for us to </div>
+                <div>The fog of mystery dissipated as days flew</div>
+                <div>We learned and did things as taught ones</div>
+                <div>As if a scroll was unfolding, guiding our steps</div>
+                <div>The void in our knowledge was clear evidence </div>
+                <div>That there would be a long journey ahead of us.</div>
+            </p>
+            <p>
+                <div>When women came along we felt knee-bent </div>
+                <div>The energy, the charm, and those looks, Oh My God!</div>
+                <div>“Was I brought here by you? Should I just kneel and say a prayer?”</div>
+                <div>Loneliness became a thing of the past </div>
+                <div>A feeling I could not recognize anymore</div>
+                <div>I felt drawn and lost control of my stance</div>
+                <div>Then words filled my head and I uttered them </div>
+                <div>Sadly, we grew weary of each other, afterwards</div>
+                <div>Each trying to build a space of their own, you know </div>
+                <div>The fact is we must find our path, each on their own </div>
+                <div>We yelled, calling out to each other </div>
+                <div>But our voices struck against one another </div>
+                <div>In such a loud noise that no voice was heard at all!</div>
+                <div>“Do not partake of the tree of the knowledge of good and bad”.</div>
+            </p>
+            <p></div>
+                <div>We built cities and forged tools to alleviate the load </div>
+                <div>Hunting started as we felt they were a part of eats</div>
+                <div>Fights, bickering, quarelling drew us apart again and again </div>
+                <div>Dead bodies on thoroughfares told the stories</div>
+                <div>Of what was happening as people went about their work</div>
+                <div>Kingdoms rose and fell, leaving ruins behind</div>
+                <div>Minds developed building on top the work of our ancestors </div>
+                <div>We could see marks of civilizations as they had existed </div>
+                <div>It simply felt absurd that we had to pass away</div>
+                <div>Having toiled so much and having come to enjoy life</div>
+                <div>“Somebody, please, bring us back someday”</div>
+                <div>“Back to our lives, back to our loved ones, back to our lands”</div>
+                <div>The feeling was so convincing some of us knew we would live on </div>
+                <div>Either in the lives of the living, or in another realm like ours.</div>
+            </p>
+            <p>
+                <div>“What should we do to keep on living, God damn it?”</div>
+                <div>Advancements in medicine and life-saving mode of life </div>
+                <div>Are a hallmark that we have come to appreciate life </div>
+                <div>We have devised engines, machines, and skills to sustain us </div>
+                <div>Here and there, a master-mind comes and goes away </div>
+                <div>We wonder why these staggering numbers go to waste </div>
+                <div>Until a computer came along and revealed its prowess </div>
+                <div>So we have taken the oath to defend planet earth </div>
+                <div>And all these numbers all over the earth </div>
+                <div>Harnessing the power of technology and people of the mind </div>
+                <div>We know we can only gather momentum, with renewed stamina </div>
+                <div>We shall carry on with a fist of iron, on the mission </div>
+                <div>To defend human civilization and protect it from extinction </div>
+                <div>We have made a resolve to be Laastrasians, our safety belt</div>
+                <div>“Planet earth defenders, on this battlefield we live or die!”</div>
+            </p> 
+            <div class="d-flex flex-row justify-content-end"> <strong>C-Alpha</strong> </div>
+        </div>
+  "

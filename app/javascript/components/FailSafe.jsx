@@ -24,8 +24,8 @@ class FailSafe extends React.Component
                 e('div', {className: 'card-header'}, this.props.card_title), 
                 e('div', {className: 'card-body'}, 
                     [
-                        e('div', {className: 'text-center'}, this.props.card_body),
-                        e('div', {className: 'text-center'}, e('img', {src: this.props.card_image, className: 'img-fluid'}))
+                        e('div', {className: 'text-center', id: 'card_body_message'}, ''),
+                        e('div', {className: 'text-center', style: {margin: '10px'}}, e('img', {src: this.props.card_image, className: 'img-fluid'}))
                     ]
                 )
             ]
@@ -43,6 +43,7 @@ class FailSafe extends React.Component
             left: '50%',
             transform: 'translate(-50%, -50%)'
         });
+        $('#card_body_message').append(this.props.card_body);
 
     } // ComponentDidMount
 

@@ -155,7 +155,7 @@ class UsersController < ApplicationController
             password = params[:password] 
             redirect_uri = params[:redirect_uri]
             dataToSend = nil
-            @laastras_user = User.authenticate(email, password)
+            @laastras_user, @email = User.authenticate(email, password)
             unless session.nil?
                 session[:logged_in] = false
                 unless @laastras_user.nil?
@@ -169,11 +169,31 @@ class UsersController < ApplicationController
                         redirect_uri: redirect_uri
                     }
                 else
-                    dataToSend = {
-                        code: 0,
-                        message: (I18n.t 'logged_in_false'),
-                        redirect_uri: redirect_uri
-                    }
+                    if @email.nil? # sign up, please
+                        message = "<div><h3>#{I18n.t 'offer_to_sign_up'}</h3></div>" + 
+                                    (I18n.t 'offer_to_sign_up_message')
+                        dataToSend = {
+                            code: 0,
+                            message: message,
+                            redirect_uri: redirect_uri
+                        }
+
+                        msg = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + message 
+                        logger.debug msg
+                    else # password forgotten
+                        message = "<div><h3>#{I18n.t 'offer_to_reset_password'}</h3></div>" + 
+                                    (I18n.t 'offer_to_reset_password_message')
+                        dataToSend = {
+                            code: 0,
+                            message: message,
+                            redirect_uri: redirect_uri
+                        }
+
+                        msg = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + message 
+                        logger.debug msg
+                    end
                 end
             else
                 dataToSend = {
@@ -197,6 +217,23 @@ class UsersController < ApplicationController
         end
 
     end # sign_in
+
+    def reset_password 
+        next_uri = nil 
+        begin 
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # reset_password
 
     # POST /laastras_users/sign_up
     def sign_up 
@@ -248,14 +285,14 @@ class UsersController < ApplicationController
             regex_str = Regexp::escape params[:password_confirmation]
             logger.debug 'REGEX: ' + regex_str
             if params[:password].match?(/\A#{regex_str}\Z/)
-                role = 'Client'
+                role = :client.to_s
                 if(params[:email].match?(/\A#{admin_email}\Z/i))
-                    role = 'Admin'
+                    role = :admin.to_s
                 else 
                     if params[:laastras_employee].match?(/\A(#{I18n.t 'yes_label'})\Z/i)
-                        role = 'Employee'
+                        role = :employee.to_s
                     else
-                        role = 'Client'
+                        role = :client.to_s
                     end
                 end
 
@@ -336,7 +373,7 @@ class UsersController < ApplicationController
                 raise 'Something went wrong saving profile photo' if photo_data.nil?
 
                 unless @laastras_user.nil?
-                    if File.exists? photo_data[:photo_full_path]
+                    if File.exists? @laastras_user.photo_uri
                         File.delete(@laastras_user.photo_uri) 
                     end
                     if @laastras_user.update({
@@ -381,6 +418,7 @@ class UsersController < ApplicationController
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
+            @header_data = ApplicationHelper::SiteHeaderData.new(request, logger)
             @laastras_banner_image = ApplicationHelper.image_asset_url(
                 request, 'Laastras-e-banner-lg.JPG'
             )

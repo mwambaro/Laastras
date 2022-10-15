@@ -17,6 +17,8 @@ class LaastrasJobSeekersController < ApplicationController
             end
 
             if @laastras_jskers.count == 0
+                session[:fail_safe_title] = I18n.t 'no_applicants_yet'
+                session[:fail_safe_message] = I18n.t 'no_applicants_yet_message'
                 next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             end
         rescue Exception => e 
