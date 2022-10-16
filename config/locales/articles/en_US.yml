@@ -617,6 +617,34 @@ en_US:
             Kindly reset your password following <a href=\u0022/users/reset_password\u0022>this link</a>
         </div>
   "
+  laastras_services_consumer_option: "Be Laastras Services Consumer"
+  laastras_services_consumer_option_description: "
+        <div>
+            <div> You can donate by simply being a consumer of our services: </div> 
+            <ul>
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022> 
+                        Use our eGrocery service 
+                    </a> 
+                </li>
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022> 
+                        Be our eCard associate
+                    </a> 
+                </li> 
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_logistics\u0022 style=\u0022text-decoration: none\u0022> 
+                        Join our logistics fleet
+                    </a> 
+                </li>
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022> 
+                        Ally with us by signing AORI contract
+                    </a> 
+                </li>
+            </ul>
+        </div>
+  "
   western_union_option: "Western Union"
   western_union_option_description: "
         <div>
@@ -625,7 +653,7 @@ en_US:
                 <li><strong>Full name:</strong> Obed-Edom Nkezabahizi </li>
                 <li><strong>Date of birth:</strong> January 26, 1987 </li>
                 <li><strong>Destination country:</strong> Burundi </li>
-                <li><strong>Address:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Address:</strong> 31, 20th street, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Reception mode:</strong> Cash pick-up </li>
                 <li><strong>Destination currency:</strong> Burundian Francs (BIF) </li>
                 <li><strong>Phone number:</strong> +257 76 177 186 </li>
@@ -651,7 +679,7 @@ en_US:
                 <li><strong>Full name:</strong> Obed-Edom Nkezabahizi </li>
                 <li><strong>Date of birth:</strong> January 26, 1987 </li>
                 <li><strong>Destination country:</strong> Burundi </li>
-                <li><strong>Address:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Address:</strong> 31, 20th street, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Reception mode:</strong> Mobile Money Wallet </li>
                 <li><strong>Destination currency:</strong> Burundian Francs (BIF) </li>
                 <li><strong>Account phone number:</strong> +257 76 177 186 </li>
@@ -873,11 +901,32 @@ en_US:
             <ul>
                 <li><strong>Full name:</strong> Obed-Edom Nkezabahizi</li>
                 <li><strong>Birth date:</strong> January 26, 1987 </li>
-                <li><strong>Address:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Address:</strong> 31, 20 avenue, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Phone number:</strong> +257 76 177 186 </li>
                 <li><strong>E-mail:</strong> <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> onkezabahizi@gmail.com </a> </li>
                 <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022> LinkedIn Profile </a> </li>
             </ul>
+        </div>
+  "
+  no_laastras_documents_available_title: "No Laastras Docuuments Available"
+  no_laastras_documents_available_message: "
+    We are sorry we could not find any Laastras documents in our database. Try again later or upload some to our servers.
+  "
+  laastras_organization_pitch_message: "
+        Since each person will ultimately own a cell phone, Laastras organization harnesses the power 
+        behind software technologies to guarantee your share on all resources that support human existence
+        in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us
+        citizens have equal shares.
+  "
+  you_have_already_applied_title: "You Have Already Applied"
+  you_have_already_applied_message: "
+        <div>
+            <div>We found you in our database, so, you have already applied for this job.</div>
+            <div>
+                <a href=\u0022/laastras_job_offers/index\u0022 style=\u0022text-decoration: none\u0022> 
+                    Back to career page 
+                </a>
+            </div>
         </div>
   "
 

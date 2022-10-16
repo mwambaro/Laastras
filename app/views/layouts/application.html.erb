@@ -58,10 +58,12 @@
           e_alliances_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
           e_homocracy_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-homocracy.svg'),
           home_url: url_for(controller: 'laastras', action: 'home'),
+          home_label: (I18n.t 'home_label'),
           from: (I18n.t 'from_label'),
           democracy: (I18n.t 'democracy_label'),
           to: (I18n.t 'to_label'),
-          homocracy: (I18n.t 'homocracy_label')
+          homocracy: (I18n.t 'homocracy_label'),
+          laastras_pitch_message: (I18n.t 'laastras_organization_pitch_message')
       })%>
     <%= yield %>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

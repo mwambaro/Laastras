@@ -114,11 +114,21 @@ class LaastrasJobOffersController < ApplicationController
             if user 
                 job_offer = LaastrasJobOffer.find(params[:id])
                 if job_offer 
-                    next_uri = url_for(
-                        controller: 'laastras_job_seekers', 
-                        action: 'fill_in_form',
-                        job_offer_id: job_offer.id
-                    )
+                    job_seeker = LaastrasJobSeeker.find_by_job_offer_id(job_offer.id)
+                    unless job_seeker.nil?
+                        session[:fail_safe_title] = I18n.t 'you_have_already_applied_title'
+                        session[:fail_safe_message] = I18n.t 'you_have_already_applied_message'
+                        next_uri = url_for(
+                            controller: 'maintenance', 
+                            action: 'fail_safe'
+                        )
+                    else
+                        next_uri = url_for(
+                            controller: 'laastras_job_seekers', 
+                            action: 'fill_in_form',
+                            job_offer_id: job_offer.id
+                        )
+                    end
                 else
                     next_uri = url_for(
                         controller: 'maintenance', 

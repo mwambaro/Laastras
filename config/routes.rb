@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'laastras_job_offers/apply'
   get 'laastras_job_offers/close'
   get 'laastras_documents/show_laastras_document'
+  get 'laastras_documents/index_lsdoc'
   get 'maintenance/fail_safe'
   get 'laastras_page_views/analytics'
   get 'money_transfer/payment_method'

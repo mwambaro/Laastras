@@ -46,7 +46,7 @@ class LaastrasHireUs extends React.Component
 
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <div className="shadow p-3 mb-5 bg-body rounded">
+                        <div className="shadow-sm p-1 mb-2 bg-body rounded">
                             <p style={{padding: '5px'}} id="expertise-capture">
                             </p>
                             <ul>
@@ -72,7 +72,7 @@ class LaastrasHireUs extends React.Component
                                 </li>
                             </ul>
                         </div>
-                        <div className="shadow p-3 mb-5 bg-body rounded">
+                        <div className="shadow-sm p-1 mb-2 bg-body rounded">
                             <div style={{
                                     marginTop: '10px', 
                                     marginBottom: '10px',

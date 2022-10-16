@@ -16,7 +16,7 @@ class LaastrasDonate extends React.Component
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div class="shadow-sm p-1 mb-2 bg-white rounded">
-                            <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}}>
+                            <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}} id={this.props.option_id_title}>
                                 {this.props.money_transfer_option_title}
                             </div>
                             <hr />
@@ -43,7 +43,8 @@ class LaastrasDonate extends React.Component
 LaastrasDonate.propTypes = {
     money_transfer_option_title: PropTypes.string,
     money_transfer_option_description: PropTypes.string,
-    option_id: PropTypes.string
+    option_id: PropTypes.string,
+    option_id_title: PropTypes.string
 }
 
 export default LaastrasDonate

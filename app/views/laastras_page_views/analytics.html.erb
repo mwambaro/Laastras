@@ -1,14 +1,24 @@
 
 <div class="container-fluid" style="margin: 10px">
     <div class="text-center"> 
-        <h1> <%= I18n.t 'website_analytics_label' %> </h1>
+        <h3> <%= I18n.t 'website_analytics_label' %> </h3>
     </div>
-    <% @page_analytics.each do |analytics| %>
-        <div style="margin: 5px">
-            <p> <strong> <%= I18n.t 'number_of_visits' %>: </strong> <%= analytics[:number_of_visits] %> </p>
-            <p> <strong> <%= I18n.t 'number_of_visitors' %>: </strong> <%= analytics[:number_of_visitors] %> </p>
-            <p> <strong> <%= I18n.t 'page_visited' %>: </strong> <%= analytics[:page] %> </p>
-        </div>
-        <hr>
-    <% end %>
 </div>
+
+<% website_analytics_label = I18n.t 'website_analytics_label' %>
+<% number_of_visits_label = I18n.t 'number_of_visits' %>
+<% number_of_visitors_label = I18n.t 'number_of_visitors' %>
+<% page_visited_label = I18n.t 'page_visited' %>
+<% @page_analytics.each do |analytics| %>
+    <% analytics_object = {
+        number_of_visits_label: number_of_visits_label,
+        number_of_visitors_label: number_of_visitors_label, 
+        page_visited_label: page_visited_label,
+        number_of_visits: analytics[:number_of_visits],
+        number_of_visitors: analytics[:number_of_visitors],
+        page: analytics[:page]
+    } %>
+    <%= react_component('LaastrasSiteAnalytics', {
+        website_analytics: analytics_object
+    }) %>
+<% end %>

@@ -16,77 +16,83 @@ class LaastrasUserShow extends React.Component
         };
 
         return(
-            <div className="shadow p-3 mb-5 bg-body rounded laastras-event-main-card" data-aos="fade-up">
-                <div className="d-flex flex-row justify-content-center">
-                    <div style={{margin: '10px'}}>
-                        <div>
-                            <div>
-                                <img src={this.props.profile_photo_url} 
-                                     className="img-fluid"
-                                     style={{
-                                        height: '155px',
-                                        width: '155px',
-                                        borderRadius: '50%',
-                                        display: 'inline-block'
-                                     }}/>
-                            </div>
-                            {
-                                this.props.view_mode === 'false' ?
-                                (
+            <div className="container-fluid">
+                <div className="row justify-content-center">
+                <div className="col-md-8">
+                    <div className="shadow-sm p-1 mb-2 bg-body rounded laastras-event-main-card">
+                        <div className="d-flex flex-row justify-content-start">
+                            <div style={{margin: '10px'}}>
+                                <div>
                                     <div>
-                                        <div id="laastras-user-profile-photo-div">
-                                            <form role="form"
-                                                  encType="multipart/form-data"
-                                                  name="laastras_profile_photo_edit_form"
-                                                  id="laastras-profile-photo-edit-form"
-                                                  action={this.props.upload_profile_photo_action_url}
-                                                  style={{backgroundColor: '#a68353'}}>
-
-                                                <div className="form-group" style={form_elt_div_style}>
-                                                    <input type="file" name="file[uploaded_profile_photo_file]"
-                                                           className="form-control" id="profile_photo_edit_file"/>
-                                                </div>
-
-                                                <div className="text-center" style={form_elt_div_style}>             
-                                                    <button type="submit" 
-                                                            className="btn btn-default"
-                                                            style={{backgroundColor: 'white'}}>
-                                                        {this.props.submit_label}
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        <img src={this.props.profile_photo_url} 
+                                             className="img-fluid"
+                                             style={{
+                                                height: '155px',
+                                                width: '155px',
+                                                borderRadius: '50%',
+                                                display: 'inline-block'
+                                        }}/>
                                     </div>
-                                ):
-                                (
-                                    <div></div>
-                                )
-                            }
+                                    {
+                                        this.props.view_mode === 'false' ?
+                                        (
+                                            <div>
+                                                <div id="laastras-user-profile-photo-div">
+                                                    <form role="form"
+                                                          encType="multipart/form-data"
+                                                          name="laastras_profile_photo_edit_form"
+                                                          id="laastras-profile-photo-edit-form"
+                                                          action={this.props.upload_profile_photo_action_url}
+                                                          style={{backgroundColor: '#a68353'}}>
+
+                                                        <div className="form-group" style={form_elt_div_style}>
+                                                            <input type="file" name="file[uploaded_profile_photo_file]"
+                                                                   className="form-control" id="profile_photo_edit_file"/>
+                                                        </div>
+
+                                                        <div className="text-center" style={form_elt_div_style}>             
+                                                            <button type="submit" 
+                                                                    className="btn btn-default"
+                                                                    style={{backgroundColor: 'white'}}>
+                                                                {this.props.submit_label}
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        ):
+                                        (
+                                            <div></div>
+                                        )
+                                    }
+                                </div>
+                                <div className="d-flex flex-column justify-content-start align-items-start">
+                                    <h3> {this.props.full_name} </h3> 
+                                    <p>
+                                        {`${this.props.role_label}: ${this.props.role}`}
+                                    </p>
+                                    <p>
+                                        {`${this.props.email_label}: ${this.props.email}`}
+                                    </p>
+                                    {
+                                        this.props.view_mode === 'false' ?
+                                        (
+                                            <div style={{margin: '5px'}}>
+                                                <div className="d-flex flex-row justify-content-center">
+                                                    <a href={this.props.edit_url} style={{margin: '10px'}}> {this.props.edit_label} </a>
+                                                    <a href={this.props.destroy_url} style={{margin: '10px'}}> {this.props.destroy_label} </a>
+                                                </div>
+                                            </div>
+                                        ) : 
+                                        (
+                                            <div></div>
+                                        )
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="d-flex flex-column justify-content-start align-items-start">
-                        <h3> {this.props.full_name} </h3> 
-                        <p>
-                            {`${this.props.role_label}: ${this.props.role}`}
-                        </p>
-                        <p>
-                            {`${this.props.email_label}: ${this.props.email}`}
-                        </p>
-                        {
-                            this.props.view_mode === 'false' ?
-                            (
-                                <div style={{margin: '5px'}}>
-                                    <div className="d-flex flex-row justify-content-center">
-                                        <a href={this.props.edit_url} style={{margin: '10px'}}> {this.props.edit_label} </a>
-                                        <a href={this.props.destroy_url} style={{margin: '10px'}}> {this.props.destroy_label} </a>
-                                    </div>
-                                </div>
-                            ) : 
-                            (
-                                <div></div>
-                            )
-                        }
-                    </div>
+                </div>
                 </div>
             </div>
         );

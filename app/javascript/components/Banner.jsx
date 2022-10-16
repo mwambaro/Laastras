@@ -1,11 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {Modal} from "bootstrap"
 
 class Banner extends React.Component
 {
     constructor(props)
     {
         super(props);
+        this.bannerDetailsSectionModal = null;
 
     } // constructor
 
@@ -13,6 +15,29 @@ class Banner extends React.Component
     {
         return(
             <div className="container-fluid">
+                <div id="banner-details-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                <div id="banner-details-body">
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <div className="text-center">
+                                    <button type="button" className="btn btn-primary" onClick={(se) => this.leaveBannerDetails(se)}>
+                                        OK
+                                    </button>
+                                </div>
+                                <div className="text-center" style={{marginLeft: '10px'}}>
+                                    <button type="button" className="btn btn-primary" onClick={(se) => this.hitHomePage(se)}>
+                                        {this.props.home_label}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="outer" className="row" style={{fontFamily: 'Times New Roman'}}
                      onClick={se => this.onClickBanner(se)}
                      onMouseOver={se => this.onMouseOverBanner(se)}>
@@ -57,15 +82,52 @@ class Banner extends React.Component
 
     } // render
 
-    onClickBanner(e)
+    componentDidMount()
+    {
+        this.bannerDetailsSectionModal = new Modal(
+            document.getElementById('banner-details-section')
+        );
+
+    } // componentDidMount
+
+    leaveBannerDetails(e)
+    {
+        this.bannerDetailsSectionModal.hide();
+        $('#banner-details-body-content').remove();
+
+    } // leaveExpertiseDetails
+
+    hitHomePage(e)
     {
         window.location = this.props.home_url;
-    }
+
+    } // hitHomePage
+
+    onClickBanner(e)
+    {
+        //window.location = this.props.home_url;
+        $('#banner-details-body').append(this.pitch_message_html());
+        this.bannerDetailsSectionModal.show();
+
+    } // onClickBanner
 
     onMouseOverBanner(e)
     {
         e.target.style.cursor = 'pointer';
-    }
+
+    } // onMouseOverBanner
+
+    pitch_message_html()
+    {
+        let html = `
+            <div id="banner-details-body-content">
+                ${this.props.laastras_pitch_message}
+            </div>
+        `;
+
+        return html;
+
+    } // pitch_message_html
 
 }
 
@@ -77,10 +139,12 @@ Banner.propTypes = {
     e_alliances_logo_url: PropTypes.string,
     e_homocracy_logo_url: PropTypes.string,
     home_url: PropTypes.string,
+    home_label: PropTypes.string,
     from: PropTypes.string,
     democracy: PropTypes.string,
     to: PropTypes.string,
-    homocracy: PropTypes.string
+    homocracy: PropTypes.string,
+    laastras_pitch_message: PropTypes.string
 };
 
 export default Banner

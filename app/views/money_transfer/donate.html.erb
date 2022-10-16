@@ -1,10 +1,41 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="shadow-sm p-1 mb-2 bg-body rounded">
+                <p style="padding: 5px" id="option-capture">
+                    <%= I18n.t 'use_one_of_these_donate_options' + ': ' %>
+                </p>
+                <ul>
+                    <% @money_transfer_options.each do |opt| %> 
+                        <li style="padding: 5px; color: blue"
+                            class="option-field"
+                            data-id="<%= opt[:option_id_title] %>"> 
+                                <%= opt[:money_transfer_option_title] %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.option-field').on('click', (e) => {
+            let option_id = $(e.target).attr('data-id');
+            let top = $(`#${option_id}`).offset().top;
+            $(window).scrollTop(top);
+        });
+        $('.option-field').on('mouseover', (e) => {
+            e.target.style.cursor = 'pointer';
+        })
+    </script>
+</div>
 
 <% @money_transfer_options.each do |option| %>
 
     <%= react_component('LaastrasDonate', {
         money_transfer_option_title: option[:money_transfer_option_title],
         money_transfer_option_description: option[:money_transfer_option_description],
-        option_id: option[:option_id]
+        option_id: option[:option_id],
+        option_id_title: option[:option_id_title]
     }) %>
 
 <% end %>

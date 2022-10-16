@@ -199,7 +199,7 @@ fr_FR:
       sécurité financière ainsi que de l'auto-suffisance. Sans parler des conflits qui résultent du fait
       d'essayer de sécuriser et de garder le contrôle de nos affaires. On a essayé mieux&#58; la 
       philanthropie. Nous la croyions pouvoir mettre fin à la pauvreté et capable de nous procurer égales
-      opportunités. ça n'a pas marché. Jusqu'à ce que le modèle Laastras soit adopté, il y'aura pas de
+      opportunités. Ça n'a pas marché. Jusqu'à ce que le modèle Laastras soit adopté, il y'aura pas de
       sécurité financière, de l'auto-suffisance, égales opportunités, de l'emploi satisfaisant pour tous,
       et des affaires sans conflits. Comment? Laastras réforme le commerce par biais de deux objectifs:
       </p>
@@ -584,6 +584,34 @@ fr_FR:
             Veuillez réinitialiser votre mot de passe en suivant ce <a href=\u0022/users/reset_password\u0022>lien</a>
         </div>
   "
+  laastras_services_consumer_option: "Soyez Consommateur de Services Laastras"
+  laastras_services_consumer_option_description: "
+        <div>
+            <div> Vous pouvez faire don en étant consommateur de nos services: </div> 
+            <ul>
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022> 
+                        Utiliser notre service eGrocery 
+                    </a> 
+                </li>
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022> 
+                        Soyez notre associé eCard
+                    </a> 
+                </li> 
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_logistics\u0022 style=\u0022text-decoration: none\u0022> 
+                        Rejoignez notre flotte logistique
+                    </a> 
+                </li>
+                <li style=\u0022margin: 5px\u0022> 
+                    <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022> 
+                        Alliez-vous à nous en signant le contrat AOUI
+                    </a> 
+                </li>
+            </ul>
+        </div>
+  "
   western_union_option: "Western Union"
   western_union_option_description: "
         <div>
@@ -592,7 +620,7 @@ fr_FR:
                 <li><strong>Nom complet:</strong> Nkezabahizi Obed-Edom</li>
                 <li><strong>Date de naissance:</strong> 26 Janvier 1987 </li>
                 <li><strong>Pays de destination:</strong> Burundi </li>
-                <li><strong>Adresse:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Adresse:</strong> 31, avenue 20, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Mode de réception:</strong> ‘cash pick-up’ </li>
                 <li><strong>Devise à la réception:</strong> Francs Burundais (Fbu) </li>
                 <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
@@ -620,7 +648,7 @@ fr_FR:
                 <li><strong>Nom complet:</strong> Nkezabahizi Obed-Edom</li>
                 <li><strong>Date de naissance:</strong> 26 Janvier 1987 </li>
                 <li><strong>Pays de destination:</strong> Burundi </li>
-                <li><strong>Adresse:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Adresse:</strong> 31, avenue 20, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Mode de réception:</strong> Porte-feuille Argent Mobile </li>
                 <li><strong>Devise à la réception:</strong> Francs Burundais (Fbu) </li>
                 <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
@@ -848,10 +876,32 @@ fr_FR:
             <ul>
                 <li><strong>Nom complet:</strong> Nkezabahizi Obed-Edom</li>
                 <li><strong>Date de naissance:</strong> 26 Janvier 1987 </li>
-                <li><strong>Adresse:</strong> Kinama, Bujumbura-Mairie, Burundi </li>
+                <li><strong>Adresse:</strong> 31, avenue 20, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
                 <li><strong>E-mail:</strong> <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> onkezabahizi@gmail.com </a> </li>
                 <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022> Profil LinkedIn </a> </li>
             </ul>
+        </div>
+  "
+  no_laastras_documents_available_title: "Aucun Document Laastras n'est Disponible"
+  no_laastras_documents_available_message: "
+    Désolés nous n'avons pas trouvé de documents Laastras dans notre base de données. Veuillez réessayer ultérieurement ou en envoyer à nos serveurs.
+  "
+  laastras_organization_pitch_message: "
+        Puisque chaque personne aura au final un cellulaire, l'organisation Laastras exploite 
+        la puissance des technologies logicielles pour guarantir votre part sur toutes les 
+        ressources qui supportent l'existence humaine dans votre pays, d'abord, et puis, dans 
+        le monde. Notre pays et le monde deviennent une entreprise dans laquelle nous tous citoyens
+        avons des parts (actions) égales.
+  "
+  you_have_already_applied_title: "Vous Avez Déjà Postulé"
+  you_have_already_applied_message: "
+        <div>
+            <div>Nous vous avons trouvé dans notre base de données, alors, vous avez déjà postulé.</div>
+            <div>
+                <a href=\u0022/laastras_job_offers/index\u0022 style=\u0022text-decoration: none\u0022> 
+                    Retour à la page carrière
+                </a>
+            </div>
         </div>
   "

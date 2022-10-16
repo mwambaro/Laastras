@@ -72,12 +72,20 @@ class MoneyTransferController < ApplicationController
                 {
                     money_transfer_option_title: (I18n.t 'western_union_option'),
                     money_transfer_option_description: (I18n.t 'western_union_option_description'),
-                    option_id: 'wu-12'
+                    option_id: 'wu-12',
+                    option_id_title: 'wu-12-t'
                 },
                 {
                     money_transfer_option_title: (I18n.t 'mobile_wallet_option'),
                     money_transfer_option_description: (I18n.t 'mobile_wallet_option_description'),
-                    option_id: "wremit-12"
+                    option_id: "wremit-12",
+                    option_id_title: "wremit-12-t"
+                },
+                {
+                    money_transfer_option_title: (I18n.t 'laastras_services_consumer_option'),
+                    money_transfer_option_description: (I18n.t 'laastras_services_consumer_option_description'),
+                    option_id: "services-consumption-12",
+                    option_id_title: "services-consuption-12-t"
                 }
             ]
         rescue Exception => e 

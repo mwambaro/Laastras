@@ -188,6 +188,10 @@ class LaastrasController < ApplicationController
                         {
                             url: url_for(controller: 'laastras_page_views', action: 'analytics'),
                             inner_text: (I18n.t 'website_statistics')
+                        },
+                        {
+                            url: url_for(controller: 'laastras_documents', action: 'index_lsdoc'),
+                            inner_text: (I18n.t 'laastras_documents_label')
                         }
                     ]
                 }

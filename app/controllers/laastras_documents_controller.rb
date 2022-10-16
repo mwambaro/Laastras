@@ -3,6 +3,39 @@ require 'net/http'
 class LaastrasDocumentsController < ApplicationController
     before_action :init_parameters
 
+    def index_lsdoc 
+        next_uri = nil 
+        begin 
+            @laastras_documents = []
+            LaastrasDocument.all.each do |doc| 
+                @laastras_documents << {
+                    uri: url_for(
+                        controller: 'laastras_documents',
+                        action: 'show_laastras_document',
+                        doc_id: doc.sha256
+                    ),
+                    filename: Pathname.new(doc.uri).basename.to_s
+                }
+            end
+
+            if @laastras_documents.count == 0 
+                session[:fail_safe_title] = I18n.t 'no_laastras_documents_available_title' 
+                session[:fail_safe_message] = I18n.t 'no_laastras_documents_available_message'
+                next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # index_lsdoc
+
     def show_laastras_document
         next_uri = nil 
         begin 
