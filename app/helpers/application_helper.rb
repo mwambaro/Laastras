@@ -4,7 +4,7 @@ require 'net/http'
 
 module ApplicationHelper
     def self.max_number_of_users 
-        max = 20
+        max = 80
     end
 
     def self.max_profile_photo_size 
@@ -16,6 +16,10 @@ module ApplicationHelper
     end
 
     def self.harvest_analytics(session, request)
+        if true 
+            return nil
+        end
+
         user_id = nil
         user = self.who_is_logged_in?(session)
         user_id = user.id unless user.nil?

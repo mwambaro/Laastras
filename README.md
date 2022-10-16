@@ -10,7 +10,8 @@ versions of back-end modules like Ruby, Ruby on Rails.
 ## System dependencies
 
 Install [npm](https://www.npmjs.com/get-npm) and [yarn](https://yarnpkg.com/getting-started/install) for front-end package needs like webpack, etc.
-Install [ruby](https://rubyinstaller.org/) version 2.7 and [rails] (https://www.tutorialspoint.com/ruby-on-rails/rails-installation.htm). Make sure the four components work well.
+Install [ruby](https://rubyinstaller.org/) version 2.7 and [rails](https://www.tutorialspoint.com/ruby-on-rails/rails-installation.htm). Make sure the four components work well.
+    
     - NPM:
         `npm --version` (We used version 6.14.10)
     - YARN:

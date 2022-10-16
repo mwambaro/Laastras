@@ -905,3 +905,8 @@ fr_FR:
             </div>
         </div>
   "
+  no_page_analytics_available_title: "Pas de Données de Statistiques de Page"
+  no_page_analytics_available_message: "
+        Nous n'avons pas pu trouver de données de statistiques de page dans notre base de données. 
+        Il se pourrait que ce soit du aux limites imposées par l'offre.
+  "

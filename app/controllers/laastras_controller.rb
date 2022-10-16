@@ -152,11 +152,11 @@ class LaastrasController < ApplicationController
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
-            @laastras_banner_image = ApplicationHelper.image_asset_url(
-                request, 'Laastras-e-banner-lg.JPG'
+            @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
+                request
             )
-            @open_graph_proto_image_url = ApplicationHelper.image_asset_url(
-                request, 'Laastras-e-banner-lg.JPG'
+            @open_graph_proto_image_url = ApplicationHelper.banner_image_asset_url(
+                request
             )
             @language_icon = ApplicationHelper.image_asset_url(
                 request, 'language_icon.png'

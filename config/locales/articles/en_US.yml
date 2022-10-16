@@ -929,4 +929,8 @@ en_US:
             </div>
         </div>
   "
+  no_page_analytics_available_title: "No Page Analytics Data Available"
+  no_page_analytics_available_message: "
+        We could not find any page analytics data in our database. This may be due to plan limitations.
+  "
 

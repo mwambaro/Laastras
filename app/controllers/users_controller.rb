@@ -441,11 +441,11 @@ class UsersController < ApplicationController
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
             @header_data = ApplicationHelper::SiteHeaderData.new(request, logger)
-            @laastras_banner_image = ApplicationHelper.image_asset_url(
-                request, 'Laastras-e-banner-lg.JPG'
+            @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
+                request
             )
-            @open_graph_proto_image_url = ApplicationHelper.image_asset_url(
-                request, 'Laastras-e-banner-lg.JPG'
+            @open_graph_proto_image_url = ApplicationHelper.banner_image_asset_url(
+                request
             )
             @logo_image_url = ApplicationHelper.image_asset_url(
                 request, 'Logo-03.svg'
