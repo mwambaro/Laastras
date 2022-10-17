@@ -254,29 +254,41 @@ module ApplicationHelper
     end # image_asset_url
 
     def self.document_asset_url(file)
-        path = Pathname.new(Rails.root.join('storage', 'laastras_documents'))
+        folder_name = 'laastras_documents'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
         unless path.exist?
             path.mkpath
         end
-        Rails.root.join('storage', 'laastras_documents', file)
+        Rails.root.join('storage', folder_name, file)
 
     end # document_asset_url
 
     def self.job_seeker_asset_url(fname)
-        path = Pathname.new(Rails.root.join('storage', 'laastras_job_seekers_documents'))
+        folder_name = 'laastras_job_seekers_documents'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
         unless path.exist?
             path.mkpath
         end
-        Rails.root.join('storage', 'laastras_job_seekers_documents', fname)
+        Rails.root.join('storage', folder_name, fname)
 
     end # job_seeker_asset_url
 
-    def self.user_profile_photo_asset_url(fname)
-        path = Pathname.new(Rails.root.join('storage', 'laastras_users_profile_photos'))
+    def self.mature_video_asset_url(fname) 
+        folder_name = 'laastras_mature_videos'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
         unless path.exist?
             path.mkpath
         end
-        Rails.root.join('storage', 'laastras_users_profile_photos', fname)
+        Rails.root.join('storage', folder_name, fname)
+    end
+
+    def self.user_profile_photo_asset_url(fname)
+        folder_name = 'laastras_users_profile_photos'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
+        unless path.exist?
+            path.mkpath
+        end
+        Rails.root.join('storage', folder_name, fname)
 
     end # user_profile_photo_asset_url
     

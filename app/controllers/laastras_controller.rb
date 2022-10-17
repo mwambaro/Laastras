@@ -192,6 +192,10 @@ class LaastrasController < ApplicationController
                         {
                             url: url_for(controller: 'laastras_documents', action: 'index_lsdoc'),
                             inner_text: (I18n.t 'laastras_documents_label')
+                        },
+                        {
+                            url: url_for(controller: 'laastras_mature_videos', action: 'index'),
+                            inner_text: (I18n.t 'laastras_mature_videos_label')
                         }
                     ]
                 }

@@ -156,3 +156,34 @@
 
     LaastrasJobOffer.create(job_offers)
 # __end__
+
+# __start__ seeding laastras_mature_videos
+    mature_videos = [
+        {
+            sha256: '76C369CDC61F563B1658D78BF5C3C81D4532C80B4316FD97E551BF5B2AB31413',
+            title: 'Fucking HoneyDippedC for breakfast.mp4',
+            uri: ApplicationHelper.mature_video_asset_url(
+                'Fucking HoneyDippedC for breakfast.mp4'
+            ),
+            mime_type: 'video/mp4'
+        },
+        {
+            sha256: '97BEC4E299A061A297D7D3B060B9299A915CC2C3D607DAF5406B568752DA4149',
+            title: 'Mom cheating milf plays away.mp4',
+            uri: ApplicationHelper.mature_video_asset_url(
+                'Mom cheating milf plays away.mp4'
+            ),
+            mime_type: 'video/mp4'
+        },
+        {
+            sha256: '179E06F67F2CE5FB7C1BA0E9BDC03818CB474E8127999DE834941867B723CA23',
+            title: 'Mom mature milf takes charge of her man.mp4',
+            uri: ApplicationHelper.mature_video_asset_url(
+                'Mom mature milf takes charge of her man.mp4'
+            ),
+            mime_type: 'video/mp4'
+        }
+    ]
+
+    LaastrasMatureVideo.create(mature_videos)
+# __end__

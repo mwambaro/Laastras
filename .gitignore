@@ -22,6 +22,7 @@
 /storage/*
 !/storage/.keep
 !/storage/laastras_documents
+!/storage/laastras_mature_videos
 
 /public/assets
 .byebug_history

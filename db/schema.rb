@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_07_103342) do
+ActiveRecord::Schema.define(version: 2022_10_17_192020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2022_10_07_103342) do
     t.string "cv_mime_type"
     t.string "cover_letter_uri"
     t.string "cover_letter_mime_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "laastras_mature_videos", force: :cascade do |t|
+    t.string "sha256"
+    t.string "title"
+    t.string "uri"
+    t.string "mime_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
