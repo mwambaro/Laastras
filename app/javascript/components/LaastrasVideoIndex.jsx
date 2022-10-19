@@ -20,13 +20,14 @@ class LaastrasVideoIndex extends React.Component
     render()
     {
         let width = this.state.width;
+        let fixed_width = $(window).width() - 10;
 
-        console.log('video width: ' + width);
+        //console.log('video width: ' + width);
 
         return(
             <div className="container-fluid">
                 <div className="row justify-content-center">
-                    <div className="col-md-10">
+                    <div className="col-md-10" width={fixed_width}>
                         <div style={{display: 'flex'}}>
                         {
                             this.props.videos.map ((video, idx) =>

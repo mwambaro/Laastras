@@ -67,12 +67,20 @@ class LaastrasJskForm extends React.Component
                                            placeholder={this.props.phone_number_label}/>
                                 </div>
                             </div>
+
+                            <div style={{color: 'white', fontWeight: 'bold', padding: '10px'}}>
+                                {this.props.cv_label}:
+                            </div>
                     
                             <div className="form-group" style={form_elt_div_style}>
                                 <input type="file" name="file[uploaded_cv_file]"
                                        className="form-control" 
                                        id="jsk_cv_file"
                                        accept="application/pdf"/>
+                            </div>
+
+                            <div style={{color: 'white', fontWeight: 'bold', padding: '10px'}}>
+                                {this.props.cover_letter_label}:
                             </div>
 
                             <div className="form-group" style={form_elt_div_style}>
@@ -380,6 +388,8 @@ LaastrasJskForm.propTypes = {
     laastras_jsk_form_action_url: PropTypes.string,
     location_label: PropTypes.string,
     locate_label: PropTypes.string,
+    cv_label: PropTypes.string,
+    cover_letter_label: PropTypes.string,
     world_countries_countrycodes_list: PropTypes.array,
     phone_number_label: PropTypes.string,
     submit_label: PropTypes.string

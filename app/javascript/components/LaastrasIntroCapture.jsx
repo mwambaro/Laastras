@@ -20,7 +20,6 @@ class LaastrasIntroCapture extends React.Component
             margin: '3px'
         };
         let text_body_p_style = {
-            fontSize: '18px', 
             color: '#ededed', 
             padding: '3px'
         };
@@ -49,7 +48,7 @@ class LaastrasIntroCapture extends React.Component
                                     {
                                         this.props.featured_job_offers.map((job_offer, idx) => 
                                             <li key={`job-offer-${idx}`}>
-                                                <a href={job_offer.show_url}> 
+                                                <a href={job_offer.show_url} style={{textDecoration: 'none'}}> 
                                                     {job_offer.title}
                                                 </a>
                                             </li>

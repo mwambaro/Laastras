@@ -12,6 +12,7 @@ class LaastrasJobOffersController < ApplicationController
             applicants_label = I18n.t 'applicants_label'
             apply_label = I18n.t 'apply_label'
             @close_label = I18n.t 'close_label'
+            counter = 1
 
             offers.each do |job_offer|
                 if ApplicationHelper.user_has_admin_role?(session)
@@ -20,6 +21,8 @@ class LaastrasJobOffersController < ApplicationController
                         job_offer_description: job_offer.description,
                         apply_label: applicants_label,
                         job_offer_id: job_offer.id,
+                        offer_html_id: "job-offer-id-#{counter}",
+                        offer_title_html_id: "job-offer-id-title-#{counter}",
                         application_url: url_for(
                             controller: 'laastras_job_seekers',
                             action: 'index_jsk',
@@ -33,6 +36,8 @@ class LaastrasJobOffersController < ApplicationController
                         job_offer_description: job_offer.description,
                         apply_label: apply_label,
                         job_offer_id: job_offer.id,
+                        offer_html_id: "job-offer-id-#{counter}",
+                        offer_title_html_id: "job-offer-id-title-#{counter}",
                         application_url: url_for(
                             controller: 'laastras_job_offers', 
                             action: 'apply', 
@@ -40,6 +45,7 @@ class LaastrasJobOffersController < ApplicationController
                         )
                     }
                 end
+                counter += 1
             end
 
             if @all_job_offers.count == 0 
@@ -63,7 +69,13 @@ class LaastrasJobOffersController < ApplicationController
     def show 
         next_uri = nil 
         begin 
-            @job_offer = LaastrasJobOffer.find(params[:id])
+            id = params[:id]
+            job_offer_guid = params[:job_offer_guid]
+            unless id.nil?
+                @job_offer = LaastrasJobOffer.find(id)
+            else
+                @job_offer = ApplicationHelper.job_offer_guid_to_job_offer(job_offer_guid)
+            end
 
             if @job_offer
                 if ApplicationHelper.user_has_admin_role?(session)

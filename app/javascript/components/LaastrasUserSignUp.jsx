@@ -57,7 +57,9 @@ class LaastrasUserSignUp extends React.Component
                             </div>
 
                             <div style={form_elt_div_style}>
-                                <label> {this.props.are_you_laastras_employee_label} </label>
+                                <label style={{color: 'white', fontWeight: 'bold'}}> 
+                                    {this.props.are_you_laastras_employee_label} 
+                                </label>
                                 <select className="form-select" aria-label="Laastras employee select" id="laastras-sign-up-employee">
                                     <option value={this.props.no_label}>{this.props.no_label}</option>
                                     <option value={this.props.yes_label}>{this.props.yes_label}</option>

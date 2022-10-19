@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% @open_graph_variables = ApplicationHelper.open_graph_variables(request) %>
     <title><%= @site_title.nil? ? 'Laastras' : @site_title %></title>
     <%= favicon_link_tag 'favicon.svg' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="<%= @site_description.nil?  ? 'A collection of IoT services that aim at fulfilling LaaS policy' : @site_description %>">
+    <meta name="description" content="<%= @open_graph_variables[:site_description].nil?  ? 'A collection of IoT services that aim at fulfilling LaaS policy' : @open_graph_variables[:site_description] %>">
     
     <% # 35 characters %>
-    <meta property="og:title" content="<%= @open_graph_proto_title.nil? ? 'LaaS Policy Application' : @open_graph_proto_title %>" />
-    <meta property="og:url" content="<%= @open_graph_proto_site_url.nil? ? 'https://laastras.herokuapp.com' : @open_graph_proto_site_url %>" />
+    <meta property="og:title" content="<%= @open_graph_variables[:open_graph_proto_title].nil? ? 'LaaS Policy Application' : @open_graph_variables[:open_graph_proto_title] %>" />
+    <meta property="og:url" content="<%= @open_graph_variables[:open_graph_proto_site_url].nil? ? 'https://laastras.herokuapp.com' : @open_graph_variables[:open_graph_proto_site_url] %>" />
     <% # 65 characters %>
-    <meta property="og:description" content="<%= @open_graph_proto_description.nil? ? 'Meet globalization challenges and constraints' : @open_graph_proto_description %>" />
+    <meta property="og:description" content="<%= @open_graph_variables[:open_graph_proto_description].nil? ? 'Meet globalization challenges and constraints' : @open_graph_variables[:open_graph_proto_description] %>" />
     <% # Image type PNG or JPG size less than 300KB and minimum pixels 300x200 %>
-    <meta property="og:image" content="<%= @open_graph_proto_image_url.nil? ? 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none' : @open_graph_proto_image_url %>" />
+    <meta property="og:image" content="<%= @open_graph_variables[:open_graph_proto_image_url].nil? ? 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none' : @open_graph_variables[:open_graph_proto_image_url] %>" />
     <% # see https://opengraphprotocol.org/#types %>
     <meta property="og:type" content="website" />
     <% # Examples: en_US, en_GB. => locale_TERRITORRY %>
-    <meta property="og:locale" content="<%= @open_graph_proto_locale.nil? ? I18n.default_locale.to_s.gsub(/-/, '_') : @open_graph_proto_locale %>" />
+    <meta property="og:locale" content="<%= @open_graph_variables[:open_graph_proto_locale].nil? ? @open_graph_variables[:default_locale] : @open_graph_variables[:open_graph_proto_locale] %>" />
     <% # Alternate locales %>
-    <% if (!I18n.available_locales.nil?) %>
-      <% I18n.available_locales.each do |locale| %>
-        <% if((locale.to_s != @open_graph_proto_locale) && (locale.to_s != I18n.default_locale.to_s.gsub(/-/, '_'))) %>
-          <meta property="og:locale:alternate" content="<%= locale.to_s.gsub(/-/, '_') %>" />
+    <% @open_graph_variables[:available_locales].each do |locale| %>
+        <% if((locale.to_s != @open_graph_variables[:open_graph_proto_locale]) && (locale.to_s != @open_graph_variables[:default_locale])) %>
+            <meta property="og:locale:alternate" content="<%= locale %>" />
         <% end %>
-      <% end %>
     <% end %>
 
     <%= csrf_meta_tags %>
@@ -108,7 +107,7 @@
         
         function manageBanner(onclick_fn=null)
         {
-            let banners = document.getElementsByclass('banner-image');
+            let banners = document.getElementsByClassName('banner-image');
             let blength = banners.length;
             if(blength > 0)
             {
@@ -131,10 +130,10 @@
             }
         } 
 
-        import {Modal} from "bootstrap"
+        //import {Modal} from "bootstrap"
         function addPitchMessageToBanner()
         {
-            var app_modal = new Modal(document.getElementsById('banner-details-section-app'));
+            var app_modal = new Modal(document.getElementById('banner-details-section-app'));
             $('#banner-ok-btn-app').on('click', (e) => {
                 app_modal.hide();
             });
@@ -146,8 +145,8 @@
                 app_modal.show();
             });
         }
-        //manageBanner();
-        addPitchMessageToBanner();
+        manageBanner();
+        //addPitchMessageToBanner();
     </script>
   </body>
 </html>

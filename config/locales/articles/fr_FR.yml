@@ -98,7 +98,7 @@ fr_FR:
       a safe haven for humankind.
   "
   site_meta_description: "
-      A collection of internet of our things (IoT) services that aim at fulfilling leadership as a service (LaaS)
+      A collection of internet of our things (IooT) services that aim at fulfilling leadership as a service (LaaS)
       policy. 'Our things' are all resources that support human existence. To eradicate unemployment, poverty, and
       conflicts, as well as social inequalities, Laastras (one of LaaS applications) must define, build, and
       establish a trade system that allows all humankind to equally benefit from 'our things'.
@@ -274,19 +274,104 @@ fr_FR:
         </a> 
       </p>
   "
+  project_manager_assistant: "Assistante du Chef de Projet"
   project_manager_assistant_offer: "
-      Nous cherchons une <strong>Assistante du Chef de Projet</strong> qui remplit les qualifications suivantes: 
-      <ol>
-        <li>
-          Une demoiselle célibataire dont la date de naissance se situe entre Février 1987 et Février 1994. 
-        </li>
-        <li>
-          Sans emploi mais désireuse de lancer un 'start-up' selon nos directives.
-        </li>
-        <li>
-          Ou, employée dans une entreprise légallement enregistrée qui voudrait être notre partenaire à fin de s'expandre.
-        </li>
-      </ol>
+        <div>
+            Nous cherchons une <strong>Assistante du Chef de Projet</strong> qui remplit les qualifications suivantes: 
+        </div>
+        <ol style=\u0022margin-top: 10px\u0022>
+            <li>
+                Une demoiselle célibataire dont la date de naissance se situe entre Février 1987 et Février 1994. 
+            </li>
+            <li>
+                Sans emploi mais désireuse de lancer un 'start-up' selon nos directives.
+            </li>
+            <li>
+                Ou, employée dans une entreprise légallement enregistrée qui voudrait être notre partenaire à fin de s'expandre.
+            </li>
+        </ol>
+  "
+  venture_capital_professional: "Professionnel en collecte de fonds et en marketing de contenu"
+  venture_capital_professional_offer: "
+        <div> 
+            <div>
+                Si vous en savez beaucoup sur la collecte de fonds ou si vous avez de l'expérience en la 
+                recherche de fonds pour financer les projets débutants, cette offre est la votre. Aimeriez-vous 
+                savoir à quel point le succès sera sublime? Veuillez lire notre
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                 mot de mission 
+                </a>. Vous devez avoir les qualifications suivantes:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    Vous êtes employé dans une compagnie qui peut ou a pu mettre des fonds de côté pour 
+                    subventionner des idées d'innovation soutenables.
+                </li>
+                <li>
+                    Vous êtes expérimenté en Marketing de Contenu et vous pouvez vendre de grandes 
+                    idées aux bailleurs de fonds.
+                </li>
+                <li>
+                    Vous êtes un “lobbyist” expérimenté and vous savez comment parler aux faiseurs de 
+                    politique qui peuvent influencer grandement l'opinion des consommateurs sur nos 
+                    produits et services.
+                </li>
+            </ol>
+        </div>
+  "
+  ngo_chief_of_mission: "Chef de mission dans une ONG"
+  ngo_chief_of_mission_job_offer: "
+        <div>
+            <div>
+                Nous projettons de devenir une ONG au final. Nous voudrions rendre aux gens locaux les 
+                services de nutrition, de gestion de cycle de revenu, de distribution de clients, et plus, 
+                quitte à ce que nous transformions un cellulaire en devise, carte d'identité, passport,
+                permis de conduire, etc, tout en mettant fin au chômage, à la pauvreté, à l'inégalité, au crime,
+                et aux conflits. Est-ce que notre projet remplit les conditions requises par votre ONG pour être 
+                subventionné? Aimeriez-vous d'abord en savoir d'avantage sur notre 
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    mission
+                </a>? 
+                Si vous êtes intéréssés, vous devez être:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    Capable d'ajouter un aspect de notre mission à votre mission.
+                </li>
+                <li>
+                    Apte au financement de notre projet comme une compagnie à part.
+                </li>
+                <li>
+                    Un individu qui s'y connait en la mobilisation d'autres missions pour qu'elles nous 
+                    supportent.
+                </li>
+            </ol>
+        </div>
+  "
+  head_of_state_or_prime_minister: "Chef d'Etat ou Premier Ministre"
+  head_of_state_or_prime_minister_job_offer: "
+        <div>
+            <div> 
+                Il est très rare que les Chefs d'Etats et les Premiers Ministres aient toute la connaissance 
+                et toutes les stratégies nécéssaires pour résoudre les problèmes qui pèsent sur nations et royaumes.
+                Des obstacles et autres situations peuvent les rendre impopulaires auprès de leurs sujets. Nous 
+                nous recommandons à vous pour être le bâteau de rescousse de votre nation ou royaume. Nous pouvons 
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    rendre sûr le futur de votre nation ou royaume
+                </a>.
+                Si ça vous intéresse, Monsieur/Madame, nous travaillerons avec vous si:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    Vous avez la volonté de soutenir notre personnel pendant qu'ils opèrent comme une ONG.
+                </li>
+                <li>
+                    Vous n'avez rien contre l'idée de nous laisser bâtir le sentier de l'intégration de votre 
+                    administration toute entière dans Laastras comme une coopérative “protection légale de l'espace 
+                    personnel auto-complet”.
+                </li>
+            </ol>
+        </div>
   "
   detailed_cv_data: "
         <div style=\u0022font-weight: bold; margin-top: 20px;\u0022>
@@ -570,11 +655,9 @@ fr_FR:
   "
   offer_to_sign_up: "Essayez de vous Inscrire"
   offer_to_sign_up_message: "
-        <div>
-            Evidemment vous ne vous êtes pas encore inscris.
-            Bon, nous n'avons pas pu trouvé votre e-mail dans notre base de données.
-            S'il vous plait, inscrivez-vous <a href=\u0022/laastras/sign_up\u0022>ici</a>
-        </div>
+        Evidemment vous ne vous êtes pas encore inscris.
+        Bon, nous n'avons pas pu trouvé votre e-mail dans notre base de données.
+        S'il vous plait, inscrivez-vous
   "
   offer_to_reset_password: "Essayer de réinitialiser votre mot de passe"
   offer_to_reset_password_message: "
@@ -776,7 +859,7 @@ fr_FR:
             Vous avez besoin d'un seul emploi dans Marsexh pour avoir toute autre chose nécéssaire pour méner une 
             vie saine et être en bonne santé. Dans ce cas, la devise est dûment appellée  “Echange de Services”, à l'opposé 
             de “Devise Virtuelle”. Marsexh nous procurera sécurité financiaire, auto-suffisance, affaires sans conflits,
-            égalité, justice, etc. Tout simplement, la vie. Alors, si vous consomez déjà nos services AOUI, nous 
+            égalité, justice, etc. Tout simplement, la vie. Alors, si vous consommez déjà nos services AOUI, nous 
             espérons que vous resterez toujours des notres. Sinon, 
             <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022>
                 veuillez tirer profit d'AOUI
@@ -844,7 +927,7 @@ fr_FR:
                 <div>Nous avons inventé des engins, des machines, et des talents pour supporter la vie</div>
                 <div>Ici et là, un géni vient et s'en va</div>
                 <div>Nous nous demandons pourquoi ces nombres ne nous servent à rien</div>
-                <div>Jusqu'à ce qu'un ordinateur est venu et a révélé sa prouesse</div>
+                <div>Jusqu'à ce qu'un ordinateur soit venu et ait révélé sa prouesse</div>
                 <div>Alors nous nous sommes jurés de défendre la planète terre</div>
                 <div>Et tous ces nombres partout sur la terre</div>
                 <div>Faisant bon usage de la puissance de la technologie et des gens d'esprit</div> 
@@ -888,11 +971,90 @@ fr_FR:
     Désolés nous n'avons pas trouvé de documents Laastras dans notre base de données. Veuillez réessayer ultérieurement ou en envoyer à nos serveurs.
   "
   laastras_organization_pitch_message: "
-        Puisque chaque personne aura au final un cellulaire, l'organisation Laastras exploite 
-        la puissance des technologies logicielles pour guarantir votre part sur toutes les 
-        ressources qui supportent l'existence humaine dans votre pays, d'abord, et puis, dans 
-        le monde. Notre pays et le monde deviennent une entreprise dans laquelle nous tous citoyens
-        avons des parts (actions) égales.
+        <div>
+            <p>
+            Puisque chaque personne aura au final un cellulaire, l'organisation Laastras exploite 
+            la puissance des technologies logicielles pour guarantir votre part sur toutes les 
+            ressources qui supportent l'existence humaine dans votre pays, d'abord, et puis, dans 
+            le monde. Notre pays et le monde deviennent une entreprise dans laquelle nous tous citoyens
+            avons des parts (actions) égales.
+            </p>
+        </div>
+  "
+  laastras_organization_mission_strategy_title: "Notre Mission"
+  laastras_organization_mission_strategy: "
+        <div>
+            <div>
+                Vous devriez avoir remarqué que Laastras aura un impact sur la politique locale and
+                internationale. Il va de soi que nous devons opérer en tant qu'Organisations Non-Gouvernementales,
+                une ONG par nation. L'ONG locale se doit d'être souveraine dans ce sens que les gens locaux seront 
+                source de fonds, peu importe comment ils décident d'avoir des fonds. Notre stratégie comporte les 
+                traits majeurs suivants:
+            </div>
+            <ul>
+                <li style=\u0022margin-top: 10px\u0022> 
+                    <p><strong> Buts mésurables: </strong></p>
+                    <div> 
+                        <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasEgrocery 
+                        </a>
+                        nous obtiendra des données brutes et fera des citoyens locaux nos clients.
+                    </div> 
+                    <div> 
+                        <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasEcard
+                        </a>
+                        nous permettra d'associer chaque citoyen au cellulaire, informatisant toutes leurs 
+                        actions commerciales, aboutissant à la création d'AGAS, un “cloud” local.
+                    </div>
+                    <div> 
+                        <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasElogistics
+                        </a>
+                        ne sera pas difficile à construire. Pas mal d'individus locaux font déjà affaires dans 
+                        ce secteur. Nous avons un service à leur rendre en utilisant notre “cloud” central, 
+                        c'est-à-dire, centre de données.
+                    </div>
+                    <div> 
+                        <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasEalliances
+                        </a>
+                        est très cruciale puisqu'elle nous apporte beaucoup de mains et font de nous 
+                        une organisation on ne peut plus robuste. Nous faisons des accords AOUI avec toutes
+                        les entreprises locales qui voudraient faire voile avec nous.
+                    </div>
+                </li>
+                <li style=\u0022margin-top: 10px\u0022> 
+                    <p><strong> Calendrier et étapes à franchir: </strong></p>
+                    <div>
+                        Au plus tard, le 26 Janvier 2027, nous devrons avoir lancé LaasEgrocery avec l'aide
+                        <a href=\u0022/laastras_job_offers/show?job_offer_guid=c2581c15-8863-4c70-acda-2604e8ad5795\u0022 style=\u0022text-decoration: none\u0022>
+                        d'une femme (ou demoiselle) locale assistante du chef de projet
+                        </a>
+                        dans chaque pays reconnu par l'ONU.
+                    </div>
+                </li>
+                <li style=\u0022margin-top: 10px\u0022>
+                    <p><strong> Buts qualitatifs: </strong></p>
+                    <div>
+                        Laastras doit maintenir et soutenir la neutralité politique. Nous devons agir 
+                        en toute transparence comme une Organisation Non-Gouvernementale. Le gouvernement 
+                        local ne peut que nous rendre les services auxquels nous avons droit. Nous engagerons
+                        seulement les professionels les plus qualifiés.
+                    </div>
+                </li>
+                <li style=\u0022margin-top: 10px\u0022>
+                    <p><strong> Buts quantitatifs: </strong></p>
+                    <div>
+                        Nous nous concentrerons sur le Marketing de Contenu de telle façon à avoir 
+                        le plus de clients possible en peu de temps. Même les individus politiques seront 
+                        engagés, y compris les Chefs d'Etats, les Premiers Ministres, les Parlementaires, les 
+                        Ministres (ou Chefs de Départements), pourvu qu'ils respectent notre politique de 
+                        neutralité, qui se concrétise en notre Organisation Non-Gouvernementale.
+                    </div>
+                </li>
+            </ul>
+        </div>
   "
   you_have_already_applied_title: "Vous Avez Déjà Postulé"
   you_have_already_applied_message: "

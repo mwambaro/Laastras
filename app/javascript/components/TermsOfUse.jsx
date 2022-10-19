@@ -7,37 +7,42 @@ class TermsOfUse extends React.Component
     constructor(props)
     {
         super(props);
-        this.termsOfUseSectionModal = null;
 
     } // constructor
 
     render()
     {
         return(
-            <div>
-                <div id="terms-of-use-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true"
-                     onBlur={(se) => this.onFocusOutHandler(se)}>
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-header text-right">
-                                <button type="button" className="close" aria-label="Close"
-                                        onClick={(se) => this.leaveTermsOfUse(se)}>
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <div id="terms-of-use-body">
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary" onClick={(se) => this.leaveTermsOfUse(se)}>
-                                        OK
-                                    </button>
-                                </div>
+            <div className="container-fluid">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="shadow-sm p-1 mb-2 bg-white rounded">
+                            <div style={{padding: '10px'}} id="terms-of-use-body">
                             </div>
                         </div>
                     </div>
+                </div>
+                <div style={{zIndex: '99'}}>  
+                    <button id="back_btn" 
+                            title="Go Back"
+                            onClick={(se) => this.leaveTermsOfUse(se)}
+                            style={{
+                                display: 'block', 
+                                position: 'fixed', 
+                                bottom: '20px', 
+                                right: '20px', 
+                                zIndex: '99', 
+                                border: 'none', 
+                                outline: 'none', 
+                                backgroundColor: 'grey', 
+                                color: 'white', 
+                                cursor: 'pointer', 
+                                padding: '15px', 
+                                borderRadius: '10px', 
+                                fontSize: '18px'
+                            }}>
+                        {this.props.go_back_label}
+                    </button>
                 </div>
             </div>
         );
@@ -47,30 +52,20 @@ class TermsOfUse extends React.Component
     componentDidMount()
     {
         $('#terms-of-use-body').append(this.props.terms_of_use_body_text);
-        this.termsOfUseSectionModal = new Modal(
-            document.getElementById('terms-of-use-section')
-        );
-        this.termsOfUseSectionModal.show();
 
     } // componentDidMount
 
     leaveTermsOfUse(e)
     {
-        this.termsOfUseSectionModal.hide();
-        // go back
-        window.location.assign('/laastras/home#laastras-home-footer');
+        window.location.assign(this.props.go_back_url);
 
     } // leaveTermsOfUse
-
-    onFocusOutHandler(e)
-    {
-        window.location.assign('/laastras/home#laastras-home-footer');
-
-    } // onFocusOutHandler
 }
 
 TermsOfUse.propTypes = {
-    terms_of_use_body_text: PropTypes.string
+    terms_of_use_body_text: PropTypes.string,
+    go_back_url: PropTypes.string,
+    go_back_label: PropTypes.string
 };
 
 export default TermsOfUse

@@ -7,37 +7,45 @@ class AboutOurMission extends React.Component
     constructor(props)
     {
         super(props);
-        this.aboutOurMissionSectionModal = null;
 
     } // constructor
 
     render()
     {
         return(
-            <div>
-                <div id="about-our-mission-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true"
-                     onBlur={(se) => this.onFocusOutHandler(se)}>
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-header text-right">
-                                <button type="button" className="close" aria-label="Close"
-                                        onClick={(se) => this.leaveAboutOurMission(se)}>
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <div className="container-fluid">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="shadow-sm p-1 mb-2 bg-white rounded">
+                            <div style={{padding: '10px', color: 'blue'}}>
+                                <h3>{this.props.about_our_mission_title}</h3>
                             </div>
-                            <div className="modal-body">
-                                <div id="about-our-mission-body">
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary" onClick={(se) => this.leaveAboutOurMission(se)}>
-                                        OK
-                                    </button>
-                                </div>
+                            <div style={{padding: '10px'}} id="about-our-mission-info-text">
                             </div>
                         </div>
                     </div>
+                </div>
+                <div style={{zIndex: '99'}}>  
+                    <button id="back_btn" 
+                            title="Go Back"
+                            onClick={(se) => this.leaveAboutOurMission(se)}
+                            style={{
+                                display: 'block', 
+                                position: 'fixed', 
+                                bottom: '20px', 
+                                right: '20px', 
+                                zIndex: '99', 
+                                border: 'none', 
+                                outline: 'none', 
+                                backgroundColor: 'grey', 
+                                color: 'white', 
+                                cursor: 'pointer', 
+                                padding: '15px', 
+                                borderRadius: '10px', 
+                                fontSize: '18px'
+                            }}>
+                        {this.props.go_back_label}
+                    </button>
                 </div>
             </div>
         );
@@ -46,31 +54,25 @@ class AboutOurMission extends React.Component
 
     componentDidMount()
     {
-        $('#about-our-mission-body').append(this.props.about_our_mission_body_text);
-        this.aboutOurMissionSectionModal = new Modal(
-            document.getElementById('about-our-mission-section')
+        $('#about-our-mission-info-text').append(
+            this.props.about_our_mission_text
         );
-        this.aboutOurMissionSectionModal.show();
 
     } // componentDidMount
 
     leaveAboutOurMission(e)
     {
-        this.aboutOurMissionSectionModal.hide();
         // go back
-        window.location.assign('/laastras/home#laastras-home-footer');
+        window.location.assign(this.props.go_back_url);
 
     } // leaveAboutOurMission
-
-    onFocusOutHandler(e)
-    {
-        window.location.assign('/laastras/home#laastras-home-footer');
-
-    } // onFocusOutHandler
 }
 
 AboutOurMission.propTypes = {
-    about_our_mission_body_text: PropTypes.string
+    about_our_mission_title: PropTypes.string,
+    about_our_mission_text: PropTypes.string,
+    go_back_url: PropTypes.string, // /laastras/home#laastras-home-footer
+    go_back_label: PropTypes.string
 };
 
 export default AboutOurMission

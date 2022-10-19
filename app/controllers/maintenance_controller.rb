@@ -38,7 +38,7 @@ class MaintenanceController < ApplicationController
                 request
             )
             @open_graph_proto_image_url = ApplicationHelper.banner_image_asset_url(
-                request, 'Laastras-e-banner-lg.JPG'
+                request
             )
             @logo_image_url = ApplicationHelper.image_asset_url(
                 request, 'Logo-03.svg'

@@ -127,7 +127,7 @@ class MissionKickOff extends React.Component
         let img = document.getElementById('kick-off-image');
         if(img)
         {
-            this.setKickOffImageHeight(img);
+            //this.setKickOffImageHeight(img);
             img.onerror = e => {
                 console.log('image failed to load.');
             };
@@ -142,7 +142,7 @@ class MissionKickOff extends React.Component
                 console.log('Resize event listener in componentDidMount: "this" object is undefined');
                 return;
             }
-            this.setKickOffImageHeight();
+            //this.setKickOffImageHeight();
         });
 
         this.kickOffImageDetailsSectionModal = new Modal(

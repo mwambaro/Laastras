@@ -154,6 +154,7 @@ class UsersController < ApplicationController
             email = params[:email]
             password = params[:password] 
             redirect_uri = params[:redirect_uri]
+            service_id = params[:service_id] || 'nil'
             dataToSend = nil
             @laastras_user, @email = User.authenticate(email, password)
             unless session.nil?
@@ -170,8 +171,14 @@ class UsersController < ApplicationController
                     }
                 else
                     if @email.nil? # sign up, please
+                        sign_up_url = url_for(
+                            controller: 'laastras',
+                            action: 'sign_up',
+                            service_id: service_id
+                        )
                         message = "<div><h3>#{I18n.t 'offer_to_sign_up'}</h3></div>" + 
-                                    (I18n.t 'offer_to_sign_up_message')
+                                    "<div>#{I18n.t 'offer_to_sign_up_message'} " + 
+                                    '<a href="' + sign_up_url + '">' + (I18n.t 'here_label') + '</a>'
                         dataToSend = {
                             code: 0,
                             message: message,
@@ -239,6 +246,7 @@ class UsersController < ApplicationController
     def sign_up 
         next_uri = nil 
         begin 
+            @service_id = params[:service_id] || 'nil'
             n_users = User.all.count 
             data = nil
             if n_users > ApplicationHelper.max_number_of_users 
@@ -297,12 +305,14 @@ class UsersController < ApplicationController
                 role = :client.to_s
                 if(params[:email].match?(/\A#{admin_email}\Z/i))
                     role = :admin.to_s
+                elsif params[:laastras_employee].match?(/\A(#{I18n.t 'yes_label'})\Z/i)
+                    role = :employee.to_s
                 else 
-                    if params[:laastras_employee].match?(/\A(#{I18n.t 'yes_label'})\Z/i)
-                        role = :employee.to_s
-                    else
+                    if @service_id.nil? || @service_id == 'nil'
                         role = :client.to_s
-                    end
+                    else
+                        role = @service_id.to_s
+                    end  
                 end
 
                 result = false 

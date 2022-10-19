@@ -16,11 +16,12 @@ class LaastrasJobOfferShow extends React.Component
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div class="shadow-sm p-1 mb-2 bg-white rounded">
-                            <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}}>
+                            <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}}
+                                 id={this.props.offer_title_html_id}>
                                 {this.props.job_offer_title}
                             </div>
                             <hr />
-                            <div style={{padding: '10px'}} id="job-offer-id">
+                            <div style={{padding: '10px'}} id={this.props.offer_html_id}>
                             </div>
                             <div className="d-flex flex-row justify-content-center">
                                 <button type="button" 
@@ -54,7 +55,7 @@ class LaastrasJobOfferShow extends React.Component
 
     componentDidMount()
     {
-        $('#job-offer-id').append(this.props.job_offer_description);
+        $(`#${this.props.offer_html_id}`).append(this.props.job_offer_description);
 
     } // componentDidMount
 
@@ -81,7 +82,9 @@ LaastrasJobOfferShow.propTypes = {
     close_label: PropTypes.string,
     close_job_url: PropTypes.string,
     job_offer_description: PropTypes.string,
-    application_url: PropTypes.string
+    application_url: PropTypes.string,
+    offer_html_id: PropTypes.string,
+    offer_title_html_id: PropTypes.string
 }
 
 export default LaastrasJobOfferShow

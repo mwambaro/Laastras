@@ -4,11 +4,16 @@ class LaastrasJobSeekersController < ApplicationController
     def index_jsk
         next_uri = nil
         begin
-            job_offer_id = params[:job_offer_id]
-            if false#job_offer_id
+            @job_offer_id = params[:job_offer_id]
+            unless @job_offer_id.nil?
+                @job_offer = LaastrasJobOffer.find(@job_offer_id)
+            end 
+
+            unless @job_offer.nil?
                 @laastras_jskers = []
                 LaastrasJobSeeker.all.each do |jsker| 
-                    if jsker.job_offer_id == job_offer_id
+                    logger.debug "---> #{jsker.job_offer_id} ??== #{@job_offer.id}"
+                    if jsker.job_offer_id == @job_offer.id
                         @laastras_jskers << jsker 
                     end
                 end

@@ -1,8 +1,6 @@
-<br>
-<div  class="container">
-    
-    <%= react_component('PrivacyPolicy', {
-        privacy_policy_body_text: (sanitize @privacy_policy_body_text)
-    }) %>
 
-</div>
+<%= react_component('PrivacyPolicy', {
+    privacy_policy_body_text: @privacy_policy_body_text,
+    go_back_url: (url_for(controller: 'laastras', action: 'home') + '#laastras-home-footer'),
+    go_back_label: (I18n.t 'go_back_label')
+}) %>

@@ -150,6 +150,24 @@
             language: lang.to_s,
             application_uri: nil           
         }
+        job_offers << {  
+            title: (I18n.t 'venture_capital_professional'),
+            description: (I18n.t 'venture_capital_professional_offer'),
+            language: lang.to_s,
+            application_uri: nil           
+        }   
+        job_offers << {  
+            title: (I18n.t 'ngo_chief_of_mission'),
+            description: (I18n.t 'ngo_chief_of_mission_job_offer'),
+            language: lang.to_s,
+            application_uri: nil           
+        } 
+        job_offers << {  
+            title: (I18n.t 'head_of_state_or_prime_minister'),
+            description: (I18n.t 'head_of_state_or_prime_minister_job_offer'),
+            language: lang.to_s,
+            application_uri: nil           
+        }
         # add more job offers below
     end
     I18n.locale = original_language

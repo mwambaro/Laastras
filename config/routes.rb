@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'laastras_databases/download_copy'
+  get 'laastras_databases/delete_copy'
   get 'laastras_mature_videos/index'
   get 'laastras_mature_videos/show'
   get 'laastras_mature_videos/show_video'

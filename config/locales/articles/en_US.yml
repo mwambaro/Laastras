@@ -132,7 +132,7 @@ en_US:
       a safe haven for humankind.
   "
   site_meta_description: "
-      A collection of internet of our things (IoT) services that aim at fulfilling leadership as a service (LaaS)
+      A collection of internet of our things (IooT) services that aim at fulfilling leadership as a service (LaaS)
       policy. 'Our things' are all resources that support human existence. To eradicate unemployment, poverty, and
       conflicts, as well as social inequalities, Laastras (one of LaaS applications) must define, build, and
       establish a trade system that allows all humankind to equally benefit from 'our things'.
@@ -307,19 +307,101 @@ en_US:
         </a> 
       </p>
   "
+  project_manager_assistant: "Project Manager Assistant"
   project_manager_assistant_offer: "
-      We are looking for a <strong>Project Manager Assistant</strong> who meets these requirements: 
-      <ol>
-        <li>
-          A single lady whose birth date lies between February 1987 and February 1994. 
-        </li>
-        <li>
-          Unemployed but willing to launch a start-up under our directions.
-        </li>
-        <li>
-          Or, employed in a legally registered company willing to partner up with us for expansion.
-        </li>
-      </ol>
+        <div>
+            We are looking for a <strong>Project Manager Assistant</strong> who meets these requirements: 
+        </div>
+        <ol style=\u0022margin-top: 10px\u0022>
+            <li>
+                A single lady whose birth date lies between February 1987 and February 1994. 
+            </li>
+            <li>
+                Unemployed but willing to launch a start-up under our directions.
+            </li>
+            <li>
+                Or, employed in a legally registered company willing to partner up with us for expansion.
+            </li>
+        </ol>
+  "
+  venture_capital_professional: "Venture capital professional and content marketer"
+  venture_capital_professional_offer: "
+        <div> 
+            <div>
+                If you know the ropes of fund raising or have got experience in finding capitals 
+                to fund start-up projects, this offer is yours. Would you like to know how sublime 
+                the success will be? Please read our  
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                 mission statement 
+                </a>. You must meet these qualifications:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li> 
+                    You are employed in a company that has or can set funds aside for sustainable
+                    innovation ideas. These funds are often called Venture Capitals.
+                </li>
+                <li>
+                    You are an experienced Content Marketer and can sell great ideas to fund donors.
+                </li>
+                <li>
+                    You are a proficient lobbyist and know how to speak to policy makers whon can 
+                    greatly influence the consumers' opinion of our products and services. 
+                </li>
+            </ol>
+        </div>
+  "
+  ngo_chief_of_mission: "Chief of mission in an NGO"
+  ngo_chief_of_mission_job_offer: "
+        <div>
+            <div>
+                We are planning to ultimately serve as an NGO. We would like to service 
+                local people with nutrition, revenue cycle management, clients distribution, and more,
+                in a way that will lead to turning a cell phone into currency, id card, passport, 
+                driver's licence, etc, ending unemployment, poverty, inequality, crime, and conflicts.
+                Do we sound like a fit for projects your NGO can fund? Would you want to first of all 
+                read more on our 
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    mission
+                </a>?
+                If interested, you need to be:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    Capable of adding one aspect of our mission to your mission.
+                </li>
+                <li>
+                    Able to fund our project as a separate company.
+                </li>
+                <li>
+                    Knowledgeable about influencing other missions to offer us support.
+                </li>
+            </ol>
+        </div>
+  "
+  head_of_state_or_prime_minister: "Head of State or Prime Minister"
+  head_of_state_or_prime_minister_job_offer: "
+        <div>
+            <div>
+                Seldom do Heads of States or Prime Ministers have all the knowledge and strategies
+                needed to solve issues weighing on nations and kingdoms. Setbacks and other situations may make 
+                them very unpopular with their subjects. We are offering to be the rescue boat for your nation 
+                or kingdom. We can 
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    secure the future of your nation or kingdom
+                </a>.
+                If it sounds interesting to you, Sir/Madam, we will work with you if:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li> 
+                    You are willing to offer support to our personnel as they operate as an NGO.
+                </li>
+                <li>
+                    You have no issues letting us pave the way for the integration of your entire 
+                    administration into Laastras as a “legal protection of self-contained personal space”
+                    cooperative.
+                </li>
+            </ol>
+        </div>
   "
   detailed_cv_data: "
         <div style=\u0022font-weight: bold; margin-top: 20px;\u0022>
@@ -603,11 +685,9 @@ en_US:
   "
   offer_to_sign_up: "Try Signing Up"
   offer_to_sign_up_message: "
-        <div>
-            We have evidence that you have not signed up yet.
-            Well, we could not find your e-mail in our database.
-            Please, kindly sign up <a href=\u0022/laastras/sign_up\u0022>here</a>
-        </div>
+        We have evidence that you have not signed up yet.
+        Well, we could not find your e-mail in our database.
+        Please, kindly sign up
   "
   offer_to_reset_password: "Try Resetting your Password"
   offer_to_reset_password_message: "
@@ -913,10 +993,87 @@ en_US:
     We are sorry we could not find any Laastras documents in our database. Try again later or upload some to our servers.
   "
   laastras_organization_pitch_message: "
-        Since each person will ultimately own a cell phone, Laastras organization harnesses the power 
-        behind software technologies to guarantee your share on all resources that support human existence
-        in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us
-        citizens have equal shares.
+        <div>
+            <p>
+            Since each person will ultimately own a cell phone, Laastras organization harnesses the power 
+            behind software technologies to guarantee your share on all resources that support human existence
+            in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us
+            citizens have equal shares.
+            </p>
+        </div>
+  "
+  laastras_organization_mission_strategy_title: "Our Mission"
+  laastras_organization_mission_strategy: "
+        <div>
+            <div>
+                You must have realized that Laastras will impact local and global policy. We must mention 
+                that we have got to operate as Non-Governmental Organizations, one NGO per nation. The local NGO 
+                must be sovereign in the sense that local people will be source of funding, no matter how 
+                they choose to get funds. These are the main features of our strategy:
+            </div>
+            <ul>
+                <li style=\u0022margin-top: 10px\u0022> 
+                    <p><strong> Measurable goals: </strong></p>
+                    <div> 
+                        <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasEgrocery 
+                        </a>
+                        will get us raw data and local citizens as clients. 
+                    </div> 
+                    <div> 
+                        <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasEcard
+                        </a>
+                        will help us associate each citizen to a cell phone, 
+                        computerizing all their trade actions, leading to the creation 
+                        of the local AGAS cloud.
+                    </div>
+                    <div> 
+                        <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasElogistics
+                        </a>
+                        is not difficult to build. A bunch of local individuals are already 
+                        dealing in this sector. We have got a service to render to them using 
+                        our central cloud, say, data center.
+                    </div>
+                    <div> 
+                        <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022>
+                            LaasEalliances
+                        </a>
+                        is very crucial since it gets us many hands and makes us a more robust organization. 
+                        We strike AORI deals with all local enterprises willing to sail with us.
+                    </div>
+                </li>
+                <li style=\u0022margin-top: 10px\u0022> 
+                    <p><strong> A calendar and milestones: </strong></p>
+                    <div>
+                        By January 26, 2027, we must have launched LaasEgrocery with the help of
+                        <a href=\u0022/laastras_job_offers/show?job_offer_guid=c2581c15-8863-4c70-acda-2604e8ad5795\u0022 style=\u0022text-decoration: none\u0022>
+                        a local female project manager assistant
+                        </a>
+                        in every country recognized by UN.
+                    </div>
+                </li>
+                <li style=\u0022margin-top: 10px\u0022>
+                    <p><strong> Qualitative goals: </strong></p>
+                    <div>
+                        Laastras must maintain and uphold political neutrality. We must transparently 
+                        function as a Non-Governmental Organization. The local government can only 
+                        render to us the public services to which we have got right. We will hire only 
+                        the most qualified professionals.
+                    </div>
+                </li>
+                <li style=\u0022margin-top: 10px\u0022>
+                    <p><strong> Quantitative goals: </strong></p>
+                    <div>
+                        We have to focus on Content Marketing in such a way that we get as many clients as possible 
+                        in little time. Even policy makers can be hired, including Heads of States, Prime Ministers,
+                        Members of Parliaments, Heads of Departments or Ministers, as long as they respect our 
+                        neutrality policy, which is concretized by our NGO legal container.
+                    </div>
+                </li>
+            </ul>
+        </div>
   "
   you_have_already_applied_title: "You Have Already Applied"
   you_have_already_applied_message: "

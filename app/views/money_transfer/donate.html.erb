@@ -1,33 +1,17 @@
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="shadow-sm p-1 mb-2 bg-body rounded">
-                <p style="padding: 5px" id="option-capture">
-                    <%= I18n.t 'use_one_of_these_donate_options' + ': ' %>
-                </p>
-                <ul>
-                    <% @money_transfer_options.each do |opt| %> 
-                        <li style="padding: 5px; color: blue"
-                            class="option-field"
-                            data-id="<%= opt[:option_id_title] %>"> 
-                                <%= opt[:money_transfer_option_title] %>
-                        </li>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <script>
-        $('.option-field').on('click', (e) => {
-            let option_id = $(e.target).attr('data-id');
-            let top = $(`#${option_id}`).offset().top;
-            $(window).scrollTop(top);
-        });
-        $('.option-field').on('mouseover', (e) => {
-            e.target.style.cursor = 'pointer';
-        })
-    </script>
-</div>
+
+<% outline_elements = [] %>
+<% @money_transfer_options.each do |option| %>
+    <% outline_elements << {
+        content_outline_id: option[:option_id_title], 
+        content_outline_title: option[:money_transfer_option_title]
+    } %>
+<% end %>
+
+<%= react_component('LaastrasContentOutline', {
+    content_outline_capture: (I18n.t 'use_one_of_these_donate_options'),
+    top_label: (I18n.t 'back_to_top_label'),
+    content_outline_elements: outline_elements # {content_outline_id:, content_outline_title:}
+})%>
 
 <% @money_transfer_options.each do |option| %>
 

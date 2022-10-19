@@ -41,7 +41,71 @@ module ApplicationHelper
             referer: referer
         }).save
 
-    end # harvest_analytics
+    end # harvest_analytics 
+
+    def self.open_graph_variables(request)
+        variables = {
+            site_description: (I18n.t 'site_meta_description'),
+            open_graph_proto_title: (I18n.t 'opg_site_meta_title'),
+            open_graph_proto_site_url: request.original_url,
+            open_graph_proto_description: (I18n.t 'opg_site_meta_description'),
+            open_graph_proto_image_url: self.banner_image_asset_url(request),
+            open_graph_proto_locale: self.to_open_graph_locale(I18n.locale),
+            available_locales: self.available_locales,
+            default_locale: self.to_open_graph_locale(I18n.default_locale)
+        }
+
+    end # open_graph_variables 
+
+    def self.to_open_graph_locale(locale)
+        og_locale = locale.to_s
+        if locale.to_s.match? /\Aen\Z/i
+            og_locale = 'en_US'
+        elsif locale.to_s.match? /\Afr\Z/i
+            og_locale = 'fr_FR'
+        elsif locale.to_s.match? /\Asw\Z/i 
+            og_locale = 'sw_TZ'
+        elsif locale.to_s.match? /\Alg\Z/i 
+            og_locale = 'lg_UG'
+        elsif locale.to_s.match? /\Aru\Z/i 
+            og_locale = 'ru_BI'
+        elsif locale.to_s.match? /\Arw\Z/i 
+            og_locale = 'rw_RW'
+        end
+
+        og_locale 
+
+    end # to_open_graph_locale
+
+    def self.available_locales
+        locales = [] 
+        I18n.available_locales.each do |locale|
+            locales << self.to_open_graph_locale(locale)
+        end 
+
+        locales 
+
+    end # available_locales
+
+    def self.job_offer_guid_to_job_offer(job_offer_guid) 
+        job_offer = nil
+        
+        offers = {}
+        offers['c2581c15-8863-4c70-acda-2604e8ad5795'.to_sym] = I18n.t 'project_manager_assistant'
+        offers['52ff88ba-e7f7-4d7b-99a5-1bc018fef28e'.to_sym] = I18n.t 'venture_capital_professional'
+        offers['08558dca-a5d8-4b46-b2bd-cc96d1028f36'.to_sym] = I18n.t 'ngo_chief_of_mission'
+        offers['fb6f2e53-b891-48e1-a96d-f6ed49627086'.to_sym] = I18n.t 'head_of_state_or_prime_minister'
+
+        if offers.key? job_offer_guid.to_sym
+            title = offers[job_offer_guid.to_sym] 
+            unless title.blank? 
+                job_offer = LaastrasJobOffer.find_by_title(title)
+            end
+        end
+
+        job_offer
+
+    end # job_offer_guid_to_job_offer
 
     def self.build_send_data_options(request, fname, type)
         options = {
@@ -375,19 +439,22 @@ module ApplicationHelper
         def featured_job_offers
             featured_job_offers = []
             begin
-
-                # 1.
                 language = I18n.locale.to_s
-                title = (I18n.t 'project_manager_assistant')
-                sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND title = '#{title}'"
-                job_offer = LaastrasJobOffer.find_by_sql(sql_query).first
-                if job_offer
-                    featured_job_offers << {
-                        show_url: url_for(controller: 'laastras_job_offers', action: 'show', id: job_offer.id),
-                        title: job_offer.title
-                    }
+                [
+                    (I18n.t 'project_manager_assistant'),
+                    (I18n.t 'venture_capital_professional'),
+                    (I18n.t 'ngo_chief_of_mission'),
+                    (I18n.t 'head_of_state_or_prime_minister')
+                ].each do |title|
+                    sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND title = '#{title}'"
+                    job_offer = LaastrasJobOffer.find_by_sql(sql_query).first
+                    if job_offer
+                        featured_job_offers << {
+                            show_url: url_for(controller: 'laastras_job_offers', action: 'show', id: job_offer.id),
+                            title: job_offer.title
+                        }
+                    end
                 end
-                # 2.
             rescue Exception => e 
                 message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                             __method__.to_s + "--- " + e.message 

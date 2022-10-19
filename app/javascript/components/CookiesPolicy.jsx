@@ -7,37 +7,42 @@ class CookiesPolicy extends React.Component
     constructor(props)
     {
         super(props);
-        this.cookiesPolicySectionModal = null;
 
     } // constructor
 
     render()
     {
         return(
-            <div>
-                <div id="cookies-policy-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true"
-                     onBlur={(se) => this.onFocusOutHandler(se)}>
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-header text-right">
-                                <button type="button" className="close" aria-label="Close"
-                                        onClick={(se) => this.leaveCookiesPolicy(se)}>
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <div id="cookies-policy-body">
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary" onClick={(se) => this.leaveCookiesPolicy(se)}>
-                                        OK
-                                    </button>
-                                </div>
+            <div className="container-fluid">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="shadow-sm p-1 mb-2 bg-white rounded">
+                            <div style={{padding: '10px'}} id="cookies-policy-body">
                             </div>
                         </div>
                     </div>
+                </div>
+                <div style={{zIndex: '99'}}>  
+                    <button id="back_btn" 
+                            title="Go Back"
+                            onClick={(se) => this.leaveCookiesPolicy(se)}
+                            style={{
+                                display: 'block', 
+                                position: 'fixed', 
+                                bottom: '20px', 
+                                right: '20px', 
+                                zIndex: '99', 
+                                border: 'none', 
+                                outline: 'none', 
+                                backgroundColor: 'grey', 
+                                color: 'white', 
+                                cursor: 'pointer', 
+                                padding: '15px', 
+                                borderRadius: '10px', 
+                                fontSize: '18px'
+                            }}>
+                        {this.props.go_back_label}
+                    </button>
                 </div>
             </div>
         );
@@ -47,30 +52,20 @@ class CookiesPolicy extends React.Component
     componentDidMount()
     {
         $('#cookies-policy-body').append(this.props.cookies_policy_body_text);
-        this.cookiesPolicySectionModal = new Modal(
-            document.getElementById('cookies-policy-section')
-        );
-        this.cookiesPolicySectionModal.show();
 
     } // componentDidMount
 
     leaveCookiesPolicy(e)
     {
-        this.cookiesPolicySectionModal.hide();
-        // go back
-        window.location.assign('/laastras/home#laastras-home-footer');
+        window.location.assign(this.props.go_back_url);
 
     } // leaveCookiesPolicy
-
-    onFocusOutHandler(e)
-    {
-        window.location.assign('/laastras/home#laastras-home-footer');
-
-    } // onFocusOutHandler
 }
 
 CookiesPolicy.propTypes = {
-    cookies_policy_body_text: PropTypes.string
+    cookies_policy_body_text: PropTypes.string,
+    go_back_url: PropTypes.string,
+    go_back_label: PropTypes.string
 };
 
 export default CookiesPolicy

@@ -73,9 +73,53 @@ class LaastrasController < ApplicationController
     end
 
     def sign_in
+        next_uri = nil
+        begin 
+            service_id = params[:service_id]
+            if service_id.nil? || service_id.blank? || service_id == 'nil'
+                @sign_in_action_url = url_for(controller: 'users', action: 'sign_in')
+            else 
+                @sign_in_action_url = url_for(
+                    controller: 'users', 
+                    action: 'sign_in',
+                    service_id: service_id
+                )
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
     end
 
     def sign_up
+        next_uri = nil
+        begin 
+            service_id = params[:service_id]
+            if service_id.nil? || service_id.blank? || service_id == 'nil'
+                @sign_up_action_url = url_for(controller: 'users', action: 'sign_up')
+            else 
+                @sign_up_action_url = url_for(
+                    controller: 'users', 
+                    action: 'sign_up',
+                    service_id: service_id
+                )
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
     end
 
     def sign_out 
@@ -203,8 +247,6 @@ class LaastrasController < ApplicationController
 
             @cache_store = Laastras::Application.config.action_controller.cache_store
             @action_name = params[:action].nil? ? '' : params[:action]
-            @open_graph_proto_description = I18n.t 'opg_site_meta_description'
-            @open_graph_proto_title = I18n.t 'opg_site_meta_title'
             @kick_off = I18n.t 'kick_off'
             @tap_click_image = I18n.t 'click_or_tap_image_text'
             @mission = I18n.t 'mission'
@@ -214,7 +256,6 @@ class LaastrasController < ApplicationController
             @privacy_policy_body_text = I18n.t 'privacy_policy_body_text'
             @about_our_mission_body_text = I18n.t 'laastras_mission_terms_description'
             @terms_of_use_body_text = I18n.t 'terms_of_use_body_text'
-            @site_description = I18n.t 'site_meta_description'
             @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'
             @contact_us_email_link = 'mailto:onkezabahizi@gmail.com'
             @work_in_progress_label = I18n.t 'work_in_progress_label'
