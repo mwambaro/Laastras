@@ -355,27 +355,6 @@ module ApplicationHelper
         Rails.root.join('storage', folder_name, fname)
 
     end # user_profile_photo_asset_url
-    
-    # <summary>
-    #       Given a user session, has the user set any particular language settings? If so, retrieve
-    #       them from the session object. So you should know which key of the session hash to use.
-    # </summary>
-    # <param name="session"> The Rails session object </param>
-    def self.set_user_set_locale(session)
-        unless session.nil?
-            sql_query = "SELECT * FROM site_languages WHERE user_session = '#{session[:user_cookies]}'"
-            active_language = SiteLanguage.find_by_sql(sql_query)
-            if(!active_language.nil?)
-                lang = active_language[0]
-                if(!lang.nil?)
-                    language = lang[:language]
-                    if(!language.nil?)
-                        I18n.locale = language.to_sym
-                    end
-                end
-            end
-        end
-    end
 
     # <summary>
     #       Given a user session, if the user is logged in, is the user ADMIN?
@@ -386,7 +365,7 @@ module ApplicationHelper
 
         unless session.nil?
             if session[:logged_in]
-                sql_query = "SELECT * FROM users WHERE id = #{session[:user_id]}"
+                sql_query = "SELECT * FROM users WHERE id = '#{session[:user_id]}'"
                 user = User.find_by_sql(sql_query)
                 unless user.nil?
                     unless user[0].role.nil?
@@ -409,7 +388,7 @@ module ApplicationHelper
 
         unless session.nil?
             if session[:logged_in]
-                sql_query = "SELECT * FROM users WHERE id = #{session[:user_id]}"
+                sql_query = "SELECT * FROM users WHERE id = '#{session[:user_id]}'"
                 us = User.find_by_sql(sql_query)
                 unless us.nil?
                     user = us[0]
@@ -434,7 +413,20 @@ module ApplicationHelper
             self.request = @request
             self.logger = logg
 
-        end # initialize
+        end # initialize 
+
+        def send_mail(dest_email, message, orig_email=nil) 
+            val = nil 
+            begin 
+            rescue Exception => e 
+                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                        __method__.to_s + "--- " + e.message 
+                logger.debug message unless logger.nil?
+            end
+
+            val 
+
+        end # send_mail
 
         def featured_job_offers
             featured_job_offers = []
@@ -446,8 +438,9 @@ module ApplicationHelper
                     (I18n.t 'ngo_chief_of_mission'),
                     (I18n.t 'head_of_state_or_prime_minister')
                 ].each do |title|
-                    sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND title = '#{title}'"
-                    job_offer = LaastrasJobOffer.find_by_sql(sql_query).first
+                    job_offer = LaastrasJobOffer.find_by_title_and_language(
+                        title, language
+                    )
                     if job_offer
                         featured_job_offers << {
                             show_url: url_for(controller: 'laastras_job_offers', action: 'show', id: job_offer.id),

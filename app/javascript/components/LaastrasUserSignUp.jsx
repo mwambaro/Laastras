@@ -7,6 +7,7 @@ class LaastrasUserSignUp extends React.Component
     constructor(props)
     {
         super(props);
+        this.reset_data = this.get_reset_data();
 
     } // constructor
 
@@ -18,6 +19,14 @@ class LaastrasUserSignUp extends React.Component
 
         let form_div_style = {
             padding: '10px'
+        }
+
+        if(this.reset_data)
+        {
+            form_elt_div_style = {
+                padding: '5px',
+                display: 'none'
+            };
         }
 
         return(
@@ -32,31 +41,31 @@ class LaastrasUserSignUp extends React.Component
                               action={this.props.laastras_user_sign_up_action_url}
                               style={{backgroundColor: '#464c94'}}>
                     
-                            <div className="form-group" style={form_elt_div_style}>
+                            <div className="form-group" style={form_elt_div_style} id="email-div">
                                 <input type="text" name="email"
                                        className="form-control" id="email_sign_up"
                                        placeholder={this.props.email}/>
                             </div>
                     
-                            <div className="form-group" style={form_elt_div_style}>
+                            <div className="form-group" style={form_elt_div_style} id="first-name-div">
                                 <input type="text" name="first_name"
                                        className="form-control" id="first_name_sign_up"
                                        placeholder={this.props.first_name}/>
                             </div>
                     
-                            <div className="form-group" style={form_elt_div_style}>
+                            <div className="form-group" style={form_elt_div_style} id="last-name-div">
                                 <input type="text" name="last_name"
                                        className="form-control" id="last_name_sign_up"
                                        placeholder={this.props.last_name}/>
                             </div>
 
-                            <div className="form-group" style={form_elt_div_style}>
+                            <div className="form-group" style={form_elt_div_style} id="user-name-div">
                                 <input type="text" name="user_name"
                                        className="form-control" id="user_name_sign_up"
                                        placeholder={this.props.user_name}/>
                             </div>
 
-                            <div style={form_elt_div_style}>
+                            <div style={form_elt_div_style} id="employee-div">
                                 <label style={{color: 'white', fontWeight: 'bold'}}> 
                                     {this.props.are_you_laastras_employee_label} 
                                 </label>
@@ -66,19 +75,19 @@ class LaastrasUserSignUp extends React.Component
                                 </select>
                             </div>
                     
-                            <div className="form-group" style={form_elt_div_style}>
+                            <div className="form-group" style={form_elt_div_style} id="password-div">
                                 <input type="password" name="password"
                                        className="form-control" id="password_sign_up"
                                        placeholder={this.props.password}/>
                             </div>
                     
-                            <div className="form-group" style={form_elt_div_style}>
+                            <div className="form-group" style={form_elt_div_style} id="password-confirmation-div">
                                 <input type="password" name="password_confirmation" 
                                        className="form-control" id="password_confirmation_sign_up"
                                        placeholder={this.props.password_confirmation}/>
                             </div>
                     
-                            <div className="text-center" style={form_elt_div_style}>             
+                            <div className="text-center" style={{padding: '5px'}}>             
                                 <button type="submit" 
                                         className="btn btn-default"
                                         style={{backgroundColor: 'white'}}>
@@ -114,16 +123,78 @@ class LaastrasUserSignUp extends React.Component
             $('#laastras_user_sign_up_main_div').hvcenter();
         });
 
+        if(this.reset_data)
+        {
+            this.display_reset_password_form();
+        }
+
         this.manageEditMode();
         this.hijackFormSubmitEvent();
 
     } // componentDidMount
+
+    get_reset_data()
+    {
+        let  reset_data = null;
+        //console.log('search: ' + window.location.search);
+        if(window.location.search)
+        {
+            let match = /reset_pwd=([^&]+)/.exec(window.location.search);
+            if(match)
+            {
+                let val = match[1];
+                //console.log('val: ' + val);
+                if(/^true$/i.test(val))
+                {
+                    let email = null;
+                    let password = null;
+
+                    match = /password=([^&]+)/.exec(window.location.search);
+                    if(match)
+                    {
+                        password = match[1];
+                        //console.log('password: ' + password);
+                    }
+                    match = /email=([^&]+)/.exec(window.location.search);
+                    if(match)
+                    {
+                        email = match[1];
+                        //console.log('email: ' + email);
+                    }
+
+                    //console.log('Email: ' + email + '; Password: ' + password);
+
+                    reset_data = {
+                        reset_pwd: val,
+                        email: email,
+                        password: password,
+                        new_password: null,
+                        password_confirmation: null
+                    };
+                }
+            }
+        }
+
+        return reset_data;
+
+    } // get_reset_data
+
+    display_reset_password_form()
+    {
+        document.getElementById('form-label').innerHTML = this.props.reset_password_title;
+        $('#password-div').css('display', 'block');
+        $('#password-confirmation-div').css('display', 'block');
+    }
 
     manageEditMode()
     {
         if(this.props.edit_mode === 'true')
         {
             console.log("Ready to have you edit form ...");
+            
+            $('#password-div').css('display', 'none');
+            $('#password-confirmation-div').css('display', 'none');
+
             if(this.props.laastras_user)
             {
                 document.laastras_user_sign_up_form.email.value = this.props.laastras_user.email;
@@ -162,15 +233,25 @@ class LaastrasUserSignUp extends React.Component
                         url = $this.attr('action');
                     }
                     //console.log(`E-mail:${document.laastras_user_sign_up_form.email.value}`);
-                    var form_data = {
-                        email: document.laastras_user_sign_up_form.email.value,
-                        first_name: document.laastras_user_sign_up_form.first_name.value,
-                        last_name: document.laastras_user_sign_up_form.last_name.value,
-                        user_name: document.laastras_user_sign_up_form.user_name.value,
-                        laastras_employee: document.getElementById('laastras-sign-up-employee').value,
-                        password: document.laastras_user_sign_up_form.password.value,
-                        password_confirmation: document.laastras_user_sign_up_form.password_confirmation.value
-                    };
+                    if(this.reset_data)
+                    {
+                        this.reset_data.new_password = document.laastras_user_sign_up_form.password.value;
+                        this.reset_data.password_confirmation = document.laastras_user_sign_up_form.password_confirmation.value;
+                        var form_data = this.reset_data;
+                    }
+                    else 
+                    {
+                        form_data = {
+                            email: document.laastras_user_sign_up_form.email.value,
+                            first_name: document.laastras_user_sign_up_form.first_name.value,
+                            last_name: document.laastras_user_sign_up_form.last_name.value,
+                            user_name: document.laastras_user_sign_up_form.user_name.value,
+                            laastras_employee: document.getElementById('laastras-sign-up-employee').value,
+                            password: document.laastras_user_sign_up_form.password.value,
+                            password_confirmation: document.laastras_user_sign_up_form.password_confirmation.value
+                        };
+                    }
+
                     var dataToSend = form_data;
                     var callback = (dataReceived, status, xq) => {
                         // use the data received
@@ -319,7 +400,8 @@ LaastrasUserSignUp.propTypes = {
     yes_label: PropTypes.string,
     laastras_user_sign_up_action_url: PropTypes.string,
     edit_mode: PropTypes.string,
-    laastras_user: PropTypes.object
+    laastras_user: PropTypes.object,
+    reset_password_title: PropTypes.string
 };
 
 export default LaastrasUserSignUp;

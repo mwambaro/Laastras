@@ -1,152 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% @open_graph_variables = ApplicationHelper.open_graph_variables(request) %>
-    <title><%= @site_title.nil? ? 'Laastras' : @site_title %></title>
-    <%= favicon_link_tag 'favicon.svg' %>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="<%= @open_graph_variables[:site_description].nil?  ? 'A collection of IoT services that aim at fulfilling LaaS policy' : @open_graph_variables[:site_description] %>">
+    <head>
+        <% @open_graph_variables = ApplicationHelper.open_graph_variables(request) %>
+        <title><%= @site_title.nil? ? 'Laastras' : @site_title %></title>
+        <%= favicon_link_tag 'favicon.svg' %>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="<%= @open_graph_variables[:site_description].nil?  ? 'A collection of IoT services that aim at fulfilling LaaS policy' : @open_graph_variables[:site_description] %>">
     
-    <% # 35 characters %>
-    <meta property="og:title" content="<%= @open_graph_variables[:open_graph_proto_title].nil? ? 'LaaS Policy Application' : @open_graph_variables[:open_graph_proto_title] %>" />
-    <meta property="og:url" content="<%= @open_graph_variables[:open_graph_proto_site_url].nil? ? 'https://laastras.herokuapp.com' : @open_graph_variables[:open_graph_proto_site_url] %>" />
-    <% # 65 characters %>
-    <meta property="og:description" content="<%= @open_graph_variables[:open_graph_proto_description].nil? ? 'Meet globalization challenges and constraints' : @open_graph_variables[:open_graph_proto_description] %>" />
-    <% # Image type PNG or JPG size less than 300KB and minimum pixels 300x200 %>
-    <meta property="og:image" content="<%= @open_graph_variables[:open_graph_proto_image_url].nil? ? 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none' : @open_graph_variables[:open_graph_proto_image_url] %>" />
-    <% # see https://opengraphprotocol.org/#types %>
-    <meta property="og:type" content="website" />
-    <% # Examples: en_US, en_GB. => locale_TERRITORRY %>
-    <meta property="og:locale" content="<%= @open_graph_variables[:open_graph_proto_locale].nil? ? @open_graph_variables[:default_locale] : @open_graph_variables[:open_graph_proto_locale] %>" />
-    <% # Alternate locales %>
-    <% @open_graph_variables[:available_locales].each do |locale| %>
-        <% if((locale.to_s != @open_graph_variables[:open_graph_proto_locale]) && (locale.to_s != @open_graph_variables[:default_locale])) %>
-            <meta property="og:locale:alternate" content="<%= locale %>" />
+        <% # 35 characters %>
+        <meta property="og:title" content="<%= @open_graph_variables[:open_graph_proto_title].nil? ? 'LaaS Policy Application' : @open_graph_variables[:open_graph_proto_title] %>" />
+        <meta property="og:url" content="<%= @open_graph_variables[:open_graph_proto_site_url].nil? ? 'https://laastras.herokuapp.com' : @open_graph_variables[:open_graph_proto_site_url] %>" />
+        <% # 65 characters %>
+        <meta property="og:description" content="<%= @open_graph_variables[:open_graph_proto_description].nil? ? 'Meet globalization challenges and constraints' : @open_graph_variables[:open_graph_proto_description] %>" />
+        <% # Image type PNG or JPG size less than 300KB and minimum pixels 300x200 %>
+        <meta property="og:image" content="<%= @open_graph_variables[:open_graph_proto_image_url].nil? ? 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none' : @open_graph_variables[:open_graph_proto_image_url] %>" />
+        <% # see https://opengraphprotocol.org/#types %>
+        <meta property="og:type" content="website" />
+        <% # Examples: en_US, en_GB. => locale_TERRITORRY %>
+        <meta property="og:locale" content="<%= @open_graph_variables[:open_graph_proto_locale].nil? ? @open_graph_variables[:default_locale] : @open_graph_variables[:open_graph_proto_locale] %>" />
+        <% # Alternate locales %>
+        <% @open_graph_variables[:available_locales].each do |locale| %>
+            <% if((locale.to_s != @open_graph_variables[:open_graph_proto_locale]) && (locale.to_s != @open_graph_variables[:default_locale])) %>
+                <meta property="og:locale:alternate" content="<%= locale %>" />
+            <% end %>
         <% end %>
-    <% end %>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Nunito', 'Segoe UI', sans-serif;
-      }
-    </style>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-      <!-- Older Banner -->
-      <div class="container-fluid" style="background-color: white">
-          <div class="text-center">
-              <img src="<%= @laastras_banner_image %>" class="img-fluid banner-image" />
-          </div>
-          <hr style="font-weight: bold; color: rgb(192,0,0); margin: 0.5px; height: 3px" />
-          <hr style="font-weight: bold; color: rgb(0,176,80); margin: 0.5px; height: 3px" />
-      </div>
-      <!-- -->
-      <!-- New Banner ---
-      <%= react_component('Banner', {
-          laastras_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-03.svg'),
-          e_grocery_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery.svg'),
-          e_card_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-card.svg'),
-          e_logistics_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
-          e_alliances_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
-          e_homocracy_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-homocracy.svg'),
-          home_url: url_for(controller: 'laastras', action: 'home'),
-          home_label: (I18n.t 'home_label'),
-          from: (I18n.t 'from_label'),
-          democracy: (I18n.t 'democracy_label'),
-          to: (I18n.t 'to_label'),
-          homocracy: (I18n.t 'homocracy_label'),
-          laastras_pitch_message: (I18n.t 'laastras_organization_pitch_message')
-      })%>
-      -->
-    <%= yield %>
-    <div class="container-fluid">
-        <div id="banner-details-section-app" class="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="banner-details-body">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="text-center">
-                            <button type="button" class="btn btn-primary" id="banner-ok-btn-app">
-                                OK
-                            </button>
-                        </div>
-                        div class="text-center" style="margin-left: 10px">
-                            <button type="button" class="btn btn-primary" id="banner-hit-home-btn-app">
-                                <%= I18n.t 'home_label' %>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        try 
-        {
-            if(AOS && AOS != 'undefined')
-            {
-                AOS.init();
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Nunito', 'Segoe UI', sans-serif;
             }
-        }
-        catch(e)
-        {
-            console.log("AOS: " + e);
-        }
-        
-        function manageBanner(onclick_fn=null)
-        {
-            let banners = document.getElementsByClassName('banner-image');
-            let blength = banners.length;
-            if(blength > 0)
+        </style>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    
+    <body>
+        <%= react_component('LaastrasBanner', { 
+            # Banner Pitch
+            laastras_banner_pitch_message: (I18n.t 'laastras_organization_pitch_message'),
+            home_url: url_for(controller: 'laastras', action: 'home'),
+            home_label: (I18n.t 'home_label'),
+            # Banner Html
+            laastras_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-03.svg'),
+            e_grocery_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery.svg'),
+            e_card_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-card.svg'),
+            e_logistics_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
+            e_alliances_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
+            e_homocracy_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-homocracy.svg'),
+            from: (I18n.t 'from_label'),
+            democracy: (I18n.t 'democracy_label'),
+            to: (I18n.t 'to_label'),
+            homocracy: (I18n.t 'homocracy_label'),
+            # Banner Image
+            laastras_banner_image: @laastras_banner_image
+        })%>
+
+        <%= yield %>
+    
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            try 
             {
-                for(let i=0; i<blength; i++)
+                if(AOS && AOS != 'undefined')
                 {
-                    if(onclick_fn)
-                    {
-                        banners[i].onclick = onclick_fn;
-                    }
-                    else
-                    {
-                        banners[i].onclick = function(){
-                            window.location = "<%= url_for(controller: 'laastras', action: 'home') %>";
-                        }
-                    }
-                    banners[i].onmouseover = function(e){
-                        e.target.style.cursor = 'pointer';
-                    }
+                    AOS.init();
                 }
             }
-        } 
-
-        //import {Modal} from "bootstrap"
-        function addPitchMessageToBanner()
-        {
-            var app_modal = new Modal(document.getElementById('banner-details-section-app'));
-            $('#banner-ok-btn-app').on('click', (e) => {
-                app_modal.hide();
-            });
-            $('#banner-hit-home-btn-app').on('click', (e) => {
-                app_modal.hide();
-                window.location = "<%= url_for(controller: 'laastras', action: 'home') %>";
-            });
-            manageBanner(function(){
-                app_modal.show();
-            });
-        }
-        manageBanner();
-        //addPitchMessageToBanner();
-    </script>
-  </body>
+            catch(e)
+            {
+                console.log("AOS: " + e);
+            }
+        </script>
+    </body>
 </html>

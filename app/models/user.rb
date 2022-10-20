@@ -13,16 +13,26 @@ class User < ApplicationRecord
         write_attribute('password', Digest::SHA1.hexdigest(pwd))
     end
 
-    def self.authenticate(email, pwd)
+    def self.authenticate(email, pwd, logger=nil)
         user_email = nil
-        hashed_pwd = Digest::SHA1.hexdigest(pwd)
-        user = self.find_by_email_and_password(email, hashed_pwd)
-
-        if user.nil?
+        user = nil 
+        begin 
+            hashed_pwd = Digest::SHA1.hexdigest(pwd)
+            logger.debug "---> Hashed passwords: #{hashed_pwd} =? #{self.find_by_email(email).password}" unless logger.nil?
             user = self.find_by_email(email)
-            if user 
+            unless user.nil?
                 user_email = email
+                equal = user.password == hashed_pwd
+                logger.debug "---> equal: #{equal.to_s}" unless logger.nil?
+                unless equal 
+                    user = nil
+                end
             end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
         end
 
         return user, user_email

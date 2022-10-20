@@ -101,14 +101,23 @@ class LaastrasController < ApplicationController
         next_uri = nil
         begin 
             service_id = params[:service_id]
-            if service_id.nil? || service_id.blank? || service_id == 'nil'
-                @sign_up_action_url = url_for(controller: 'users', action: 'sign_up')
-            else 
+            reset_pwd = params[:reset_pwd]
+            if !reset_pwd.nil?
+                @sign_up_action_url = url_for(
+                    controller: 'users', 
+                    action: 'sign_up',
+                    reset_pwd: reset_pwd,
+                    email: params[:email],
+                    password: params[:password]
+                )
+            elsif !service_id.nil? && service_id != 'nil'                
                 @sign_up_action_url = url_for(
                     controller: 'users', 
                     action: 'sign_up',
                     service_id: service_id
                 )
+            else 
+                @sign_up_action_url = url_for(controller: 'users', action: 'sign_up')
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 

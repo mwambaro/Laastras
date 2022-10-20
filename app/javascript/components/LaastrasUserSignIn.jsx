@@ -55,6 +55,20 @@ class LaastrasUserSignIn extends React.Component
                                     </button>
                                 </div>
                         </form>
+                        <div className="row" style={{padding: '10px'}} id="reset-password-section">
+                            <div className="col-md-8" 
+                                 id="reset-password-div"
+                                 data-href={this.props.reset_password_url} 
+                                 style={{textDecoration: 'none', color: 'blue'}}
+                                 onClick={(se) => this.send_reset_request(se)}>
+                                    {this.props.forgot_password_prompt}
+                            </div>
+                            <div className="col-md-4">
+                                <a href={this.props.sign_up_url} style={{textDecoration: 'none'}}>
+                                    {this.props.sign_up_label}
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="laastras-wait-uploads-spinner" 
@@ -82,17 +96,42 @@ class LaastrasUserSignIn extends React.Component
         window.addEventListener('resize', (event)=>{
             $('#laastras_user_sign_in_main_div').hvcenter();
         });
+        $('#reset-password-div').on('mouseover', (e) => {
+            e.target.style.cursor = 'pointer';
+        });
         this.wait_spinner = new WaitSpinner();
         this.hijackFormSubmitEvent();
 
     } // componentDidMount
+
+    send_reset_request(e)
+    {
+        let email = document.laastras_user_sign_in_form.email.value;
+        //console.log('email: ' + typeof(email));
+        if(email === this.props.email || typeof(email) === 'undefined' || email === '')
+        {
+            let html = `
+                <div class="col-md-8 email-prompt" style="padding: 5px; color: red; font-weight: bold">
+                    ${this.props.input_email_prompt}
+                </div>
+            `;
+            $('.email-prompt').remove();
+            $('#reset-password-div').prepend(html);
+        }
+        else 
+        {
+            let enc_email = encodeURIComponent(email);
+            window.location = this.props.reset_password_url + `?email=${enc_email}`;
+        }
+
+    } // send_reset_request
 
     get_redirect_uri()
     {
         let uri = null;
         if(window.location.search)
         {
-            let match = /\?redirect_uri=([^&]+)/.exec(window.location.search);
+            let match = /redirect_uri=([^&]+)/.exec(window.location.search);
             if(match)
             {
                 uri = decodeURIComponent(match[1]);
@@ -141,6 +180,7 @@ class LaastrasUserSignIn extends React.Component
                         {
                             $this.hide();
                             $('#form-label').remove();
+                            $('#reset-password-section').remove();
                             html = `
                                 <div class="row" style="background-color: white; padding: 10px" id="verbose-message-div">
                                     <div class="col-sm-1 justify-content-end">
@@ -279,7 +319,12 @@ LaastrasUserSignIn.propTypes = {
     password: PropTypes.string,
     submit_label: PropTypes.string,
     laastras_user_sign_in_form_label: PropTypes.string,
-    laastras_user_sign_in_action_url: PropTypes.string
+    laastras_user_sign_in_action_url: PropTypes.string,
+    reset_password_url: PropTypes.string,
+    forgot_password_prompt: PropTypes.string,
+    sign_up_url: PropTypes.string,
+    sign_up_label: PropTypes.string,
+    input_email_prompt: PropTypes.string
 };
 
 export default LaastrasUserSignIn;

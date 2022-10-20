@@ -344,7 +344,7 @@ en_US:
                     You are an experienced Content Marketer and can sell great ideas to fund donors.
                 </li>
                 <li>
-                    You are a proficient lobbyist and know how to speak to policy makers whon can 
+                    You are a proficient lobbyist and know how to speak to policy makers who can 
                     greatly influence the consumers' opinion of our products and services. 
                 </li>
             </ol>
@@ -694,7 +694,7 @@ en_US:
         <div>
             You certainly have an account with us, so no worries.
             Just one thing, you must have forgotten your password.
-            Kindly reset your password following <a href=\u0022/users/reset_password\u0022>this link</a>
+            Kindly reset your password following the link below.
         </div>
   "
   laastras_services_consumer_option: "Be Laastras Services Consumer"

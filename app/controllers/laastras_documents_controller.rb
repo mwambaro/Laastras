@@ -47,9 +47,7 @@ class LaastrasDocumentsController < ApplicationController
                          'Make sure the request has a :doc_id query'
                 failed = true
             else 
-
-                sql_query = "SELECT * FROM laastras_documents WHERE sha256 = '#{sha256}'"
-                doc = LaastrasDocument.find_by_sql(sql_query).first
+                doc = LaastrasDocument.find_by_sha256(sha256)
                 if doc 
                     uri = doc.uri 
                     data = File.open(uri, 'rb'){ |io| io.read }

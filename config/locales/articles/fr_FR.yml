@@ -664,7 +664,7 @@ fr_FR:
         <div>
             Vous avez certainement un compte avec nous, donc, ne vous inquiétez pas.
             Une chose, il se pourrait que vous ayez oublié votre mot de passe.
-            Veuillez réinitialiser votre mot de passe en suivant ce <a href=\u0022/users/reset_password\u0022>lien</a>
+            Veuillez réinitialiser votre mot de passe en suivant le lien ci-bas
         </div>
   "
   laastras_services_consumer_option: "Soyez Consommateur de Services Laastras"

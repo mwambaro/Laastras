@@ -4,5 +4,10 @@
     password: (I18n.t 'password_label'),
     submit_label: (I18n.t 'submit_label'),
     laastras_user_sign_in_form_label: (I18n.t 'laastras_user_sign_in_form_label'),
-    laastras_user_sign_in_action_url: @sign_in_action_url
+    laastras_user_sign_in_action_url: @sign_in_action_url,
+    reset_password_url: url_for(controller: 'users', action: 'reset_password'),
+    forgot_password_prompt: (I18n.t 'forgot_password_prompt'),
+    sign_up_url: url_for(controller: 'laastras', action: 'sign_up'),
+    sign_up_label: (I18n.t 'sign_up_label'),
+    input_email_prompt: (I18n.t 'input_email_prompt')
 }) %>

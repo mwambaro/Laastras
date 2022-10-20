@@ -170,7 +170,7 @@ class LaastrasJskForm extends React.Component
         let id = null;
         if(window.location.search)
         {
-            let match = /\?job_offer_id=([^&]+)/.exec(window.location.search);
+            let match = /job_offer_id=([^&]+)/.exec(window.location.search);
             if(match)
             {
                 id = parseInt(match[1]);

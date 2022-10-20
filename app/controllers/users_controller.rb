@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     def show
         next_uri = nil 
         begin 
+            init_parameters
             @view_mode = false.to_s
             @full_name = "#{@laastras_user.first_name} #{@laastras_user.last_name}"
             @role = I18n.t @laastras_user.role 
@@ -46,6 +47,7 @@ class UsersController < ApplicationController
     def edit 
         next_uri = nil 
         begin
+            init_parameters
             laastras_user = ApplicationHelper.who_is_logged_in?(session)
             unless laastras_user.nil?
                 if @laastras_user.id == laastras_user.id 
@@ -78,6 +80,7 @@ class UsersController < ApplicationController
     def destroy 
         next_uri = nil 
         begin
+            init_parameters
             @require_confirmation = false
             laastras_user = ApplicationHelper.who_is_logged_in?(session)
             unless laastras_user.nil?
@@ -151,12 +154,13 @@ class UsersController < ApplicationController
     def sign_in
         next_uri = nil 
         begin 
+            init_parameters
             email = params[:email]
             password = params[:password] 
             redirect_uri = params[:redirect_uri]
             service_id = params[:service_id] || 'nil'
             dataToSend = nil
-            @laastras_user, @email = User.authenticate(email, password)
+            @laastras_user, @email = User.authenticate(email, password, logger)
             unless session.nil?
                 session[:logged_in] = false
                 unless @laastras_user.nil?
@@ -189,8 +193,15 @@ class UsersController < ApplicationController
                                 __method__.to_s + "--- " + message 
                         logger.debug msg
                     else # password forgotten
-                        message = "<div><h3>#{I18n.t 'offer_to_reset_password'}</h3></div>" + 
-                                    (I18n.t 'offer_to_reset_password_message')
+                        reset_url = url_for(
+                            controller: 'users', 
+                            action: 'reset_password', 
+                            email: URI.encode(@email)
+                        )
+                        message =  (I18n.t 'offer_to_reset_password_message') + 
+                                    "<div><a href=\"#{reset_url}\" " + 
+                                    "style=\"text-decoration: none\">" + 
+                                    "#{I18n.t 'reset_label'}</a></div>"
                         dataToSend = {
                             code: 0,
                             message: message,
@@ -228,7 +239,64 @@ class UsersController < ApplicationController
     def reset_password 
         next_uri = nil 
         begin 
-            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+            init_parameters
+            id = params[:id]
+            unless id.nil?
+                user = User.find(id)
+                if user.nil?
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                else 
+                    hash = user.password
+                    email = user.email 
+                    reset_url = url_for(
+                        controller: 'users',
+                        action: 'reset_password',
+                        email: URI.encode(email),
+                        password: hash
+                    )
+                    message = (I18n.t 'password_reset_message') + 
+                              '<div> <a style="text-decoration: none" href="' + reset_url + '">' + 
+                              (I18n.t 'reset_label') + '</a></div>'
+                    val = @header_data.send_mail(email, message, nil)
+                    if val.nil?
+                        session[:fail_safe_title] = I18n.t 'failure_to_send_reset_password_email_title'
+                        session[:fail_safe_message] = (I18n.t 'failure_to_send_reset_password_email_message') + 
+                                                        message
+                        next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                    else
+                        session[:fail_safe_title] = I18n.t 'sent_reset_password_email_title'
+                        session[:fail_safe_message] = I18n.t 'sent_reset_password_email_message'
+                        next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                    end
+                end
+            else 
+                hash = params[:password]
+                email = params[:email]
+                if email.nil? && hash.nil?
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                elsif !(email.nil? || email.blank?) && hash.nil?
+                    user = User.find_by_email(URI.decode(email))
+                    if user.nil?
+                        next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                    else
+                        next_uri = url_for(controller: 'users', action: 'reset_password', id: user.id)
+                    end
+                else 
+                    email = URI.decode(email)
+                    user = User.find_by_email_and_password(email, hash)
+                    if user.nil?
+                        next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                    else 
+                        next_uri = url_for(
+                            controller: 'laastras',
+                            action: 'sign_up',
+                            reset_pwd: 'true',
+                            email: URI.encode(email),
+                            password: hash
+                        )
+                    end
+                end
+            end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -246,7 +314,9 @@ class UsersController < ApplicationController
     def sign_up 
         next_uri = nil 
         begin 
-            @service_id = params[:service_id] || 'nil'
+            init_parameters
+            @service_id = params[:service_id] || nil
+            @reset_pwd = params[:reset_pwd] || nil
             n_users = User.all.count 
             data = nil
             if n_users > ApplicationHelper.max_number_of_users 
@@ -276,6 +346,7 @@ class UsersController < ApplicationController
     def update 
         next_uri = nil 
         begin
+            init_parameters
             data = persist_to_database(true)
             # send data to caller
             render plain: JSON.generate(data) unless data.nil?
@@ -293,27 +364,40 @@ class UsersController < ApplicationController
     end # update
 
     def persist_to_database(updating) 
-        init_parameters
     
         dataToSend = nil
 
         begin
-            admin_email = 'onkezabahizi@gmail.com'
+            @admin_email = 'onkezabahizi@gmail.com'
             regex_str = Regexp::escape params[:password_confirmation]
-            logger.debug 'REGEX: ' + regex_str
-            if params[:password].match?(/\A#{regex_str}\Z/)
-                role = :client.to_s
-                if(params[:email].match?(/\A#{admin_email}\Z/i))
-                    role = :admin.to_s
-                elsif params[:laastras_employee].match?(/\A(#{I18n.t 'yes_label'})\Z/i)
-                    role = :employee.to_s
-                else 
-                    if @service_id.nil? || @service_id == 'nil'
-                        role = :client.to_s
-                    else
-                        role = @service_id.to_s
-                    end  
+            #logger.debug "---> regex: #{regex_str}; password: #{params[:password]}"
+            params[:new_password] = '' if params[:new_password].nil?
+            if(
+                params[:password].match?(/\A#{regex_str}\Z/) || 
+                params[:new_password].match?(/\A#{regex_str}\Z/)
+            )
+                unless @reset_pwd.nil?
+                    @role = :client.to_s
+                    if(params[:email].match?(/\A#{@admin_email}\Z/i))
+                        @role = :admin.to_s
+                    elsif params[:laastras_employee].match?(/\A(#{I18n.t 'yes_label'})\Z/i)
+                        @role = :employee.to_s
+                    else 
+                        if @service_id.nil?
+                            @role = :client.to_s
+                        else
+                            @role = @service_id.to_s
+                        end  
+                    end
                 end
+
+                @message = nil
+                @sign_in_url = url_for(
+                    controller: 'laastras', action: 'sign_in'
+                )
+                @sign_in_label = I18n.t 'sign_in_label'
+                @contact_label = I18n.t 'contact_site_owner_label'
+                @contact_url = "mailto:#{@admin_email}"
 
                 result = false 
                 if updating 
@@ -323,18 +407,62 @@ class UsersController < ApplicationController
                         first_name: params[:first_name],
                         last_name: params[:last_name],
                         user_name: params[:user_name],
-                        role: role
+                        role: @role
                     })
+                    if result
+                        @message = "<div>#{I18n.t 'update_account_information_success'}</div>" + 
+                                    "<div><a href=\"#{@sign_in_url}\" style=\"text-decoration: none\">" + 
+                                    "#{@sign_in_label}</a></div>"
+                    else 
+                        @message = "<div>#{I18n.t 'update_account_information_failed'}</div>" + 
+                                    "<div><a href=\"#{@contact_url}\" style=\"text-decoration: none\">" + 
+                                    "#{@contact_label}</a></div>"
+                    end
                 else 
-                    @laastras_user = User.new({
-                        password: params[:password],
-                        email: params[:email],
-                        first_name: params[:first_name],
-                        last_name: params[:last_name],
-                        user_name: params[:user_name],
-                        role: role
-                    })
-                    result = @laastras_user.save
+                    if @reset_pwd.nil?
+                        @laastras_user = User.new({
+                            password: params[:password],
+                            email: params[:email],
+                            first_name: params[:first_name],
+                            last_name: params[:last_name],
+                            user_name: params[:user_name],
+                            role: @role
+                        })
+                        result = @laastras_user.save 
+                        @message = "<div>#{I18n.t 'sign_up_success'}</div>" + 
+                                    "<div><a href=\"#{@sign_in_url}\" style=\"text-decoration: none\">" + 
+                                    "#{@sign_in_label}</a></div>"
+                    else # reset password 
+                        email = URI.decode(params[:email]) 
+                        password = params[:password]
+                        user = User.find_by_email_and_password(email, password)
+                        if user.nil? || params[:new_password].nil?
+                            result = false 
+                            @message = "<div>#{I18n.t 'reset_password_failed'}</div>" + 
+                                        "<div><a href=\"#{@contact_url}\" style=\"text-decoration: none\">" + 
+                                        "#{@contact_label}</a></div>"
+                        else 
+                            logger.debug "---> New password: #{params[:new_password]}\r\n" + 
+                                        "---> Old password hash: #{user.password}"            
+                            result = user.update({
+                                password: params[:new_password]
+                            })
+                            if result
+                                l_user = User.find_by_email(email)
+                                unless l_user.nil?
+                                    logger.debug "---> New password hash: #{user.password}\r\n" 
+                                end
+
+                                @message = "<div>#{I18n.t 'reset_password_success'}</div>" + 
+                                            "<div><a href=\"#{@sign_in_url}\" style=\"text-decoration: none\">" + 
+                                            "#{@sign_in_label}</a></div>"
+                            else 
+                                @message = "<div>#{I18n.t 'reset_password_failed'}</div>" + 
+                                            "<div><a href=\"#{@contact_url}\" style=\"text-decoration: none\">" + 
+                                            "#{@contact_label}</a></div>"
+                            end
+                        end
+                    end
                 end
 
                 if result # Success
@@ -342,18 +470,20 @@ class UsersController < ApplicationController
                     # Prepare data to send back
                     dataToSend = {
                         code: 1,
-                        message: (I18n.t 'model_create_success')
+                        message: @message
                     }
                 else # Failed
-                    msg = "#{@laastras_user.errors.count} error(s) prohibited this user from being saved:"
-                    msg += "<ul>"
+                    msg = "\r\n#{@laastras_user.errors.count} error(s) prohibited this user from being saved:"
                     @laastras_user.errors.each do |error|
-                        msg += "<li>" + error.full_message + "</li>"
+                        msg += "\r\n" + error.full_message
                     end
-                    msg += "</ul>"
+                    mssge = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + msg
+                    logger.debug mssge
+
                     dataToSend = {
                         code: 0,
-                        message: msg
+                        message: @message
                     }
                 end
             else
@@ -382,6 +512,7 @@ class UsersController < ApplicationController
         dataToSend = nil
         next_uri = nil
         begin
+            init_parameters
             if params[:file].nil?
                 dataToSend = {
                     code: 0,
