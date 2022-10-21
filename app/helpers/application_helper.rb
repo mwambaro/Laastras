@@ -15,6 +15,25 @@ module ApplicationHelper
         mex = 2.megabyte
     end
 
+    def self.unique_file_name(fname, logger=nil)
+        ufname = fname 
+        begin 
+            extname = Pathname.new(fname).extname 
+            if extname.blank?
+                ufname = "#{fname}_#{Time.now.to_i}"
+            else
+                ufname = "#{fname.chomp(extname)}_#{Time.now.to_i}#{extname}"
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+        end
+
+        ufname
+
+    end # unique_file_name
+
     def self.harvest_analytics(session, request)
         if true 
             return nil

@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     def index
         next_uri = nil 
         begin 
+            init_parameters
             if ApplicationHelper.user_has_admin_role?(session)
-                init_parameters
                 @laastras_users = User.all
             else 
                 next_uri = url_for(controller: 'laastras', action: 'home')
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
             @full_name = "#{@laastras_user.first_name} #{@laastras_user.last_name}"
             @role = I18n.t @laastras_user.role 
             @email = @laastras_user.email
+            @username = @laastras_user.user_name
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -376,7 +377,7 @@ class UsersController < ApplicationController
                 params[:password].match?(/\A#{regex_str}\Z/) || 
                 params[:new_password].match?(/\A#{regex_str}\Z/)
             )
-                unless @reset_pwd.nil?
+                if @reset_pwd.nil?
                     @role = :client.to_s
                     if(params[:email].match?(/\A#{@admin_email}\Z/i))
                         @role = :admin.to_s
@@ -429,9 +430,15 @@ class UsersController < ApplicationController
                             role: @role
                         })
                         result = @laastras_user.save 
-                        @message = "<div>#{I18n.t 'sign_up_success'}</div>" + 
+                        if result 
+                            @message = "<div>#{I18n.t 'sign_up_success'}</div>" + 
                                     "<div><a href=\"#{@sign_in_url}\" style=\"text-decoration: none\">" + 
                                     "#{@sign_in_label}</a></div>"
+                        else 
+                            @message = "<div>#{I18n.t 'sign_up_failed'}</div>" + 
+                                    "<div><a href=\"#{@contact_url}\" style=\"text-decoration: none\">" + 
+                                    "#{@contact_label}</a></div>"
+                        end
                     else # reset password 
                         email = URI.decode(params[:email]) 
                         password = params[:password]
@@ -636,7 +643,9 @@ class UsersController < ApplicationController
         def store_profile_photo(req_params)
             photo_data = nil 
             begin 
-                fname = req_params[:file][:uploaded_profile_photo_file].original_filename
+                filename = req_params[:file][:uploaded_profile_photo_file].original_filename
+                fname = ApplicationHelper.unique_file_name(filename, logger)
+                raise "Failed to generate unique name for file: #{filename}" if (fname.nil? || fname.blank?)
                 photo_full_path = ApplicationHelper.user_profile_photo_asset_url(fname)
                 photo_mime_type = req_params[:file][:uploaded_profile_photo_file].content_type 
                 data = req_params[:file][:uploaded_profile_photo_file].read

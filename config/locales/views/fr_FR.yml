@@ -175,6 +175,7 @@ fr_FR:
   input_email_prompt: "Veuillez entrer votre adresse e-mail dans son espace en haut, et réessayer la réinitialisation!"
   reset_password_title: "Réinitialiser le Mot de Passe"
   sign_up_success: "Vous vous êtes inscrits avec succès. Aimeriez-vous entrer dans le site?"
+  sign_up_failed: "On n'a pas pu vous inscrire. Veuillez contacter le propriétaire du site!"
   reset_password_failed: "Nous avons eu du mal à réinitialiser votre mot de passe. Veuillez contacter le propriétaire du site!"
   reset_password_success: "On n'a réinitialisé votre mot de passe avec succès. Aimeriez-vous entrer dans le site?"
   update_account_information_success: "Les informations de votre compte ont été mises à jour avec succès Aimeriez-vous entrer dans le site?"

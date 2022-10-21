@@ -177,7 +177,9 @@ class LaastrasJobSeekersController < ApplicationController
                 else 
 
                     # CV
-                    fname = params[:file][:uploaded_cv_file].original_filename
+                    filename = params[:file][:uploaded_cv_file].original_filename
+                    fname = ApplicationHelper.unique_file_name(filename, logger)
+                    raise "Failed to generate unique name for file: #{filename}" if (fname.nil? || fname.blank?)
                     cv_full_path = ApplicationHelper.job_seeker_asset_url(fname)
                     cv_mime_type = params[:file][:uploaded_cv_file].content_type
                     data = params[:file][:uploaded_cv_file].read 
@@ -196,7 +198,9 @@ class LaastrasJobSeekersController < ApplicationController
                             logger.debug 'IO exception (cv): ' + ee.message
                         end
                         # Cover Letter
-                        fname = params[:file][:uploaded_cover_letter_file].original_filename
+                        filename = params[:file][:uploaded_cover_letter_file].original_filename
+                        fname = ApplicationHelper.unique_file_name(filename, logger)
+                        raise "Failed to generate unique name for file: #{filename}" if (fname.nil? || fname.blank?)
                         cover_letter_full_path = ApplicationHelper.job_seeker_asset_url(fname)
                         cover_letter_mime_type = params[:file][:uploaded_cover_letter_file].content_type
                         data = params[:file][:uploaded_cover_letter_file].read

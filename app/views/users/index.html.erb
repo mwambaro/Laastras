@@ -6,6 +6,7 @@
 <% edit_label = I18n.t 'edit_label' %>
 <% destroy_label = I18n.t 'destroy_label' %>
 <% submit_label = I18n.t 'submit_label' %>
+<% username_label = I18n.t 'username_label' %>
 <% counter = 1 %>
 <% @laastras_users.each do |laastras_user| %>
     <div style="margin: 5px">
@@ -17,6 +18,8 @@
             role: tr_role,
             email_label: email_label,
             email: laastras_user.email,
+            username: laastras_user.user_name,
+            username_label: username_label,
             edit_label: edit_label,
             destroy_label: destroy_label,
             edit_url: url_for(controller: 'users', action: 'edit', id: laastras_user.id),

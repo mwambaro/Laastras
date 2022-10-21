@@ -205,6 +205,7 @@ en_US:
   input_email_prompt: "Please type your email address in its space above, and retry resetting!"
   reset_password_title: "Reset Password"
   sign_up_success: "You have signed up successfully. Would you like to sign in?"
+  sign_up_failed: "We failed to have you registered. Please, contact the site owner!"
   reset_password_failed: "We have had issues resetting your password. Please, contact the site owner!"
   reset_password_success: "We successfully reset your password. Would you like to sign in?"
   update_account_information_success: "Account information successfully updated. Would you like to sign in?"

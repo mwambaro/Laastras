@@ -69,10 +69,13 @@ class LaastrasUserShow extends React.Component
                                 <div className="d-flex flex-column justify-content-start align-items-start">
                                     <h3> {this.props.full_name} </h3> 
                                     <p>
-                                        {`${this.props.role_label}: ${this.props.role}`}
+                                        <strong>{this.props.role_label}:</strong> {this.props.role}
                                     </p>
                                     <p>
-                                        {`${this.props.email_label}: ${this.props.email}`}
+                                        <strong>{this.props.email_label}:</strong> {this.props.email}
+                                    </p>
+                                    <p>
+                                        <strong>{this.props.username_label}:</strong> {this.props.username}
                                     </p>
                                     {
                                         this.props.view_mode === 'false' ?
@@ -235,6 +238,8 @@ LaastrasUserShow.propTypes = {
     role: PropTypes.string,
     email_label: PropTypes.string,
     email: PropTypes.string,
+    username: PropTypes.string,
+    username_label: PropTypes.string,
     edit_label: PropTypes.string,
     destroy_label: PropTypes.string,
     edit_url: PropTypes.string,

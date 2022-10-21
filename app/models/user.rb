@@ -18,7 +18,7 @@ class User < ApplicationRecord
         user = nil 
         begin 
             hashed_pwd = Digest::SHA1.hexdigest(pwd)
-            logger.debug "---> Hashed passwords: #{hashed_pwd} =? #{self.find_by_email(email).password}" unless logger.nil?
+            #logger.debug "---> Hashed passwords: #{hashed_pwd} =? #{self.find_by_email(email).password}" unless logger.nil?
             user = self.find_by_email(email)
             unless user.nil?
                 user_email = email
