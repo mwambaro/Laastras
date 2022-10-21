@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_192020) do
     t.string "role"
     t.string "photo_uri"
     t.string "photo_mime_type"
+    t.string "verify_email_token"
     t.datetime "last_login"
     t.datetime "last_logout"
     t.datetime "created_at", precision: 6, null: false

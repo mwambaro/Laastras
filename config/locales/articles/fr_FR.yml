@@ -1069,6 +1069,17 @@ fr_FR:
   "
   no_page_analytics_available_title: "Pas de Données de Statistiques de Page"
   no_page_analytics_available_message: "
-        Nous n'avons pas pu trouver de données de statistiques de page dans notre base de données. 
-        Il se pourrait que ce soit du aux limites imposées par l'offre.
+    Nous n'avons pas pu trouver de données de statistiques de page dans notre base de données. 
+    Il se pourrait que ce soit du aux limites imposées par l'offre.
   "
+  user_welcome_email: "E-mail de Bienvenu à l'Utilisateur Laastras"
+  generic_welcome_message: "
+    Vous vous êtes bien inscrit(e)s comme un(e) des utilisateurs Laastras. Veuillez suivre le lien ci-bas pour
+    vérifier votre adresse mail.
+  "
+  no_verify_email_token_title: "Pas de Portion de Verification d'Adresse Mail"
+  no_verify_email_token_message: "On n'a pas pu trouver de portion de vérification d'adresse mail dans le lien donné."
+  verified_email_title: "Adresse Mail Vérifié"
+  verified_email_message: "Votre adresse mail a bien été vérifié. Nous serons en mesure de vous contacter."
+  unverified_email_title: "Echec de Vérification d'Adresse Mail"
+  unverified_email_message: "On n'a pas pu vérifier votre adresse mail comme appartenant à un utilisateur valide."

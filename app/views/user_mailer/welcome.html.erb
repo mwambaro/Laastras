@@ -1,5 +1,18 @@
-<h1>User#welcome</h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/welcome.html.erb
-</p>
+<div>
+    <div style="margin: 5px">
+        <%= @welcome_message %>
+    </div>
+    <div style="margin: 5px; display: flex; justify-content: center">
+        <a href="<%= @verify_email_url %>" style="text-decoration: none"> 
+            <%= I18n.t 'verify_email_label' %>
+        </a>
+    </div>
+    <div style="margin: 5px; display: flex; justify-content: center">
+        <img src="<%= @laastras_banner_image %>" id="welcome-banner-image" />
+    </div>
+    <script>
+        let width = window.innerWidth - 5;
+        document.getElementById('welcome-banner-image').style.width = width;
+    </script>
+</div>

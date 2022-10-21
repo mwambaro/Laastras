@@ -181,3 +181,4 @@ fr_FR:
   update_account_information_success: "Les informations de votre compte ont été mises à jour avec succès Aimeriez-vous entrer dans le site?"
   update_account_information_failed: "On n'a pas pu mettre à jour les informations de votre compte. Veuillez contacter le propriétaire du site!"
   contact_site_owner_label: "Contacter le propriétaire du site"
+  verify_email_label: "Vérifier l'Adresse Mail"

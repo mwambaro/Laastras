@@ -318,21 +318,28 @@ module ApplicationHelper
     end
     
     def self.banner_image_asset_url(request)
-        url = ApplicationHelper.image_asset_url(
-            request, 'Laastras-e-banner-lg-en.JPG'
-        )
+        url = nil 
+        asset_name = 'Laastras-e-banner-lg-en.JPG'
         if /\Afr|fr_FR\Z/i =~ I18n.locale.to_s
+            asset_name = 'Laastras-e-banner-lg-fr.JPG'
+        end
+        unless request.nil?
             url = ApplicationHelper.image_asset_url(
-                request, 'Laastras-e-banner-lg-fr.JPG'
+                request, asset_name
             )
         end
+        url = "/images/#{asset_name}" if url.nil?
 
         url 
 
     end # banner_image_asset_url
 
     def self.image_asset_url(request, file)
-        request.protocol + request.host_with_port + path_to_image(file)
+        if request.nil?
+            path_to_image(file)
+        else
+            request.protocol + request.host_with_port + path_to_image(file)
+        end
 
     end # image_asset_url
 

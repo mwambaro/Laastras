@@ -1088,6 +1088,16 @@ en_US:
   "
   no_page_analytics_available_title: "No Page Analytics Data Available"
   no_page_analytics_available_message: "
-        We could not find any page analytics data in our database. This may be due to plan limitations.
+    We could not find any page analytics data in our database. This may be due to plan limitations.
   "
+  user_welcome_email: "Laastras User Welcome E-mail"
+  generic_welcome_message: "
+    You have successfully signed up as one of Laastras users. Please follow the link below to verify  your email.
+  "
+  no_verify_email_token_title: "No Verify E-mail Token"
+  no_verify_email_token_message: "We could not find any email verification token in the url"
+  verified_email_title: "E-mail Verified"
+  verified_email_message: "Your email has been verified successfully. We will be able to contact you."
+  unverified_email_title: "Failure to Verify E-mail"
+  unverified_email_message: "Your email could not be verified as belonging to a valid user."
 

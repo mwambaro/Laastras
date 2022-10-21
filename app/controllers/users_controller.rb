@@ -237,6 +237,46 @@ class UsersController < ApplicationController
 
     end # sign_in
 
+    def verify_email 
+        next_uri = nil
+        begin 
+            init_parameters
+            token = params[:token]
+            id = params[:id]
+            user = User.find(id)
+            if token.nil? || token.blank? || user.nil?
+                session[:fail_safe_title] = I18n.t 'no_verify_email_token_title'
+                session[:fail_safe_message] = I18n.t 'no_verify_email_token_message'
+                next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+            else 
+                if token == user.verify_email_token 
+                    unless user.update({verify_email_token: 'verified'})
+                        msg = 'Failed to update verify email token to :verified'
+                        message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + msg
+                        logger.debug message unless logger.nil?
+                    end
+                    session[:fail_safe_title] = I18n.t 'verified_email_title'
+                    session[:fail_safe_message] = I18n.t 'verified_email_message'
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                else 
+                    session[:fail_safe_title] = I18n.t 'unverified_email_title'
+                    session[:fail_safe_message] = I18n.t 'unverified_email_message'
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                end
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # verify_email
+
     def reset_password 
         next_uri = nil 
         begin 
@@ -434,6 +474,7 @@ class UsersController < ApplicationController
                             @message = "<div>#{I18n.t 'sign_up_success'}</div>" + 
                                     "<div><a href=\"#{@sign_in_url}\" style=\"text-decoration: none\">" + 
                                     "#{@sign_in_label}</a></div>"
+                            
                         else 
                             @message = "<div>#{I18n.t 'sign_up_failed'}</div>" + 
                                     "<div><a href=\"#{@contact_url}\" style=\"text-decoration: none\">" + 
@@ -589,6 +630,7 @@ class UsersController < ApplicationController
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
             @header_data = ApplicationHelper::SiteHeaderData.new(request, logger)
+            @users_helper_factory = UsersHelper::UsersHelperFactory.new(request, logger, session)
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
                 request
             )

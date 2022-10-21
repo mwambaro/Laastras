@@ -211,3 +211,4 @@ en_US:
   update_account_information_success: "Account information successfully updated. Would you like to sign in?"
   update_account_information_failed: "We could not update your account information. Please, contact the site owner!"
   contact_site_owner_label: "Contact site owner"
+  verify_email_label: "Verify Email"

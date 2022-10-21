@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :role
       t.string :photo_uri 
       t.string :photo_mime_type
+      t.string :verify_email_token
       t.datetime :last_login
       t.datetime :last_logout
 

@@ -3,9 +3,15 @@ class UserMailerPreview < ActionMailer::Preview
 
     # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome
     def welcome
-        user = User.find_by_role(:admin.to_s).first
+        user = User.find_by_role(:admin.to_s)
         unless user.nil?
-            UserMailer.with(welcome_message: (I18n.t 'generic_welcome_message'), user: user).welcome
+            verify_email_url = "/users/verify_email?token=#{Time.now.to_i.to_s}&id=#{user.id}"
+            UserMailer.with(
+                welcome_message: (I18n.t 'generic_welcome_message'), 
+                verify_email_url: verify_email_url,
+                user: user,
+                session: nil
+            ).welcome.deliver_now
         end
     end
 

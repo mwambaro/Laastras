@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get 'users/edit'
   get 'users/destroy'
   get 'users/reset_password'
+  get 'users/verify_email'
   
   get 'logistics/shipment_service'
   get 'logistics/bus_service'
