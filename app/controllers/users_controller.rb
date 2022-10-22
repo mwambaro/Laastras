@@ -243,12 +243,14 @@ class UsersController < ApplicationController
             init_parameters
             token = params[:token]
             id = params[:id]
+            redirect_uri = params[:redirect_uri]
             user = User.find(id)
             if token.nil? || token.blank? || user.nil?
                 session[:fail_safe_title] = I18n.t 'no_verify_email_token_title'
                 session[:fail_safe_message] = I18n.t 'no_verify_email_token_message'
                 next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             else 
+                logger.debug "Token: #{token} =? #{user.verify_email_token}"
                 if token == user.verify_email_token 
                     unless user.update({verify_email_token: 'verified'})
                         msg = 'Failed to update verify email token to :verified'
@@ -264,6 +266,10 @@ class UsersController < ApplicationController
                     session[:fail_safe_message] = I18n.t 'unverified_email_message'
                     next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
                 end
+            end
+
+            unless (redirect_uri.nil? || redirect_uri.blank?)
+                next_uri = URI.decode(redirect_uri)
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -286,7 +292,28 @@ class UsersController < ApplicationController
                 user = User.find(id)
                 if user.nil?
                     next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
-                else 
+                elsif( # is email verified ?
+                    user.verify_email_token.nil? || 
+                    user.verify_email_token.blank? || 
+                    user.verify_email_token != :verified.to_s
+                )
+                    session[:fail_safe_message] = I18n.t 'verify_email_before_password_reset_title'
+                    session[:fail_safe_message] = I18n.t 'verify_email_before_password_reset_message'
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                    redirect_uri = request.original_url
+                    val = @users_helper_factory.send_welcome_user_mail(user, redirect_uri)
+                    if val 
+                        mssg = 'Welcome email successfully sent.'
+                        message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + mssg
+                        logger.debug message unless logger.nil?
+                    else 
+                        mssg = 'We failed to send welcome email to user'
+                        message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + mssg
+                        logger.debug message unless logger.nil?
+                    end
+                else
                     hash = user.password
                     email = user.email 
                     reset_url = url_for(
@@ -295,11 +322,8 @@ class UsersController < ApplicationController
                         email: URI.encode(email),
                         password: hash
                     )
-                    message = (I18n.t 'password_reset_message') + 
-                              '<div> <a style="text-decoration: none" href="' + reset_url + '">' + 
-                              (I18n.t 'reset_label') + '</a></div>'
-                    val = @header_data.send_mail(email, message, nil)
-                    if val.nil?
+                    val = @users_helper_factory.send_reset_password_user_mail(user, reset_url)
+                    unless val
                         session[:fail_safe_title] = I18n.t 'failure_to_send_reset_password_email_title'
                         session[:fail_safe_message] = (I18n.t 'failure_to_send_reset_password_email_message') + 
                                                         message
@@ -474,7 +498,18 @@ class UsersController < ApplicationController
                             @message = "<div>#{I18n.t 'sign_up_success'}</div>" + 
                                     "<div><a href=\"#{@sign_in_url}\" style=\"text-decoration: none\">" + 
                                     "#{@sign_in_label}</a></div>"
-                            
+                            val = @users_helper_factory.send_welcome_user_mail(@laastras_user)
+                            if val 
+                                mssg = 'Welcome email successfully sent.'
+                                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                            __method__.to_s + "--- " + mssg
+                                logger.debug message unless logger.nil?
+                            else 
+                                mssg = 'We failed to send welcome email to user'
+                                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                            __method__.to_s + "--- " + mssg
+                                logger.debug message unless logger.nil?
+                            end
                         else 
                             @message = "<div>#{I18n.t 'sign_up_failed'}</div>" + 
                                     "<div><a href=\"#{@contact_url}\" style=\"text-decoration: none\">" + 

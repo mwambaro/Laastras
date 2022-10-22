@@ -39,20 +39,11 @@
             })%>
         </div>
         <div style="margin-top: 5px; margin-bottom: 5px; background-color: white" data-aos="fade-up">
-            <div class="shadow-sm p-1 mb-2 bg-white rounded" 
-                 style="margin: 4px">
-                <div class="shadow-none p-1 mb-2 rounded" 
-                     style="background-color: #08f7ce">
-                    <span style="font-size: 24px; font-weight: bold; color: white"> 
-                        <%= @vision %>
-                    </span>
-                </div>
-                <div>
-                    <p id="box-body-text-p" style="font-size: 12px">   
-                        <%= sanitize @laastras_vision, tags: %w(div a ul li iframe p br), attributes: %w(class src href allowfullscreen) %>       
-                    </p>
-                </div>
-            </div>
+            <%= react_component('LaastrasVision', {
+                laastras_vision_html: (I18n.t 'vision_terms'),
+                vision_title_inner_text: (I18n.t 'vision'),
+                laas_os_video_teaser: @laas_os_video_teaser
+            })%>
         </div>
     </main>
     </div>

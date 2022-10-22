@@ -220,27 +220,12 @@ fr_FR:
       </ul>
 
       <div>
-        <br>
-        <div class=\u0022text-center\u0022>
-            <p> 
-                <a href=\u0022https://www.youtube.com/watch?v=kGewdXaC8L8\u0022>
-                    Video Captivant de LaasOS 
-                </a>
-            </p>
-        </div>
-        <br>
-        <div class=\u0022container\u0022>
-            <div class=\u0022embed-responsive embed-responsive-23by12 text-center\u0022>
-                <iframe class=\u0022embed-responsive-item\u0022
-                        src=\u0022https://www.youtube.com/embed/kGewdXaC8L8\u0022
-                        title=\u0022Lecteur Vidéo YouTube\u0022 
-                        frameborder=\u00220\u0022
-                        allow=\u0022accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\u0022 
-                        allowfullscreen>
-                </iframe>
+        <hr/>
+        <div class=\u0022container-fluid\u0022>
+            <div class=\u0022text-center\u0022 id=\u0022laas-os-video-teaser-id\u0022>
             </div>
         </div> 
-        <br>
+        <hr/>
       </div>
       <p>
       Laastras est basé sur le principe de 'l'Internet de <u>nos</u> Trucs' (IdnT) et délivre des services qui,
@@ -1083,3 +1068,13 @@ fr_FR:
   verified_email_message: "Votre adresse mail a bien été vérifié. Nous serons en mesure de vous contacter."
   unverified_email_title: "Echec de Vérification d'Adresse Mail"
   unverified_email_message: "On n'a pas pu vérifier votre adresse mail comme appartenant à un utilisateur valide."
+  verify_email_before_password_reset_title: "Valider votre Adresse Mail d'Abord"
+  verify_email_before_password_reset_message: "
+    Vous n'avez pas encore validé votre adresse mail. Veuillez vérifier votre boite mail, vous y trouverez
+    des instructions de validation.
+  "
+  verify_email_before_job_application_title: "Valider votre Adresse Mail d'Abord"
+  verify_email_before_job_application_message: "
+    Vous devez valider votre adresse mail avant de postuler pour un emploi.
+    Comment pourrions-nous vous contacter si vous n'avez pas d'adresse mail valide?
+  "

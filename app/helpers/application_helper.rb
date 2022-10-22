@@ -372,6 +372,15 @@ module ApplicationHelper
         Rails.root.join('storage', folder_name, fname)
     end
 
+    def self.marketing_video_asset_url(fname) 
+        folder_name = 'laastras_marketing_videos'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
+        unless path.exist?
+            path.mkpath
+        end
+        Rails.root.join('storage', folder_name, fname)
+    end
+
     def self.user_profile_photo_asset_url(fname)
         folder_name = 'laastras_users_profile_photos'
         path = Pathname.new(Rails.root.join('storage', folder_name))

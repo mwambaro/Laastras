@@ -123,7 +123,35 @@ class LaastrasJobOffersController < ApplicationController
         next_uri = nil 
         begin
             user = ApplicationHelper.who_is_logged_in?(session)
-            if user 
+            if user.nil?
+                next_uri = url_for(
+                    controller: 'laastras', 
+                    action: 'sign_in', 
+                    redirect_uri: request.original_url
+                )
+            elsif( # is email verified ?
+                user.verify_email_token.nil? || 
+                user.verify_email_token.blank? || 
+                user.verify_email_token != :verified.to_s
+            )
+                redirect_uri = request.original_url
+                val = @users_helper_factory.send_welcome_user_mail(user, redirect_uri)
+                if val 
+                    mssg = 'Welcome email successfully sent.'
+                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + mssg
+                    logger.debug message unless logger.nil?
+                else 
+                    mssg = 'We failed to send welcome email to user'
+                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + mssg
+                    logger.debug message unless logger.nil?
+                end
+
+                session[:fail_safe_message] = I18n.t 'verify_email_before_job_application_title'
+                session[:fail_safe_message] = I18n.t 'verify_email_before_job_application_message'
+                next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+            else
                 job_offer = LaastrasJobOffer.find(params[:id])
                 if job_offer 
                     job_seeker = LaastrasJobSeeker.find_by_job_offer_id(job_offer.id)
@@ -147,12 +175,6 @@ class LaastrasJobOffersController < ApplicationController
                         action: 'fail_safe'
                     )
                 end
-            else 
-                next_uri = url_for(
-                    controller: 'laastras', 
-                    action: 'sign_in', 
-                    redirect_uri: request.original_url
-                )
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -210,6 +232,7 @@ class LaastrasJobOffersController < ApplicationController
             )
 
             @headerData = ApplicationHelper::SiteHeaderData.new(request, logger)
+            @users_helper_factory = UsersHelper::UsersHelperFactory.new(request, logger, session)
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 

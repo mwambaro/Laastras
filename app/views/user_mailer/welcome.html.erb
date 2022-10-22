@@ -1,18 +1,24 @@
 
-<div>
-    <div style="margin: 5px">
-        <%= @welcome_message %>
-    </div>
-    <div style="margin: 5px; display: flex; justify-content: center">
-        <a href="<%= @verify_email_url %>" style="text-decoration: none"> 
-            <%= I18n.t 'verify_email_label' %>
-        </a>
-    </div>
-    <div style="margin: 5px; display: flex; justify-content: center">
-        <img src="<%= @laastras_banner_image %>" id="welcome-banner-image" />
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div style="margin: 5px">
+                <%= @welcome_message %>
+            </div>
+            <div style="margin: 5px; display: flex; justify-content: center">
+                <a href="<%= @verify_email_url %>" style="text-decoration: none"> 
+                    <%= I18n.t 'verify_email_label' %>
+                </a>
+            </div>
+            <div style="display: block; position: fixed; bottom: 20px;">
+                <div class="text-center">
+                    <img src="<%= @laastras_banner_image %>" class="img-fluid" id="mail-banner-image" />
+                </div>
+            </div>
+        </div>
     </div>
     <script>
-        let width = window.innerWidth - 5;
-        document.getElementById('welcome-banner-image').style.width = width;
+        let width = $('.col-md-8').width();
+        $('#mail-banner-image').width(width);
     </script>
 </div>

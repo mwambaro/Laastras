@@ -251,28 +251,12 @@ en_US:
       </ul>
       
       <div>
-        <br>
-        <div class=\u0022text-center\u0022>
-            <p> 
-                <a href=\u0022https://www.youtube.com/watch?v=kGewdXaC8L8\u0022>
-                    LaasOS Video Teaser
-                </a>
-            </p>
-        </div>
-        <br>
-        <div class=\u0022container\u0022>
-            <div class=\u0022embed-responsive embed-responsive-23by12 text-center\u0022>
-                <iframe class=\u0022embed-responsive-item embedded-video-teaser\u0022
-                        id=\u0022embedded-video-teaser\u0022
-                        src=\u0022https://www.youtube.com/embed/kGewdXaC8L8\u0022
-                        title=\u0022YouTube video player\u0022 
-                        frameborder=\u00220\u0022
-                        allow=\u0022accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\u0022 
-                        allowfullscreen>
-                </iframe>
+        <hr/>
+        <div class=\u0022container-fluid\u0022>
+            <div class=\u0022text-center\u0022 id=\u0022laas-os-video-teaser-id\u0022>
             </div>
         </div> 
-        <br>
+        <hr/>
       </div>
       <p>
       Laastras is built on the principle of 'Internet of <u> our </u> Things' (IooT) and delivers services 
@@ -1100,4 +1084,13 @@ en_US:
   verified_email_message: "Your email has been verified successfully. We will be able to contact you."
   unverified_email_title: "Failure to Verify E-mail"
   unverified_email_message: "Your email could not be verified as belonging to a valid user."
-
+  verify_email_before_password_reset_title: "Verify E-mail Before Reset"
+  verify_email_before_password_reset_message: "
+    You have not verified your email yet. Please, check your mailbox for the email address
+    verification instructions.
+  "
+  verify_email_before_job_application_title: "Verify E-mail Before Job Application"
+  verify_email_before_job_application_message: "
+    You must verify your e-mail before applying for a job. How would we contact you unless 
+    you have a valid e-mail address?
+  "

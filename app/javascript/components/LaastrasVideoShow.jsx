@@ -45,14 +45,23 @@ class LaastrasVideoShow extends React.Component
     {
         this.scale_video_item();
         $(window).on('resize', (e) => {
-            this.scale_video_item();
+            let width = null;
+            if(typeof(this.props.video_width) != 'undefined' && this.props.video_width != '')
+            {
+                width = parseInt(this.props.video_width);
+            }
+            this.scale_video_item(width);
         });
 
     } // componentDidMount
 
-    scale_video_item()
+    scale_video_item(w=null)
     {
         let width = $('.video-item-div').first().width();
+        if(w)
+        {
+            width = w;
+        }
         $('.video-item-main').width(width);
         $('.video-item').width(width);
 
@@ -62,6 +71,7 @@ class LaastrasVideoShow extends React.Component
 
 LaastrasVideoShow.propTypes = {
     video: PropTypes.object,
+    video_width: PropTypes.string,
     download_label: PropTypes.string
 }
 

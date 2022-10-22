@@ -5,7 +5,36 @@ class LaastrasController < ApplicationController
     before_action :init_parameters, :corb_disable
 
     def home
-    end
+        next_uri = nil 
+        begin 
+            sha256 = '8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946'
+            @video = LaastrasMarketingVideo.find_by_sha256(sha256)
+            unless @video.nil?
+                view_url = url_for(
+                    controller: 'laastras_marketing_videos',
+                    action: 'show_video',
+                    video_id: @video.sha256,
+                    disposition: 'inline'
+                )
+                @laas_os_video_teaser = {
+                    view_url: view_url,
+                    mime_type: @video.mime_type,
+                    filename: Pathname.new(@video.uri).basename.to_s,
+                    html_id: 'laas-os-video-teaser-id'
+                }
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # home
 
     # Is redirected to after OAuth 2.0 authorization code
     def social_media_share
@@ -249,6 +278,10 @@ class LaastrasController < ApplicationController
                         {
                             url: url_for(controller: 'laastras_mature_videos', action: 'index'),
                             inner_text: (I18n.t 'laastras_mature_videos_label')
+                        },
+                        {
+                            url: url_for(controller: 'laastras_marketing_videos', action: 'index'),
+                            inner_text: (I18n.t 'laastras_marketing_videos_label')
                         }
                     ]
                 }
@@ -259,7 +292,6 @@ class LaastrasController < ApplicationController
             @kick_off = I18n.t 'kick_off'
             @tap_click_image = I18n.t 'click_or_tap_image_text'
             @mission = I18n.t 'mission'
-            @vision = I18n.t 'vision'
             @home_label = I18n.t 'home_label'
             @cookies_policy_body_text = I18n.t 'cookies_policy_body_text'
             @privacy_policy_body_text = I18n.t 'privacy_policy_body_text'
@@ -382,7 +414,6 @@ class LaastrasController < ApplicationController
                 }
             ]
             @globalization_intro = (I18n.t 'mission_terms').paragraphize
-            @laastras_vision = (I18n.t 'vision_terms')
             @supported_languages = @headerData.supported_languages
             @featured_job_offers = @headerData.featured_job_offers
 

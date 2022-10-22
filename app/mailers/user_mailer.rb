@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
             @user = params[:user]
             @verify_email_url = params[:verify_email_url]
             
-            logger.debug "---> #{Time.now}: banner image url not set" if @laastras_banner_image.nil?
+            #logger.debug "---> #{Time.now}: banner image url not set" if @laastras_banner_image.nil?
             #banner_filename = Pathname.new(@laastras_banner_image).basename.to_s
             #attachments["#{banner_filename}"] = File.read(@laastras_banner_image)
 
@@ -30,11 +30,20 @@ class UserMailer < ApplicationMailer
     #
     #   en.user_mailer.reset_password.subject
     #
-    def reset_password
-        @greeting = "Hi"
+    def reset_password 
+        begin
+            @user = params[:user]
+            @reset_password_message = params[:reset_password_message]
+            @reset_password_url = params[:reset_password_url]
 
-        mail to: "to@example.org"
-    end
+            mail to: @user.email, subject: (I18n.t 'offer_to_reset_password')
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+        end
+
+    end # reset_password
 
     # Subject can be set in your I18n file at config/locales/en.yml
     # with the following lookup:

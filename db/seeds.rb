@@ -205,3 +205,18 @@
 
     LaastrasMatureVideo.create(mature_videos)
 # __end__
+
+# __start__ seeding laastras_marketing_videos
+marketing_videos = [
+    {
+        sha256: '8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946',
+        title: 'Laastras-LaasOS-teaser.mp4',
+        uri: ApplicationHelper.marketing_video_asset_url(
+            'Laastras-LaasOS-teaser.mp4'
+        ),
+        mime_type: 'video/mp4'
+    }
+]
+
+LaastrasMarketingVideo.create(marketing_videos)
+# __end__

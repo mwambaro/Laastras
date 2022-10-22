@@ -23,6 +23,7 @@
 !/storage/.keep
 !/storage/laastras_documents
 !/storage/laastras_mature_videos
+!/storage/laastras_marketing_videos
 
 /public/assets
 .byebug_history

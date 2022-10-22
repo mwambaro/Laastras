@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'laastras_marketing_videos/index'
+  get 'laastras_marketing_videos/show'
+  get 'laastras_marketing_videos/show_video'
   get 'laastras_databases/download_copy'
   get 'laastras_databases/delete_copy'
   get 'laastras_mature_videos/index'

@@ -36,17 +36,18 @@ class LaastrasVideoIndex extends React.Component
                                      width={width} 
                                      style={{margin: '10px'}}>
                                     <div className="video-item-div" width={width-5}>
-                                        <video className="embed-responsive video-item-main text-center" 
+                                        <video className="embed-responsive video-item-main" 
                                                width={width-5} 
                                                data-show-url={video.show_url}
-                                               controls={false}>
+                                               controls={false}
+                                               style={{display: 'flex', justifyContent: 'center'}}>
                                             <source src={video.view_url} 
                                                     type={video.mime_type} 
                                                     className="embed-responsive-item video-item"
                                                     width={width-5} />
                                                 {video.filename}
                                         </video>
-                                        <div className="text-center" width={width-8}>
+                                        <div className="justify-content-center">
                                             <a href={video.show_url} style={{textDecoration: 'none'}}>
                                                 <span style={{}}>
                                                     {video.filename}
