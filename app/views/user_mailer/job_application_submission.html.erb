@@ -1,5 +1,24 @@
-<h1>User#job_application_submission</h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/job_application_submission.html.erb
-</p>
+<div class="container-fluid">
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div style="margin: 5px">
+            <%= @acknowledge_reception_message %>
+        </div>
+        <div style="margin: 5px; display: flex; justify-content: center">
+            <a href="<%= @laastras_mission_url %>" style="text-decoration: none"> 
+                <%= I18n.t 'our_mission_label' %>
+            </a>
+        </div>
+        <div style="display: block; position: fixed; bottom: 20px;">
+            <div class="text-center">
+                <img src="<%= @laastras_banner_image %>" class="img-fluid" id="mail-banner-image" />
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let width = $('.col-md-8').width();
+    $('#mail-banner-image').width(width);
+</script>
+</div>

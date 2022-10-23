@@ -51,10 +51,20 @@ class UserMailer < ApplicationMailer
     #   en.user_mailer.job_application_submission.subject
     #
     def job_application_submission
-        @greeting = "Hi"
+        begin
+            @user = params[:user]
+            @acknowledge_reception_message = params[:acknowledge_reception_message]
+            @job_application_title = params[:job_application_title]
+            @laastras_mission_url = params[:laastras_mission_url]
 
-        mail to: "to@example.org"
-    end
+            mail to: @user.email, subject: @job_application_title
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+        end
+
+    end # job_application_submission
 
     # Subject can be set in your I18n file at config/locales/en.yml
     # with the following lookup:

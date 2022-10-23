@@ -163,6 +163,10 @@ class LaastrasJobSeekersController < ApplicationController
             else 
 
                 user_id = user.id
+                job_offer = LaastrasJobOffer.find(job_offer_id)
+                if job_offer.nil?
+                    raise 'We could not find any job offer with id: ' + job_offer
+                end
 
                 # Have you already applied?
                 sql_query = "SELECT * FROM laastras_job_seekers WHERE user_id = '#{user_id}'"
@@ -237,6 +241,23 @@ class LaastrasJobSeekersController < ApplicationController
                                     message: (I18n.t 'job_seeker_form_success'),
                                     redirect_uri: redirect_uri
                                 }
+                                
+                                job_application_title = job_offer.title
+                                val = @users_helper_factory
+                                    .send_job_app_submission_ack_reception(
+                                        user, job_application_title
+                                    )
+                                if val 
+                                    mssg = 'Job application reception acknowledgment email successfully sent.'
+                                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                                __method__.to_s + "--- " + mssg
+                                    logger.debug message unless logger.nil?
+                                else 
+                                    mssg = 'We failed to send job application reception acknowledgment email to user'
+                                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                                __method__.to_s + "--- " + mssg
+                                    logger.debug message unless logger.nil?
+                                end
                             else
                                 if jsk.errors.count > 0 
                                     message = ""
@@ -279,7 +300,9 @@ class LaastrasJobSeekersController < ApplicationController
         next_uri = nil 
         begin
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+            ApplicationHelper.set_locale_from_request(request, logger)
             @site_title = "Laastras | #{params[:action]}"
+            @users_helper_factory = UsersHelper::UsersHelperFactory.new(request, logger, session)
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
                 request
             )

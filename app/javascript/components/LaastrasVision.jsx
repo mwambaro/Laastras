@@ -30,37 +30,30 @@ class LaastrasVision extends React.Component
     componentDidMount()
     {
         $('#vision-body-text').append(this.props.laastras_vision_html);
-        this.embed_video_teaser();
+        $(window).on('resize', (e) => {
+            this.scale_video_item();
+        });
 
     } // componentDidMount
 
-    embed_video_teaser()
+    scale_video_item()
     {
-        let html = `
-            <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div">
-                <video class="embed-responsive video-item-main" controls=true>
-                    <source src="${this.props.laas_os_video_teaser.view_url}" 
-                            type="${this.props.laas_os_video_teaser.mime_type}"
-                            class="embed-responsive-item video-item" />
-                        ${this.props.laas_os_video_teaser.filename}
-                </video>
-            </div>
-        `;
-
-        $(`#${this.props.laas_os_video_teaser.html_id}`).append(html);
-
         let width = $('.video-item-div').first().width();
-        $('.video-item-main').width(width);
-        $('.video-item').width(width);
 
-    } // embed_video_teaser
+        let mwidth = $('.video-item-main').width();
+        if(mwidth > width)
+        {
+            $('.video-item-main').width(width);
+            $('.video-item').width(width);
+        }
+
+    } // scale_video_item
 
 }
 
 LaastrasVision.propTypes = {
     laastras_vision_html: PropTypes.string,
-    vision_title_inner_text: PropTypes.string,
-    laas_os_video_teaser: PropTypes.object
+    vision_title_inner_text: PropTypes.string
 };
 
 export default LaastrasVision

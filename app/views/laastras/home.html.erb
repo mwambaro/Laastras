@@ -20,33 +20,38 @@
         }) %>
     </header>
     <div class="row justify-content-center">
-    <div class="col-md-8">
-    <main role="main" style="margin-top: 5px">
-        <div style="margin-top: 5px; margin-bottom: 5px">
-            <%= react_component('LaastrasIntroCapture', {
-                laastras_sample_services: @laastras_sample_services,
-                laastras_e_logo_urls: @laastras_e_logo_urls,
-                job_offers_label: (I18n.t 'job_offers_label'),
-                featured_job_offers: @featured_job_offers,
-                key_services_label: (I18n.t 'key_services_label')
-            })%>
+        <div class="col-md-8">
+            <main role="main" style="margin-top: 5px">
+                <div style="margin-top: 5px; margin-bottom: 5px">
+                    <%= react_component('LaastrasIntroCapture', {
+                        laastras_sample_services: @laastras_sample_services,
+                        laastras_e_logo_urls: @laastras_e_logo_urls,
+                        job_offers_label: (I18n.t 'job_offers_label'),
+                        featured_job_offers: @featured_job_offers,
+                        key_services_label: (I18n.t 'key_services_label')
+                    })%>
+                </div>
+                <div style="margin-top: 5px; margin-bottom: 5px">
+                    <%= react_component('MissionKickOff', {
+                        mission_kick_off_data: @mission_kick_off_data,
+                        kick_off_section_title: @kick_off,
+                        click_or_tap_image_text: @tap_click_image
+                    })%>
+                </div>
+                <div style="margin-top: 5px; margin-bottom: 5px; background-color: white" data-aos="fade-up">
+                    <div class="shadow-sm p-1 mb-2 bg-white rounded" style="margin: 4px">
+                        <div class="shadow-none p-1 mb-2 rounded" style="background-color: #08f7ce">
+                            <span style="font-size: 24px; font-weight: bold; color: white"> 
+                                <%= (I18n.t 'vision') %>
+                            </span>
+                        </div>
+                        <div id="vision-body-text">
+                            <%= sanitize @laastras_vision_html, tags: %w(hr source video div p ul li ol a strong), attributes: %w(class style src controls href) %>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-        <div style="margin-top: 5px; margin-bottom: 5px">
-            <%= react_component('MissionKickOff', {
-                mission_kick_off_data: @mission_kick_off_data,
-                kick_off_section_title: @kick_off,
-                click_or_tap_image_text: @tap_click_image
-            })%>
-        </div>
-        <div style="margin-top: 5px; margin-bottom: 5px; background-color: white" data-aos="fade-up">
-            <%= react_component('LaastrasVision', {
-                laastras_vision_html: (I18n.t 'vision_terms'),
-                vision_title_inner_text: (I18n.t 'vision'),
-                laas_os_video_teaser: @laas_os_video_teaser
-            })%>
-        </div>
-    </main>
-    </div>
     </div>
 
     <footer id="laastras-home-footer">
@@ -58,19 +63,26 @@
     </footer>
 
     <script>
-        let iframe_elt = document.getElementById('embedded-video-teaser');
-        if(iframe_elt)
+        function scale_video_teaser_item()
         {
-            iframe_elt.allowFullscreen = true;
-        }
-        else
-        {
-            iframe_elt = document.getElementsByClassName('embedded-video-teaser')[0];
-            if(iframe_elt)
+            let width = $('.video-item-div').width();
+            //console.log('video width: ' + width);
+
+            let mwidth = $('.video-item-main').width();
+            if(true)
             {
-                iframe_elt.allowFullscreen = true;
+                $('.video-item-main').width(width);
+                $('.video-item').width(width);
             }
-        }
+
+        } // scale_video_teaser_item
+        $(document).ready((e) => 
+        {
+            scale_video_teaser_item();
+            $(window).on('resize', (e) => {
+                scale_video_teaser_item();
+            });
+        });
     </script>
 
 </div>

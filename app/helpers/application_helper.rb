@@ -34,6 +34,33 @@ module ApplicationHelper
 
     end # unique_file_name
 
+    def self.set_locale_from_request(request, logger=nil)
+        locale = nil 
+        begin
+            unless (request.nil? || request.blank?)
+                url = URI.parse(request.original_url)
+                unless url.nil?
+                    query = url.query 
+                    unless (query.nil? || query.blank?) 
+                        if query =~ /locale=([^&]+)/i 
+                            locale = $1 
+                            unless (locale.nil? || locale.blank?)
+                                I18n.locale = locale.to_sym
+                            end
+                        end
+                    end
+                end
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+        end
+
+        locale 
+
+    end # set_locale_from_request
+
     def self.harvest_analytics(session, request)
         if true 
             return nil

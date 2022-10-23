@@ -1,114 +1,41 @@
 import React from "react"
 import PropTypes from "prop-types"
+import LaastrasVideoShow from "./LaastrasVideoShow"
 
 class LaastrasVideoIndex extends React.Component 
 {
     constructor(props)
     {
         super(props);
-        this.state = {
-            width: this.get_video_width()
-        };
-        $(window).on('resize', (e) => {
-            this.setState({
-                width: this.get_video_width()
-            })
-        });
 
     } // constructor
 
     render()
     {
-        let width = this.state.width;
-        let fixed_width = $(window).width() - 10;
-
-        //console.log('video width: ' + width);
-
         return(
             <div className="container-fluid">
-                <div className="row justify-content-center">
-                    <div className="col-md-10" width={fixed_width}>
-                        <div style={{display: 'flex'}}>
-                        {
-                            this.props.videos.map ((video, idx) =>
-                                <div key={`video-key-${idx}`} 
-                                     className="video-item-frame" 
-                                     width={width} 
-                                     style={{margin: '10px'}}>
-                                    <div className="video-item-div" width={width-5}>
-                                        <video className="embed-responsive video-item-main" 
-                                               width={width-5} 
-                                               data-show-url={video.show_url}
-                                               controls={false}
-                                               style={{display: 'flex', justifyContent: 'center'}}>
-                                            <source src={video.view_url} 
-                                                    type={video.mime_type} 
-                                                    className="embed-responsive-item video-item"
-                                                    width={width-5} />
-                                                {video.filename}
-                                        </video>
-                                        <div className="justify-content-center">
-                                            <a href={video.show_url} style={{textDecoration: 'none'}}>
-                                                <span style={{}}>
-                                                    {video.filename}
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        }
-                        </div>
-                    </div>
+                <div className="row" style={{display: 'flex', justifyContent: 'center'}}>
+                    {
+                        this.props.videos.map ((video, idx) =>
+                            <div key={`video-key-${idx}`} className="col-md-3">
+                                <LaastrasVideoShow 
+                                    video={video}
+                                    video_width={null}
+                                    download_label={this.props.download_label} />
+                            </div>
+                        )
+                    }
                 </div>
             </div>
-        )
+        );
 
     } // render
-
-    componentDidMount()
-    {
-        $('.video-item-main').on('click', (e) => {
-            let url = $(e.target).attr('data-show-url');
-            window.location = url;
-        }).on('mouseover', (e) => {
-            e.target.style.cursor = 'pointer';
-        })
-
-    } // componentDidMount
-
-    get_video_width()
-    {
-        let width = $(window).width();
-        if(width>1000)
-        {
-            width = Math.ceil(width/6);
-        }
-        else if(width>800)
-        {
-            width = Math.ceil(width/4);
-        }
-        else if(width>600)
-        {
-            width = Math.ceil(width/3);
-        }
-        else if(width>400)
-        {
-            width = Math.ceil(width/2);
-        }
-        else 
-        { 
-            width = 250;
-        }
-        
-        return width;
-
-    } // get_video_width
 
 }
 
 LaastrasVideoIndex.propTypes = {
-    videos: PropTypes.object
+    videos: PropTypes.object,
+    download_label: PropTypes.string
 }
 
 export default LaastrasVideoIndex

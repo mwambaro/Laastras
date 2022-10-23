@@ -225,49 +225,54 @@ en_US:
   "
 
   vision_terms: "
-      <p>
-      We have done trade for ages. The trade model has failed to give us financial security
-      coupled with self-sufficiency. Let alone conflicts that result from attempts to secure
-      and retain control of our businesses. We went a step further&#58; philanthropy. We believed it
-      could end poverty and give us all equal opportunities. It won't work either. Until Laastras
-      trade model is adopted we cannot surround ourselves with financial security, self-sufficiency,
-      equal opportunities, satisfying employment for all, and conflict-free businesses. How so?
-      Laastras reforms trade by way of two impacts:
-      </p>
-      <ul>
-      <li>
-         Replace remuneration-based work with Services Exchange. One job related to 'management
-         of resources that support human existence' (Morshux) unlocks remuneration through all the other 
-         services in Morshux, yielding financial security and self-sufficiency. Gone are business
-         conflicts, too.
-      </li>
-      <li>
-         Replace material currency with Virtual Currency. With Morshux self-sufficiency, one is
-         better positioned to release their full potential through creativity over Morshux owned 
-         assets. We then export those assets through trade that uses Virtual Currency, which is
-         more flexible, easy to transact with, secure enough, and fits well in E-commerce and 
-         Logistics, pillars of any trade.
-      </li>
-      </ul>
-      
-      <div>
-        <hr/>
-        <div class=\u0022container-fluid\u0022>
-            <div class=\u0022text-center\u0022 id=\u0022laas-os-video-teaser-id\u0022>
+        <p>
+            We have done trade for ages. The trade model has failed to give us financial security
+            coupled with self-sufficiency. Let alone conflicts that result from attempts to secure
+            and retain control of our businesses. We went a step further&#58; philanthropy. We believed it
+            could end poverty and give us all equal opportunities. It won't work either. Until Laastras
+            trade model is adopted we cannot surround ourselves with financial security, self-sufficiency,
+            equal opportunities, satisfying employment for all, and conflict-free businesses. How so?
+            Laastras reforms trade by way of two impacts:
+        </p>
+        <ul>
+            <li>
+                Replace remuneration-based work with Services Exchange. One job related to 'management
+                of resources that support human existence' (Morshux) unlocks remuneration through all the other 
+                services in Morshux, yielding financial security and self-sufficiency. Gone are business
+                conflicts, too.
+            </li>
+            <li>
+                Replace material currency with Virtual Currency. With Morshux self-sufficiency, one is
+                better positioned to release their full potential through creativity over Morshux owned 
+                assets. We then export those assets through trade that uses Virtual Currency, which is
+                more flexible, easy to transact with, secure enough, and fits well in E-commerce and 
+                Logistics, pillars of any trade.
+            </li>
+        </ul>
+        
+        <div>
+            <hr/>
+            <div style=\u0022padding: 10px\u0022 class=\u0022d-flex flex-row justify-content-center video-item-div\u0022>
+                <video class=\u0022embed-responsive video-item-main\u0022 controls=true>
+                    <source src=\u0022laas_os_video_teaser-view-url\u0022 
+                            type=\u0022laas_os_video_teaser-mime-type\u0022
+                            class=\u0022embed-responsive-item video-item\u0022 />
+                        laas_os_video_teaser-filename
+                </video>
             </div>
-        </div> 
-        <hr/>
-      </div>
-      <p>
-      Laastras is built on the principle of 'Internet of <u> our </u> Things' (IooT) and delivers services 
-      that will, in the long run, fulfil the Morshux vision. For details on the Morshux 
-      philosophy, please, support the project by buying 
-      <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022> 
-      the book </a> behind Laastras project,
-      written by Laastras Founder and CEO, 
-      <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
-       Obed-Edom Nkezabahizi </a>.
-      </p>
+            <div class=\u0022text-center\u0022> <strong>LaasOS Video Teaser</strong> </div>
+            <hr/>
+        </div>
+        <p>
+            Laastras is built on the principle of 'Internet of <u> our </u> Things' (IooT) and delivers services 
+            that will, in the long run, fulfil the Morshux vision. For details on the Morshux 
+            philosophy, please, support the project by buying 
+            <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022> 
+            the book </a> behind Laastras project,
+            written by Laastras Founder and CEO, 
+            <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
+            Obed-Edom Nkezabahizi </a>.
+        </p>
   "
   hiring_message: "
       We are looking for a <strong>Project Manager Assistant</strong> who meets these requirements: 
@@ -1093,4 +1098,9 @@ en_US:
   verify_email_before_job_application_message: "
     You must verify your e-mail before applying for a job. How would we contact you unless 
     you have a valid e-mail address?
+  "
+  acknowledge_reception_message_title: ""
+  acknowledge_reception_message: "
+    Hi. This is to acknowledge reception of the application for the job. 
+    We will contact you with feedback within a fortnight.
   "

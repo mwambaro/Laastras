@@ -35,7 +35,19 @@ class UserMailerPreview < ActionMailer::Preview
 
     # Preview this email at http://localhost:3000/rails/mailers/user_mailer/job_application_submission
     def job_application_submission
-        UserMailer.job_application_submission
+        user = User.find_by_role(:admin.to_s)
+        job_application_title = I18n.t 'project_manager_assistant'
+        laastras_mission_url = "/laastras/about"
+        unless user.nil? 
+            UserMailer.with(
+                acknowledge_reception_message: (I18n.t 'acknowledge_reception_message'),
+                job_application_title: job_application_title,
+                laastras_mission_url: laastras_mission_url,
+                user: user,
+                session: nil,
+                request: nil
+            ).job_application_submission.deliver_now
+        end
     end
 
     # Preview this email at http://localhost:3000/rails/mailers/user_mailer/selected_for_job

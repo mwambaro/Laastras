@@ -91,6 +91,7 @@ class LaastrasDocumentsController < ApplicationController
         next_uri = nil 
         begin 
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+            ApplicationHelper.set_locale_from_request(request, logger)
             @site_title = "Laastras | #{params[:action]}"
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
                 request

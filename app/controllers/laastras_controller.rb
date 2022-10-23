@@ -7,6 +7,7 @@ class LaastrasController < ApplicationController
     def home
         next_uri = nil 
         begin 
+            @laastras_vision_html = (I18n.t 'vision_terms')
             sha256 = '8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946'
             @video = LaastrasMarketingVideo.find_by_sha256(sha256)
             unless @video.nil?
@@ -16,12 +17,11 @@ class LaastrasController < ApplicationController
                     video_id: @video.sha256,
                     disposition: 'inline'
                 )
-                @laas_os_video_teaser = {
-                    view_url: view_url,
-                    mime_type: @video.mime_type,
-                    filename: Pathname.new(@video.uri).basename.to_s,
-                    html_id: 'laas-os-video-teaser-id'
-                }
+                filename = Pathname.new(@video.uri).basename.to_s
+                @laastras_vision_html = @laastras_vision_html
+                    .gsub(/laas_os_video_teaser-view-url/i, view_url)
+                    .gsub(/laas_os_video_teaser-mime-type/i, @video.mime_type)
+                    .gsub(/laas_os_video_teaser-filename/i, filename)
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -232,6 +232,7 @@ class LaastrasController < ApplicationController
         next_uri = nil 
         begin 
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+            ApplicationHelper.set_locale_from_request(request, logger)
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(

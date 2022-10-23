@@ -154,7 +154,7 @@ class LaastrasJobOffersController < ApplicationController
             else
                 job_offer = LaastrasJobOffer.find(params[:id])
                 if job_offer 
-                    job_seeker = LaastrasJobSeeker.find_by_job_offer_id(job_offer.id)
+                    job_seeker = LaastrasJobSeeker.find_by_user_id(user.id)
                     unless job_seeker.nil?
                         session[:fail_safe_title] = I18n.t 'you_have_already_applied_title'
                         session[:fail_safe_message] = I18n.t 'you_have_already_applied_message'
@@ -220,6 +220,7 @@ class LaastrasJobOffersController < ApplicationController
         next_uri = nil 
         begin
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+            ApplicationHelper.set_locale_from_request(request, logger)
             @site_title = "Laastras | #{params[:action]}"
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
                 request

@@ -194,48 +194,53 @@ fr_FR:
   "
 
   vision_terms: "
-      <p>
-      Nous avons pratiqué le commerce depuis si longtemps. Le modèle de commerce a failli à nous procurer
-      sécurité financière ainsi que de l'auto-suffisance. Sans parler des conflits qui résultent du fait
-      d'essayer de sécuriser et de garder le contrôle de nos affaires. On a essayé mieux&#58; la 
-      philanthropie. Nous la croyions pouvoir mettre fin à la pauvreté et capable de nous procurer égales
-      opportunités. Ça n'a pas marché. Jusqu'à ce que le modèle Laastras soit adopté, il y'aura pas de
-      sécurité financière, de l'auto-suffisance, égales opportunités, de l'emploi satisfaisant pour tous,
-      et des affaires sans conflits. Comment? Laastras réforme le commerce par biais de deux objectifs:
-      </p>
-      <ul>
-      <li>
-         Remplacer la rémunération par les Echanges de Services. Un seul emploi lié au 'management
-         des ressources supportant l'existence humaine' (Marsexh) donne droit à la rémunération à 
-         travers les autres services dans Marsexh, procurant ainsi sécurité financière et auto-suffisance.
-         Il n'y aura plus de conflits dans des affaires.
-      </li>
-      <li>
-         Remplacer devises materielles par une Devise Virtuelle. Avec l'auto-suffisance de Marsexh,
-         on est mieux placé pour utiliser tout notre potentiel à travers créativité sur nos ressources
-         en provenance de Marsexh. On exportera alors ces ressources à travers le commerce qui use d'une
-         Devise Virtuelle qui est plus flexible, facile à faire des transactions avec, assez sûre, et
-         convenable dans la Logistique et E-Commerce, pilliers de tout commerce.
-      </li>
-      </ul>
+        <p>
+            Nous avons pratiqué le commerce depuis si longtemps. Le modèle de commerce a failli à nous procurer
+            sécurité financière ainsi que de l'auto-suffisance. Sans parler des conflits qui résultent du fait
+            d'essayer de sécuriser et de garder le contrôle de nos affaires. On a essayé mieux&#58; la 
+            philanthropie. Nous la croyions pouvoir mettre fin à la pauvreté et capable de nous procurer égales
+            opportunités. Ça n'a pas marché. Jusqu'à ce que le modèle Laastras soit adopté, il y'aura pas de
+            sécurité financière, de l'auto-suffisance, égales opportunités, de l'emploi satisfaisant pour tous,
+            et des affaires sans conflits. Comment? Laastras réforme le commerce par biais de deux objectifs:
+        </p>
+        <ul>
+            <li>
+                Remplacer la rémunération par les Echanges de Services. Un seul emploi lié au 'management
+                des ressources supportant l'existence humaine' (Marsexh) donne droit à la rémunération à 
+                travers les autres services dans Marsexh, procurant ainsi sécurité financière et auto-suffisance.
+                Il n'y aura plus de conflits dans des affaires.
+            </li>
+            <li>
+                Remplacer devises materielles par une Devise Virtuelle. Avec l'auto-suffisance de Marsexh,
+                on est mieux placé pour utiliser tout notre potentiel à travers créativité sur nos ressources
+                en provenance de Marsexh. On exportera alors ces ressources à travers le commerce qui use d'une
+                Devise Virtuelle qui est plus flexible, facile à faire des transactions avec, assez sûre, et
+                convenable dans la Logistique et E-Commerce, pilliers de tout commerce.
+            </li>
+        </ul>
 
-      <div>
-        <hr/>
-        <div class=\u0022container-fluid\u0022>
-            <div class=\u0022text-center\u0022 id=\u0022laas-os-video-teaser-id\u0022>
+        <div>
+            <hr/>
+            <div style=\u0022padding: 10px\u0022 class=\u0022d-flex flex-row justify-content-center video-item-div\u0022>
+                <video class=\u0022embed-responsive video-item-main\u0022 controls=true>
+                    <source src=\u0022laas_os_video_teaser-view-url\u0022 
+                            type=\u0022laas_os_video_teaser-mime-type\u0022
+                            class=\u0022embed-responsive-item video-item\u0022 />
+                        laas_os_video_teaser-filename
+                </video>
             </div>
-        </div> 
-        <hr/>
-      </div>
-      <p>
-      Laastras est basé sur le principe de 'l'Internet de <u>nos</u> Trucs' (IdnT) et délivre des services qui,
-      à long terme, nous feront atteindre l'objectif Marsexh. Pour plus d'information sur la philosophie 
-      Marsexh, veuillez supporter le projet en achetant
-      <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022> 
-      le livre </a> derrière le projet Laastras, dont l'auteur est
-      <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
-      Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
-      </p>
+            <div class=\u0022text-center\u0022> <strong>Vidéo Captivant de LaasOS</strong> </div>
+            <hr/>
+        </div>
+        <p>
+            Laastras est basé sur le principe de 'l'Internet de <u>nos</u> Trucs' (IdnT) et délivre des services qui,
+            à long terme, nous feront atteindre l'objectif Marsexh. Pour plus d'information sur la philosophie 
+            Marsexh, veuillez supporter le projet en achetant
+            <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022> 
+            le livre </a> derrière le projet Laastras, dont l'auteur est
+            <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
+            Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
+        </p>
   "
   hiring_message: "
       Nous cherchons une <strong>Assistante du Chef de Projet</strong> qui remplit les qualifications suivantes: 
@@ -1077,4 +1082,9 @@ fr_FR:
   verify_email_before_job_application_message: "
     Vous devez valider votre adresse mail avant de postuler pour un emploi.
     Comment pourrions-nous vous contacter si vous n'avez pas d'adresse mail valide?
+  "
+  acknowledge_reception_message_title: ""
+  acknowledge_reception_message: "
+    Salut. Nous accusons réception de votre demande d'emploi.
+    Nous vous contacterons s'il y a du nouveau dans deux semaines.
   "

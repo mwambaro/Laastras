@@ -320,7 +320,8 @@ class UsersController < ApplicationController
                         controller: 'users',
                         action: 'reset_password',
                         email: URI.encode(email),
-                        password: hash
+                        password: hash,
+                        locale: I18n.locale.to_s
                     )
                     val = @users_helper_factory.send_reset_password_user_mail(user, reset_url)
                     unless val
@@ -662,6 +663,7 @@ class UsersController < ApplicationController
         next_uri = nil 
         begin
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
+            ApplicationHelper.set_locale_from_request(request, logger)
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
             @header_data = ApplicationHelper::SiteHeaderData.new(request, logger)

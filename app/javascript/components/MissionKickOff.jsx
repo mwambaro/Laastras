@@ -90,9 +90,9 @@ class MissionKickOff extends React.Component
                         <span> {this.props.click_or_tap_image_text} </span>
                     </div>
                     <div id="kick-off-image-section"
-                         className="text-center">
+                         className="text-center image-item-div">
                         <img src={this.props.mission_kick_off_data[this.state.current_index].url} 
-                             className="img-fluid"
+                             className="img-fluid image-item"
                              id="kick-off-image"
                              onClick={(se) => this.goToImageDetails(se)} />
                     </div>
@@ -127,7 +127,6 @@ class MissionKickOff extends React.Component
         let img = document.getElementById('kick-off-image');
         if(img)
         {
-            //this.setKickOffImageHeight(img);
             img.onerror = e => {
                 console.log('image failed to load.');
             };
@@ -136,13 +135,9 @@ class MissionKickOff extends React.Component
 
         $('#kick-off-arrow-section').hcenter();
 
+        this.scale_image_item();
         window.addEventListener('resize', e => {
-            if(typeof(this) === 'undefined')
-            {
-                console.log('Resize event listener in componentDidMount: "this" object is undefined');
-                return;
-            }
-            //this.setKickOffImageHeight();
+            this.scale_image_item();
         });
 
         this.kickOffImageDetailsSectionModal = new Modal(
@@ -160,23 +155,16 @@ class MissionKickOff extends React.Component
 
     } // componentDidUpdate
 
-    setKickOffImageHeight(img=null)
+    scale_image_item()
     {
-        if(!img)
+        let width = $('.image-item-div').first().width();
+        let mwidth = $('.image-item').width();
+        if(mwidth > width)
         {
-            img = document.getElementById('kick-off-image');
+            $('.image-item').width(width);
         }
-        let maxH = (window.innerHeight*3)/4;
-        $('#kick-off-section').outerHeight(maxH);
-        let imgH = $('#kick-off-section').innerHeight() - 
-                   $('#kick-off-title-section').outerHeight() - 
-                   $('#kick-off-click-or-tap-section').outerHeight() -
-                   $('#kick-off-arrow-section').outerHeight() - 20;
-        $('#kick-off-image').height(imgH);
-        
-        $('#kick-off-arrow-section').hcenter();
 
-    } // setKickOffImageHeight
+    } // scale_image_item
 
     manageArrowSection()
     {
