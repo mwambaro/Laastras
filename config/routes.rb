@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'laastras_job_offers/show'
   get 'laastras_job_offers/apply'
   get 'laastras_job_offers/close'
+  get 'laastras_job_offers/feature'
+  get 'laastras_job_offers/unfeature'
   get 'laastras_documents/show_laastras_document'
   get 'laastras_documents/index_lsdoc'
   get 'maintenance/fail_safe'

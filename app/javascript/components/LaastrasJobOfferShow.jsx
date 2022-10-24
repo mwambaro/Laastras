@@ -15,13 +15,13 @@ class LaastrasJobOfferShow extends React.Component
             <div className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <div class="shadow-sm p-1 mb-2 bg-white rounded">
+                        <div className="shadow-sm p-1 mb-2 bg-white rounded">
                             <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}}
-                                 id={this.props.offer_title_html_id}>
+                                 id={this.props.html_ids.offer_title_html_id}>
                                 {this.props.job_offer_title}
                             </div>
                             <hr />
-                            <div style={{padding: '10px'}} id={this.props.offer_html_id}>
+                            <div style={{padding: '10px'}} id={this.props.html_ids.offer_html_id}>
                             </div>
                             <div className="d-flex flex-row justify-content-center">
                                 <button type="button" 
@@ -30,20 +30,27 @@ class LaastrasJobOfferShow extends React.Component
                                         onClick={(se) => this.apply_for_job(se)}>
                                     {this.props.apply_label}
                                 </button>
-                                {
-                                    this.props.close_label != null ? 
-                                    (
-                                        <button type="button" 
-                                                className="btn btn-primary" 
-                                                style={{padding: '10px', marginLeft: '10px'}}
-                                                onClick={(se) => this.close_job(se)}>
-                                            {this.props.close_label}
-                                        </button>
-                                    ):
-                                    (
-                                        <div></div>
-                                    )
-                                }
+                                <button type="button" 
+                                        className="btn btn-primary" 
+                                        style={{padding: '10px', marginLeft: '10px', display: 'none'}}
+                                        onClick={(se) => this.close_job(se)}
+                                        id={this.props.html_ids.close_button_id}>
+                                    {this.props.close_label}
+                                </button>
+                                <button type="button" 
+                                        className="btn btn-primary" 
+                                        style={{padding: '10px', marginLeft: '10px', display: 'none'}}
+                                        onClick={(se) => this.feature_job(se)}
+                                        id={this.props.html_ids.feature_job_button_id}>
+                                    {this.props.feature_labels.feature_label}
+                                </button>
+                                <button type="button" 
+                                        className="btn btn-primary" 
+                                        style={{padding: '10px', marginLeft: '10px', display: 'none'}}
+                                        onClick={(se) => this.unfeature_job(se)}
+                                        id={this.props.html_ids.unfeature_job_button_id}>
+                                    {this.props.feature_labels.unfeature_label}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -55,7 +62,19 @@ class LaastrasJobOfferShow extends React.Component
 
     componentDidMount()
     {
-        $(`#${this.props.offer_html_id}`).append(this.props.job_offer_description);
+        $(`#${this.props.html_ids.offer_html_id}`).append(this.props.job_offer_description);
+        if(this.props.close_label != null && this.props.close_label != '')
+        {
+            $(`#${this.props.html_ids.close_button_id}`).css({display: 'block'});
+        }
+        if(this.props.feature_labels.feature_label != null && this.props.feature_labels.feature_label != '')
+        {
+            $(`#${this.props.html_ids.feature_job_button_id}`).css({display: 'block'});
+        }
+        if(this.props.feature_labels.unfeature_label != null && this.props.feature_labels.unfeature_label != '')
+        {
+            $(`#${this.props.html_ids.unfeature_job_button_id}`).css({display: 'block'});
+        }
 
     } // componentDidMount
 
@@ -74,6 +93,24 @@ class LaastrasJobOfferShow extends React.Component
 
     } // close_job
 
+    feature_job(e)
+    { 
+        if(this.props.feature_job_url)
+        {
+            window.location = this.props.feature_job_url;
+        }
+
+    } // feature_job
+
+    unfeature_job(e)
+    { 
+        if(this.props.unfeature_job_url)
+        {
+            window.location = this.props.unfeature_job_url;
+        }
+
+    } // feature_job
+
 }
 
 LaastrasJobOfferShow.propTypes = {
@@ -81,10 +118,12 @@ LaastrasJobOfferShow.propTypes = {
     apply_label: PropTypes.string,
     close_label: PropTypes.string,
     close_job_url: PropTypes.string,
+    feature_labels: PropTypes.object, // {feature_label:, unfeature_label:,}
+    feature_job_url: PropTypes.string,
+    unfeature_job_url: PropTypes.string,
     job_offer_description: PropTypes.string,
     application_url: PropTypes.string,
-    offer_html_id: PropTypes.string,
-    offer_title_html_id: PropTypes.string
+    html_ids: PropTypes.object // {offer_html_id:, offer_title_html_id:,}
 }
 
 export default LaastrasJobOfferShow

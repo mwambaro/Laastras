@@ -13,6 +13,8 @@
         - Job application reception acknowledgment email
         - About page loaded with Mission details 
         - 'locale' query key handled properly. E.g https://laastras.herokuapp.com/?locale=fr_FR
+        - Sign up/Sign in made more robust 
+        - Banner click/tap pops up a pitch message
 * Privileges for the user with verified email: 
         - You can apply for a job 
         - You can reset your password

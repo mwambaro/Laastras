@@ -12,7 +12,7 @@ class LaastrasContentOutline extends React.Component
     render()
     {
         return(
-            <div className="container-fluid">
+            <div className="container-fluid" id="outline-top">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="shadow-sm p-1 mb-2 bg-body rounded">
@@ -76,8 +76,9 @@ class LaastrasContentOutline extends React.Component
     // When the user clicks on the button, scroll to the top of the document
     goToTop(e) 
     {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        let top = $('#outline-top').offset().top;
+        document.body.scrollTop = top; // For Safari
+        document.documentElement.scrollTop = top; // For Chrome, Firefox, IE and Opera
 
     } // goToTop
 

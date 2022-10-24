@@ -176,6 +176,7 @@ class LaastrasUserSignIn extends React.Component
                         this.redirect_uri = dataReceived.redirect_uri;
                         //console.log('Message: ' + message + '; Code: ' + code);
                         let html = '';
+                        let success = true;
                         if(code === 1) // success
                         {
                             $this.hide();
@@ -205,10 +206,16 @@ class LaastrasUserSignIn extends React.Component
                                     <div class="col-sm-11 justify-content-start"> <p id="verbose-p"> ${message} </p> </div>
                                 </div>
                                 `;
+                            success = false;
+                            console.log('Sign in failed.')
                         }
 
-                        if(this.redirect_uri)
-                        {
+                        if(
+                            (
+                                typeof(this.redirect_uri) != 'undefined' ||
+                                this.redirect_uri != ''
+                            ) && success
+                        ){
                             window.location = this.redirect_uri;
                         }
                         else 
@@ -216,6 +223,7 @@ class LaastrasUserSignIn extends React.Component
                             $('#verbose-message-div').remove();
                             //console.log('Feedback message removed');
                             $('#feedback').append(html);
+                            console.log('Sign in failure message displayed');
                         }
 
                         this.wait_spinner.hide_wait_spinner();

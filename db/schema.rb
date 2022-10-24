@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_10_22_095403) do
   create_table "laastras_job_offers", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.boolean "featured"
     t.string "language"
     t.string "application_uri"
     t.datetime "created_at", precision: 6, null: false
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_10_22_095403) do
     t.string "cv_mime_type"
     t.string "cover_letter_uri"
     t.string "cover_letter_mime_type"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

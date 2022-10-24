@@ -1,4 +1,3 @@
-
 <% job_offer_title_label = I18n.t 'job_offer_title_label' %>
 <% full_name_label = I18n.t 'full_name_label' %>
 <% phone_number_label = I18n.t 'phone_number_label' %>
@@ -12,6 +11,22 @@
         <h3><%= capture_message %></h3>
     </div>
 </div>
+
+<% job_seeker_id = 'job-seeker-id' %>
+<% outline_elements = [] %>
+<% @laastras_jskers.each do |jsker| %>
+    <% user = User.find(jsker.user_id) %>
+    <% outline_elements << {
+        content_outline_id: "#{job_seeker_id}-#{jsker.id}", 
+        content_outline_title: "#{user.first_name} #{user.last_name} (#{jsker.location})"
+    } %>
+<% end %>
+
+<%= react_component('LaastrasContentOutline', {
+    content_outline_capture: (I18n.t 'these_are_available_job_seekers'),
+    top_label: (I18n.t 'back_to_top_label'),
+    content_outline_elements: outline_elements # {content_outline_id:, content_outline_title:}
+})%>
 
 <% @laastras_jskers.each do |laastras_jsker| %>
     <% laastras_user = User.find(laastras_jsker.user_id) %>
@@ -46,6 +61,7 @@
             id: laastras_jsker.id, 
             type: 'cover_letter'
         ),
-        cover_letter_label: cover_letter_label
+        cover_letter_label: cover_letter_label,
+        job_seeker_html_id: "#{job_seeker_id}-#{laastras_jsker.id.to_s}"
     })%>
 <% end %>

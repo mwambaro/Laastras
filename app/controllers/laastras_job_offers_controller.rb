@@ -15,14 +15,32 @@ class LaastrasJobOffersController < ApplicationController
             counter = 1
 
             offers.each do |job_offer|
+                html_ids = {
+                    close_button_id: "close-btn-id-#{counter}",
+                    offer_title_html_id: "job-offer-id-title-#{counter}",
+                    offer_html_id: "job-offer-id-#{counter}",
+                    feature_job_button_id: "feature-job-btn-id-#{counter}",
+                    unfeature_job_button_id: "unfeature-job-btn-id-#{counter}"
+                }
                 if ApplicationHelper.user_has_admin_role?(session)
+                    if job_offer.featured == true
+                        @feature_label = nil 
+                        @unfeature_label = I18n.t 'unfeature_label'
+                    else 
+                        @feature_label = I18n.t 'feature_label'
+                        @unfeature_label = nil
+                    end
+                    feature_labels = {
+                        feature_label: @feature_label,
+                        unfeature_label: @unfeature_label
+                    }
                     @all_job_offers << {
                         job_offer_title: job_offer.title,
                         job_offer_description: job_offer.description,
                         apply_label: applicants_label,
                         job_offer_id: job_offer.id,
-                        offer_html_id: "job-offer-id-#{counter}",
-                        offer_title_html_id: "job-offer-id-title-#{counter}",
+                        html_ids: html_ids,
+                        feature_labels: feature_labels,
                         application_url: url_for(
                             controller: 'laastras_job_seekers',
                             action: 'index_jsk',
@@ -31,13 +49,19 @@ class LaastrasJobOffersController < ApplicationController
                     }
                 else
                     @close_label = nil
+                    @feature_label = nil
+                    @unfeature_label = nil
+                    feature_labels = {
+                        feature_label: @feature_label,
+                        unfeature_label: @unfeature_label
+                    }
                     @all_job_offers << {
                         job_offer_title: job_offer.title,
                         job_offer_description: job_offer.description,
                         apply_label: apply_label,
                         job_offer_id: job_offer.id,
-                        offer_html_id: "job-offer-id-#{counter}",
-                        offer_title_html_id: "job-offer-id-title-#{counter}",
+                        html_ids: html_ids,
+                        feature_labels: feature_labels,
                         application_url: url_for(
                             controller: 'laastras_job_offers', 
                             action: 'apply', 
@@ -81,6 +105,13 @@ class LaastrasJobOffersController < ApplicationController
                 if ApplicationHelper.user_has_admin_role?(session)
                     @apply_label = (I18n.t 'applicants_label')
                     @close_label = (I18n.t 'close_label')
+                    if @job_offer.featured == true
+                        @feature_label = nil
+                        @unfeature_label = I18n.t 'unfeature_label'
+                    else
+                        @feature_label = I18n.t 'feature_label'
+                        @unfeature_label = nil
+                    end
                     @application_url = url_for(
                         controller: 'laastras_job_seekers',
                         action: 'index_jsk',
@@ -89,6 +120,8 @@ class LaastrasJobOffersController < ApplicationController
                 else
                     @apply_label = (I18n.t 'apply_label')
                     @close_label = nil
+                    @feature_label = nil
+                    @unfeature_label = nil
                     @application_url = url_for(
                         controller: 'laastras_job_offers', 
                         action: 'apply', 
@@ -100,6 +133,27 @@ class LaastrasJobOffersController < ApplicationController
                     action: 'close', 
                     id: @job_offer.id
                 )
+                @feature_job_url = url_for(
+                    controller: 'laastras_job_offers', 
+                    action: 'feature', 
+                    id: @job_offer.id
+                )
+                @unfeature_job_url = url_for(
+                    controller: 'laastras_job_offers', 
+                    action: 'unfeature', 
+                    id: @job_offer.id
+                )
+                @html_ids = {
+                    close_button_id: "close-btn-id",
+                    offer_title_html_id: "job-offer-id-title",
+                    offer_html_id: "job-offer-id",
+                    feature_job_button_id: "feature-job-btn-id",
+                    unfeature_job_button_id: "unfeature-job-btn-id"
+                }
+                @feature_labels = {
+                    feature_label: @feature_label,
+                    unfeature_label: @unfeature_label
+                }
             else 
                 next_uri = url_for(
                     controller: 'maintenance', 
@@ -187,7 +241,69 @@ class LaastrasJobOffersController < ApplicationController
             redirect_to next_uri
         end
 
-    end # apply
+    end # apply 
+
+    def feature 
+        next_uri = nil 
+        begin
+            id = params[:id]
+            offer = LaastrasJobOffer.find(id)
+            unless offer.nil?
+                if offer.update({featured: true})
+                    session[:fail_safe_title] = I18n.t 'job_offer_successful_featuring'
+                    session[:fail_safe_message] = I18n.t 'job_offer_successful_featuring_message'
+                else
+                    session[:fail_safe_title] = I18n.t 'job_offer_failed_featuring'
+                    session[:fail_safe_message] = I18n.t 'job_offer_failed_featuring_message'
+                end
+            else 
+                session[:fail_safe_title] = I18n.t 'no_such_job_offer'
+                session[:fail_safe_message] = I18n.t 'no_such_job_offer_message'
+            end
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # feature
+
+    def unfeature 
+        next_uri = nil 
+        begin
+            id = params[:id]
+            offer = LaastrasJobOffer.find(id)
+            unless offer.nil?
+                if offer.update({featured: false})
+                    session[:fail_safe_title] = I18n.t 'job_offer_successful_unfeaturing'
+                    session[:fail_safe_message] = I18n.t 'job_offer_successful_unfeaturing_message'
+                else
+                    session[:fail_safe_title] = I18n.t 'job_offer_failed_unfeaturing'
+                    session[:fail_safe_message] = I18n.t 'job_offer_failed_unfeaturing_message'
+                end
+            else 
+                session[:fail_safe_title] = I18n.t 'no_such_job_offer'
+                session[:fail_safe_message] = I18n.t 'no_such_job_offer_message'
+            end
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # feature
 
     def close 
         next_uri = nil 

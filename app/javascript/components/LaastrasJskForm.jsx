@@ -236,6 +236,7 @@ class LaastrasJskForm extends React.Component
                         let message = data.message;
                         this.redirect_uri = data.redirect_uri;
                         let html = '';
+                        let success = true;
                         if(code === 1) // success
                         {
                             $this.hide();
@@ -263,9 +264,10 @@ class LaastrasJskForm extends React.Component
                                     </div>
                                     <div class="col-sm-11 justify-content-start"> <p> ${message} </p> </div>
                                 </div>`;
+                            success = false;
                         }
 
-                        if(this.redirect_uri)
+                        if(this.redirect_uri && success)
                         {
                             window.location = this.redirect_uri;
                         }

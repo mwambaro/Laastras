@@ -13,6 +13,10 @@ class User < ApplicationRecord
         write_attribute('password', Digest::SHA1.hexdigest(pwd))
     end
 
+    def password_sha=(sha)
+        write_attribute('password', sha)
+    end
+
     def self.authenticate(email, pwd, logger=nil)
         user_email = nil
         user = nil 

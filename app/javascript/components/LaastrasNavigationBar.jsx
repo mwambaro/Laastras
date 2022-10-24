@@ -12,17 +12,6 @@ class LaastrasNavigationBar extends React.Component
 
     render()
     { 
-        let div_flex_style = {
-            backgroundColor: 'white',
-            margin: '5px'
-        };
-        let btn_flex_style = {
-            backgroundColor: 'black',
-            margin: '5px',
-            fontColor: 'white',
-            fontWeight: 'bold'
-        }
-
         return(
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -66,58 +55,70 @@ class LaastrasNavigationBar extends React.Component
                                 }
                             </ul>
                             <div className="d-flex flex-column justify-content-end">
-                                {
-                                    this.props.laastras_user_is_logged_in === 'true' ?
-                                    (
-                                        <button className="btn btn-primary" 
-                                                type="button"
-                                                style={btn_flex_style}
-                                                onClick={(se) => this.onClickSignOutButton(se)}>
-                                            {this.props.sign_out_label}
-                                        </button>
-                                    ) :
-                                    (
-                                        <div>
-                                            <button className="btn btn-primary" 
-                                                    type="button"
-                                                    style={btn_flex_style}
-                                                    onClick={(se) => this.onClickSignInButton(se)}>
-                                                {this.props.sign_in_label}
-                                            </button>
-                                            <button className="btn btn-primary" 
-                                                    type="button"
-                                                    style={btn_flex_style}
-                                                    onClick={(se) => this.onClickSignUpButton(se)}>
-                                                {this.props.sign_up_label}
-                                            </button>
-                                        </div>
-                                    )
-                                }
-                                <div style={div_flex_style} onMouseOver={(se) => this.onMouseOverLocaleSection(se)}>
+                                <button 
+                                    className="btn btn-primary" 
+                                    type="button"
+                                    style={{
+                                        backgroundColor: 'black',
+                                        margin: '5px',
+                                        fontColor: 'white',
+                                        fontWeight: 'bold'
+                                    }}
+                                    onClick={(se) => this.onClickSignOutButton(se)}
+                                    id="sign-out-btn">
+                                    {this.props.sign_out_label}
+                                </button>
+                                <div id="log-in-log-out-btn" 
+                                     className="d-flex flex-row justify-content-center">
+                                    <button 
+                                        className="btn btn-primary" 
+                                        type="button"
+                                        style={{
+                                            backgroundColor: 'black',
+                                            margin: '5px',
+                                            fontColor: 'white',
+                                            fontWeight: 'bold'
+                                        }}
+                                        onClick={(se) => this.onClickSignInButton(se)}>
+                                        {this.props.sign_in_label}
+                                    </button>
+                                    <button 
+                                        className="btn btn-primary" 
+                                        type="button"
+                                        style={{
+                                            backgroundColor: 'black',
+                                            margin: '5px',
+                                            fontColor: 'white',
+                                            fontWeight: 'bold'
+                                        }}
+                                        onClick={(se) => this.onClickSignUpButton(se)}>
+                                        {this.props.sign_up_label}
+                                    </button>
+                                </div>
+                                <div 
+                                    style={{
+                                        backgroundColor: 'white',
+                                        margin: '5px'
+                                    }}
+                                    id="locale-area-icon-div"
+                                    onMouseOver={(se) => this.onMouseOverLocaleSection(se)}>
                                     <LaastrasLocaleSettings locale_end_point={this.props.locale_end_point}
                                                         supported_languages={this.props.supported_languages}
                                                         active_language_locale={this.props.active_language_locale}
                                                         language_icon={this.props.language_icon}/>
                                 </div>
-                                {
-                                    this.props.laastras_user_is_logged_in === 'true' ?
-                                    (
-                                        <div> 
-                                            <img src={this.props.profile_photo_url}
-                                                 id="laastras-user-profile-photo"
-                                                 className="img-fluid"
-                                                 style={{
-                                                     width: '50px',
-                                                     height: '50px',
-                                                     borderRadius: '50%',
-                                                     display: 'inline-block'
-                                                 }}/>
-                                        </div>
-                                    ):
-                                    (
-                                        <div></div>
-                                    )
-                                }
+                                <div 
+                                    id="profile-image-div"> 
+                                    <img src={this.props.profile_photo_url}
+                                        id="laastras-user-profile-photo"
+                                        className="img-fluid"
+                                        style={{
+                                            width: '50px',
+                                            height: '50px',
+                                            borderRadius: '50%',
+                                            display: 'inline-block'
+                                        }}/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -130,6 +131,18 @@ class LaastrasNavigationBar extends React.Component
     componentDidMount()
     {
         this.manageProfilePhoto();
+        if(this.props.laastras_user_is_logged_in === 'true')
+        {
+            $('#sign-out-btn').show();
+            $('#log-in-log-out-btn').hide();
+            $('#profile-image-div').show();
+        }
+        else 
+        {
+            $('#sign-out-btn').hide();
+            $('#log-in-log-out-btn').show();
+            $('#profile-image-div').hide();
+        }
         
     } // componentDidMount
 

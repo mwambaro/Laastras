@@ -92,8 +92,42 @@ class UsersController < ApplicationController
                     else
                         if params[:confirm] =~ /\Ayes\Z/i # proceed
                             @require_confirmation = false
+                            photo_uri = @laastras_user.photo_uri
+                            user_id = @laastras_user.id
                             ApplicationHelper.logout_user(session)
                             @laastras_user.destroy!
+                            # Clean up profile photo
+                            unless (
+                                photo_uri.nil? || photo_uri.blank?
+                            )
+                                if File.exists? photo_uri
+                                    File.delete(photo_uri) 
+                                end
+                            end
+                            # Invalidate job seeker
+                            job_seeker = LaastrasJobSeeker.find_by_user_id(user_id)
+                            unless job_seeker.nil?
+                                cv_uri = job_seeker.cv_uri
+                                cover_letter_uri = job_seeker.cover_letter_uri
+                                job_seeker.destroy!
+                                # Clean up cv file
+                                unless (
+                                    cv_uri.nil? || cv_uri.blank?
+                                )
+                                    if File.exists? cv_uri
+                                        File.delete(cv_uri) 
+                                    end
+                                end
+                                # Clean up cover letter file
+                                unless (
+                                    cover_letter_uri.nil? || cover_letter_uri.blank?
+                                )
+                                    if File.exists? cover_letter_uri
+                                        File.delete(cover_letter_uri) 
+                                    end
+                                end
+                            end
+                            # Report
                             @message = I18n.t 'laastras_account_removed'
                         else 
                             if params[:redirect_uri].nil?
@@ -159,7 +193,7 @@ class UsersController < ApplicationController
             email = params[:email]
             password = params[:password] 
             redirect_uri = params[:redirect_uri]
-            service_id = params[:service_id] || 'nil'
+            service_id = params[:service_id]
             dataToSend = nil
             @laastras_user, @email = User.authenticate(email, password, logger)
             unless session.nil?
@@ -178,9 +212,29 @@ class UsersController < ApplicationController
                     if @email.nil? # sign up, please
                         sign_up_url = url_for(
                             controller: 'laastras',
-                            action: 'sign_up',
-                            service_id: service_id
+                            action: 'sign_up'
                         )
+                        if !(service_id.nil? || service_id.blank?)
+                            sign_up_url = url_for(
+                                controller: 'laastras',
+                                action: 'sign_up',
+                                service_id: service_id
+                            )
+                            unless (redirect_uri.nil? || redirect_uri.blank?)
+                                sign_up_url = url_for(
+                                    controller: 'laastras',
+                                    action: 'sign_up',
+                                    service_id: service_id,
+                                    redirect_uri: redirect_uri
+                                )
+                            end
+                        elsif !(redirect_uri.nil? || redirect_uri.blank?)
+                            sign_up_url = url_for(
+                                controller: 'laastras',
+                                action: 'sign_up',
+                                redirect_uri: redirect_uri
+                            )
+                        end
                         message = "<div><h3>#{I18n.t 'offer_to_sign_up'}</h3></div>" + 
                                     "<div>#{I18n.t 'offer_to_sign_up_message'} " + 
                                     '<a href="' + sign_up_url + '">' + (I18n.t 'here_label') + '</a>'
@@ -383,6 +437,7 @@ class UsersController < ApplicationController
             init_parameters
             @service_id = params[:service_id] || nil
             @reset_pwd = params[:reset_pwd] || nil
+            @redirect_uri = params[:redirect_uri]
             n_users = User.all.count 
             data = nil
             if n_users > ApplicationHelper.max_number_of_users 
@@ -461,6 +516,15 @@ class UsersController < ApplicationController
                 @sign_in_url = url_for(
                     controller: 'laastras', action: 'sign_in'
                 )
+                unless (@redirect_uri.nil? || @redirect_uri.blank?)
+                    @sign_in_url = url_for(
+                        controller: 'laastras', 
+                        action: 'sign_in',
+                        redirect_uri: @redirect_uri
+                    )
+                    #logger.debug "---> We are to sign up with redirect_uri: #{@redirect_uri}"
+                end
+
                 @sign_in_label = I18n.t 'sign_in_label'
                 @contact_label = I18n.t 'contact_site_owner_label'
                 @contact_url = "mailto:#{@admin_email}"
@@ -615,8 +679,13 @@ class UsersController < ApplicationController
                 else
 
                     unless @laastras_user.nil?
-                        if File.exists? @laastras_user.photo_uri
-                            File.delete(@laastras_user.photo_uri) 
+                        unless (
+                            @laastras_user.photo_uri.nil? || 
+                            @laastras_user.photo_uri.blank?
+                        )
+                            if File.exists? @laastras_user.photo_uri
+                                File.delete(@laastras_user.photo_uri) 
+                            end
                         end
                         if @laastras_user.update({
                             photo_uri: photo_data[:photo_full_path],

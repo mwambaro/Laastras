@@ -422,19 +422,25 @@ module ApplicationHelper
     #       Given a user session, if the user is logged in, is the user ADMIN?
     # </summary>
     # <param name="session"> The Rails session object. You should know what you stored there. </param>
-    def self.user_has_admin_role?(session)
+    def self.user_has_admin_role?(session, logger=nil)
         admin = false
-
-        unless session.nil?
-            if session[:logged_in]
-                sql_query = "SELECT * FROM users WHERE id = '#{session[:user_id]}'"
-                user = User.find_by_sql(sql_query)
-                unless user.nil?
-                    unless user[0].role.nil?
-                        admin = user[0].role.match?(/\AAdmin\Z/i)
+        begin
+            unless session.nil?
+                if session[:logged_in]
+                    unless session[:user_id].nil?
+                        user = User.find(session[:user_id])
+                        unless user.nil?
+                            unless user.role.nil?
+                                admin = user.role.match?(/\AAdmin\Z/i)
+                            end
+                        end
                     end
                 end
             end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
         end
 
         admin
@@ -445,17 +451,23 @@ module ApplicationHelper
     # </summary>
     # <param name="session"> The Rails session object. We assume you know what to look for in it. </param>
     # <returns> The logged in user, if any, or nil </returns>
-    def self.who_is_logged_in?(session)
+    def self.who_is_logged_in?(session, logger=nil)
         user = nil
-
-        unless session.nil?
-            if session[:logged_in]
-                sql_query = "SELECT * FROM users WHERE id = '#{session[:user_id]}'"
-                us = User.find_by_sql(sql_query)
-                unless us.nil?
-                    user = us[0]
+        begin
+            unless session.nil?
+                if session[:logged_in]
+                    unless session[:user_id].nil?
+                        us = User.find(session[:user_id])
+                        unless us.nil?
+                            user = us
+                        end
+                    end
                 end
             end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
         end
 
         user
@@ -494,22 +506,15 @@ module ApplicationHelper
             featured_job_offers = []
             begin
                 language = I18n.locale.to_s
-                [
-                    (I18n.t 'project_manager_assistant'),
-                    (I18n.t 'venture_capital_professional'),
-                    (I18n.t 'ngo_chief_of_mission'),
-                    (I18n.t 'head_of_state_or_prime_minister')
-                ].each do |title|
-                    job_offer = LaastrasJobOffer.find_by_title_and_language(
-                        title, language
-                    )
-                    if job_offer
+                featured = true
+                sql = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND featured = '#{featured}'"
+                LaastrasJobOffer.find_by_sql(sql)
+                    .each do |job_offer|
                         featured_job_offers << {
                             show_url: url_for(controller: 'laastras_job_offers', action: 'show', id: job_offer.id),
                             title: job_offer.title
                         }
                     end
-                end
             rescue Exception => e 
                 message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                             __method__.to_s + "--- " + e.message 

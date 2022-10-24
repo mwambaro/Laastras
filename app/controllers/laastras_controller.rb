@@ -104,15 +104,22 @@ class LaastrasController < ApplicationController
     def sign_in
         next_uri = nil
         begin 
-            service_id = params[:service_id]
-            if service_id.nil? || service_id.blank? || service_id == 'nil'
-                @sign_in_action_url = url_for(controller: 'users', action: 'sign_in')
-            else 
-                @sign_in_action_url = url_for(
-                    controller: 'users', 
-                    action: 'sign_in',
-                    service_id: service_id
-                )
+            user = ApplicationHelper.who_is_logged_in?(session, logger)
+            if user.nil?
+                service_id = params[:service_id]
+                if service_id.nil? || service_id.blank? || service_id == 'nil'
+                    @sign_in_action_url = url_for(controller: 'users', action: 'sign_in')
+                else 
+                    @sign_in_action_url = url_for(
+                        controller: 'users', 
+                        action: 'sign_in',
+                        service_id: service_id
+                    )
+                end
+            else
+                session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
+                session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
+                next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -129,24 +136,46 @@ class LaastrasController < ApplicationController
     def sign_up
         next_uri = nil
         begin 
-            service_id = params[:service_id]
-            reset_pwd = params[:reset_pwd]
-            if !reset_pwd.nil?
-                @sign_up_action_url = url_for(
-                    controller: 'users', 
-                    action: 'sign_up',
-                    reset_pwd: reset_pwd,
-                    email: params[:email],
-                    password: params[:password]
-                )
-            elsif !service_id.nil? && service_id != 'nil'                
-                @sign_up_action_url = url_for(
-                    controller: 'users', 
-                    action: 'sign_up',
-                    service_id: service_id
-                )
-            else 
-                @sign_up_action_url = url_for(controller: 'users', action: 'sign_up')
+            user = ApplicationHelper.who_is_logged_in?(session, logger)
+            if user.nil?
+                service_id = params[:service_id]
+                reset_pwd = params[:reset_pwd]
+                redirect_uri = params[:redirect_uri]
+                if !reset_pwd.nil?
+                    @sign_up_action_url = url_for(
+                        controller: 'users', 
+                        action: 'sign_up',
+                        reset_pwd: reset_pwd,
+                        email: params[:email],
+                        password: params[:password]
+                    )
+                elsif !(service_id.nil? || service_id.blank?)               
+                    @sign_up_action_url = url_for(
+                        controller: 'users', 
+                        action: 'sign_up',
+                        service_id: service_id
+                    )
+                    unless (redirect_uri.nil? || redirect_uri.blank?)
+                        @sign_up_action_url = url_for(
+                            controller: 'users', 
+                            action: 'sign_up',
+                            service_id: service_id,
+                            redirect_uri: redirect_uri
+                        )
+                    end
+                elsif !(redirect_uri.nil? || redirect_uri.blank?)
+                    @sign_up_action_url = url_for(
+                        controller: 'users', 
+                        action: 'sign_up',
+                        redirect_uri: redirect_uri
+                    )
+                else 
+                    @sign_up_action_url = url_for(controller: 'users', action: 'sign_up')
+                end
+            else
+                session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
+                session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
+                next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -251,14 +280,14 @@ class LaastrasController < ApplicationController
             @laastras_user_is_logged_in = false.to_s 
             @profile_photo_url = '#'
             @show_profile_url = '#'
-            laastras_user = ApplicationHelper.who_is_logged_in?(session)
+            laastras_user = ApplicationHelper.who_is_logged_in?(session, logger)
             unless laastras_user.nil?
                 @laastras_user_is_logged_in = true.to_s
                 @profile_photo_url = url_for(controller: 'users', action: 'profile_image_show', id: laastras_user.id)
                 @show_profile_url = url_for(controller: 'users', action: 'show', id: laastras_user.id)
             end
 
-            if ApplicationHelper.user_has_admin_role?(session)
+            if ApplicationHelper.user_has_admin_role?(session, logger)
                 @laastras_actions << {
                     url: '',
                     inner_text: (I18n.t 'laastras_admin_dashboard_label'),

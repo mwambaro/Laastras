@@ -9,6 +9,7 @@ class CreateLaastrasJobSeekers < ActiveRecord::Migration[6.1]
       t.string :cv_mime_type
       t.string :cover_letter_uri
       t.string :cover_letter_mime_type
+      t.string :status # {evaluating, selected, rejected}
 
       t.timestamps
     end
