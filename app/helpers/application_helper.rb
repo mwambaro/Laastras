@@ -418,6 +418,16 @@ module ApplicationHelper
 
     end # user_profile_photo_asset_url
 
+    def self.log_model_errors(model, logger)
+        msg = "\r\n#{model.errors.count} error(s) prohibited this model from being saved:"
+        model.errors.each do |error|
+            msg += "\r\n" + error.full_message
+        end
+        mssge = Time.now.to_s + ": " + msg
+        logger.debug mssge unless logger.nil?
+
+    end # log_model_errors
+
     # <summary>
     #       Given a user session, if the user is logged in, is the user ADMIN?
     # </summary>

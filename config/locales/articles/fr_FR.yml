@@ -363,6 +363,65 @@ fr_FR:
             </ol>
         </div>
   "
+  standards_or_specifications_maker: "Faiseur ou Faiseuse de Standards et Spécifications"
+  standards_or_specifications_maker_job_offer: "
+        <div>
+            <div>
+                Notre produit majeur sera 
+                <a href=\u0022/laastras/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                un cellulaire
+                </a>
+                , appellé “HoFi (Home Finances”. Il doit respecter 
+                des standards grade-militaire de calcul, de stockage, et de communication. HoFi et les serveurs “AGAS”
+                doivent tous les deux être interopérables. On aura aussi, sans doute, affaire aux standards de 
+                télécommunication existants et on les gèrera avec égard au “big data”. Alors, on a besoin d'une 
+                personne qui <strong> Fait des Standards ou Spécifications</strong> qui:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    Peut superviser le travail de standardisation et peut faire office de liaison avec les 
+                    organisations de standardisation officielles.
+                </li>
+                <li>
+                    Peut entretenir et peut faire respecter les standards et spécifications en œuvrant main 
+                    dans la main avec nos ingénieurs.   
+                </li>
+                <li>
+                    A déjà travaillé pour n'importe quels corps de standardisation comme IEEE, IETF, ITU, ISO,
+                    IANA, etc. Si vous êtes novice dans le domaine de standardisation, vous devez avoir des 
+                    connaissances vastes en communication et/ou ingénierie logicielle.
+                </li>
+            </ol>
+        </div>
+  "
+  un_secretary_general: "Secrétaire Général de l'ONU"
+  un_secretary_general_job_offer: "
+        <div>
+            <div>
+                Il va sans dire que l'ONU a beaucoup aidé l'humanité et la planète terre. Ils ont beaucoup de 
+                missions qui ont été validées et vérifiées, et qui ont bravé le cours du temps. On faira don de 
+                Laastras à l'ONU pour qu'elle devienne un de ses organes ayant pour mission spéciale 
+                l'établissement et la gestion du Gouvernement Fédéral Mondial. Nous aimerons engager le 
+                <strong> Secrétaire Général de l'ONU </strong> pour les service suivants:
+            </div>
+            <ol tyle=\u0022margin-top: 10px\u0022>
+                <li>
+                    Inspecter 
+                    <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022></a>
+                    le projet Laastras
+                    </a>
+                    et s'assurer que les standards de l'ONU soient entièrment respectés.
+                </li>
+                <li>
+                    Nous prodiguer un peu d'aide dans le marketing de contenu et d'affiliation avec pour objectif 
+                    spécial de vendre la vision Laastras aux gouvernements et aux bailleurs de fonds.  
+                </li>
+                <li>
+                    Eclairer notre voie de qualification ultime comme organe de l'ONU.   
+                </li>
+            </ol>
+        </div>
+  "
   detailed_cv_data: "
         <div style=\u0022font-weight: bold; margin-top: 20px;\u0022>
             Obed-Edom Nkezabahizi
@@ -922,7 +981,11 @@ fr_FR:
                 <div>Et tous ces nombres partout sur la terre</div>
                 <div>Faisant bon usage de la puissance de la technologie et des gens d'esprit</div> 
                 <div>Nous savons que nous ne pouvons que prendre de plus en plus d'élan, regagnant de force</div>
-                <div>Nous poursuivrons notre route poigné ferme, à la mission</div>
+                <div>Nous poursuivrons notre route poigné ferme, à 
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    la mission
+                </a>
+                </div>
                 <div>De défendre la civilisation humaine et de la protéger contre l'extinction</div>
                 <div>Nous avons fait la résolution d'être Laastrasiens, notre ceinture de sécurité</div>
                 <div>“Défenseurs de la planète terre, sur ce champ de bataille nous vivrons ou nous mourrons!”</div>

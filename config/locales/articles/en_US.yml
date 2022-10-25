@@ -392,6 +392,63 @@ en_US:
             </ol>
         </div>
   "
+  standards_or_specifications_maker: "Standards or Specifications Maker"
+  standards_or_specifications_maker_job_offer: "
+        <div>
+            <div>
+                Our major product will be 
+                <a href=\u0022/laastras/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                    a cell phone
+                </a>
+                , named HoFi (Home Finances). It must abide by military 
+                grade standards of computation, storage, and communication. Both HoFi and AGAS servers must be interoperable.
+                We will definitely need to leverage existing telecommunication standards, as well, with 
+                big data in mind. Hence, we need a <strong> Standards or Specifications Maker </strong> who:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    Can oversee standardization work and liaison with official standardization organizations.
+                </li>
+                <li>
+                    Can maintain and enforce the standards and specifications by working hand in hand with 
+                    our engineers.
+                </li>
+                <li>
+                    Has ever worked for any standardization bodies such as IEEE, IETF, ITU, ISO, IANA, etc.
+                    If you are a freshperson in the standardization field, you must have extensive knowledge 
+                    in the field of communication and/or software engineering.
+                </li>
+            </ol>
+        </div>
+  "
+  un_secretary_general: "UN Secretary General"
+  un_secretary_general_job_offer: "
+        <div>
+            <div>
+                It stands to reason that UN has been of great help to mankind and planet earth. They have 
+                many missions that have been validated and verified, and that have stood the test of time. Laastras
+                will be committed to UN as an organ that has the special mission of establishing and running 
+                World Federal Government. We would like to hire the <strong> UN Secretary General </strong> 
+                to offer us the following services:
+            </div>
+            <ol tyle=\u0022margin-top: 10px\u0022>
+                <li>
+                    Inspect 
+                    <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                        Laastras project 
+                    </a>
+                    and see to it that the standards they abide by are fully respected.
+                </li>
+                <li>
+                    Give us a little help in both content and affiliate marketing with the special goal of selling 
+                    Laastras vision to governments and donors.
+                </li>
+                <li>
+                    Pave the way for our ultimate qualification as a UN organ.
+                </li>
+            </ol>
+        </div>
+  "
   detailed_cv_data: "
         <div style=\u0022font-weight: bold; margin-top: 20px;\u0022>
             Obed-Edom Nkezabahizi
@@ -943,7 +1000,11 @@ en_US:
                 <div>And all these numbers all over the earth </div>
                 <div>Harnessing the power of technology and people of the mind </div>
                 <div>We know we can only gather momentum, with renewed stamina </div>
-                <div>We shall carry on with a fist of iron, on the mission </div>
+                <div>We shall carry on with a fist of iron, on 
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    the mission 
+                </a>
+                </div>
                 <div>To defend human civilization and protect it from extinction </div>
                 <div>We have made a resolve to be Laastrasians, our safety belt</div>
                 <div>“Planet earth defenders, on this battlefield we live or die!”</div>

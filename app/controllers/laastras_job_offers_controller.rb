@@ -249,12 +249,26 @@ class LaastrasJobOffersController < ApplicationController
             id = params[:id]
             offer = LaastrasJobOffer.find(id)
             unless offer.nil?
-                if offer.update({featured: true})
-                    session[:fail_safe_title] = I18n.t 'job_offer_successful_featuring'
-                    session[:fail_safe_message] = I18n.t 'job_offer_successful_featuring_message'
-                else
+                failed = false
+                I18n.available_locales.each do |locale|
+                    sha256 = offer.sha256
+                    sql = "SELECT * FROM laastras_job_offers WHERE language = '#{locale.to_s}' AND sha256 = '#{sha256}'"
+                    offers = LaastrasJobOffer.find_by_sql(sql)
+                    offers.each do |off|
+                        ret = off.update({featured: true})
+                        unless ret
+                            ApplicationHelper.log_model_errors(off, logger)
+                            failed = true
+                        end
+                    end
+                end
+
+                if failed 
                     session[:fail_safe_title] = I18n.t 'job_offer_failed_featuring'
                     session[:fail_safe_message] = I18n.t 'job_offer_failed_featuring_message'
+                else
+                    session[:fail_safe_title] = I18n.t 'job_offer_successful_featuring'
+                    session[:fail_safe_message] = I18n.t 'job_offer_successful_featuring_message'
                 end
             else 
                 session[:fail_safe_title] = I18n.t 'no_such_job_offer'
@@ -280,12 +294,26 @@ class LaastrasJobOffersController < ApplicationController
             id = params[:id]
             offer = LaastrasJobOffer.find(id)
             unless offer.nil?
-                if offer.update({featured: false})
-                    session[:fail_safe_title] = I18n.t 'job_offer_successful_unfeaturing'
-                    session[:fail_safe_message] = I18n.t 'job_offer_successful_unfeaturing_message'
-                else
+                failed = false
+                I18n.available_locales.each do |locale|
+                    sha256 = offer.sha256
+                    sql = "SELECT * FROM laastras_job_offers WHERE language = '#{locale.to_s}' AND sha256 = '#{sha256}'"
+                    offers = LaastrasJobOffer.find_by_sql(sql)
+                    offers.each do |off|
+                        ret = off.update({featured: false})
+                        unless ret
+                            ApplicationHelper.log_model_errors(off, logger)
+                            failed = true
+                        end
+                    end
+                end
+
+                if failed
                     session[:fail_safe_title] = I18n.t 'job_offer_failed_unfeaturing'
                     session[:fail_safe_message] = I18n.t 'job_offer_failed_unfeaturing_message'
+                else
+                    session[:fail_safe_title] = I18n.t 'job_offer_successful_unfeaturing'
+                    session[:fail_safe_message] = I18n.t 'job_offer_successful_unfeaturing_message'
                 end
             else 
                 session[:fail_safe_title] = I18n.t 'no_such_job_offer'
@@ -303,7 +331,7 @@ class LaastrasJobOffersController < ApplicationController
             redirect_to next_uri
         end
 
-    end # feature
+    end # unfeature
 
     def close 
         next_uri = nil 

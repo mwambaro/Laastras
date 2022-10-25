@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_10_22_095403) do
 
   create_table "laastras_job_offers", force: :cascade do |t|
     t.string "title"
+    t.string "sha256"
     t.text "description"
     t.boolean "featured"
     t.string "language"

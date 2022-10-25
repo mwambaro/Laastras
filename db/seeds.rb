@@ -146,25 +146,43 @@
         I18n.locale = lang.to_sym
         job_offers << {  
             title: (I18n.t 'project_manager_assistant'),
+            sha256: '3AABAA6512AF2E7415BF1B4405EAAE27FFC97D63D9E74523925C264FE07C44DC',
             description: (I18n.t 'project_manager_assistant_offer'),
             language: lang.to_s,
             application_uri: nil           
         }
         job_offers << {  
             title: (I18n.t 'venture_capital_professional'),
+            sha256: '25C950615B149CC57887039035EF3A4A2FE89307CD85253AB64932B3F10EEC4D',
             description: (I18n.t 'venture_capital_professional_offer'),
             language: lang.to_s,
             application_uri: nil           
         }   
         job_offers << {  
             title: (I18n.t 'ngo_chief_of_mission'),
+            sha256: '988EC164FF45A4D1318FDC3B1DC70ADDC0D495485ED19D32B3EBE132C7FF7861',
             description: (I18n.t 'ngo_chief_of_mission_job_offer'),
             language: lang.to_s,
             application_uri: nil           
         } 
         job_offers << {  
             title: (I18n.t 'head_of_state_or_prime_minister'),
+            sha256: 'EE782BA12A138541290F8570F25F71ABF9983CA428C4E7E8E6AFF171A60A70A3',
             description: (I18n.t 'head_of_state_or_prime_minister_job_offer'),
+            language: lang.to_s,
+            application_uri: nil           
+        }
+        job_offers << {  
+            title: (I18n.t 'standards_or_specifications_maker'),
+            sha256: 'EF0B5D9A0389CAC9116C22BF16B5A6AE2000C7C075F7CC6BDF717336B3FE7103',
+            description: (I18n.t 'standards_or_specifications_maker_job_offer'),
+            language: lang.to_s,
+            application_uri: nil           
+        }
+        job_offers << {  
+            title: (I18n.t 'un_secretary_general'),
+            sha256: '7BAF9D72FAF8FF016EC539F7869313EB5C352BDDC59B7CB758CB405B8D23BEAD',
+            description: (I18n.t 'un_secretary_general_job_offer'),
             language: lang.to_s,
             application_uri: nil           
         }
@@ -207,16 +225,16 @@
 # __end__
 
 # __start__ seeding laastras_marketing_videos
-marketing_videos = [
-    {
-        sha256: '8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946',
-        title: 'Laastras-LaasOS-teaser.mp4',
-        uri: ApplicationHelper.marketing_video_asset_url(
-            'Laastras-LaasOS-teaser.mp4'
-        ),
-        mime_type: 'video/mp4'
-    }
-]
+    marketing_videos = [
+        {
+            sha256: '8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946',
+            title: 'Laastras-LaasOS-teaser.mp4',
+            uri: ApplicationHelper.marketing_video_asset_url(
+                'Laastras-LaasOS-teaser.mp4'
+            ),
+            mime_type: 'video/mp4'
+        }
+    ]
 
-LaastrasMarketingVideo.create(marketing_videos)
+    LaastrasMarketingVideo.create(marketing_videos)
 # __end__

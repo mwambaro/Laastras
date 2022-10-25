@@ -2,6 +2,7 @@ class CreateLaastrasJobOffers < ActiveRecord::Migration[6.1]
   def change
     create_table :laastras_job_offers do |t|
       t.string :title
+      t.string :sha256
       t.text :description
       t.boolean :featured
       t.string :language

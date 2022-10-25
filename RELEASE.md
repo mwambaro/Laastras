@@ -7,6 +7,8 @@
                 Venture Capital Professional and Content Marketer
                 Chief of Mission in an NGO 
                 Head of State or Prime Minister
+                Standards or Specifications Maker
+                UN Secretary General
         - Featured job openings at the top of the Home page
         - Welcome email and email verification link 
         - Reset password email whenever needed 
