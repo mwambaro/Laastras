@@ -281,7 +281,7 @@ fr_FR:
             </li>
         </ol>
   "
-  venture_capital_professional: "Professionnel en collecte de fonds et en marketing de contenu"
+  venture_capital_professional: "Professionnel en Collecte de Fonds et en Marketing de Contenu"
   venture_capital_professional_offer: "
         <div> 
             <div>
@@ -309,7 +309,7 @@ fr_FR:
             </ol>
         </div>
   "
-  ngo_chief_of_mission: "Chef de mission dans une ONG"
+  ngo_chief_of_mission: "Chef de Mission dans une ONG"
   ngo_chief_of_mission_job_offer: "
         <div>
             <div>
@@ -368,7 +368,7 @@ fr_FR:
         <div>
             <div>
                 Notre produit majeur sera 
-                <a href=\u0022/laastras/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
                 un cellulaire
                 </a>
                 , appellé “HoFi (Home Finances”. Il doit respecter 
@@ -399,7 +399,7 @@ fr_FR:
         <div>
             <div>
                 Il va sans dire que l'ONU a beaucoup aidé l'humanité et la planète terre. Ils ont beaucoup de 
-                missions qui ont été validées et vérifiées, et qui ont bravé le cours du temps. On faira don de 
+                missions qui ont été validées et vérifiées, et qui ont bravé le cours du temps. On fera don de 
                 Laastras à l'ONU pour qu'elle devienne un de ses organes ayant pour mission spéciale 
                 l'établissement et la gestion du Gouvernement Fédéral Mondial. Nous aimerons engager le 
                 <strong> Secrétaire Général de l'ONU </strong> pour les service suivants:
@@ -407,10 +407,10 @@ fr_FR:
             <ol tyle=\u0022margin-top: 10px\u0022>
                 <li>
                     Inspecter 
-                    <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022></a>
+                    <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
                     le projet Laastras
                     </a>
-                    et s'assurer que les standards de l'ONU soient entièrment respectés.
+                    et s'assurer que les standards de l'ONU soient entièrement respectés.
                 </li>
                 <li>
                     Nous prodiguer un peu d'aide dans le marketing de contenu et d'affiliation avec pour objectif 
@@ -1102,7 +1102,8 @@ fr_FR:
                         Nous nous concentrerons sur le Marketing de Contenu de telle façon à avoir 
                         le plus de clients possible en peu de temps. Même les individus politiques seront 
                         engagés, y compris les Chefs d'Etats, les Premiers Ministres, les Parlementaires, les 
-                        Ministres (ou Chefs de Départements), pourvu qu'ils respectent notre politique de 
+                        Ministres (ou Chefs de Départements), Secrétaire Général de l'ONU,
+                        pourvu qu'ils respectent notre politique de 
                         neutralité, qui se concrétise en notre Organisation Non-Gouvernementale.
                     </div>
                 </li>
@@ -1150,4 +1151,33 @@ fr_FR:
   acknowledge_reception_message: "
     Salut. Nous accusons réception de votre demande d'emploi.
     Nous vous contacterons s'il y a du nouveau dans deux semaines.
+  "
+  selected_for_job_message: "
+    Salut. Nous avons le plaisir de vous informer que vous avez été sélectionné pour le poste.
+    Vous pouvez confirmer en répondant à ce mail aussi rapidement que possible. L'offre d'emploi
+    pour laquelle vous avez été sélectionné est: 
+  "
+  rejected_for_job_message: "
+    Salut. Nous sommes fiers du fait que vous nous avez choisi pour votre carrière. Nous avons
+    mis du notre dans cette sélection. Malheureusement, nous ne pourrons pas continuer avec 
+    vous. Continuez à consulter notre
+    <a href=\u0022/laastras_job_offers/index?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+        Page carrière
+    </a>
+    pour d'autres postes vacants pour lesquels vous pourriez avoir des qualifications.
+  "
+  invalid_job_seeker_title: "Chercheur d'Emploi Invalide"
+  invalid_job_seeker_message: "
+    Nous avons certainement affaire à un chercheur d'emploi fantôme. Il doit y avoir eu un problème
+    au moment de la demande d'emploi.
+  "
+  success_to_update_status_title: " Status Mis à Jour"
+  success_to_update_status_message: "
+    Nous avons mis à jour le status du chercheur d'emploi avec succès. Utiliser le bouton 'retour'
+    de votre dispositif pour retourner.
+  "
+  failure_to_update_status_title: "Echec de Mise à Jour du Status"
+  failure_to_update_status_message: "
+    Nous avons eu du mal à mettre à jour le status du chercheur d'emploi.
+    Veuillez consulter les fichiers d'archivage d'erreurs si vous êtes admin.
   "

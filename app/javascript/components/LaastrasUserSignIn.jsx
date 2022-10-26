@@ -59,11 +59,11 @@ class LaastrasUserSignIn extends React.Component
                             <div className="col-md-8" 
                                  id="reset-password-div"
                                  data-href={this.props.reset_password_url} 
-                                 style={{textDecoration: 'none', color: 'blue'}}
+                                 style={{textDecoration: 'none', color: 'blue', marginBottom: '10px'}}
                                  onClick={(se) => this.send_reset_request(se)}>
                                     {this.props.forgot_password_prompt}
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4" style={{marginBottom: '10px'}}>
                                 <a href={this.props.sign_up_url} style={{textDecoration: 'none'}}>
                                     {this.props.sign_up_label}
                                 </a>

@@ -313,7 +313,7 @@ en_US:
             </li>
         </ol>
   "
-  venture_capital_professional: "Venture capital professional and content marketer"
+  venture_capital_professional: "Venture Capital Professional and Content Marketer"
   venture_capital_professional_offer: "
         <div> 
             <div>
@@ -339,7 +339,7 @@ en_US:
             </ol>
         </div>
   "
-  ngo_chief_of_mission: "Chief of mission in an NGO"
+  ngo_chief_of_mission: "Chief of Mission in an NGO"
   ngo_chief_of_mission_job_offer: "
         <div>
             <div>
@@ -397,7 +397,7 @@ en_US:
         <div>
             <div>
                 Our major product will be 
-                <a href=\u0022/laastras/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
                     a cell phone
                 </a>
                 , named HoFi (Home Finances). It must abide by military 
@@ -826,7 +826,7 @@ en_US:
         want to invest
   "
   policy_making_expertise_details: "
-        Most people have comme to abhor politics but you and I know they are in a better position 
+        Most people have come to abhor politics but you and I know they are in a better position 
         to spearhead any revolution or change for the better. We have targetted and isolated 
         issues that should be the focus of policy making. We dug deep and found practical 
         ways to tackle these issues using mainstream technology. As we did, we became adepts 
@@ -1118,7 +1118,8 @@ en_US:
                     <div>
                         We have to focus on Content Marketing in such a way that we get as many clients as possible 
                         in little time. Even policy makers can be hired, including Heads of States, Prime Ministers,
-                        Members of Parliaments, Heads of Departments or Ministers, as long as they respect our 
+                        Members of Parliaments, Heads of Departments or Ministers, UN Secretary General, 
+                        as long as they respect our 
                         neutrality policy, which is concretized by our NGO legal container.
                     </div>
                 </li>
@@ -1164,4 +1165,29 @@ en_US:
   acknowledge_reception_message: "
     Hi. This is to acknowledge reception of the application for the job. 
     We will contact you with feedback within a fortnight.
+  "
+  selected_for_job_message: "
+    Hello. We are glad to inform you that you have been selected for the job. You can confirm by
+    responding to this e-mail, as quickly as possible. The job offer you have been selected for is: 
+  "
+  rejected_for_job_message: "
+    Hi. We're happy you chose us as your next stop for career. We have put so much effort in 
+    this selection. Unfortunately, we will not be moving forward with you on this one. 
+    Keep an eye on our 
+    <a href=\u0022/laastras_job_offers/index?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+        Career Page 
+    </a> 
+    for any other job opening you may be a fit for.
+  "
+  invalid_job_seeker_title: "Invalid Job Seeker"
+  invalid_job_seeker_message: "
+    We must be dealing with a ghost job seeker. Something must have gone wrong at job application time.
+  "
+  success_to_update_status_title: " Status Updated"
+  success_to_update_status_message: "
+    We have successfully updated the job seeker status. Use the back device button to return.
+  "
+  failure_to_update_status_title: "Status Update Failed"
+  failure_to_update_status_message: "
+    We could not update the job seeker status. Please check the logs if you are the admin.
   "

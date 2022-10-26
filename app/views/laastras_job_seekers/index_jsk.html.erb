@@ -4,6 +4,9 @@
 <% location_label = I18n.t 'location_label' %>
 <% cv_label = I18n.t 'cv_label' %>
 <% cover_letter_label = I18n.t 'cover_letter_label' %>
+<% status_label = I18n.t 'status_label' %>
+<% select_label = I18n.t 'select_label' %> 
+<% reject_label = I18n.t 'reject_label' %>
 <% capture_message = @job_offer.nil? ? (I18n.t 'all_applicants_label') : ((I18n.t 'applicants_for_label') + ': ' + @job_offer.title) %>
 
 <div class="container-fluid">
@@ -30,6 +33,34 @@
 
 <% @laastras_jskers.each do |laastras_jsker| %>
     <% laastras_user = User.find(laastras_jsker.user_id) %>
+    <% status = (
+        (
+            laastras_jsker.status.nil? || laastras_jsker.status.blank? ? 
+            nil : 
+            (I18n.t laastras_jsker.status)
+        ) || 
+        (I18n.t :evaluating.to_s)
+    )%>
+    <% evaluated = status == (I18n.t :evaluating.to_s) ? false : true %>
+    <% evaluator = {
+        select_url: url_for(
+            controller: 'laastras_job_seekers', 
+            action: 'evaluate', 
+            id: laastras_jsker.id, 
+            status: :selected.to_s
+        ),
+        reject_url: url_for(
+            controller: 'laastras_job_seekers', 
+            action: 'evaluate', 
+            id: laastras_jsker.id, 
+            status: :rejected.to_s
+        ),
+        status: status,
+        status_label: status_label,
+        select_label: select_label,
+        reject_label: reject_label,
+        evaluated: evaluated
+    } %>
     <%= react_component('LaastrasJobSeekerShow', {
         profile_photo_url: url_for(
             controller: 'users', 
@@ -62,6 +93,7 @@
             type: 'cover_letter'
         ),
         cover_letter_label: cover_letter_label,
-        job_seeker_html_id: "#{job_seeker_id}-#{laastras_jsker.id.to_s}"
+        job_seeker_html_id: "#{job_seeker_id}-#{laastras_jsker.id.to_s}",
+        evaluator: evaluator
     })%>
 <% end %>

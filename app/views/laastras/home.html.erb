@@ -66,6 +66,10 @@
         function scale_video_teaser_item()
         {
             let width = $('.video-item-div').width();
+            if(width > 500)
+            {
+                width = 500;
+            }
             //console.log('video width: ' + width);
 
             let mwidth = $('.video-item-main').width();
@@ -79,7 +83,7 @@
         $(document).ready((e) => 
         {
             scale_video_teaser_item();
-            $(window).on('resize', (e) => {
+            $(window).on('resize', (ee) => {
                 scale_video_teaser_item();
             });
         });

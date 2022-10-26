@@ -2,7 +2,7 @@
 ## Release notes for version ... 
 
 * Added features: 
-        - Career page with four job openings: 
+        - Career page with 6 job openings: 
                 Project Manager Assistant, 
                 Venture Capital Professional and Content Marketer
                 Chief of Mission in an NGO 

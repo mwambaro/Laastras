@@ -5,7 +5,7 @@ class LaastrasJobOffersController < ApplicationController
         next_uri = nil
         begin 
             language = I18n.locale.to_s
-            sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}'"
+            sql_query = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' ORDER BY created_at"
             offers = LaastrasJobOffer.find_by_sql(sql_query)
         
             @all_job_offers = []
@@ -202,7 +202,7 @@ class LaastrasJobOffersController < ApplicationController
                     logger.debug message unless logger.nil?
                 end
 
-                session[:fail_safe_message] = I18n.t 'verify_email_before_job_application_title'
+                session[:fail_safe_title] = I18n.t 'verify_email_before_job_application_title'
                 session[:fail_safe_message] = I18n.t 'verify_email_before_job_application_message'
                 next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             else
@@ -339,7 +339,44 @@ class LaastrasJobOffersController < ApplicationController
             id = params[:id]
             offer = LaastrasJobOffer.find(id)
             unless offer.nil?
-                offer.destroy!
+                failed = false
+                I18n.available_locales.each do |locale|
+                    sha256 = offer.sha256
+                    sql = "SELECT * FROM laastras_job_offers WHERE language = '#{locale.to_s}' AND sha256 = '#{sha256}'"
+                    offers = LaastrasJobOffer.find_by_sql(sql)
+                    offers.each do |off|
+                        job_offer_id = off.id
+                        ret = off.destroy!
+                        unless ret
+                            ApplicationHelper.log_model_errors(off, logger)
+                            failed = true
+                        end
+                        # Invalidate job seekers
+                        sql = "SELECT * FROM laastras_job_seekers WHERE job_offer_id = '#{job_offer_id}'"
+                        job_seekers = LaastrasJobSeeker.find_by_sql(sql)
+                        job_seekers.each do |job_seeker|
+                            cv_uri = job_seeker.cv_uri
+                            cover_letter_uri = job_seeker.cover_letter_uri
+                            job_seeker.destroy!
+                            # Clean up cv file
+                            unless (
+                                cv_uri.nil? || cv_uri.blank?
+                            )
+                                if File.exists? cv_uri
+                                    File.delete(cv_uri) 
+                                end
+                            end
+                            # Clean up cover letter file
+                            unless (
+                                cover_letter_uri.nil? || cover_letter_uri.blank?
+                            )
+                                if File.exists? cover_letter_uri
+                                    File.delete(cover_letter_uri) 
+                                end
+                            end
+                        end
+                    end
+                end
                 session[:fail_safe_title] = I18n.t 'job_offer_successful_destruction'
                 session[:fail_safe_message] = I18n.t 'job_offer_successful_destruction_message'
             else 
@@ -364,7 +401,7 @@ class LaastrasJobOffersController < ApplicationController
         next_uri = nil 
         begin
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
-            ApplicationHelper.set_locale_from_request(request, logger)
+            ApplicationHelper.set_locale_from_request(request, logger, session)
             @site_title = "Laastras | #{params[:action]}"
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(
                 request

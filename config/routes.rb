@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'laastras_job_seekers/show_jsk_doc'
   get 'laastras_job_seekers/show_jsk'
   get 'laastras_job_seekers/index_jsk'
+  get 'laastras_job_seekers/evaluate'
   get 'laastras_job_offers/index'
   get 'laastras_job_offers/show'
   get 'laastras_job_offers/apply'

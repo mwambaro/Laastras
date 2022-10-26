@@ -13,8 +13,23 @@ class LaastrasJobSeekersController < ApplicationController
                 @laastras_jskers = []
                 LaastrasJobSeeker.all.each do |jsker| 
                     logger.debug "---> #{jsker.job_offer_id} ??== #{@job_offer.id}"
+                    found = false
                     if jsker.job_offer_id == @job_offer.id
                         @laastras_jskers << jsker 
+                        found = true
+                    end
+                    # is there any in a different locale ?
+                    unless found
+                        sha256 = @job_offer.sha256 
+                        I18n.available_locales.each do |locale|
+                            job_offer = LaastrasJobOffer.find_by_sha256_and_language(sha256, locale.to_s)
+                            unless job_offer.nil?
+                                logger.debug "---> #{jsker.job_offer_id} ??== #{job_offer.id}"
+                                if jsker.job_offer_id == job_offer.id
+                                    @laastras_jskers << jsker 
+                                end
+                            end
+                        end
                     end
                 end
             else
@@ -44,17 +59,41 @@ class LaastrasJobSeekersController < ApplicationController
         begin 
             @laastras_user = ApplicationHelper.who_is_logged_in?(session)
 
-            if @laastras_user
-                sql_query = "SELECT * FROM laastras_job_seekers WHERE user_id = '#{@laastras_user.id}'"
-                @laastras_jsker = LaastrasJobSeeker.find_by_sql(sql_query).first
-                unless @laastras_jsker
-                    logger.debug 'Failed to find job seeker with user id: ' + @laastras_user.id
-                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
-                end
-            else
+            if @laastras_user.nil?
                 next_uri = url_for(
                     controller: 'laastras', action: 'sign_in'
                 )
+            else
+                sql_query = "SELECT * FROM laastras_job_seekers WHERE user_id = '#{@laastras_user.id}'"
+                @laastras_jsker = LaastrasJobSeeker.find_by_sql(sql_query)
+                if @laastras_jsker.nil?
+                    logger.debug 'Failed to find job seeker with user id: ' + @laastras_user.id
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                else 
+                    stts = @laastras_jsker.status.nil? || @laastras_jsker.status.blank? ?
+                            nil :
+                            (I18n.t @laastras_jsker.status)
+                    status = stts || (I18n.t :evaluating.to_s)
+                    evaluated = status == (I18n.t :evaluating.to_s) ? false : true
+                    @evaluator = {
+                        select_url: url_for(
+                            controller: 'laastras_job_seekers', 
+                            action: 'evaluate', 
+                            id: @laastras_jsker.id, 
+                            status: :selected.to_s
+                        ),
+                        reject_url: url_for(
+                            controller: 'laastras_job_seekers', 
+                            action: 'evaluate', 
+                            id: @laastras_jsker.id, 
+                            status: :rejected.to_s
+                        ),
+                        status: status,
+                        status_label: (I18n.t 'status_label'),
+                        select_label: (I18n.t 'select_label'),
+                        reject_label: (I18n.t 'reject_label')
+                    }
+                end
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -231,7 +270,8 @@ class LaastrasJobSeekersController < ApplicationController
                                 cv_mime_type: cv_mime_type,
                                 cv_uri: cv_full_path,
                                 cover_letter_mime_type: cover_letter_mime_type,
-                                cover_letter_uri: cover_letter_full_path
+                                cover_letter_uri: cover_letter_full_path,
+                                status: :evaluating.to_s
                             }
 
                             jsk = LaastrasJobSeeker.new(permitted_params)
@@ -296,11 +336,75 @@ class LaastrasJobSeekersController < ApplicationController
 
     end # store_form
 
+    def evaluate 
+        next_uri = nil 
+        begin 
+            id = params[:id]
+            status = params[:status] 
+            @job_seeker = LaastrasJobSeeker.find(id)
+            if @job_seeker.nil?
+                session[:fail_safe_title] = I18n.t 'invalid_job_seeker_title'
+                session[:fail_safe_message] = I18n.t 'invalid_job_seeker_message'
+                next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+            else 
+                if @job_seeker.update({status: status.to_s})
+                    user = User.find(@job_seeker.user_id)
+                    if status == :selected.to_s 
+                        val = @users_helper_factory.send_selected_for_job_offer_email(user, @job_seeker)
+                        if val 
+                            mssg = 'Selected for job email successfully sent.'
+                            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                        __method__.to_s + "--- " + mssg
+                            logger.debug message unless logger.nil?
+                        else 
+                            mssg = 'We failed to send selected for job email to user'
+                            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                        __method__.to_s + "--- " + mssg
+                            logger.debug message unless logger.nil?
+                        end
+                    elsif status == :rejected.to_s 
+                        val = @users_helper_factory.send_rejected_for_job_offer_email(user, @job_seeker)
+                        if val 
+                            mssg = 'Rejected for job email successfully sent.'
+                            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                        __method__.to_s + "--- " + mssg
+                            logger.debug message unless logger.nil?
+                        else 
+                            mssg = 'We failed to send rejected for job email to user'
+                            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                        __method__.to_s + "--- " + mssg
+                            logger.debug message unless logger.nil?
+                        end
+                    end
+
+                    session[:fail_safe_title] = I18n.t 'success_to_update_status_title'
+                    session[:fail_safe_message] = I18n.t 'success_to_update_status_message'
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                else 
+                    ApplicationHelper.log_model_errors @job_seeker, logger 
+                    session[:fail_safe_title] = I18n.t 'failure_to_update_status_title'
+                    session[:fail_safe_message] = I18n.t 'failure_to_update_status_message'
+                    next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+                end
+            end
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # evaluate
+
     def init_parameters 
         next_uri = nil 
         begin
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
-            ApplicationHelper.set_locale_from_request(request, logger)
+            ApplicationHelper.set_locale_from_request(request, logger, session)
             @site_title = "Laastras | #{params[:action]}"
             @users_helper_factory = UsersHelper::UsersHelperFactory.new(request, logger, session)
             @laastras_banner_image = ApplicationHelper.banner_image_asset_url(

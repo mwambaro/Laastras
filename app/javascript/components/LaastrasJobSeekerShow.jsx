@@ -17,15 +17,23 @@ class LaastrasJobSeekerShow extends React.Component
                     <div className="col-md-8"> 
                         <div className="shadow-sm p-3 mb-5 bg-body rounded" id={this.props.job_seeker_html_id}>
                             <div className="justify-content-center">
-                                <img src={this.props.profile_photo_url} 
-                                    className="img-fluid"
-                                    style={{
-                                        height: '100px',
-                                        width: '100px',
-                                        borderRadius: '50%',
-                                        display: 'inline-block'
-                                    }}
-                                />
+                                <div style={{padding: '10px'}}>
+                                    <img src={this.props.profile_photo_url} 
+                                        className="img-fluid"
+                                        style={{
+                                            height: '100px',
+                                            width: '100px',
+                                            borderRadius: '50%',
+                                            display: 'inline-block'
+                                        }}
+                                    />
+                                </div>
+                                <div style={{padding: '10px'}}>
+                                    <strong>{this.props.evaluator.status_label}:</strong>
+                                    <span style={{color: 'green', fontWeight: 'bold'}}>
+                                        {` ${this.props.evaluator.status}`}
+                                    </span>
+                                </div>
                             </div>
                             <hr/>
                             <div>
@@ -69,6 +77,26 @@ class LaastrasJobSeekerShow extends React.Component
                                     </a>
                                 </div>
                             </div>
+                            {
+                                this.props.evaluator.evaluated === false ?
+                                (
+                                    <div className="d-flex flex-row justify-content-center" id="evaluator-btn-div">
+                                        <button type="button" 
+                                                className="btn btn-primary" 
+                                                style={{margin: '10px'}}
+                                                onClick={(se) => this.select_job_seeker(se)}>
+                                            {this.props.evaluator.select_label}
+                                        </button>
+                                        <button type="button" 
+                                                className="btn btn-primary" 
+                                                style={{margin: '10px'}}
+                                                onClick={(se) => this.reject_job_seeker(se)}>
+                                            {this.props.evaluator.reject_label}
+                                        </button>
+                                    </div>
+                                ): 
+                                (<div></div>)
+                            }
                         </div>
                     </div>
                 </div>
@@ -76,6 +104,21 @@ class LaastrasJobSeekerShow extends React.Component
         );
 
     } // render
+
+    componentDidMount()
+    {} // componentDidMount
+
+    select_job_seeker(e)
+    { 
+        window.location = this.props.evaluator.select_url;
+
+    } // select_job_seeker 
+
+    reject_job_seeker(e)
+    {
+        window.location = this.props.evaluator.reject_url;
+
+    } // reject_job_seeker
 
 }
 
@@ -93,7 +136,8 @@ LaastrasJobSeekerShow.propTypes = {
     cv_label: PropTypes.string,
     cover_letter_url: PropTypes.string,
     cover_letter_label: PropTypes.string,
-    job_seeker_html_id: PropTypes.string
+    job_seeker_html_id: PropTypes.string,
+    evaluator: PropTypes.object
 }
 
 export default LaastrasJobSeekerShow;

@@ -732,7 +732,7 @@ class UsersController < ApplicationController
         next_uri = nil 
         begin
             I18n.locale = session[:active_language].to_sym unless session[:active_language].nil?
-            ApplicationHelper.set_locale_from_request(request, logger)
+            ApplicationHelper.set_locale_from_request(request, logger, session)
             ApplicationHelper.harvest_analytics(session, request)
             @site_title = "Laastras | #{params[:action]}"
             @header_data = ApplicationHelper::SiteHeaderData.new(request, logger)

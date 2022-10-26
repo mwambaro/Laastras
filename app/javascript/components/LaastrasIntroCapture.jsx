@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+require("./MobileDevices");
+
 class LaastrasIntroCapture extends React.Component
 {
     constructor(props)
@@ -23,6 +25,14 @@ class LaastrasIntroCapture extends React.Component
             color: '#ededed', 
             padding: '3px'
         };
+        let ftd_job_style = {};
+        let device = $(window).isMobile();
+        if(device)
+        {
+            ftd_job_style = {
+                padding: '5px'
+            }
+        }
 
         let capture_text = "";
         this.props.laastras_sample_services.map((service, idx) => {
@@ -47,7 +57,7 @@ class LaastrasIntroCapture extends React.Component
                                 <ol>
                                     {
                                         this.props.featured_job_offers.map((job_offer, idx) => 
-                                            <li key={`job-offer-${idx}`}>
+                                            <li key={`job-offer-${idx}`} style={ftd_job_style}>
                                                 <a href={job_offer.show_url} style={{textDecoration: 'none'}}> 
                                                     {job_offer.title}
                                                 </a>

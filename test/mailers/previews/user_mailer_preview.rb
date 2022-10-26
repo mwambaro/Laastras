@@ -52,7 +52,46 @@ class UserMailerPreview < ActionMailer::Preview
 
     # Preview this email at http://localhost:3000/rails/mailers/user_mailer/selected_for_job
     def selected_for_job
-        UserMailer.selected_for_job
+        user = User.find_by_role(:admin.to_s)
+        unless user.nil?
+            job_seeker = LaastrasJobSeeker.find_by_user_id(user.id)
+            unless job_seeker.nil?
+                job_offer = LaastrasJobOffer.find(job_seeker.job_offer_id)
+                unless job_offer.nil?
+                    @selected_for_job_title = job_offer.title
+                    @selected_for_job_message = (I18n.t 'selected_for_job_message') + " " + @selected_for_job_title
+                    UserMailer.with(
+                        user: user,
+                        selected_for_job_title: @selected_for_job_title,
+                        selected_for_job_message: @selected_for_job_message,
+                        session: nil,
+                        request: nil
+                    ).selected_for_job.deliver_now
+                end
+            end
+        end
+    end
+
+    # Preview this email at http://localhost:3000/rails/mailers/user_mailer/rejected_for_job
+    def rejected_for_job
+        user = User.find_by_role(:admin.to_s)
+        unless user.nil?
+            job_seeker = LaastrasJobSeeker.find_by_user_id(user.id)
+            unless job_seeker.nil?
+                job_offer = LaastrasJobOffer.find(job_seeker.job_offer_id)
+                unless job_offer.nil?
+                    @rejected_for_job_title = job_offer.title
+                    @rejected_for_job_message = (I18n.t 'rejected_for_job_message')
+                    UserMailer.with(
+                        user: user,
+                        rejected_for_job_title: @rejected_for_job_title,
+                        rejected_for_job_message: @rejected_for_job_message,
+                        session: nil,
+                        request: nil
+                    ).rejected_for_job.deliver_now
+                end
+            end
+        end
     end
 
 end
