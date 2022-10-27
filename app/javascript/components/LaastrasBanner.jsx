@@ -12,7 +12,18 @@ class LaastrasBanner extends React.Component
     constructor(props)
     {
         super(props);
+        this.initial_banner_width = 0;
+        this.state = {
+            banner_width: 0,
+            banner_width_at_switch_time: 0
+        };
         this.event_name = 'pitch-message-event';
+        window.addEventListener('switch-banners', (e) => {
+            this.setState({
+                banner_width: e.data.banner_width,
+                banner_width_at_switch_time: e.data.banner_width_at_switch_time
+            });
+        })
 
     } // constructor 
 
@@ -22,11 +33,19 @@ class LaastrasBanner extends React.Component
 
         let elt = null;
         let device = $(window).isMobile();
-        if(device)
-        {
+        let width = $(window).width();
+        if(
+            device || 
+            (
+                width < this.state.banner_width && 
+                this.state.banner_width_at_switch_time < this.state.banner_width
+            )
+        ){
             elt = e(
                 'div',
-                {},
+                {
+                    id: 'laastras-banner'
+                },
                 e(
                     LaastrasBannerPitch, 
                     {
@@ -41,6 +60,7 @@ class LaastrasBanner extends React.Component
                     {
                         event_name: this.event_name,
                         fire_pitch_message_event: this.fire_pitch_message_event,
+                        switch_banners_event: this.switch_banners,
                         laastras_banner_image: this.props.laastras_banner_image,
                     }
                 )
@@ -50,7 +70,9 @@ class LaastrasBanner extends React.Component
         {
             elt = e(
                 'div',
-                {},
+                {
+                    id: 'laastras-banner'
+                },
                 e(
                     LaastrasBannerPitch, 
                     {
@@ -65,6 +87,7 @@ class LaastrasBanner extends React.Component
                     {
                         event_name: this.event_name,
                         fire_pitch_message_event: this.fire_pitch_message_event,
+                        switch_banners_event: this.switch_banners,
                         laastras_logo_url: this.props.laastras_logo_url,
                         e_grocery_logo_url: this.props.e_grocery_logo_url,
                         e_card_logo_url: this.props.e_card_logo_url,
@@ -83,6 +106,9 @@ class LaastrasBanner extends React.Component
         return elt;
 
     } // render
+
+    componentDidMount()
+    {} // componentDidMount
 
     fire_pitch_message_event(event_name, banner_container_id)
     {
@@ -104,6 +130,26 @@ class LaastrasBanner extends React.Component
         }
 
     } // fire_pitch_message_event
+
+    switch_banners(ids)
+    {
+        let width = $(window).width();
+        let brands_width = 0;
+        ids.map((id) => {
+            brands_width += $(`#${id}`).width(); 
+        });
+
+        if(brands_width>width) // switch to banner_image from banner_html 
+        {
+            $(window).fire_event(
+                'switch-banners', 'laastras-banner', {
+                    banner_width: brands_width,
+                    banner_width_at_switch_time: width
+                }
+            );
+        }
+
+    } // switch_banners
 
 }
 

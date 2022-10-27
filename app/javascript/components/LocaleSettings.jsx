@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import {Modal} from "bootstrap"
 import WaitSpinner from "./WaitSpinner.js"
 
+require("./AppUtilities")
+
 class LocaleSettings extends React.Component
 {
     constructor(props)
@@ -389,8 +391,6 @@ class LocaleSettings extends React.Component
                             (data, status, xq) => {
                                 try
                                 {
-                                    this.wait_spinner.hide_wait_spinner();
-                                    
                                     let code = parseInt(data.code);
                                     let message = data.message;
                                     let html = "";

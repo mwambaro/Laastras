@@ -14,7 +14,7 @@ class LaastrasBannerHtml extends React.Component
         return(
             <div className="container-fluid" id="banner-container-id">
                 <div id="outer" className="row" style={{fontFamily: 'Times New Roman'}}>
-                    <div className="col-sm-2 d-flex flex-column align-items-center justify-content-center" >
+                    <div className="col-sm-2 d-flex flex-column align-items-center justify-content-center" id="laastras-logo" >
                         <img src={this.props.laastras_logo_url} className="img-fluid" />
                     </div>
                     <div id="from" className="col-sm-3 d-flex flex-column align-items-center justify-content-center" style={{fontSize: '18px', fontWeight: 'bold', color: 'rgb(192,0,0)'}}>
@@ -23,7 +23,7 @@ class LaastrasBannerHtml extends React.Component
                             <div className="text-center"> {this.props.democracy} </div>
                         </div>
                     </div>
-                    <div className="col-sm-2" style={{backgroundColor: 'black'}}>
+                    <div className="col-sm-2" style={{backgroundColor: 'black'}} id="main-brands">
                         <div className="row">
                             <img src={this.props.e_grocery_logo_url}
                                  className="img-fluid col-sm-6 justify-content-start" />
@@ -44,7 +44,7 @@ class LaastrasBannerHtml extends React.Component
                         <div className="text-center"> {this.props.to} </div>
                         <div className="text-center"> {this.props.homocracy} </div>
                     </div>
-                    <div className="col-sm-2 d-flex flex-column align-items-center justify-content-center">
+                    <div className="col-sm-2 d-flex flex-column align-items-center justify-content-center" id="homocracy-logo">
                         <img src={this.props.e_homocracy_logo_url} className="img-fluid" />
                     </div>
                 </div>
@@ -67,6 +67,16 @@ class LaastrasBannerHtml extends React.Component
             e.target.style.cursor = 'pointer';
         });
 
+        window.addEventListener('resize', (e) => {
+            this.props.switch_banners_event([
+                'laastras-logo',
+                'from',
+                'main-brands',
+                'to',
+                'homocracy-logo'
+            ]);
+        });
+
     } // componentDidMount
 
 }
@@ -74,6 +84,7 @@ class LaastrasBannerHtml extends React.Component
 LaastrasBannerHtml.propTypes = {
     event_name: PropTypes.string,
     fire_pitch_message_event: PropTypes.func, // callback
+    switch_banners_event: PropTypes.func, // callback
     laastras_logo_url: PropTypes.string,
     e_grocery_logo_url: PropTypes.string,
     e_card_logo_url: PropTypes.string,

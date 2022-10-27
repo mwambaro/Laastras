@@ -15,7 +15,7 @@ class LaastrasBannerImage extends React.Component
         return(
             <div className="container-fluid" style={{backgroundColor: 'white'}} id="banner-container">
                 <div className="text-center">
-                    <img src={this.props.laastras_banner_image} className="img-fluid banner-image" />
+                    <img src={this.props.laastras_banner_image} className="img-fluid banner-image" id="banner-image-img"/>
                 </div>
                 <hr style={{fontWeight: 'bold', color: 'rgb(192,0,0)', margin: '1px', height: '5px'}} />
             </div>
@@ -36,6 +36,12 @@ class LaastrasBannerImage extends React.Component
             e.target.style.cursor = 'pointer';
         });
 
+        window.addEventListener('resize', (e) => {
+            this.props.switch_banners_event([
+                'banner-image-img'
+            ]);
+        });
+
     } // componentDidMount
 
 }
@@ -43,6 +49,7 @@ class LaastrasBannerImage extends React.Component
 LaastrasBannerImage.propTypes = {
     event_name: PropTypes.string,
     fire_pitch_message_event: PropTypes.func, // callback
+    switch_banners_event: PropTypes.func, // callback
     laastras_banner_image: PropTypes.string
 };
 
