@@ -236,9 +236,9 @@ fr_FR:
             Laastras est basé sur le principe de 'l'Internet de <u>nos</u> Trucs' (IdnT) et délivre des services qui,
             à long terme, nous feront atteindre l'objectif Marsexh. Pour plus d'information sur la philosophie 
             Marsexh, veuillez supporter le projet en achetant
-            <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022> 
+            <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022 style=\u0022text-decoration: none\u0022> 
             le livre </a> derrière le projet Laastras, dont l'auteur est
-            <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
+            <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022> 
             Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
         </p>
   "
@@ -371,7 +371,7 @@ fr_FR:
                 <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
                 un cellulaire
                 </a>
-                , appellé “HoFi (Home Finances”. Il doit respecter 
+                , appellé “HoFi (Home Finances)”. Il doit respecter 
                 des standards grade-militaire de calcul, de stockage, et de communication. HoFi et les serveurs “AGAS”
                 doivent tous les deux être interopérables. On aura aussi, sans doute, affaire aux standards de 
                 télécommunication existants et on les gèrera avec égard au “big data”. Alors, on a besoin d'une 
@@ -440,7 +440,7 @@ fr_FR:
             </div>
             <div>
                 <strong>E-mail:</strong> 
-                <a href=\u0022mailto:onkezabahizi@gmail.com\u0022
+                <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&to_email=onkezabahizi%40gmail.com\u0022
                    style=\u0022text-decoration: none\u0022>onkezabahizi@gmail.com</a>
             </div>
             <div>
@@ -760,7 +760,9 @@ fr_FR:
             <div>
                 Vous devriez communiquer à la fondation l'information nécéssaire (MTCN et Montant à recevoir)
                 pour le ‘cash pick-up’. Veuillez utiliser 
-                <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> mon e-mail </a>.
+                <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&to_email=onkezabahizi%40gmail.com&subject=MTCN-Et-Montant-à-Recevoir\u0022 style=\u0022text-decoration: none\u0022> 
+                l'e-mail de la fondation 
+                </a>.
             </div>
         </div>
   "
@@ -1000,8 +1002,10 @@ fr_FR:
   beyond_max_number_of_users_title: "Nombre d'Utilisateurs Dépassé"
   beyond_max_number_of_users_message: "
     Désolé nous avons dépasser la capacité de notre base de données. Veuillez 
-    <a href=\u0022mailto:onkezabahizi@gmail.com\u0022>nous envoyer un email</a>! 
-    Nous serons ravis de nous aoccuper de vos besoins.
+    <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&to_email=onkezabahizi%40gmail.com&subject=Veuillez-me-faire-inscrire\u0022 style=\u0022text-decoration: none\u0022>
+    nous envoyer un email
+    </a>! 
+    Nous serons ravis de nous occuper de vos besoins.
   "
   beyond_max_job_seeker_doc_size_message: "
     Le document donné dépasse la taille maximum acceptée (2MB) par notre système. Veuillez réduire son contenu.
@@ -1014,8 +1018,8 @@ fr_FR:
                 <li><strong>Date de naissance:</strong> 26 Janvier 1987 </li>
                 <li><strong>Adresse:</strong> 31, avenue 20, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
-                <li><strong>E-mail:</strong> <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> onkezabahizi@gmail.com </a> </li>
-                <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022> Profil LinkedIn </a> </li>
+                <li><strong>E-mail:</strong> <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022> onkezabahizi@gmail.com </a> </li>
+                <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022 style=\u0022text-decoration: none\u0022> Profil LinkedIn </a> </li>
             </ul>
         </div>
   "
@@ -1180,4 +1184,27 @@ fr_FR:
   failure_to_update_status_message: "
     Nous avons eu du mal à mettre à jour le status du chercheur d'emploi.
     Veuillez consulter les fichiers d'archivage d'erreurs si vous êtes admin.
+  "
+  sample_send_mail_subject: "Envoyer un Mail à Titre d'Exemple"
+  sample_send_mail_message: "
+    Nous vous envoyons ce mail pour demander d'ample information sur le projet Laastras.
+    Comment est-ce que ma compagnie peut bénéficier d'un partenariat avec l'organisation Laastras?
+  "
+  send_mail_box_component_missing: "
+    Un des composants du mail a été omis. C'est l'un des composants suivants:
+    VotreEmail, Objet, ou Message.
+  "
+  send_mail_box_success: "
+    Parfait. Nous avons pu envoyer votre message de réaction. S'il y a un service, du soutien, ou
+    une reponse quelconque, nous vous répondrons dès que possible. En attendant, veuillez lire un peu 
+    <a href=\u0022/laastras/about?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+        Notre Mot de Mission
+    </a>.
+  "
+  hire_us_capture: "
+    Vous pouvez 
+    <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&subject=Nous-Engageons-Laastras\u0022 style=\u0022text-decoration: none\u0022> 
+    nous engager 
+    </a> 
+    dans les domaines d'expertise suivants
   "

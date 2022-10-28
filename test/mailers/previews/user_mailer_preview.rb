@@ -94,4 +94,16 @@ class UserMailerPreview < ActionMailer::Preview
         end
     end
 
+    # Preview this email at http://localhost:3000/rails/mailers/user_mailer/send_mail
+    def send_mail 
+        UserMailer.with(
+            to: 'obed-edom@laastras.org',
+            from: 'onkezabahizi@gmail.com',
+            subject: (I18n.t 'sample_send_mail_subject'),
+            message: (I18n.t 'sample_send_mail_message'),
+            session: nil,
+            request: nil
+        ).send_mail.deliver_now
+    end 
+
 end

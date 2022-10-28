@@ -15,7 +15,7 @@ class LaastrasVideoShow extends React.Component
 
         return(
             <div className="container-fluid">
-                <div className="justify-content-center">
+                <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="shadow-sm p-1 mb-2 bg-white rounded">
                             <div className="text-center" style={{padding: '2px', fontWeight: 'bold', color: 'blue'}}>

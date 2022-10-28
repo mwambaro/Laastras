@@ -192,5 +192,34 @@ module UsersHelper
 
         end # send_selected_for_job_offer_email
 
+        def send_mail(mailer)
+            ret_val = true 
+            begin 
+                mailer = UserMailer.with(
+                    to: mailer[:to],
+                    from: mailer[:from],
+                    subject: mailer[:subject],
+                    message: mailer[:message],
+                    # set them to nil due to: ActiveJob::SerializationError (Unsupported argument type)
+                    session: nil,
+                    request: nil
+                ).send_mail
+
+                if Rails.env.match?(/\Aproduction\Z/i)
+                    mailer.deliver_now
+                else 
+                    mailer.deliver_later
+                end
+            rescue Exception => e 
+                message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                logger.debug message unless logger.nil?
+                ret_val = false
+            end
+    
+            ret_val
+
+        end # send_mail
+
     end
 end

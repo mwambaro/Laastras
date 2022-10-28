@@ -109,6 +109,24 @@ class UserMailer < ApplicationMailer
 
     end # rejected_for_job
 
+    # Subject can be set in your I18n file at config/locales/en.yml
+    # with the following lookup:
+    #
+    #   en.user_mailer.send_mail.subject
+    #
+    def send_mail
+        begin 
+            @message = params[:message]
+
+            mail to: params[:to], from: params[:from], subject: params[:subject]
+        rescue Exception => e 
+            message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            @logger.debug message unless @logger.nil?
+        end
+
+    end # send_mail
+
     def init_parameters 
         begin 
             session = params[:session] if session.nil?

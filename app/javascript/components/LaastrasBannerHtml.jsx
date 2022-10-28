@@ -67,17 +67,25 @@ class LaastrasBannerHtml extends React.Component
             e.target.style.cursor = 'pointer';
         });
 
+        this.switch_banners();
+
         window.addEventListener('resize', (e) => {
-            this.props.switch_banners_event([
-                'laastras-logo',
-                'from',
-                'main-brands',
-                'to',
-                'homocracy-logo'
-            ]);
+            this.switch_banners();
         });
 
     } // componentDidMount
+
+    switch_banners()
+    {
+        this.props.switch_banners_event([
+            'laastras-logo',
+            'from',
+            'main-brands',
+            'to',
+            'homocracy-logo'
+        ], 'laastras-banner-html');
+
+    } // switch_banners
 
 }
 

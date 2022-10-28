@@ -39,7 +39,7 @@ class LaastrasBannerImage extends React.Component
         window.addEventListener('resize', (e) => {
             this.props.switch_banners_event([
                 'banner-image-img'
-            ]);
+            ], 'laastras-banner-image');
         });
 
     } // componentDidMount

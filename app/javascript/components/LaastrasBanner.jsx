@@ -6,24 +6,18 @@ import LaastrasBannerHtm from "./LaastrasBannerHtml"
 
 
 require("./MobileDevices");
+require("./AppUtilities");
 
 class LaastrasBanner extends React.Component 
 {
     constructor(props)
     {
         super(props);
-        this.initial_banner_width = 0;
         this.state = {
-            banner_width: 0,
-            banner_width_at_switch_time: 0
+            banner_width: 0
         };
         this.event_name = 'pitch-message-event';
-        window.addEventListener('switch-banners', (e) => {
-            this.setState({
-                banner_width: e.data.banner_width,
-                banner_width_at_switch_time: e.data.banner_width_at_switch_time
-            });
-        })
+        this.device = false;
 
     } // constructor 
 
@@ -32,122 +26,141 @@ class LaastrasBanner extends React.Component
         let e = React.createElement;
 
         let elt = null;
-        let device = $(window).isMobile();
+        this.device = $(window).isMobile();
         let width = $(window).width();
+        let display_style_sm = {
+            display: 'block'
+        };
+        let display_style_md = {
+            display: 'block'
+        };
+
         if(
-            device || 
+            this.device || 
             (
-                width < this.state.banner_width && 
-                this.state.banner_width_at_switch_time < this.state.banner_width
+                width < this.state.banner_width
             )
         ){
-            elt = e(
-                'div',
-                {
-                    id: 'laastras-banner'
-                },
-                e(
-                    LaastrasBannerPitch, 
-                    {
-                        laastras_banner_pitch_message_event: this.event_name,
-                        laastras_banner_pitch_message: this.props.laastras_banner_pitch_message,
-                        home_url: this.props.home_url,
-                        home_label: this.props.home_label
-                    }
-                ),
-                e(
-                    LaastrasBannerImg, 
-                    {
-                        event_name: this.event_name,
-                        fire_pitch_message_event: this.fire_pitch_message_event,
-                        switch_banners_event: this.switch_banners,
-                        laastras_banner_image: this.props.laastras_banner_image,
-                    }
-                )
-            );
+            display_style_sm = {
+                display: 'block', 
+                margin: '0',
+                padding: '0'
+            };
+            display_style_md = {display: 'none'};
         }
         else 
         {
-            elt = e(
-                'div',
-                {
-                    id: 'laastras-banner'
-                },
-                e(
-                    LaastrasBannerPitch, 
-                    {
-                        laastras_banner_pitch_message_event: this.event_name,
-                        laastras_banner_pitch_message: this.props.laastras_banner_pitch_message,
-                        home_url: this.props.home_url,
-                        home_label: this.props.home_label
-                    }
-                ),
-                e(
-                    LaastrasBannerHtm, 
-                    {
-                        event_name: this.event_name,
-                        fire_pitch_message_event: this.fire_pitch_message_event,
-                        switch_banners_event: this.switch_banners,
-                        laastras_logo_url: this.props.laastras_logo_url,
-                        e_grocery_logo_url: this.props.e_grocery_logo_url,
-                        e_card_logo_url: this.props.e_card_logo_url,
-                        e_logistics_logo_url: this.props.e_logistics_logo_url,
-                        e_alliances_logo_url: this.props.e_alliances_logo_url,
-                        e_homocracy_logo_url: this.props.e_homocracy_logo_url,
-                        from: this.props.from,
-                        democracy: this.props.democracy,
-                        to: this.props.to,
-                        homocracy: this.props.homocracy
-                    }
-                )
-            );
+            display_style_md = {
+                display: 'block',
+                margin: '0',
+                padding: '0'
+            };
+            display_style_sm = {display: 'none'};
         }
 
-        return elt;
+        return(
+            <div className="container-fluid" id="banners-div" style={{margin: '0', padding: '0'}}>
+                <LaastrasBannerPitch
+                    laastras_banner_pitch_message_event={this.event_name}
+                    laastras_banner_pitch_message={this.props.laastras_banner_pitch_message}
+                    home_url={this.props.home_url}
+                    home_label={this.props.home_label} />
+                <div id="laastras-banner-html" style={display_style_md}>
+                    <LaastrasBannerHtm
+                        event_name={this.event_name}
+                        fire_pitch_message_event={this.fire_pitch_message_event}
+                        switch_banners_event={this.switch_banners}
+                        laastras_logo_url={this.props.laastras_logo_url}
+                        e_grocery_logo_url={this.props.e_grocery_logo_url}
+                        e_card_logo_url={this.props.e_card_logo_url}
+                        e_logistics_logo_url={this.props.e_logistics_logo_url}
+                        e_alliances_logo_url={this.props.e_alliances_logo_url}
+                        e_homocracy_logo_url={this.props.e_homocracy_logo_url}
+                        from={this.props.from}
+                        democracy={this.props.democracy}
+                        to={this.props.to}
+                        homocracy={this.props.homocracy} />
+                </div>
+                <div id="laastras-banner-image" style={display_style_sm}>
+                    <LaastrasBannerImg
+                        event_name={this.event_name}
+                        fire_pitch_message_event={this.fire_pitch_message_event}
+                        switch_banners_event={this.switch_banners}
+                        laastras_banner_image={this.props.laastras_banner_image} />
+                </div>
+            </div>
+        );
 
     } // render
 
     componentDidMount()
-    {} // componentDidMount
+    {
+        document.getElementById('banners-div').addEventListener('switch-banners', (e) => {
+            this.adjust_banners(e.data.banner_width);
+        })
+    } // componentDidMount
+
+    adjust_banners(brands_width)
+    {
+        if(this.device)
+        {
+            return;
+        }
+
+        let banner_image = document.getElementById('laastras-banner-image');
+        let banner_html = document.getElementById('laastras-banner-html');
+        let width = $(window).width();
+
+        if(brands_width>width) //switch to banner_image from banner_html 
+        {
+            if(banner_image)
+            {
+                banner_image.style.display = 'block';
+            }
+            if(banner_html)
+            {
+                banner_html.style.display = 'none';
+            }
+        }
+        else 
+        {
+            if(banner_image)
+            {
+                banner_image.style.display = 'none';
+            }
+            if(banner_html)
+            {
+                banner_html.style.display = 'block';
+            }
+        }
+
+    } // adjust_banners
 
     fire_pitch_message_event(event_name, banner_container_id)
     {
-        let event = new Event(
-            event_name,
-            {
-                bubbles: true,
-                cancelable: false,
-                composed: true
-            }
+        $(window).fire_event(
+            event_name, banner_container_id, null
         );
-
-        event.data = null;
-
-        let elt = document.getElementById(banner_container_id);
-        if(elt)
-        {
-            elt.dispatchEvent(event);
-        }
 
     } // fire_pitch_message_event
 
-    switch_banners(ids)
+    switch_banners(ids, ev_id)
     {
-        let width = $(window).width();
+        if(ev_id === 'laastras-banner-image')
+        {
+            return;
+        }
+
         let brands_width = 0;
         ids.map((id) => {
             brands_width += $(`#${id}`).width(); 
         });
 
-        if(brands_width>width) // switch to banner_image from banner_html 
-        {
-            $(window).fire_event(
-                'switch-banners', 'laastras-banner', {
-                    banner_width: brands_width,
-                    banner_width_at_switch_time: width
-                }
-            );
-        }
+        $(window).fire_event(
+            'switch-banners', ev_id, {
+                banner_width: brands_width
+            }
+        );
 
     } // switch_banners
 

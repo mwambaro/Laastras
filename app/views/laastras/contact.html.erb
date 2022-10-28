@@ -1,5 +1,12 @@
 
 <%= react_component('LaastrasContactInformation', {
     contact_information_title: (I18n.t 'laastras_foundation_contact_information_title'),
-    contact_information_text: (I18n.t 'laastras_foundation_contact_information_text')
+    contact_information_text: (I18n.t 'laastras_foundation_contact_information_text'),
+    feedback: {
+        feedback_prompt: (I18n.t 'feedback_prompt'),
+        feedback_endpoint: url_for(
+            controller: 'user_mail_boxes',
+            action: 'send_mail_box'
+        )
+    }
 }) %>

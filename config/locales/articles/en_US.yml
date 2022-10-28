@@ -209,11 +209,11 @@ en_US:
                     money tansfer forms, and any necessary forms needed to fullfil our site functionalities.
                 </li>
                 <li>
-                    Our site use cookies to improve user experience. You must have agreed to both our Cookies Policy
+                    Our site uses cookies to improve user experience. You must have agreed to both our Cookies Policy
                     and our Privacy Policy at the base of our home page.
                 </li>
                 <li>
-                    When you register to our site, the information given can be used for log in so that you can
+                    When you register to our site, the information given can be used for log-in so that you can
                     access more features of our Website.
                 </li>
                 <li>
@@ -267,10 +267,10 @@ en_US:
             Laastras is built on the principle of 'Internet of <u> our </u> Things' (IooT) and delivers services 
             that will, in the long run, fulfil the Morshux vision. For details on the Morshux 
             philosophy, please, support the project by buying 
-            <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022> 
+            <a href=\u0022https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service\u0022 style=\u0022text-decoration: none\u0022> 
             the book </a> behind Laastras project,
             written by Laastras Founder and CEO, 
-            <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> 
+            <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022> 
             Obed-Edom Nkezabahizi </a>.
         </p>
   "
@@ -400,7 +400,7 @@ en_US:
                 <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
                     a cell phone
                 </a>
-                , named HoFi (Home Finances). It must abide by military 
+                , named “HoFi (Home Finances)”. It must abide by military 
                 grade standards of computation, storage, and communication. Both HoFi and AGAS servers must be interoperable.
                 We will definitely need to leverage existing telecommunication standards, as well, with 
                 big data in mind. Hence, we need a <strong> Standards or Specifications Maker </strong> who:
@@ -467,7 +467,7 @@ en_US:
             </div>
             <div>
                 <strong>E-mail:</strong> 
-                <a href=\u0022mailto:onkezabahizi@gmail.com\u0022
+                <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com\u0022
                    style=\u0022text-decoration: none\u0022>onkezabahizi@gmail.com</a>
             </div>
             <div>
@@ -786,7 +786,7 @@ en_US:
             </ul>
             <div>
                 You should communicate to our institution the needed information (MTCN and Payout Amount) to do the cash 
-                pick-up. Use <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> his email </a>.
+                pick-up. Use <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com&subject=MTCN-And-Payout-Amount\u0022 style=\u0022text-decoration: none\u0022> the foundation email </a>.
             </div>
         </div>
   "
@@ -1019,7 +1019,7 @@ en_US:
   beyond_max_number_of_users_title: "Beyond Max Number of Users"
   beyond_max_number_of_users_message: "
     Sorry but we have gone beyond the capacity of our database. Please, do 
-    <a href=\u0022mailto:onkezabahizi@gmail.com\u0022>send us an email</a>! 
+    <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com&subject=Please-Sign-Us-Up\u0022 style=\u0022text-decoration: none\u0022>send us an email</a>! 
     We will be happy to get back to you and tend to your needs.
   "
   beyond_max_job_seeker_doc_size_message: "
@@ -1033,8 +1033,8 @@ en_US:
                 <li><strong>Birth date:</strong> January 26, 1987 </li>
                 <li><strong>Address:</strong> 31, 20 avenue, Bubanza, Kinama, Bujumbura-Mairie, Burundi </li>
                 <li><strong>Phone number:</strong> +257 76 177 186 </li>
-                <li><strong>E-mail:</strong> <a href=\u0022mailto:onkezabahizi@gmail.com\u0022> onkezabahizi@gmail.com </a> </li>
-                <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022> LinkedIn Profile </a> </li>
+                <li><strong>E-mail:</strong> <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022> onkezabahizi@gmail.com </a> </li>
+                <li><strong>LinkedIn:</strong> <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022 style=\u0022text-decoration: none\u0022> LinkedIn Profile </a> </li>
             </ul>
         </div>
   "
@@ -1190,4 +1190,28 @@ en_US:
   failure_to_update_status_title: "Status Update Failed"
   failure_to_update_status_message: "
     We could not update the job seeker status. Please check the logs if you are the admin.
+  "
+  sample_send_mail_subject: "Sample Send Mail"
+  sample_send_mail_message: "
+    We are sending you this email to request more information on Laastras project. How can my company 
+    benefit from partnership with Laastras organization?
+  "
+  send_mail_box_component_missing: "
+    One of the components of the email form is missing. It could be one of these: 
+    YourEmail, Subject, or Message
+  "
+  send_mail_box_success: "
+    Awesome. We have successfully sent your feedback message. If there is any service, support, or 
+    answer whatsoever, we'll be getting back to you as soon as possible. In the meantime, please, 
+    have a look at 
+    <a href=\u0022/laastras/about?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+        Our Mission
+    </a>.
+  "
+  hire_us_capture: "
+    You can 
+    <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&subject=We-Are-Hiring-Laastras\u0022 style=\u0022text-decoration: none\u0022> 
+        hire us 
+    </a> 
+    in the following fields of expertise
   "

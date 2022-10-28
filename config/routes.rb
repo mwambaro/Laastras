@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user_mail_boxes/send_mail_box'
   get 'laastras_marketing_videos/index'
   get 'laastras_marketing_videos/show'
   get 'laastras_marketing_videos/show_video'
@@ -74,5 +75,6 @@ Rails.application.routes.draw do
   post 'users/update'
   post 'users/profile_image_update'
   post 'laastras_job_seekers/store_form'
+  post 'user_mail_boxes/send_mail'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
