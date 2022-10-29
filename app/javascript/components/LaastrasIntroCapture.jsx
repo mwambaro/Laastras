@@ -12,20 +12,10 @@ class LaastrasIntroCapture extends React.Component
 
     render()
     {
-        // background-color: #303037; #0971b8; #c13ead
-        let outer_box_style = {
-            backgroundColor: '#303037', 
-            borderRadius: '5px'
-        };
-        let text_body_div_style = {
-            padding: '3px', 
-            margin: '3px'
-        };
-        let text_body_p_style = {
-            color: '#ededed', 
-            padding: '3px'
-        };
         let ftd_job_style = {};
+        let ftd_job_display = {
+            display: 'block'
+        };
         let device = $(window).isMobile();
         if(device)
         {
@@ -33,26 +23,19 @@ class LaastrasIntroCapture extends React.Component
                 padding: '5px'
             }
         }
-
-        let capture_text = "";
-        this.props.laastras_sample_services.map((service, idx) => {
-            if(idx === this.props.laastras_sample_services.length-1)
-            {
-                capture_text += service;
-            }
-            else
-            {
-                capture_text += `${service} • `;
-            }
-        });
+        if(this.props.featured_job_offers.length === 0)
+        {
+            ftd_job_display = {
+                display: 'none'
+            };
+        }
 
         return(
-            <div className="justify-content-center" 
-                 style={outer_box_style}>
-                <div style={text_body_div_style}>
-                    <div style={text_body_p_style}>
-                        <div>
-                            <p><u>{this.props.job_offers_label}</u>:</p>
+            
+                <div className="shadow-sm p-1 mb-2 bg-white rounded" id="intro-capture-component">
+                    <div>
+                        <div style={ftd_job_display}>
+                            <p><strong>{this.props.job_offers_label}</strong>:</p>
                             <div>
                                 <ol>
                                     {
@@ -68,7 +51,7 @@ class LaastrasIntroCapture extends React.Component
                             </div>
                         </div>
                         <div>
-                            <p><u>{this.props.key_services_label}</u>:</p>
+                            <p><strong>{this.props.key_services_label}</strong>:</p>
                             <div>
                                 <ul>
                                     <li>
@@ -123,7 +106,6 @@ class LaastrasIntroCapture extends React.Component
                         </div>
                     </div>
                 </div>
-            </div>
         );
     } // render 
 

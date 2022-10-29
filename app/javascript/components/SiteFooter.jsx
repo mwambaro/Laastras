@@ -22,7 +22,7 @@ class SiteFooter extends React.Component
 
         return(
             <div id="site-footer-component" 
-                 className="shadow-lg p-3 mb-5 bg-white rounded">
+                 className="shadow-sm p-1 mb-2 bg-white rounded">
                 <div id="site-footer-copy-right" className="text-center"> 
                     &copy; {this.props.copy_right_text}
                 </div>

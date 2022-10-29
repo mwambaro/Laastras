@@ -24,6 +24,9 @@ class LaastrasBanner extends React.Component
     render()
     {
         let e = React.createElement;
+        window.addEventListener('switch-banners', (e) => {
+            this.adjust_banners(e.data.banner_width);
+        })
 
         let elt = null;
         this.device = $(window).isMobile();
@@ -94,11 +97,7 @@ class LaastrasBanner extends React.Component
     } // render
 
     componentDidMount()
-    {
-        document.getElementById('banners-div').addEventListener('switch-banners', (e) => {
-            this.adjust_banners(e.data.banner_width);
-        })
-    } // componentDidMount
+    {} // componentDidMount
 
     adjust_banners(brands_width)
     {

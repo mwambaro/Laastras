@@ -4,6 +4,7 @@ import { clearTimeout } from "timers"
 import {Modal} from "bootstrap"
 
 require("./CenterElement");
+require("./AppUtilities");
 
 class MissionKickOff extends React.Component
 {
@@ -22,14 +23,6 @@ class MissionKickOff extends React.Component
 
     render()
     {
-        let section_title_style = {
-            fontSize: '24px', 
-            fontWeight: 'bold',
-            color: 'white'
-        };
-        let title_section_div_style = {
-            backgroundColor: '#0971b8' //'#0c60f3'
-        };
         let kick_off_click_or_tap_section_style = {
             margin: '5px',
             padding: '4px',
@@ -40,82 +33,95 @@ class MissionKickOff extends React.Component
         };
         
         return(
-            <div>
-                <div id="kick-off-image-details-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-header text-right">
-                                <button type="button" className="close" aria-label="Close"
-                                        onClick={(se) => this.leaveImageDetails(se)}>
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <div id="kick-off-image-details-body">
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary" onClick={(se) => this.leaveImageDetails(se)}>
-                                        OK
+            
+                <div className="shadow-sm p-1 mb-2 bg-white rounded" id="mission-kick-off-component">
+                    <div id="kick-off-image-details-section" className="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header text-right">
+                                    <button type="button" className="close" aria-label="Close"
+                                            onClick={(se) => this.leaveImageDetails(se)}>
+                                        <span aria-hidden="true">&times;</span>
                                     </button>
+                                </div>
+                                <div className="modal-body">
+                                    <div id="kick-off-image-details-body">
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <div className="text-center">
+                                        <button type="button" className="btn btn-primary" onClick={(se) => this.leaveImageDetails(se)}>
+                                            OK
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="kick-off-image-onprogress-spinner" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-body">
-                                <div className="text-center">
-                                    <div className="spinner-border" role="status">
-                                        <span className="visually-hidden">Loading...</span>
+                    <div id="kick-off-image-onprogress-spinner" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-body">
+                                    <div className="text-center">
+                                        <div className="spinner-border" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="kick-off-section">
+                        <div id="kick-off-title-section">
+                            <span style={{
+                                    fontSize: '24px', 
+                                    fontWeight: 'bold'
+                                }}
+                            > 
+                                {this.props.kick_off_section_title} 
+                            </span>
+                        </div>
+                        <hr/>
+                        <div id="milestones-elements-section"
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                            <div id="milestones-elements" style={{backgroundColor: 'grey'}}>
+                                <div id="kick-off-click-or-tap-section"
+                                    style={kick_off_click_or_tap_section_style}>
+                                    <span> {this.props.click_or_tap_image_text} </span>
+                                </div>
+                                <div id="kick-off-image-section"
+                                    className="text-center image-item-div">
+                                    <img src={this.props.mission_kick_off_data[this.state.current_index].url} 
+                                        className="img-fluid image-item"
+                                        id="kick-off-image"
+                                        onClick={(se) => this.goToImageDetails(se)} />
+                                </div>
+                                <div id="kick-off-arrow-section" 
+                                    className="text-center"
+                                    style={kick_off_arrow_section_style}>
+                                    <div id="kick-off-arrow-left">
+                                        <button type="button" className="btn btn-default arrow-left" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-left')}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                                                <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="kick-off-arrow-right">
+                                        <button type="button" className="btn btn-default arrow-right" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-right')}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                                <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                            </svg>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="kick-off-section" className="shadow p-1 mb-2 bg-white rounded">
-                    <div id="kick-off-title-section" 
-                        className="shadow-none p-1 mb-2 rounded"
-                        style={title_section_div_style}>
-                        <span style={section_title_style}> 
-                            {this.props.kick_off_section_title} 
-                        </span>
-                    </div>
-                    <div id="kick-off-click-or-tap-section"
-                         style={kick_off_click_or_tap_section_style}>
-                        <span> {this.props.click_or_tap_image_text} </span>
-                    </div>
-                    <div id="kick-off-image-section"
-                         className="text-center image-item-div">
-                        <img src={this.props.mission_kick_off_data[this.state.current_index].url} 
-                             className="img-fluid image-item"
-                             id="kick-off-image"
-                             onClick={(se) => this.goToImageDetails(se)} />
-                    </div>
-                    <div id="kick-off-arrow-section" 
-                         className="text-center"
-                         style={kick_off_arrow_section_style}>
-                        <div id="kick-off-arrow-left">
-                            <button type="button" className="btn btn-default arrow-left" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-left')}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div id="kick-off-arrow-right">
-                            <button type="button" className="btn btn-default arrow-right" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-right')}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         );
 
     } // render
