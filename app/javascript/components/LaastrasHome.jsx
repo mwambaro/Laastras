@@ -90,7 +90,7 @@ class LaastrasHome extends React.Component
     componentDidUpdate()
     {
         this.scale_home_sizes();
-        this.vertical_center_milestones_elements();
+        //this.vertical_center_milestones_elements();
 
     } // componentDidUpdate
 

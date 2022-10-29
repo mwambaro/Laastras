@@ -329,23 +329,37 @@ class LaastrasController < ApplicationController
             @terms_of_use_body_text = I18n.t 'terms_of_use_body_text'
             @founder_and_ceo_contact_email = 'mailto:onkezabahizi@gmail.com'
             @contact_us_email_link = 'mailto:onkezabahizi@gmail.com'
-            @work_in_progress_label = I18n.t 'work_in_progress_label'
+            #@work_in_progress_label = I18n.t 'work_in_progress_label'
             @founder_and_ceo_contact_label = I18n.t 'founder_and_ceo_contact_label'
-            @work_in_progress_description = I18n.t 'work_in_progress_description'
-            @site_title = 'Laastras | ' + @action_name
-            @hire_us_software_solutions_architect = (I18n.t 'hire_us_software_solutions_architect')
-            @hire_us_cross_platform_software_engineer = (I18n.t 'hire_us_cross_platform_software_engineer')
-            @hire_us_software_project_manager = (I18n.t 'hire_us_software_project_manager')
-            @hire_us_laas_leader = (I18n.t 'hire_us_laas_leader')
-            @hire_us_contact_string = I18n.t 'contact_us'
-            @hire_us_email = 'onkezabahizi@gmail.com'
-            @hire_us_solutions_architect_img_url = 'https://am3pap006files.storage.live.com/y4mwskT2q4ZgXD1irXGA_xPIVIZsb--D3xw49lo1x_5k2bKQ76xsdum-MdE5lFMlRSwXSCcaSh-80-hsLRlrXXhK3sJsYdRaBXwNRp_5-5N0UuEfpnTqVuwkcEZNu1HR2qqCIHHPZJ_MU-mxOx1nFdC7Tx0nsPsybeAB4LTAjYiU-zPBsmdw6A_lwKllhMAysts?width=2039&height=1493&cropmode=none'
-            @hire_us_software_engineer_img_url = 'https://am3pap006files.storage.live.com/y4mhHyrSJhoBQWPjClAp7I4E9fIE2cW0hKxyc0SxtcYir29h4jAqUHKV-q9_IuCXeFTVDjshOHYCpOp_tSAKwsgbADmucy_wu6_sKnNGQITarG0sx4U-YRiA900RfOQmOKBXh7fgxPQf3IAY8lWlRaTPieHaWEVcUNJKSTuZoI1BzgL9LMkWIY8A2vwYBcq5e2S?width=1345&height=633&cropmode=none'
-            @hire_us_project_manager_img_url = 'https://am3pap006files.storage.live.com/y4mVfrEMzWBkglexn__TISejwsZ1bkj3iEtLbcorFTCwpIXvaV5Y3jgplxX89u2ma5jk6ZKr6mdnTN8uh6Q92SVIsqikBxOUxWSGHb_-ZfT6jPxWH1Vl-PisYr5OqcVvl4GC-0jPQLX138gbSYauG6nQ1ERQ_RdR-U2GGyazgeJfhVjjojlU9OSuExGn4zRHfbp?width=2038&height=1558&cropmode=none'
-            @hire_us_laas_leader_img_url = 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none'
+            #@work_in_progress_description = I18n.t 'work_in_progress_description'
+            #@site_title = 'Laastras | ' + @action_name
+            #@hire_us_software_solutions_architect = (I18n.t 'hire_us_software_solutions_architect')
+            #@hire_us_cross_platform_software_engineer = (I18n.t 'hire_us_cross_platform_software_engineer')
+            #@hire_us_software_project_manager = (I18n.t 'hire_us_software_project_manager')
+            #@hire_us_laas_leader = (I18n.t 'hire_us_laas_leader')
+            #@hire_us_contact_string = I18n.t 'contact_us'
+            #@hire_us_email = 'onkezabahizi@gmail.com'
+            #@hire_us_solutions_architect_img_url = 'https://am3pap006files.storage.live.com/y4mwskT2q4ZgXD1irXGA_xPIVIZsb--D3xw49lo1x_5k2bKQ76xsdum-MdE5lFMlRSwXSCcaSh-80-hsLRlrXXhK3sJsYdRaBXwNRp_5-5N0UuEfpnTqVuwkcEZNu1HR2qqCIHHPZJ_MU-mxOx1nFdC7Tx0nsPsybeAB4LTAjYiU-zPBsmdw6A_lwKllhMAysts?width=2039&height=1493&cropmode=none'
+            #@hire_us_software_engineer_img_url = 'https://am3pap006files.storage.live.com/y4mhHyrSJhoBQWPjClAp7I4E9fIE2cW0hKxyc0SxtcYir29h4jAqUHKV-q9_IuCXeFTVDjshOHYCpOp_tSAKwsgbADmucy_wu6_sKnNGQITarG0sx4U-YRiA900RfOQmOKBXh7fgxPQf3IAY8lWlRaTPieHaWEVcUNJKSTuZoI1BzgL9LMkWIY8A2vwYBcq5e2S?width=1345&height=633&cropmode=none'
+            #@hire_us_project_manager_img_url = 'https://am3pap006files.storage.live.com/y4mVfrEMzWBkglexn__TISejwsZ1bkj3iEtLbcorFTCwpIXvaV5Y3jgplxX89u2ma5jk6ZKr6mdnTN8uh6Q92SVIsqikBxOUxWSGHb_-ZfT6jPxWH1Vl-PisYr5OqcVvl4GC-0jPQLX138gbSYauG6nQ1ERQ_RdR-U2GGyazgeJfhVjjojlU9OSuExGn4zRHfbp?width=2038&height=1558&cropmode=none'
+            #@hire_us_laas_leader_img_url = 'https://am3pap006files.storage.live.com/y4mifbCvsJK2o8wgIV3PwP4Zn_eEu4976Y9BnPdfDeuIAibBA0wH43bf_gVNWLTHgvOTm8YEnNf0RKmrIqg378mado77VKR-f8VOLyG4qVmAEIgOxI2Ln99dOqk5X53j7knt7VlN0zuUmY4V-PnIchaosoJ1xYKnYW9R16OKaRlMFdIgtQiiM6Lj6o2ksHh5GfR?width=609&height=410&cropmode=none'
+            
+            first_mile_stone_url = (I18n.t 'laastras_kick_off_with_yoola_url')
+            if Rails.env.match?(/\Adevelopment\Z/i)
+                sha256 = '47942C63D8DE7313E028B50C24AAEF7FBB4AC9ADB205B7F5D6B25290E2F3EF46'
+                image = LaastrasMarketingVideo.find_by_sha256 sha256 
+                unless image.nil?
+                    first_mile_stone_url = url_for(
+                        controller: 'laastras_marketing_videos',
+                        action: 'show_video',
+                        video_id: image.sha256
+                    )
+                end
+            end
+
             @mission_kick_off_data = [
                 {
-                    url: (I18n.t 'laastras_kick_off_with_yoola_url'),
+                    url: first_mile_stone_url,
                     description: (I18n.t 'laastras_kick_off_with_yoola_description').paragraphize
                 },
                 {

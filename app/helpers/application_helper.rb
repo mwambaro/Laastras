@@ -431,6 +431,15 @@ module ApplicationHelper
 
     end # log_file_asset_url
 
+    def self.milestone_elements_asset_url(fname)
+        folder_name = 'milestone_element_images'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
+        unless path.exist?
+            path.mkpath
+        end
+        Rails.root.join('storage', folder_name, fname)
+    end # milestone_element_images
+
     def self.log_model_errors(model, logger)
         msg = "\r\n#{model.errors.count} error(s) prohibited this model from being saved:"
         model.errors.each do |error|
@@ -1049,6 +1058,45 @@ module ApplicationHelper
             marketing_videos
 
         end # seeding_laastras_marketing_videos
+
+        def seeding_laastras_milestone_element_images 
+            milestone_images = nil
+            begin
+                milestone_images = [
+                    {
+                        sha256: '47942C63D8DE7313E028B50C24AAEF7FBB4AC9ADB205B7F5D6B25290E2F3EF46',
+                        title: 'e-grocery-image.JPG',
+                        uri: ApplicationHelper.milestone_elements_asset_url(
+                            'e-grocery-image.JPG'
+                        ),
+                        mime_type: 'image/jpeg'
+                    } 
+                ]
+
+                video = LaastrasMarketingVideo.create(milestone_images)
+                unless video 
+                    raise 'There were errors seeding milestone images'
+                end 
+
+                milestone_images.each do |image| 
+                    sha256 = image[:sha256] 
+                    v = LaastrasMarketingVideo.find_by_sha256 sha256 
+                    if v.nil?
+                        msg = "Marketing image [#{video.title}][#{sha256}] was not seeded"
+                        message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + msg
+                        @logger.debug message unless @logger.nil?
+                    end
+                end
+            rescue Exception => e 
+                message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                @logger.debug message unless @logger.nil?
+            end
+
+            milestone_images
+
+        end # seeding_laastras_milestone_element_images
 
     end # Seeds
 end

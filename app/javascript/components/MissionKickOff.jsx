@@ -88,7 +88,7 @@ class MissionKickOff extends React.Component
                                 justifyContent: 'center',
                                 alignItems: 'center'
                             }}>
-                            <div id="milestones-elements" style={{backgroundColor: 'grey'}}>
+                            <div id="milestones-elements" style={{backgroundColor: 'white'}}>
                                 <div id="kick-off-click-or-tap-section"
                                     style={kick_off_click_or_tap_section_style}>
                                     <span> {this.props.click_or_tap_image_text} </span>
@@ -164,11 +164,12 @@ class MissionKickOff extends React.Component
     scale_image_item()
     {
         let width = $('.image-item-div').first().width();
-        let mwidth = $('.image-item').width();
-        if(mwidth > width)
+        if(width > 1000)
         {
-            $('.image-item').width(width);
+            width = 1000;
         }
+
+        $('.image-item').width(width);
 
     } // scale_image_item
 

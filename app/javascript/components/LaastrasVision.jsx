@@ -12,20 +12,20 @@ class LaastrasVision extends React.Component
     render()
     {
         return(
-            
-                <div className="row justify-content-center">
-                    <div className="col-md-11" style={{marginTop: '5px', marginBottom: '5px'}}>
-                        <div className="shadow-sm p-1 mb-2 bg-white rounded" style={{margin: '4px'}}>
-                            <div className="shadow-none p-1 mb-2 rounded" style={{backgroundColor: '#08f7ce'}}>
-                                <span style={{fontSize: '24px', fontWeight: 'bold', color: 'white'}}> 
+            <div className="row justify-content-center">
+                <div className="col-md-11" style={{marginTop: '5px', marginBottom: '5px'}}>
+                    <div className="shadow-sm p-1 mb-2 bg-white rounded" style={{margin: '4px'}}>
+                        <div>
+                            <span style={{fontSize: '24px', fontWeight: 'bold'}}> 
                                     {this.props.vision_title_inner_text}
-                                </span>
-                            </div>
-                            <div id="vision-body-text" style={{padding: '5px'}}>
-                            </div>
+                            </span>
+                        </div>
+                        <hr/>
+                        <div id="vision-body-text" style={{padding: '5px'}}>
                         </div>
                     </div>
                 </div>
+            </div>
         );
 
     } // render

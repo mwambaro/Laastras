@@ -23,3 +23,7 @@
 # __start__ seeding laastras_marketing_videos
     marketing_videos = @seeds.seeding_laastras_marketing_videos
 # __end__
+
+# __start__ seeding laastras_milestone_element_images
+    milestone_images = @seeds.seeding_laastras_milestone_element_images
+# __end__
