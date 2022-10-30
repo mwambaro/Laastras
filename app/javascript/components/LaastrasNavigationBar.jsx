@@ -120,7 +120,7 @@ class LaastrasNavigationBar extends React.Component
                                 
                                 <div 
                                     style={{
-                                        backgroundColor: 'white',
+                                        //backgroundColor: 'white',
                                         margin: '5px'
                                     }}
                                     id="locale-area-icon-div"
