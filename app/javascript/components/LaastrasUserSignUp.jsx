@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import WaitSpinner from "./WaitSpinner.js"
 require('./CenterElement.js')
 
 class LaastrasUserSignUp extends React.Component
@@ -7,6 +8,7 @@ class LaastrasUserSignUp extends React.Component
     constructor(props)
     {
         super(props);
+        this.wait_spinner = null;
         this.reset_data = this.get_reset_data();
 
     } // constructor
@@ -97,19 +99,7 @@ class LaastrasUserSignUp extends React.Component
                         </form>
                     </div>
                 </div>
-                <div id="laastras-wait-uploads-spinner" 
-                    style={{
-                        display: 'none',
-                        zIndex: '99',
-                        border: 'none',
-                        outline: 'none',
-                        backgroundColor: 'transparent',
-                        position: 'fixed'
-                }}>
-                    <div className="spinner-border text-success" role="status" style={{width: '100px', height: '100px'}}>
-                        <span className="sr-only"></span>
-                    </div>
-                </div>
+                <div id="sign-up-spinner"></div>
             </div>
         );
 
@@ -127,6 +117,8 @@ class LaastrasUserSignUp extends React.Component
         {
             this.display_reset_password_form();
         }
+
+        this.wait_spinner = new WaitSpinner('sign-up-spinner');
 
         this.manageEditMode();
         this.hijackFormSubmitEvent();
@@ -216,7 +208,7 @@ class LaastrasUserSignUp extends React.Component
                 try 
                 {
                     event.preventDefault();
-                    this.show_wait_spinner();
+                    this.wait_spinner.show_wait_spinner();
 
                     var $this = $form;
                     // Validation code
@@ -290,7 +282,9 @@ class LaastrasUserSignUp extends React.Component
                         $('#verbose-message-div').remove();
                         //console.log('Feedback message removed');
                         $('#feedback').append(html);
-                        this.hide_wait_spinner();
+                        setTimeout((e) => {
+                            this.wait_spinner.hide_wait_spinner();
+                        }, 1000);
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -311,7 +305,9 @@ class LaastrasUserSignUp extends React.Component
                             </div>`;
                         $('#verbose-message-div').remove();
                         $('#feedback').append(html);
-                        this.hide_wait_spinner();
+                        setTimeout((e) => {
+                            this.wait_spinner.hide_wait_spinner();
+                        }, 1000);
                     });
                 }
                 catch(error)
@@ -329,7 +325,9 @@ class LaastrasUserSignUp extends React.Component
                         </div>`;
                     $('#verbose-message-div').remove();
                     $('#feedback').append(html);
-                    this.hide_wait_spinner();
+                    setTimeout((e) => {
+                        this.wait_spinner.hide_wait_spinner();
+                    }, 1000);
                 }
             });
         }
@@ -339,50 +337,7 @@ class LaastrasUserSignUp extends React.Component
         }
 
     } // hijackFormSubmitEvent
-
-    show_wait_spinner()
-    {
-        let spinner = document.getElementById('laastras-wait-uploads-spinner');
-        if(spinner)
-        {
-            spinner.style.display = "block";
-            $('#laastras-wait-uploads-spinner').css({  
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)'
-            });
-            $('body').css('opacity', '0.5');
-            this.center_spinner_in_the_viewport();
-        }
-
-    } // show_wait_spinner
-
-    hide_wait_spinner()
-    {
-        let spinner = document.getElementById('laastras-wait-uploads-spinner');
-        if(spinner)
-        {
-            spinner.style.position = 'fixed';
-            spinner.style.display = "none";
-            $('body').css('opacity', '1.0');
-        }
-
-    } // hide_wait_spinner
-
-    center_spinner_in_the_viewport()
-    {
-        var viewportWidth = jQuery(window).width(),
-        viewportHeight = jQuery(window).height(),
-        $foo = jQuery('#laastras-wait-uploads-spinner'),
-        elWidth = $foo.width(),
-        elHeight = $foo.height(),
-        elOffset = $foo.offset();
-        jQuery(window)
-            .scrollTop(elOffset.top + (elHeight/2) - (viewportHeight/2))
-            .scrollLeft(elOffset.left + (elWidth/2) - (viewportWidth/2));
-
-    } // center_spinner_in_the_viewport
+    
 }
 
 LaastrasUserSignUp.propTypes = {

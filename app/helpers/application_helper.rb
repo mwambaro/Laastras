@@ -1062,6 +1062,10 @@ module ApplicationHelper
         def seeding_laastras_milestone_element_images 
             milestone_images = nil
             begin
+                unless Rails.env.match?(/\Adevelopment\Z/i) 
+                    raise 'These elements are only for development environment'
+                end
+
                 milestone_images = [
                     {
                         sha256: '47942C63D8DE7313E028B50C24AAEF7FBB4AC9ADB205B7F5D6B25290E2F3EF46',
@@ -1070,7 +1074,31 @@ module ApplicationHelper
                             'e-grocery-image.JPG'
                         ),
                         mime_type: 'image/jpeg'
-                    } 
+                    },
+                    {
+                        sha256: '84533D3496BE6F58862A3B8108CB4399BD5024FFADB279CE32B0F73148ED7BA7',
+                        title: 'second.jpg',
+                        uri: ApplicationHelper.milestone_elements_asset_url(
+                            'second.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    },
+                    {
+                        sha256: '7B6DE65F40EA597839462DA755D37BADD8351580BDE399C6FBF7D6B1B1CCFF66',
+                        title: 'third.jpg',
+                        uri: ApplicationHelper.milestone_elements_asset_url(
+                            'third.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    },
+                    {
+                        sha256: 'CFE23DF52667B50607DE975367C8ABE28200CA911301ED5D27F962E9833E5FF9',
+                        title: 'fourth.jpg',
+                        uri: ApplicationHelper.milestone_elements_asset_url(
+                            'fourth.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    }
                 ]
 
                 video = LaastrasMarketingVideo.create(milestone_images)

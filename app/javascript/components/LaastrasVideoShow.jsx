@@ -14,11 +14,10 @@ class LaastrasVideoShow extends React.Component
         let min_width = 500;
 
         return(
-            <div className="container-fluid">
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-11">
                         <div className="shadow-sm p-1 mb-2 bg-white rounded">
-                            <div className="text-center" style={{padding: '2px', fontWeight: 'bold', color: 'blue'}}>
+                            <div className={`text-center ${this.props.filename_class}`} style={{padding: '2px', fontWeight: 'bold', color: 'blue'}}>
                                 <a href={this.props.video.view_url} style={{textDecoration: 'none'}}>
                                     {this.props.video.filename}
                                 </a>
@@ -30,7 +29,8 @@ class LaastrasVideoShow extends React.Component
                             </div>
                             <hr />
                             <div style={{padding: '2px'}} className="d-flex flex-row justify-content-center video-item-div">
-                                <video className="embed-responsive video-item-main" controls={true}>
+                                <video className="embed-responsive video-item-main" controls={true}
+                                        onLoadedData={(se) => this.onloadeddata(se)}>
                                     <source src={this.props.video.view_url} 
                                             type={this.props.video.mime_type} 
                                             className="embed-responsive-item video-item" />
@@ -40,7 +40,6 @@ class LaastrasVideoShow extends React.Component
                         </div>
                     </div>
                 </div>
-            </div>
         )
 
     } // render
@@ -53,6 +52,18 @@ class LaastrasVideoShow extends React.Component
         });
 
     } // componentDidMount
+
+    onloadeddata(e)
+    {
+        let width = $('.video-item-div').first().width();
+        if(width > 600)
+        {
+            width = 600;
+        }
+
+        $('.video-item-main').width(width);
+
+    } // onloadeddata
 
     scale_video_item()
     {
@@ -78,7 +89,8 @@ class LaastrasVideoShow extends React.Component
 LaastrasVideoShow.propTypes = {
     video: PropTypes.object,
     video_width: PropTypes.string,
-    download_label: PropTypes.string
+    download_label: PropTypes.string,
+    filename_class: PropTypes.string
 }
 
 export default LaastrasVideoShow

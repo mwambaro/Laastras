@@ -80,9 +80,11 @@ class LaastrasHome extends React.Component
     {
         this.scale_home_sizes();
         $(window).on('resize', (e) => {
-            this.setState({
-                resize: (this.state.resize+1)
-            })
+            setTimeout((e) => {
+                this.setState({
+                    resize: (this.state.resize+1)
+                })
+            }, 1000);
         });
 
     } // componentDidMount
@@ -90,7 +92,6 @@ class LaastrasHome extends React.Component
     componentDidUpdate()
     {
         this.scale_home_sizes();
-        //this.vertical_center_milestones_elements();
 
     } // componentDidUpdate
 
@@ -108,9 +109,37 @@ class LaastrasHome extends React.Component
             $('#mission-kick-off-component').css({height: 'auto'});
         }
 
-        this.vertical_center_milestones_elements();
+        //this.vertical_center_milestones_elements();
 
     } // scale_home_sizes
+
+    add_lines_to_notebook()
+    {
+        let height = $('.ardoise').first().height();
+        let rem = $('#mission-kick-off-component').height() - 
+                    $('#kick-off-title-section').height() - 
+                    $('#milestones-elements-section').height() - 
+                    height;
+        let n = Math.floor(rem/height);
+        if(n>0)
+        {
+            let html = `
+                <ul class="ardoise" style="list-style: none">
+                    <li>
+                        <hr/>
+                    </li>
+                    <li>
+                        <hr/>
+                    </li>
+                </ul>
+            `;
+            for(let i=0; i<n; i++)
+            {
+                $('#aria-ardoise').append(html);
+            }
+        }
+
+    } // add_lines_to_notebook
 
     vertical_center_milestones_elements()
     {
@@ -124,7 +153,7 @@ class LaastrasHome extends React.Component
         console.log('hrH: ' + hrH);
         let diff = mkH - msH - tsH - hrH;
         console.log('diff: ' + diff);
-        let half = diff/2;
+        let half = Math.ceil(diff/2);
         console.log('half: ' + half);
         let topM = $('#milestones-elements').offset().top;
         console.log('topM: ' + topM);
@@ -133,7 +162,7 @@ class LaastrasHome extends React.Component
         let pos = $('#milestones-elements').offset();
         console.log('current top: ' + pos.top);
         pos.top = top;
-        $('#milestones-elements').offset(pos);   
+        $('#milestones-elements').offset(pos); 
 
     } // vertical_center_milestones_elements
 

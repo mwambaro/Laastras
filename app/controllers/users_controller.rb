@@ -527,7 +527,13 @@ class UsersController < ApplicationController
 
                 @sign_in_label = I18n.t 'sign_in_label'
                 @contact_label = I18n.t 'contact_site_owner_label'
-                @contact_url = "mailto:#{@admin_email}"
+                # /user_mail_boxes/send_mail_box?locale=en_US&subject=We-Are-Hiring-Laastras
+                @contact_url = url_for(
+                    controller: 'user_mail_boxes',
+                    action: 'send_mail_box',
+                    locale: I18n.locale.to_s,
+                    subject: (I18n.t 'contact_site_owner_label').gsub(/\s/, '-')
+                )
 
                 result = false 
                 if updating 

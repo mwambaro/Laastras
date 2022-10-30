@@ -1,14 +1,20 @@
 
 class WaitSpinner 
 {
-    constructor()
+    constructor(container_id=null)
     {
         this.spinner_id = "wait_spinner";
-        this.add_spinner_to_body();
+        this.add_spinner_to_container(container_id);
 
     } // constructor
 
     add_spinner_to_body()
+    {
+        this.add_spinner_to_container();
+
+    } // add_spinner_to_body
+
+    add_spinner_to_container(container_id)
     {
         try 
         {
@@ -26,14 +32,26 @@ class WaitSpinner
                     </div>
                 </div>
             `;
-            $('body').append(spinner);
+            let done = false;
+            if(container_id)
+            {
+                if($(`#${container_id}`).length > 0)
+                {
+                    $(`#${container_id}`).append(spinner);
+                    done = true;
+                }
+            }
+            if(!done)
+            {
+                $('body').append(spinner);
+            }
         }
         catch(error)
         {
             console.log(`add_spinner_to_body: ${error}`);
         }
         
-    } // add_spinner_to_body
+    } // add_spinner_to_container
 
     show_wait_spinner()
     {

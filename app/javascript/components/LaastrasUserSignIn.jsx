@@ -71,19 +71,7 @@ class LaastrasUserSignIn extends React.Component
                         </div>
                     </div>
                 </div>
-                <div id="laastras-wait-uploads-spinner" 
-                    style={{
-                        display: 'none',
-                        zIndex: '99',
-                        border: 'none',
-                        outline: 'none',
-                        backgroundColor: 'transparent',
-                        position: 'fixed'
-                }}>
-                    <div className="spinner-border text-success" role="status" style={{width: '100px', height: '100px'}}>
-                        <span className="sr-only"></span>
-                    </div>
-                </div>
+                <div id="sign-in-spinner"></div>
             </div>
         );
 
@@ -99,7 +87,7 @@ class LaastrasUserSignIn extends React.Component
         $('#reset-password-div').on('mouseover', (e) => {
             e.target.style.cursor = 'pointer';
         });
-        this.wait_spinner = new WaitSpinner();
+        this.wait_spinner = new WaitSpinner('sign-in-spinner');
         this.hijackFormSubmitEvent();
 
     } // componentDidMount
@@ -226,7 +214,9 @@ class LaastrasUserSignIn extends React.Component
                             console.log('Sign in failure message displayed');
                         }
 
-                        this.wait_spinner.hide_wait_spinner();
+                        setTimeout((e) => {
+                            this.wait_spinner.hide_wait_spinner();
+                        }, 1000);
                     };
 
                     //console.log(`URL: ${url}, Data to send: ${dataToSend}`);
@@ -247,7 +237,9 @@ class LaastrasUserSignIn extends React.Component
                             </div>`;
                         $('#verbose-message-div').remove();
                         $('#feedback').append(html);
-                        this.wait_spinner.hide_wait_spinner();
+                        setTimeout((e) => {
+                            this.wait_spinner.hide_wait_spinner();
+                        }, 1000);
                     });
                 }
                 catch(error)
@@ -265,7 +257,9 @@ class LaastrasUserSignIn extends React.Component
                         </div>`;
                     $('#verbose-message-div').remove();
                     $('#feedback').append(html);
-                    this.wait_spinner.hide_wait_spinner();
+                    setTimeout((e) => {
+                        this.wait_spinner.hide_wait_spinner();
+                    }, 1000);
                 }
             });
         }
@@ -275,50 +269,6 @@ class LaastrasUserSignIn extends React.Component
         }
 
     } // hijackFormSubmitEvent
-
-    show_wait_spinner()
-    {
-        let spinner = document.getElementById('laastras-wait-uploads-spinner');
-        if(spinner)
-        {
-            spinner.style.display = "block";
-            $('#laastras-wait-uploads-spinner').css({  
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)'
-            });
-            $('body').css('opacity', '0.5');
-            this.center_spinner_in_the_viewport();
-        }
-
-    } // show_wait_spinner
-
-    hide_wait_spinner()
-    {
-        let spinner = document.getElementById('laastras-wait-uploads-spinner');
-        if(spinner)
-        {
-            spinner.style.position = 'fixed';
-            spinner.style.display = "none";
-            $('body').css('opacity', '1.0');
-        }
-
-    } // hide_wait_spinner
-
-    center_spinner_in_the_viewport()
-    {
-        var viewportWidth = jQuery(window).width(),
-        viewportHeight = jQuery(window).height(),
-        $foo = jQuery('#laastras-wait-uploads-spinner'),
-        elWidth = $foo.width(),
-        elHeight = $foo.height(),
-        elOffset = $foo.offset();
-        jQuery(window)
-            .scrollTop(elOffset.top + (elHeight/2) - (viewportHeight/2))
-            .scrollLeft(elOffset.left + (elWidth/2) - (viewportWidth/2));
-
-    } // center_spinner_in_the_viewport
 
 }
 

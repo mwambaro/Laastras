@@ -1,7 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { clearTimeout } from "timers"
+import {clearTimeout} from "timers"
 import {Modal} from "bootstrap"
+import WaitSpinner from "./WaitSpinner.js"
 
 require("./CenterElement");
 require("./AppUtilities");
@@ -15,9 +16,9 @@ class MissionKickOff extends React.Component
             current_index: 0
         };
         this.timer = null;
+        this.wait_spinner = null;
         this.kick_off_button_clicked = false;
         this.kickOffImageDetailsSectionModal = null;
-        this.kickOffImageOnprogressSpinnerModal = null;
 
     } // constructor
 
@@ -53,19 +54,6 @@ class MissionKickOff extends React.Component
                                         <button type="button" className="btn btn-primary" onClick={(se) => this.leaveImageDetails(se)}>
                                             OK
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="kick-off-image-onprogress-spinner" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered">
-                            <div className="modal-content">
-                                <div className="modal-body">
-                                    <div className="text-center">
-                                        <div className="spinner-border" role="status">
-                                            <span className="visually-hidden">Loading...</span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +108,19 @@ class MissionKickOff extends React.Component
                                 </div>
                             </div>
                         </div>
+                        <div style={{padding: '10px'}} id="aria-ardoise">
+                            <ul className="ardoise" style={{listStyle: 'none'}}>
+                                {
+                                    [1, 2, 3, 4, 5, 6, 7, 8].map((n, idx) => {
+                                        <li key={`line-${n}-${idx}`}>
+                                            <hr/>
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </div>
+                    <div id="milestones-spinner"></div>
                 </div>
         );
 
@@ -130,14 +130,7 @@ class MissionKickOff extends React.Component
     {
         console.log('Mission kick off component did mount.');
         this.manageArrowSection();
-        let img = document.getElementById('kick-off-image');
-        if(img)
-        {
-            img.onerror = e => {
-                console.log('image failed to load.');
-            };
-            img.style.cursor = "pointer";
-        }
+        this.handle_image_events();
 
         $('#kick-off-arrow-section').hcenter();
 
@@ -149,11 +142,15 @@ class MissionKickOff extends React.Component
         this.kickOffImageDetailsSectionModal = new Modal(
             document.getElementById('kick-off-image-details-section')
         );
-        this.kickOffImageOnprogressSpinnerModal = new Modal(
-            document.getElementById('kick-off-image-onprogress-spinner')
-        );
+        this.wait_spinner = new WaitSpinner('milestones-spinner');
 
     } // componentDidMount
+
+    componentWillUpdate(nextProps, nextState)
+    {
+        this.wait_spinner.show_wait_spinner();
+
+    } // componentWillUpdate
 
     componentDidUpdate()
     {
@@ -161,12 +158,35 @@ class MissionKickOff extends React.Component
 
     } // componentDidUpdate
 
+    handle_image_events()
+    {
+        let img = document.getElementById('kick-off-image');
+        if(img)
+        {
+            img.onerror = (e) => {
+                console.log('image failed to load.');
+                setTimeout((e) => {
+                    this.wait_spinner.hide_wait_spinner();
+                }, 1000);
+            };
+            img.onload = (e) => {
+                setTimeout((e) => {
+                    this.wait_spinner.hide_wait_spinner();
+                }, 1000);
+            };
+            img.onmouseover = (e) => {
+                e.target.style.cursor = "pointer";
+            }
+        }
+
+    } // handle_image_events
+
     scale_image_item()
     {
         let width = $('.image-item-div').first().width();
-        if(width > 1000)
+        if(width > 700)
         {
-            width = 1000;
+            width = 700;
         }
 
         $('.image-item').width(width);
@@ -347,11 +367,6 @@ class MissionKickOff extends React.Component
             this.setState({
                 current_index: index
             });
-            var spinnerModal = this.kickOffImageOnprogressSpinnerModal;
-            spinnerModal.show();
-            this.timer = setTimeout((e) => {
-                spinnerModal.hide();
-            }, 1000);
         }
 
     } // onNextPreviousClicked
@@ -366,28 +381,15 @@ class MissionKickOff extends React.Component
 
         //console.log('Image data is loaded.');
         dis.manageArrowSection();
-        this.kickOffImageOnprogressSpinnerModal.hide();
-        try
+        setTimeout((e) => {
+            this.wait_spinner.hide_wait_spinner();
+        }, 1000);
+        // scroll to kick off section
+        if(dis.kick_off_button_clicked)
         {
-            if(dis.timer)
-            {
-                clearTimeout(dis.timer);
-                dis.timer = null;
-            }
-        }
-        catch(error)
-        {
-            console.log('onImgLoadedData: ' + error);
-        }
-        finally
-        {
-            // scroll to kick off section
-            if(dis.kick_off_button_clicked)
-            {
-                let p = $('#kick-off-section').position();
-                $(window).scrollTop(p.top);
-                dis.kick_off_button_clicked = false;
-            }
+            let p = $('#kick-off-section').position();
+            $(window).scrollTop(p.top);
+            dis.kick_off_button_clicked = false;
         }
 
     } // onImgLoadedData

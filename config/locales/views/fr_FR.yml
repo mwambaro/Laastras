@@ -207,3 +207,4 @@ fr_FR:
   subject_label: "Objet"
   send_mail_body_placeholder_text: "Veuillez écrire vos pensées ici et on vous répondra dès que possible"
   feedback_prompt: "Veuillez nous laisser un message pour réagir à notre projet, votre opinion, n'importe laquelle!"
+  play_all_label: "Jouer Tout"

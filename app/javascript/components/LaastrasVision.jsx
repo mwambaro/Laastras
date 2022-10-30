@@ -33,7 +33,9 @@ class LaastrasVision extends React.Component
     componentDidMount()
     {
         $('#vision-body-text').append(this.props.laastras_vision_html);
-        this.can_we_scale_video_item();
+        $('.video-item-main').on('loadeddata', (e) => {
+            this.scale_video_item();
+        });
         $(window).on('resize', (e) => {
             this.scale_video_item();
         });
@@ -62,9 +64,9 @@ class LaastrasVision extends React.Component
     scale_video_item()
     {
         let width = $('.video-item-div').width();
-        if(width > 500)
+        if(width > 600)
         {
-            width = 500;
+            width = 600;
         }
         //console.log('video width: ' + width);
 

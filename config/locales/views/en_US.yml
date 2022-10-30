@@ -237,3 +237,4 @@ en_US:
   subject_label: "Subject"
   send_mail_body_placeholder_text: "Write your thoughts here and we'll get back to you as soon as possible"
   feedback_prompt: "Leave us a feedback message, anything that has crossed your mind!"
+  play_all_label: "Play All"
