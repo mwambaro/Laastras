@@ -19,7 +19,6 @@ class LocaleSettings extends React.Component
         this.localeInitSetElementId = "";
         this.actionResponseSectionModal = null;
         this.localeSectionModal = null;
-        this.setLocaleSpinnerSection = null;
         this.wait_spinner = null;
 
     } // constructor
@@ -41,19 +40,6 @@ class LocaleSettings extends React.Component
                                             onClick={se => this.actionResponseButton(se)}>
                                         OK
                                     </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="set-locale-spinner-section" className="modal fade" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-body">
-                                <div className="text-center">
-                                    <div className="spinner-border" role="status">
-                                        <span className="visually-hidden">Loading...</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -83,6 +69,7 @@ class LocaleSettings extends React.Component
                 <div>
                     <img src={this.props.language_icon} id="set-locale-button" className="img-fluid" width="30px" onClick={se => this.setLocaleLanguage(se)} style={{'position': 'absolute', 'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%)'}}/>
                 </div>
+                <div id="locale-spinner"></div>
             </div>
         );
 
@@ -96,10 +83,7 @@ class LocaleSettings extends React.Component
             document.getElementById('action-response-section')
         );
         this.localeSectionModal = new Modal(document.getElementById('locale-section'));
-        this.setLocaleSpinnerSection = new Modal(
-            document.getElementById('set-locale-spinner-section')
-        );
-        this.wait_spinner = new WaitSpinner();
+        this.wait_spinner = new WaitSpinner('locale-spinner');
 
     } // componentDidMount
 
@@ -376,9 +360,7 @@ class LocaleSettings extends React.Component
                 //console.log('Language settings to send: ' + localeJson);
                 this.localeSectionModal.hide();
                 if(this.localeEndPoint)
-                {
-                    var modal = this.setLocaleSpinnerSection;
-                    
+                {   
                     this.wait_spinner.show_wait_spinner();
 
                     try
@@ -406,7 +388,9 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
-                                        this.wait_spinner.hide_wait_spinner();
+                                        setTimeout((e) => {
+                                            this.wait_spinner.hide_wait_spinner();
+                                        }, 1000);
                                         window.location.assign(this.refreshUrl);
                                         window.location.reload(true);
                                     }
@@ -423,7 +407,9 @@ class LocaleSettings extends React.Component
                                         `;
                                         this.refreshUrl = null;
                                         $('#action-response-message').append(html);
-                                        this.wait_spinner.hide_wait_spinner();
+                                        setTimeout((e) => {
+                                            this.wait_spinner.hide_wait_spinner();
+                                        }, 1000);
                                         actionResponseMdl.show();
                                     }
                                     else // unknown code
@@ -440,21 +426,26 @@ class LocaleSettings extends React.Component
                                         this.refreshUrl = null;
                                         $('#action-response-message').append(html);
 
-                                        this.wait_spinner.hide_wait_spinner();
+                                        setTimeout((e) => {
+                                            this.wait_spinner.hide_wait_spinner();
+                                        }, 1000);
                                         actionResponseMdl.show();
                                     }
                                 }
                                 catch(error)
                                 {
                                     console.log('sendLocaleSettings#post#success: ' + error);
+                                    setTimeout((e) => {
+                                        this.wait_spinner.hide_wait_spinner();
+                                    }, 1000);
                                 }
-                                
-                                this.wait_spinner.hide_wait_spinner();
                             },
                             "json"
                         )
                         .fail(() => {
-                            this.wait_spinner.hide_wait_spinner();
+                            setTimeout((e) => {
+                                this.wait_spinner.hide_wait_spinner();
+                            }, 1000);
                             
                             let message = "An error occurred while attempting to set language settings."
                             let html = `<div><p> ${message} </p></div>`;
@@ -463,7 +454,9 @@ class LocaleSettings extends React.Component
                             this.refreshUrl = null;
                             console.log(`Post request failed. Data: ${localeJson}; End point: ${this.localeEndPoint}`);
                         });
-                        this.wait_spinner.hide_wait_spinner();
+                        setTimeout((e) => {
+                            this.wait_spinner.hide_wait_spinner();
+                        }, 1000);
                     }
                     catch(error)
                     {
@@ -471,7 +464,9 @@ class LocaleSettings extends React.Component
                     }
                     finally
                     {
-                        //this.wait_spinner.hide_wait_spinner();
+                        setTimeout((e) => {
+                            this.wait_spinner.hide_wait_spinner();
+                        }, 1000);
                     }
                 }
             }

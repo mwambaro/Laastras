@@ -109,15 +109,8 @@ class MissionKickOff extends React.Component
                             </div>
                         </div>
                         <div style={{padding: '10px'}} id="aria-ardoise">
-                            <ul className="ardoise" style={{listStyle: 'none'}}>
-                                {
-                                    [1, 2, 3, 4, 5, 6, 7, 8].map((n, idx) => {
-                                        <li key={`line-${n}-${idx}`}>
-                                            <hr/>
-                                        </li>
-                                    })
-                                }
-                            </ul>
+                            <div style={{height: '2px', backgroundColor: 'grey', margin: '30px'}} className="ardoise-div">
+                            </div>
                         </div>
                     </div>
                     <div id="milestones-spinner"></div>

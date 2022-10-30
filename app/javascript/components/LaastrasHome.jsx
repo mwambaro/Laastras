@@ -103,6 +103,9 @@ class LaastrasHome extends React.Component
         if(left>width) // fix height
         {   
             $('#mission-kick-off-component').height(height);
+            setTimeout((e) => {
+                this.add_lines_to_notebook();
+            }, 1000);
         }
         else 
         {
@@ -115,26 +118,31 @@ class LaastrasHome extends React.Component
 
     add_lines_to_notebook()
     {
-        let height = $('.ardoise').first().height();
+        let height = $('.ardoise-div').first().height();
+        let hrH = $('#kick-off-section').height() - 
+                    $('#milestones-elements-section').height() - 
+                    $('#kick-off-title-section').height();
         let rem = $('#mission-kick-off-component').height() - 
                     $('#kick-off-title-section').height() - 
                     $('#milestones-elements-section').height() - 
-                    height;
-        let n = Math.floor(rem/height);
+                    height - hrH;
+        let n = Math.floor(rem/height) - 2;
+        //console.log('n: ' + n + '; height: ' + height + '; rem: ' + rem + '; hrH: ' + hrH);
         if(n>0)
         {
             let html = `
-                <ul class="ardoise" style="list-style: none">
-                    <li>
-                        <hr/>
-                    </li>
-                    <li>
-                        <hr/>
-                    </li>
-                </ul>
+                <div style="height: 2px; background-color: grey; margin: 30px" class="ardoise-div">
+                </div>
             `;
+            $('.ardoise-div').remove();
             for(let i=0; i<n; i++)
             {
+                let h = $('#aria-ardoise').height();
+                //console.log('H: ' + h);
+                if(h >= rem)
+                {
+                    break;
+                }
                 $('#aria-ardoise').append(html);
             }
         }
