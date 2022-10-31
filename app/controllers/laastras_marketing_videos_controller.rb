@@ -51,7 +51,12 @@ class LaastrasMarketingVideosController < ApplicationController
         next_uri = nil
         begin 
             id = params[:id]
+            sha256 = params[:video_id]
             video = LaastrasMarketingVideo.find(id) 
+            if video.nil? 
+                video = LaastrasMarketingVideo.find_by_sha256 sha256
+            end
+
             if video.nil? 
                 session[:fail_safe_title] = 'No Valid Video Found'
                 session[:fail_safe_message] = 'No valid video found with id: ' + id.to_s

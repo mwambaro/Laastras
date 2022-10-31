@@ -12,17 +12,32 @@ class LaastrasJobOffersController < ApplicationController
             applicants_label = I18n.t 'applicants_label'
             apply_label = I18n.t 'apply_label'
             @close_label = I18n.t 'close_label'
+            job_type = params[:job_type] || nil
             counter = 1
 
             offers.each do |job_offer|
+                start_up = ApplicationHelper.job_offer_guid_to_job_offer(job_offer.sha256)
+                if start_up.nil? && job_type == :start_up.to_s 
+                    next
+                end
+
+                if job_offer.archived && start_up.nil?
+                    msg  = 'The job offer [' + job_offer.title + '] has been archived'
+                    message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                                __method__.to_s + "--- " + msg
+                    logger.debug message unless logger.nil?
+                    next 
+                end
                 html_ids = {
                     close_button_id: "close-btn-id-#{counter}",
                     offer_title_html_id: "job-offer-id-title-#{counter}",
                     offer_html_id: "job-offer-id-#{counter}",
                     feature_job_button_id: "feature-job-btn-id-#{counter}",
-                    unfeature_job_button_id: "unfeature-job-btn-id-#{counter}"
+                    unfeature_job_button_id: "unfeature-job-btn-id-#{counter}",
+                    archive_job_button_id: "archive-job-btn-id-#{counter}"
                 }
                 if ApplicationHelper.user_has_admin_role?(session)
+                    @archive_label = I18n.t 'archive_label'
                     if job_offer.featured == true
                         @feature_label = nil 
                         @unfeature_label = I18n.t 'unfeature_label'
@@ -30,9 +45,11 @@ class LaastrasJobOffersController < ApplicationController
                         @feature_label = I18n.t 'feature_label'
                         @unfeature_label = nil
                     end
+
                     feature_labels = {
                         feature_label: @feature_label,
-                        unfeature_label: @unfeature_label
+                        unfeature_label: @unfeature_label,
+                        archive_label: @archive_label
                     }
                     @all_job_offers << {
                         job_offer_title: job_offer.title,
@@ -51,9 +68,11 @@ class LaastrasJobOffersController < ApplicationController
                     @close_label = nil
                     @feature_label = nil
                     @unfeature_label = nil
+                    @archive_label = nil
                     feature_labels = {
                         feature_label: @feature_label,
-                        unfeature_label: @unfeature_label
+                        unfeature_label: @unfeature_label,
+                        archive_label: @archive_label
                     }
                     @all_job_offers << {
                         job_offer_title: job_offer.title,
@@ -101,10 +120,15 @@ class LaastrasJobOffersController < ApplicationController
                 @job_offer = ApplicationHelper.job_offer_guid_to_job_offer(job_offer_guid)
             end
 
-            if @job_offer
+            unless @job_offer.nil?
+                if @job_offer.archived 
+                    raise 'The job offer [' + @job_offer.title + '] has been archived'
+                end
+
                 if ApplicationHelper.user_has_admin_role?(session)
                     @apply_label = (I18n.t 'applicants_label')
                     @close_label = (I18n.t 'close_label')
+                    @archive_label = I18n.t 'archive_label'
                     if @job_offer.featured == true
                         @feature_label = nil
                         @unfeature_label = I18n.t 'unfeature_label'
@@ -120,6 +144,7 @@ class LaastrasJobOffersController < ApplicationController
                 else
                     @apply_label = (I18n.t 'apply_label')
                     @close_label = nil
+                    @archive_label = nil
                     @feature_label = nil
                     @unfeature_label = nil
                     @application_url = url_for(
@@ -332,6 +357,46 @@ class LaastrasJobOffersController < ApplicationController
         end
 
     end # unfeature
+
+    def archive 
+        next_uri = nil 
+        begin
+            id = params[:id]
+            offer = LaastrasJobOffer.find(id)
+            unless offer.nil?
+                failed = false
+                I18n.available_locales.each do |locale|
+                    sha256 = offer.sha256
+                    sql = "SELECT * FROM laastras_job_offers WHERE language = '#{locale.to_s}' AND sha256 = '#{sha256}'"
+                    offers = LaastrasJobOffer.find_by_sql(sql)
+                    offers.each do |off|
+                        job_offer_id = off.id
+                        ret = off.update({archived: true, featured: false})
+                        unless ret
+                            ApplicationHelper.log_model_errors(off, logger)
+                            failed = true
+                        end
+                    end 
+                end 
+                session[:fail_safe_title] = I18n.t 'job_offer_successful_archiving'
+                session[:fail_safe_message] = I18n.t 'job_offer_successful_archiving_message'
+            else 
+                session[:fail_safe_title] = I18n.t 'no_such_job_offer'
+                session[:fail_safe_message] = I18n.t 'no_such_job_offer_message'
+            end
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        rescue Exception => e 
+            message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
+                    __method__.to_s + "--- " + e.message 
+            logger.debug message unless logger.nil?
+            next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
+        end
+
+        if next_uri 
+            redirect_to next_uri
+        end
+
+    end # archive
 
     def close 
         next_uri = nil 

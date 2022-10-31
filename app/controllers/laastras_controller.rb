@@ -3,6 +3,7 @@ require 'core_ext/string'
 
 class LaastrasController < ApplicationController
     before_action :init_parameters, :corb_disable
+    after_action :overwrite_headers
 
     def home
         next_uri = nil 
@@ -117,8 +118,13 @@ class LaastrasController < ApplicationController
                     )
                 end
             else
-                session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
-                session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
+                unless (user.device_id.nil? || user.device_id.blank?) 
+                    session[:fail_safe_title] = I18n.t 'logged_in_on_another_device_title'
+                    session[:fail_safe_message] = I18n.t 'logged_in_on_another_device_message'
+                else
+                    session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
+                    session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
+                end
                 next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             end
         rescue Exception => e 
@@ -256,6 +262,11 @@ class LaastrasController < ApplicationController
         end
 
     end # web_stats
+
+    def overwrite_headers 
+        #response.headers['X-Forwarded-Proto'] = 'HTTPS'
+        #response.headers['X-Forwarded-Port'] = '443'
+    end # overwrite_headers
 
     def init_parameters
         next_uri = nil 

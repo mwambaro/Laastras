@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :user_name
       t.string :password
       t.string :role
+      t.string :device_id #=> ip@user_agent
       t.string :photo_uri 
       t.string :photo_mime_type
       t.string :verify_email_token

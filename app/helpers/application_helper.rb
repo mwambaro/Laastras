@@ -15,6 +15,11 @@ module ApplicationHelper
         mex = 2.megabyte
     end
 
+    def self.get_device_id(req)
+        id = "#{req.remote_ip}@#{req.user_agent}"
+
+    end # get_device_id
+
     def self.unique_file_name(fname, logger=nil)
         ufname = fname 
         begin 
@@ -138,10 +143,24 @@ module ApplicationHelper
         job_offer = nil
         
         offers = {}
-        offers['c2581c15-8863-4c70-acda-2604e8ad5795'.to_sym] = I18n.t 'project_manager_assistant'
-        offers['52ff88ba-e7f7-4d7b-99a5-1bc018fef28e'.to_sym] = I18n.t 'venture_capital_professional'
-        offers['08558dca-a5d8-4b46-b2bd-cc96d1028f36'.to_sym] = I18n.t 'ngo_chief_of_mission'
-        offers['fb6f2e53-b891-48e1-a96d-f6ed49627086'.to_sym] = I18n.t 'head_of_state_or_prime_minister'
+        sha256 = '3AABAA6512AF2E7415BF1B4405EAAE27FFC97D63D9E74523925C264FE07C44DC'
+        offers[sha256.to_sym] = I18n.t 'project_manager_assistant'
+        sha256 = '25C950615B149CC57887039035EF3A4A2FE89307CD85253AB64932B3F10EEC4D'
+        offers[sha256.to_sym] = I18n.t 'venture_capital_professional'
+        sha256 = '988EC164FF45A4D1318FDC3B1DC70ADDC0D495485ED19D32B3EBE132C7FF7861'
+        offers[sha256.to_sym] = I18n.t 'ngo_chief_of_mission'
+        sha256 = 'EE782BA12A138541290F8570F25F71ABF9983CA428C4E7E8E6AFF171A60A70A3'
+        offers[sha256.to_sym] = I18n.t 'head_of_state_or_prime_minister'
+        sha256 = 'EF0B5D9A0389CAC9116C22BF16B5A6AE2000C7C075F7CC6BDF717336B3FE7103'
+        offers[sha256.to_sym] = I18n.t 'standards_or_specifications_maker'
+        sha256 = '7BAF9D72FAF8FF016EC539F7869313EB5C352BDDC59B7CB758CB405B8D23BEAD'
+        offers[sha256.to_sym] = I18n.t 'un_secretary_general'
+        sha256 = 'F1FAA914FDBF389EDCE9BBBED6A7A78F2BA886258BB0CD0FBE3145CC8D5A0E49'
+        offers[sha256.to_sym] = I18n.t 'software_engineer'
+        sha256 = 'F62AF06A3556E093BA365DAD7B881551F72F561513F760DF94E21630EDA20AC4'
+        offers[sha256.to_sym] = I18n.t 'grocery_shopping_agent'
+        sha256 = '18022E035350EA17AE3A0133D4C30676E088B1A6119E6680426AC12D18A8EA4A'
+        offers[sha256.to_sym] = I18n.t 'grocery_truck_driver'
 
         if offers.key? job_offer_guid.to_sym
             title = offers[job_offer_guid.to_sym] 
@@ -509,6 +528,13 @@ module ApplicationHelper
 
     def self.logout_user(session)
         unless session.nil?
+            user = User.find(session[:user_id])
+            unless user.nil?
+                user.update({
+                    device_id: nil,
+                    last_logout: Time.now
+                })
+            end
             session[:user_id] = nil
             session[:logged_in] = false
         end
@@ -889,6 +915,7 @@ module ApplicationHelper
                         description: (I18n.t 'project_manager_assistant_offer'),
                         language: lang.to_s,
                         featured: true,
+                        archived: false,
                         application_uri: nil           
                     }
                     job_offers << {  
@@ -897,14 +924,43 @@ module ApplicationHelper
                         description: (I18n.t 'venture_capital_professional_offer'),
                         language: lang.to_s,
                         featured: true,
+                        archived: false,
                         application_uri: nil           
-                    }   
+                    }  
+                    job_offers << {  
+                        title: (I18n.t 'software_engineer'),
+                        sha256: 'F1FAA914FDBF389EDCE9BBBED6A7A78F2BA886258BB0CD0FBE3145CC8D5A0E49',
+                        description: (I18n.t 'software_engineer_offer'),
+                        language: lang.to_s,
+                        featured: true,
+                        archived: false,
+                        application_uri: nil           
+                    }  
+                    job_offers << {  
+                        title: (I18n.t 'grocery_shopping_agent'),
+                        sha256: 'F62AF06A3556E093BA365DAD7B881551F72F561513F760DF94E21630EDA20AC4',
+                        description: (I18n.t 'grocery_shopping_agent_offer'),
+                        language: lang.to_s,
+                        featured: true,
+                        archived: false,
+                        application_uri: nil           
+                    } 
+                    job_offers << {  
+                        title: (I18n.t 'grocery_truck_driver'),
+                        sha256: '18022E035350EA17AE3A0133D4C30676E088B1A6119E6680426AC12D18A8EA4A',
+                        description: (I18n.t 'grocery_truck_driver_offer'),
+                        language: lang.to_s,
+                        featured: true,
+                        archived: false,
+                        application_uri: nil           
+                    } 
                     job_offers << {  
                         title: (I18n.t 'ngo_chief_of_mission'),
                         sha256: '988EC164FF45A4D1318FDC3B1DC70ADDC0D495485ED19D32B3EBE132C7FF7861',
                         description: (I18n.t 'ngo_chief_of_mission_job_offer'),
                         language: lang.to_s,
                         featured: true,
+                        archived: false,
                         application_uri: nil           
                     } 
                     job_offers << {  
@@ -913,6 +969,7 @@ module ApplicationHelper
                         description: (I18n.t 'head_of_state_or_prime_minister_job_offer'),
                         language: lang.to_s,
                         featured: true,
+                        archived: false,
                         application_uri: nil           
                     }
                     job_offers << {  
@@ -921,6 +978,7 @@ module ApplicationHelper
                         description: (I18n.t 'standards_or_specifications_maker_job_offer'),
                         language: lang.to_s,
                         featured: true,
+                        archived: false,
                         application_uri: nil           
                     }
                     job_offers << {  
@@ -929,6 +987,7 @@ module ApplicationHelper
                         description: (I18n.t 'un_secretary_general_job_offer'),
                         language: lang.to_s,
                         featured: true,
+                        archived: false,
                         application_uri: nil           
                     }
                     # add more job offers below

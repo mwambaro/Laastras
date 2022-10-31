@@ -76,8 +76,8 @@ class WaitSpinner
         let spinner = document.getElementById(this.spinner_id);
         if(spinner)
         {
-            spinner.style.position = 'fixed';
             spinner.style.display = "none";
+            spinner.style.position = 'fixed';
             $('body').css('opacity', '1.0');
         }
 

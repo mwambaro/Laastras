@@ -5,6 +5,7 @@ class CreateLaastrasJobOffers < ActiveRecord::Migration[6.1]
       t.string :sha256
       t.text :description
       t.boolean :featured
+      t.boolean :archived
       t.string :language
       t.string :application_uri
 

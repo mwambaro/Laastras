@@ -139,12 +139,6 @@ class MissionKickOff extends React.Component
 
     } // componentDidMount
 
-    componentWillUpdate(nextProps, nextState)
-    {
-        this.wait_spinner.show_wait_spinner();
-
-    } // componentWillUpdate
-
     componentDidUpdate()
     {
         this.onImgLoadedData(null, this);
@@ -356,6 +350,7 @@ class MissionKickOff extends React.Component
 
         if(updated)
         {
+            this.wait_spinner.show_wait_spinner();
             this.kick_off_button_clicked = true;
             this.setState({
                 current_index: index

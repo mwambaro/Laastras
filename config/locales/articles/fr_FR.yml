@@ -315,6 +315,88 @@ fr_FR:
             </ol>
         </div>
   "
+  software_engineer: "Ingénieur Logiciel"
+  software_engineer_offer: "
+        <div>
+            <div>
+                Notre but ultime en termes d'ingénierie logicielle est de concevoir et développer un système d'exploitation
+                appellé 
+                <a href=\u0022/laastras_marketing_videos/show?video_id=8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946\u0022 style=\u0022text-decoration: none\u0022>
+                    LaasOS
+                </a>
+                , qui exploitera 
+                <a href=\u0022/services/e_card\u0022 style=\u0022text-decoration: none\u0022>
+                    notre cellulaire “HoFi (Home Finances)”
+                </a>
+                et les serveurs “AGAS (Available Goods and Services)”. Vous devriez lire sur
+                <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
+                    notre mission
+                </a>
+                pour plus de détails sur la nécéssité de ce système d'exploitation. Nous aimerions vous recruter, si 
+                vous êtes un <strong>ingénieur logiciel</strong> qui: 
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022>
+                <li>
+                    A au moins 10 ans d'expérience en développement d'applications full-stack, bureau, mobile, 
+                    et “cloud”.
+                </li>
+                <li>
+                    Peut télé-travailler de n'importe où au monde et a déjà travaillé avec une équipe de 
+                    professionels en “open-source” et/ou en développement d'applications de grande taille.
+                </li>
+            </ol>
+        </div>
+  "
+  grocery_shopping_agent: "Agent qui Fait des Courses"
+  grocery_shopping_agent_offer: "
+        <div>
+            <div>
+                Vous devez savoir que les gens peuvent faire commande de pizzas, nourritures, et boissons. On 
+                l'appelle “e-commerce” ou “faire des courses en ligne”. Notre service est particulièrement appellé
+                <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
+                LaasEgrocery
+                </a>.
+                Si nous ne livrons pas des courses faites aux ménages, hôtels, et restaurants, alors nous conduisons 
+                nos clients aux magasins et boutiques spécifiques pour leurs courses. Nous aimerions recruter 
+                des <strong> Agents qui Font des Courses </strong> qui:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022> 
+                <li>
+                    Peuvent utiliser la liste de leurs connaissances et connections pour nous faire des clients
+                    qui voudront consommer notre service “eGrocery”.
+                </li>
+                <li>
+                    Sont assez organisés pour conduire des opérations de courses et livrer ces courses 
+                    aux ménages, bureaux, hôtels, et restaurants.
+                </li>
+            </ol>
+        </div>
+  "
+  grocery_truck_driver: "Conducteur de Camion Transporteur de Courses"
+  grocery_truck_driver_offer: "
+        <div>
+            <div>
+                Vous devez savoir que les gens peuvent faire commande de pizzas, nourritures, et boissons. On 
+                l'appelle “e-commerce” ou “faire des courses en ligne”. Notre service est particulièrement appellé
+                <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
+                LaasEgrocery
+                </a>.
+                Si nous ne livrons pas des courses faites aux ménages, hôtels, et restaurants, alors nous conduisons 
+                nos clients aux magasins et boutiques spécifiques pour leurs courses. Nous aimerions recruter 
+                un <strong> Conducteur de Camion Transporteur des Courses  </strong> qui:
+            </div>
+            <ol style=\u0022margin-top: 10px\u0022> 
+                <li> 
+                    Peut faire des tours plusieurs fois par jour transportant des courses des clients depuis 
+                    des magasins et des marchés.
+                </li>
+                <li>
+                    Est digne de confiance et qui peut respecter toutes les régulations locales de conducteurs,
+                    y compris avoir un permis de conduire.
+                </li>
+            </ol>
+        </div>
+  "
   ngo_chief_of_mission: "Chef de Mission dans une ONG"
   ngo_chief_of_mission_job_offer: "
         <div>
@@ -1091,7 +1173,7 @@ fr_FR:
                     <p><strong> Calendrier et étapes à franchir: </strong></p>
                     <div>
                         Au plus tard, le 26 Janvier 2027, nous devrons avoir lancé LaasEgrocery avec l'aide
-                        <a href=\u0022/laastras_job_offers/show?job_offer_guid=c2581c15-8863-4c70-acda-2604e8ad5795\u0022 style=\u0022text-decoration: none\u0022>
+                        <a href=\u0022/laastras_job_offers/show?job_offer_guid=3AABAA6512AF2E7415BF1B4405EAAE27FFC97D63D9E74523925C264FE07C44DC&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                         d'une femme (ou demoiselle) locale assistante du chef de projet
                         </a>
                         dans chaque pays reconnu par l'ONU.
@@ -1103,7 +1185,12 @@ fr_FR:
                         Laastras doit maintenir et soutenir la neutralité politique. Nous devons agir 
                         en toute transparence comme une Organisation Non-Gouvernementale. Le gouvernement 
                         local ne peut que nous rendre les services auxquels nous avons droit. Nous engagerons
-                        seulement les professionels les plus qualifiés.
+                        seulement les professionels les plus qualifiés. Pour mieux comprendre ce point, veuillez
+                        consulter 
+                        <a href=\u0022/laastras_job_offers/index?job_type=start_up&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                        notre page d'offres d'emploi débutantes
+                        </a>
+                        .
                     </div>
                 </li>
                 <li style=\u0022margin-top: 10px\u0022>

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_10_22_095403) do
     t.string "sha256"
     t.text "description"
     t.boolean "featured"
+    t.boolean "archived"
     t.string "language"
     t.string "application_uri"
     t.datetime "created_at", precision: 6, null: false
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_10_22_095403) do
     t.string "user_name"
     t.string "password"
     t.string "role"
+    t.string "device_id"
     t.string "photo_uri"
     t.string "photo_mime_type"
     t.string "verify_email_token"

@@ -21,6 +21,7 @@
         feature_labels: offer[:feature_labels],
         feature_job_url: url_for(controller: 'laastras_job_offers', action: 'feature', id: offer[:job_offer_id]),
         unfeature_job_url: url_for(controller: 'laastras_job_offers', action: 'unfeature', id: offer[:job_offer_id]),
+        archive_job_url: url_for(controller: 'laastras_job_offers', action: 'archive', id: offer[:job_offer_id]),
         job_offer_description: offer[:job_offer_description],
         application_url: offer[:application_url],
         html_ids: offer[:html_ids]

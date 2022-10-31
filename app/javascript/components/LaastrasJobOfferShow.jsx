@@ -51,6 +51,13 @@ class LaastrasJobOfferShow extends React.Component
                                         id={this.props.html_ids.unfeature_job_button_id}>
                                     {this.props.feature_labels.unfeature_label}
                                 </button>
+                                <button type="button" 
+                                        className="btn btn-primary" 
+                                        style={{padding: '10px', marginLeft: '10px', display: 'none'}}
+                                        onClick={(se) => this.archive_job(se)}
+                                        id={this.props.html_ids.archive_job_button_id}>
+                                    {this.props.feature_labels.archive_label}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -74,6 +81,10 @@ class LaastrasJobOfferShow extends React.Component
         if(this.props.feature_labels.unfeature_label != null && this.props.feature_labels.unfeature_label != '')
         {
             $(`#${this.props.html_ids.unfeature_job_button_id}`).css({display: 'block'});
+        }
+        if(this.props.feature_labels.archive_label != null && this.props.feature_labels.archive_label != '')
+        {
+            $(`#${this.props.html_ids.archive_job_button_id}`).css({display: 'block'});
         }
 
     } // componentDidMount
@@ -111,6 +122,15 @@ class LaastrasJobOfferShow extends React.Component
 
     } // feature_job
 
+    archive_job(e)
+    { 
+        if(this.props.archive_job_url)
+        {
+            window.location = this.props.archive_job_url;
+        }
+
+    } // archive_job
+
 }
 
 LaastrasJobOfferShow.propTypes = {
@@ -118,7 +138,7 @@ LaastrasJobOfferShow.propTypes = {
     apply_label: PropTypes.string,
     close_label: PropTypes.string,
     close_job_url: PropTypes.string,
-    feature_labels: PropTypes.object, // {feature_label:, unfeature_label:,}
+    feature_labels: PropTypes.object, // {feature_label:, unfeature_label:, archive_label:}
     feature_job_url: PropTypes.string,
     unfeature_job_url: PropTypes.string,
     job_offer_description: PropTypes.string,

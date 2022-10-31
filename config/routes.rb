@@ -1,34 +1,42 @@
 Rails.application.routes.draw do
   get 'user_mail_boxes/send_mail_box'
+
   get 'laastras_marketing_videos/index'
   get 'laastras_marketing_videos/show'
   get 'laastras_marketing_videos/show_video'
-  get 'laastras_databases/download_copy'
-  get 'laastras_databases/delete_copy'
+  
   get 'laastras_mature_videos/index'
   get 'laastras_mature_videos/show'
   get 'laastras_mature_videos/show_video'
+
   get 'services/e_grocery'
   get 'services/e_card'
   get 'services/e_logistics'
   get 'services/e_alliances'
   get 'services/e_myth'
   get 'services/e_phylosophy'
+
   get 'laastras_job_seekers/fill_in_form'
   get 'laastras_job_seekers/show_jsk_doc'
   get 'laastras_job_seekers/show_jsk'
   get 'laastras_job_seekers/index_jsk'
   get 'laastras_job_seekers/evaluate'
+
   get 'laastras_job_offers/index'
   get 'laastras_job_offers/show'
   get 'laastras_job_offers/apply'
   get 'laastras_job_offers/close'
   get 'laastras_job_offers/feature'
   get 'laastras_job_offers/unfeature'
+  get 'laastras_job_offers/archive'
+
   get 'laastras_documents/show_laastras_document'
   get 'laastras_documents/index_lsdoc'
+
   get 'maintenance/fail_safe'
+
   get 'laastras_page_views/analytics'
+
   get 'money_transfer/payment_method'
   get 'money_transfer/payment_information'
   get 'money_transfer/receive_payment_information'

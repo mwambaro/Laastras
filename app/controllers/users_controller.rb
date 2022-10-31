@@ -200,6 +200,7 @@ class UsersController < ApplicationController
                 session[:logged_in] = false
                 unless @laastras_user.nil?
                     @laastras_user.last_login = Time.now
+                    @laastras_user.device_id = ApplicationHelper.get_device_id(request)
                     @laastras_user.save
                     session[:logged_in] = true 
                     session[:user_id] = @laastras_user.id
