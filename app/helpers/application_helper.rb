@@ -568,7 +568,8 @@ module ApplicationHelper
             begin
                 language = I18n.locale.to_s
                 featured = true
-                sql = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND featured = '#{featured}' ORDER BY created_at"
+                archived = false
+                sql = "SELECT * FROM laastras_job_offers WHERE language = '#{language}' AND featured = '#{featured}' AND archived = #{archived} ORDER BY created_at"
                 LaastrasJobOffer.find_by_sql(sql)
                     .each do |job_offer|
                         featured_job_offers << {

@@ -388,24 +388,24 @@ class LocaleSettings extends React.Component
                                             </div>
                                             <div><p> ${message} </p></div>
                                         `;
-                                        setTimeout((e) => {
-                                            this.wait_spinner.hide_wait_spinner();
-                                        }, 1000);
                                         window.location.assign(this.refreshUrl);
                                         window.location.reload(true);
                                     }
                                     else if(code === 0) // failed to set
                                     {
                                         html = `
-                                            <div class="text-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
-                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                </svg>
+                                            <div class="feedback-message">
+                                                <div class="text-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                    </svg>
+                                                </div>
+                                                <div><p> ${message} </p></div>
                                             </div>
-                                            <div><p> ${message} </p></div>
                                         `;
                                         this.refreshUrl = null;
+                                        $('.feedback-message').remove();
                                         $('#action-response-message').append(html);
                                         setTimeout((e) => {
                                             this.wait_spinner.hide_wait_spinner();
@@ -415,15 +415,18 @@ class LocaleSettings extends React.Component
                                     else // unknown code
                                     {
                                         html = `
-                                            <div class="text-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                    <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                                </svg>
+                                            <div class="feedback-message">
+                                                <div class="text-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                        <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                    </svg>
+                                                </div>
+                                                <div><p> ${message} </p></div>
                                             </div>
-                                            <div><p> ${message} </p></div>
                                         `;
                                         this.refreshUrl = null;
+                                        $('.feedback-message').remove();
                                         $('#action-response-message').append(html);
 
                                         setTimeout((e) => {
@@ -442,21 +445,29 @@ class LocaleSettings extends React.Component
                             },
                             "json"
                         )
-                        .fail(() => {
+                        .fail((error) => {
                             setTimeout((e) => {
                                 this.wait_spinner.hide_wait_spinner();
                             }, 1000);
                             
                             let message = "An error occurred while attempting to set language settings."
-                            let html = `<div><p> ${message} </p></div>`;
+                            let html = `
+                                <div class="feedback-message">
+                                    <div class="text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div><p> ${message} </p></div>
+                                </div>
+                            `;
+                            $('.feedback-message').remove();
                             $('#action-response-message').append(html);
                             actionResponseMdl.show();
                             this.refreshUrl = null;
                             console.log(`Post request failed. Data: ${localeJson}; End point: ${this.localeEndPoint}`);
                         });
-                        setTimeout((e) => {
-                            this.wait_spinner.hide_wait_spinner();
-                        }, 1000);
                     }
                     catch(error)
                     {

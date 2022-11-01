@@ -376,14 +376,17 @@ fr_FR:
   grocery_truck_driver_offer: "
         <div>
             <div>
-                Vous devez savoir que les gens peuvent faire commande de pizzas, nourritures, et boissons. On 
-                l'appelle “e-commerce” ou “faire des courses en ligne”. Notre service est particulièrement appellé
+                Avec à notre disposition les statistiques générées par
                 <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
-                LaasEgrocery
-                </a>.
-                Si nous ne livrons pas des courses faites aux ménages, hôtels, et restaurants, alors nous conduisons 
-                nos clients aux magasins et boutiques spécifiques pour leurs courses. Nous aimerions recruter 
-                un <strong> Conducteur de Camion Transporteur des Courses  </strong> qui:
+                    LaasEgrocery
+                </a>
+                , nous avons assez de données pour fournir des biens à nos clients. Nous pouvons livrer 
+                des biens aux ménages, hôtels, restaurants, et aux fournisseurs eux-mêmes. Nous voudrions 
+                <a href=\u0022/services/e_logistics\u0022 style=\u0022text-decoration: none\u0022>
+                    centraliser ce processus 
+                </a>
+                dans notre centre de données “cloud” à fin de vaincre la pauvreté, la faim, la malnutrition, etc.
+                Nous aimerions recruter un <strong> Conducteur de Camion Transporteur des Courses </strong> qui:
             </div>
             <ol style=\u0022margin-top: 10px\u0022> 
                 <li> 
@@ -391,7 +394,7 @@ fr_FR:
                     des magasins et des marchés.
                 </li>
                 <li>
-                    Est digne de confiance et qui peut respecter toutes les régulations locales de conducteurs,
+                    Est digne de confiance et qui peut respecter toutes les régulations locales des conducteurs,
                     y compris avoir un permis de conduire.
                 </li>
             </ol>
@@ -793,7 +796,7 @@ fr_FR:
   offer_to_sign_up: "Essayez de vous Inscrire"
   offer_to_sign_up_message: "
         Evidemment vous ne vous êtes pas encore inscris.
-        Bon, nous n'avons pas pu trouvé votre e-mail dans notre base de données.
+        Bon, nous n'avons pas pu trouver votre e-mail dans notre base de données.
         S'il vous plait, inscrivez-vous
   "
   offer_to_reset_password: "Essayer de réinitialiser votre mot de passe"

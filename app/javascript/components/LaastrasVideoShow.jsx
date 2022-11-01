@@ -29,13 +29,21 @@ class LaastrasVideoShow extends React.Component
                             </div>
                             <hr />
                             <div style={{padding: '2px'}} className="d-flex flex-row justify-content-center video-item-div">
-                                <video className="embed-responsive video-item-main" controls={true}
-                                        onLoadedData={(se) => this.onloadeddata(se)}>
-                                    <source src={this.props.video.view_url} 
-                                            type={this.props.video.mime_type} 
-                                            className="embed-responsive-item video-item" />
-                                    {this.props.video.filename}
-                                </video>
+                                {
+                                    /^video/i.test(this.props.video.mime_type) === true ?
+                                    (
+                                        <video className="embed-responsive video-item-main" controls={true}
+                                                onLoadedData={(se) => this.onloadeddata(se)}>
+                                            <source src={this.props.video.view_url} 
+                                                    type={this.props.video.mime_type} 
+                                                    className="embed-responsive-item video-item" />
+                                            {this.props.video.filename}
+                                        </video>
+                                    ):
+                                    (
+                                        <img src={this.props.video.view_url} className="img-fluid" />
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

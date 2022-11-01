@@ -16,12 +16,10 @@
     <%= react_component('LaastrasJobOfferShow', {
         job_offer_title: offer[:job_offer_title],
         apply_label: offer[:apply_label],
-        close_label: @close_label,
-        close_job_url: url_for(controller: 'laastras_job_offers', action: 'close', id: offer[:job_offer_id]),
-        feature_labels: offer[:feature_labels],
-        feature_job_url: url_for(controller: 'laastras_job_offers', action: 'feature', id: offer[:job_offer_id]),
-        unfeature_job_url: url_for(controller: 'laastras_job_offers', action: 'unfeature', id: offer[:job_offer_id]),
-        archive_job_url: url_for(controller: 'laastras_job_offers', action: 'archive', id: offer[:job_offer_id]),
+        close_label: offer[:feature_labels][:close_label],
+        close_job_url: offer[:feature_labels][:close_job_url],
+        feature_label: offer[:feature_labels][:feature_label],
+        feature_job_url: offer[:feature_labels][:feature_job_url],
         job_offer_description: offer[:job_offer_description],
         application_url: offer[:application_url],
         html_ids: offer[:html_ids]

@@ -352,7 +352,7 @@ class UsersController < ApplicationController
                     user.verify_email_token.blank? || 
                     user.verify_email_token != :verified.to_s
                 )
-                    session[:fail_safe_message] = I18n.t 'verify_email_before_password_reset_title'
+                    session[:fail_safe_title] = I18n.t 'verify_email_before_password_reset_title'
                     session[:fail_safe_message] = I18n.t 'verify_email_before_password_reset_message'
                     next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
                     redirect_uri = request.original_url

@@ -52,9 +52,15 @@ class LaastrasMarketingVideosController < ApplicationController
         begin 
             id = params[:id]
             sha256 = params[:video_id]
-            video = LaastrasMarketingVideo.find(id) 
+            video = nil 
+            unless id.nil?
+                video = LaastrasMarketingVideo.find(id) 
+            end
+
             if video.nil? 
-                video = LaastrasMarketingVideo.find_by_sha256 sha256
+                unless (sha256.nil? || sha256.blank?)
+                    video = LaastrasMarketingVideo.find_by_sha256 sha256
+                end
             end
 
             if video.nil? 

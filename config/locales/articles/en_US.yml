@@ -406,14 +406,17 @@ en_US:
   grocery_truck_driver_offer: "
         <div>
             <div>
-                You know people can order pizzas, foods, and drinks. They generally call it e-commerce, 
-                or online shopping. Our service is particularly named 
+                With the figures collected from 
                 <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
-                LaasEgrocery
-                </a>.
-                If we do not deliver groceries to households, offices, hotels, and restaurants, then we direct 
-                our clients to specific shops where to buy groceries. We would like to hire a
-                <strong> Grocery Truck Driver </strong> who:
+                    LaasEgrocery
+                </a>
+                , we have enough data to know how to supply groceries to our clients. We can deliver 
+                groceries to households, hotels, restaurants, and even to suppliers themselves. We want to 
+                <a href=\u0022/services/e_logistics\u0022 style=\u0022text-decoration: none\u0022>
+                    centralize this process 
+                </a>
+                in our cloud data center so as to defeat poverty, hunger, malnutrition, etc.
+                We would like to hire a <strong> Grocery Truck Driver </strong> who:
             </div>
             <ol style=\u0022margin-top: 10px\u0022> 
                 <li>
