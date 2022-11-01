@@ -118,15 +118,8 @@ class LaastrasController < ApplicationController
                     )
                 end
             else
-                unless (user.device_id.nil? || user.device_id.blank?)
-                    if user.device_id == ApplicationHelper.get_device_id(request)
-                        session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
-                        session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
-                    else
-                        session[:fail_safe_title] = I18n.t 'logged_in_on_another_device_title'
-                        session[:fail_safe_message] = I18n.t 'logged_in_on_another_device_message'
-                    end
-                end
+                session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
+                session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
                 next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             end
         rescue Exception => e 
@@ -200,7 +193,9 @@ class LaastrasController < ApplicationController
     def sign_out 
         next_uri = nil 
         begin
-            ApplicationHelper.logout_user(session)
+            lc_session = ApplicationHelper.logout_user(session)
+            session.merge!(lc_session)
+            #logger.debug "===> LOGGED_IN: #{session[:logged_in]}; USER_ID: #{session[:user_id]}"
             next_uri = url_for(controller: 'laastras', action: 'home')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 

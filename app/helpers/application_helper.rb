@@ -507,7 +507,7 @@ module ApplicationHelper
         user = nil
         begin
             unless session.nil?
-                if session[:logged_in]
+                if session[:logged_in] == true
                     unless session[:user_id].nil?
                         us = User.find(session[:user_id])
                         unless us.nil?
@@ -527,17 +527,21 @@ module ApplicationHelper
     end # who_is_logged_in?
 
     def self.logout_user(session)
-        unless session.nil?
-            user = User.find(session[:user_id])
+        lc_session = session
+        unless lc_session.nil?
+            user = User.find(lc_session[:user_id])
             unless user.nil?
                 user.update({
                     device_id: nil,
                     last_logout: Time.now
                 })
             end
-            session[:user_id] = nil
-            session[:logged_in] = false
+            lc_session[:user_id] = nil
+            lc_session[:logged_in] = false
+            user.update({device_id: nil})
         end
+
+        lc_session
 
     end # logout_user
 

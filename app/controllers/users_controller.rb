@@ -197,18 +197,33 @@ class UsersController < ApplicationController
             dataToSend = nil
             @laastras_user, @email = User.authenticate(email, password, logger)
             unless session.nil?
-                session[:logged_in] = false
                 unless @laastras_user.nil?
-                    @laastras_user.last_login = Time.now
-                    @laastras_user.device_id = ApplicationHelper.get_device_id(request)
-                    @laastras_user.save
-                    session[:logged_in] = true 
-                    session[:user_id] = @laastras_user.id
-                    dataToSend = {
-                        code: 1,
-                        message: (I18n.t 'logged_in_true'),
-                        redirect_uri: redirect_uri
-                    }
+                    unless (@laastras_user.device_id.nil? || @laastras_user.device_id.blank?)
+                        msg = nil
+                        if @laastras_user.device_id == ApplicationHelper.get_device_id(request)
+                            msg = "<div>#{I18n.t 'you_are_already_logged_in_title'}</div><hr/>" +
+                                  "<div>#{I18n.t 'you_are_already_logged_in_message'}</div>"
+                        else
+                            msg = "<div>#{I18n.t 'logged_in_on_another_device_title'}</div><hr/>" +
+                                  "<div>#{I18n.t 'logged_in_on_another_device_message'}</div>"
+                        end
+                        dataToSend = {
+                            code: 0,
+                            message: msg,
+                            redirect_uri: redirect_uri
+                        }
+                    else
+                        @laastras_user.last_login = Time.now
+                        @laastras_user.device_id = ApplicationHelper.get_device_id(request)
+                        @laastras_user.save
+                        session[:logged_in] = true 
+                        session[:user_id] = @laastras_user.id
+                        dataToSend = {
+                            code: 1,
+                            message: (I18n.t 'logged_in_true'),
+                            redirect_uri: redirect_uri
+                        }
+                    end
                 else
                     if @email.nil? # sign up, please
                         sign_up_url = url_for(
@@ -276,9 +291,10 @@ class UsersController < ApplicationController
                     redirect_uri: redirect_uri
                 }
             end
-
+                
             # send data to caller
             render plain: JSON.generate(dataToSend) unless dataToSend.nil?
+
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
