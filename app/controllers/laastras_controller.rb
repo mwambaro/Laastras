@@ -118,12 +118,14 @@ class LaastrasController < ApplicationController
                     )
                 end
             else
-                unless (user.device_id.nil? || user.device_id.blank?) 
-                    session[:fail_safe_title] = I18n.t 'logged_in_on_another_device_title'
-                    session[:fail_safe_message] = I18n.t 'logged_in_on_another_device_message'
-                else
-                    session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
-                    session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
+                unless (user.device_id.nil? || user.device_id.blank?)
+                    if user.device_id == ApplicationHelper.get_device_id(request)
+                        session[:fail_safe_title] = I18n.t 'you_are_already_logged_in_title'
+                        session[:fail_safe_message] = I18n.t 'you_are_already_logged_in_message'
+                    else
+                        session[:fail_safe_title] = I18n.t 'logged_in_on_another_device_title'
+                        session[:fail_safe_message] = I18n.t 'logged_in_on_another_device_message'
+                    end
                 end
                 next_uri = url_for(controller: 'maintenance', action: 'fail_safe')
             end
