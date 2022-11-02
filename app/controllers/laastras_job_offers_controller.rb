@@ -153,19 +153,27 @@ class LaastrasJobOffersController < ApplicationController
         next_uri = nil 
         begin 
             id = params[:id]
+            start_up = nil
+            job_type = params[:job_type] || nil
             job_offer_guid = params[:job_offer_guid]
             unless id.nil?
                 @job_offer = LaastrasJobOffer.find(id)
             else
+                # logger.debug "===> id: #{job_offer_guid}"
                 @job_offer = ApplicationHelper.job_offer_guid_to_job_offer(job_offer_guid)
+                start_up = @job_offer
             end
 
             unless @job_offer.nil?
-                if @job_offer.archived 
+                # logger.debug "===> Job offer found.#{job_type}"
+                if @job_offer.archived && job_type != :start_up.to_s
                     raise 'The job offer [' + @job_offer.title + '] has been archived'
                 end 
+                # logger.debug "===> Job offer to be shown"
 
-                start_up = ApplicationHelper.job_offer_guid_to_job_offer(@job_offer.sha256)
+                if start_up.nil?
+                    start_up = ApplicationHelper.job_offer_guid_to_job_offer(@job_offer.sha256)
+                end
                 admin = ApplicationHelper.user_has_admin_role?(session)
 
                 if admin

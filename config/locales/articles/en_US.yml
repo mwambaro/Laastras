@@ -557,8 +557,9 @@ en_US:
             </div>
             <div>
                 <strong>E-mail:</strong> 
-                <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com\u0022
-                   style=\u0022text-decoration: none\u0022>onkezabahizi@gmail.com</a>
+                <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022>
+                   onkezabahizi@gmail.com
+                </a>
             </div>
             <div>
                 <strong>LinkedIn:</strong> 
@@ -804,7 +805,7 @@ en_US:
         <div>
             <div><strong>Andrew Gikling</strong> (August 2019) </div>
             <div style=\u0022color: grey\u0022>Software Engineer, WTS LLC, Saint Paul, MN, US</div>
-            <div><strong>E-mail: </strong><a href=\u0022mailto:asgikling@gmail.com\u0022 style=\u0022text-decoration: none\u0022>asgikling@gmail.com</a></div>
+            <div><strong>E-mail: </strong><a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=asgikling%40gmail.com\u0022 style=\u0022text-decoration: none\u0022>asgikling@gmail.com</a></div>
             <div>
                 <div><u>Endorsement</u>:</div>
                 <div>
@@ -1188,7 +1189,7 @@ en_US:
                     <p><strong> A calendar and milestones: </strong></p>
                     <div>
                         By January 26, 2027, we must have launched LaasEgrocery with the help of
-                        <a href=\u0022/laastras_job_offers/show?job_offer_guid=3AABAA6512AF2E7415BF1B4405EAAE27FFC97D63D9E74523925C264FE07C44DC&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        <a href=\u0022/laastras_job_offers/show?job_offer_guid=3AABAA6512AF2E7415BF1B4405EAAE27FFC97D63D9E74523925C264FE07C44DC&job_type=start_up&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                         a local female project manager assistant
                         </a>
                         in every country recognized by UN.

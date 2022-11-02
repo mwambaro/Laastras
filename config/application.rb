@@ -36,7 +36,7 @@ module Laastras
     #=> end X-Frame-Options
 
     # HTTPS
-    #config.action_dispatch.default_headers.merge!({'X-Forwarded-Proto' => 'HTTPS', 'X-Forwarded-Port' => '443'})
+    config.action_dispatch.default_headers.merge!({'X-Forwarded-Proto' => 'HTTPS', 'X-Forwarded-Port' => '443'})
 
     # cookies
     config.middleware.use ActionDispatch::Cookies
