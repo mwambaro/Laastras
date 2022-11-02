@@ -208,7 +208,7 @@ class UsersController < ApplicationController
                                   "<div>#{I18n.t 'logged_in_on_another_device_message'}</div>"
                         end
                         dataToSend = {
-                            code: 0,
+                            code: 1,
                             message: msg,
                             redirect_uri: redirect_uri
                         }

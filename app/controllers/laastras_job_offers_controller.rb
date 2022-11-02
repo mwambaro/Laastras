@@ -82,46 +82,50 @@ class LaastrasJobOffersController < ApplicationController
                         @feature_job_url = nil
                     end
 
-                    feature_labels = {
+                    job_offer_actions = {
                         feature_label: @feature_label,
                         close_label: @close_label,
                         feature_job_url: @feature_job_url,
-                        close_job_url: @close_job_url
-                    }
-                    @all_job_offers << {
-                        job_offer_title: job_offer.title,
-                        job_offer_description: job_offer.description,
+                        close_job_url: @close_job_url,
+                        archived: job_offer.archived.to_s,
+                        admin: admin.to_s,
                         apply_label: applicants_label,
-                        job_offer_id: job_offer.id,
-                        html_ids: html_ids,
-                        feature_labels: feature_labels,
                         application_url: url_for(
                             controller: 'laastras_job_seekers',
                             action: 'index_jsk',
                             job_offer_id: job_offer.id
                         )
                     }
-                else
-                    @close_label = nil
-                    @feature_label = nil
-                    feature_labels = {
-                        feature_label: @feature_label,
-                        close_label: @close_label,
-                        feature_job_url: nil,
-                        close_job_url: nil
-                    }
                     @all_job_offers << {
                         job_offer_title: job_offer.title,
                         job_offer_description: job_offer.description,
-                        apply_label: apply_label,
                         job_offer_id: job_offer.id,
                         html_ids: html_ids,
-                        feature_labels: feature_labels,
+                        job_offer_actions: job_offer_actions
+                    }
+                else
+                    @close_label = nil
+                    @feature_label = nil
+                    job_offer_actions = {
+                        feature_label: @feature_label,
+                        close_label: @close_label,
+                        apply_label: apply_label,
+                        archived: job_offer.archived.to_s,
+                        admin: admin.to_s,
+                        feature_job_url: nil,
+                        close_job_url: nil,
                         application_url: url_for(
                             controller: 'laastras_job_offers', 
                             action: 'apply', 
                             id: job_offer.id
                         )
+                    }
+                    @all_job_offers << {
+                        job_offer_title: job_offer.title,
+                        job_offer_description: job_offer.description,
+                        job_offer_actions: job_offer_actions,
+                        job_offer_id: job_offer.id,
+                        html_ids: html_ids
                     }
                 end
                 counter += 1
@@ -162,8 +166,9 @@ class LaastrasJobOffersController < ApplicationController
                 end 
 
                 start_up = ApplicationHelper.job_offer_guid_to_job_offer(@job_offer.sha256)
+                admin = ApplicationHelper.user_has_admin_role?(session)
 
-                if ApplicationHelper.user_has_admin_role?(session)
+                if admin
                     @apply_label = (I18n.t 'applicants_label')
                     unless start_up.nil?
                         @close_label = I18n.t 'archive_label'
@@ -220,11 +225,14 @@ class LaastrasJobOffersController < ApplicationController
                     unfeature_job_button_id: "unfeature-job-btn-id",
                     archive_job_button_id: "archive-job-btn-id"
                 }
-                @feature_labels = {
+                @job_offer_actions = {
                     feature_label: @feature_label,
                     close_label: @close_label,
                     feature_job_url: @feature_job_url,
-                    close_job_url: @close_job_url
+                    close_job_url: @close_job_url,
+                    application_url: @application_url, 
+                    archived: @job_offer.archived.to_s,
+                    admin: admin.to_s
                 }
             else 
                 next_uri = url_for(

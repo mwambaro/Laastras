@@ -15,13 +15,8 @@
 <% @all_job_offers.each do |offer| %>
     <%= react_component('LaastrasJobOfferShow', {
         job_offer_title: offer[:job_offer_title],
-        apply_label: offer[:apply_label],
-        close_label: offer[:feature_labels][:close_label],
-        close_job_url: offer[:feature_labels][:close_job_url],
-        feature_label: offer[:feature_labels][:feature_label],
-        feature_job_url: offer[:feature_labels][:feature_job_url],
+        job_offer_actions: offer[:job_offer_actions],
         job_offer_description: offer[:job_offer_description],
-        application_url: offer[:application_url],
         html_ids: offer[:html_ids]
     })%>
 <% end %>

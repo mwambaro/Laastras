@@ -1,12 +1,7 @@
 
 <%= react_component('LaastrasJobOfferShow', {
     job_offer_title: @job_offer.title,
-    apply_label: @apply_label,
-    close_label: @feature_labels[:close_label],
-    close_job_url: @feature_labels[:close_job_url],
-    feature_label: @feature_labels[:feature_label],
-    feature_job_url: @feature_labels[:feature_job_url],
+    job_offer_actions: @job_offer_actions,
     job_offer_description: @job_offer.description,
-    application_url: @application_url,
     html_ids: @html_ids
 })%>
