@@ -6,12 +6,15 @@ import MissionKickOff from "./MissionKickOff"
 import LaastrasVision from "./LaastrasVision"
 import SiteFooter from "./SiteFooter"
 
+require("./AppUtilities");
+
 class LaastrasHome extends React.Component 
 {
     constructor(props)
     {
         super(props);
         this.state = {resize: 0};
+        this.height_set_event = 'height-has-been-set';
 
     } // constructor 
 
@@ -51,11 +54,12 @@ class LaastrasHome extends React.Component
                                 key_services_label={this.props.laastras_intro_capture.key_services_label}
                             />
                         </div>
-                        <div className="col-md-6" style={{margin: '0px'}} id="mission-milestones">
+                        <div className="col-md-6" style={{margin: '0px'}} id="mission-milestones-outer">
                             <MissionKickOff
                                 mission_kick_off_data={this.props.mission_kick_off.mission_kick_off_data}
                                 kick_off_section_title={this.props.mission_kick_off.kick_off_section_title}
                                 click_or_tap_image_text={this.props.mission_kick_off.click_or_tap_image_text}
+                                height_set_event={this.height_set_event}
                             />
                         </div>
                     </div>
@@ -87,92 +91,40 @@ class LaastrasHome extends React.Component
             }, 1000);
         });
 
+        $(window).fire_event(
+            this.height_set_event, 
+            'mission-milestones-outer', 
+            null
+        );
+
     } // componentDidMount
 
     componentDidUpdate()
     {
         this.scale_home_sizes();
+        $(window).fire_event(
+            this.height_set_event, 
+            'mission-milestones-outer', 
+            null
+        );
 
     } // componentDidUpdate
 
     scale_home_sizes()
     {
-        let left = $('#mission-kick-off-component').position().left;
+        let left = $('#mission-kick-off-component').offset().left;
         let width = $('#intro-capture-component').width();
         let height = $('#intro-capture-component').height();
         if(left>width) // fix height
         {   
             $('#mission-kick-off-component').height(height);
-            setTimeout((e) => {
-                this.add_lines_to_notebook();
-            }, 1000);
         }
         else 
         {
             $('#mission-kick-off-component').css({height: 'auto'});
         }
 
-        //this.vertical_center_milestones_elements();
-
     } // scale_home_sizes
-
-    add_lines_to_notebook()
-    {
-        let height = $('.ardoise-div').first().height();
-        let hrH = $('#kick-off-section').height() - 
-                    $('#milestones-elements-section').height() - 
-                    $('#kick-off-title-section').height();
-        let rem = $('#mission-kick-off-component').height() - 
-                    $('#kick-off-title-section').height() - 
-                    $('#milestones-elements-section').height() - 
-                    height - hrH;
-        let n = Math.floor(rem/height) - 2;
-        //console.log('n: ' + n + '; height: ' + height + '; rem: ' + rem + '; hrH: ' + hrH);
-        if(n>0)
-        {
-            let html = `
-                <div style="height: 2px; background-color: grey; margin: 30px" class="ardoise-div">
-                </div>
-            `;
-            $('.ardoise-div').remove();
-            for(let i=0; i<n; i++)
-            {
-                let h = $('#aria-ardoise').height();
-                //console.log('H: ' + h);
-                if(h >= rem)
-                {
-                    break;
-                }
-                $('#aria-ardoise').append(html);
-            }
-        }
-
-    } // add_lines_to_notebook
-
-    vertical_center_milestones_elements()
-    {
-        let mkH = $('#mission-kick-off-component').height();
-        console.log('mkH: ' + mkH);
-        let msH = $('#milestones-elements').height();
-        console.log('msH: ' + msH);
-        let tsH = $('#kick-off-title-section').height();
-        console.log('tsH: ' + tsH);
-        let hrH = $('#milestones-elements').offset().top - $('#kick-off-title-section').offset().top - tsH;
-        console.log('hrH: ' + hrH);
-        let diff = mkH - msH - tsH - hrH;
-        console.log('diff: ' + diff);
-        let half = Math.ceil(diff/2);
-        console.log('half: ' + half);
-        let topM = $('#milestones-elements').offset().top;
-        console.log('topM: ' + topM);
-        let top = topM + half;
-        console.log('next top: ' + top);
-        let pos = $('#milestones-elements').offset();
-        console.log('current top: ' + pos.top);
-        pos.top = top;
-        $('#milestones-elements').offset(pos); 
-
-    } // vertical_center_milestones_elements
 
 } // LaastrasHome 
 

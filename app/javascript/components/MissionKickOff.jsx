@@ -24,14 +24,50 @@ class MissionKickOff extends React.Component
 
     render()
     {
-        let kick_off_click_or_tap_section_style = {
-            margin: '5px',
-            padding: '4px',
-            color: '#11b624'
+        let arrow_left_display = {
+            display: 'none'
         };
-        let kick_off_arrow_section_style = {
+        let arrow_right_display = {
+            display: 'block'
+        };
+        let arrow_section_display = {
             display: 'flex'
-        };
+        }
+
+        let otherwise = true;
+        let index = this.state.current_index;
+        if(this.props.mission_kick_off_data.length === 1) // Remove both arrows
+        {
+            arrow_section_display = 'none';
+            otherwise = false;
+        }
+        if(index === 0) // Remove arrow-left
+        {
+            arrow_left_display = {
+                display: 'none'
+            };
+            otherwise = false;
+        }
+        if(index === this.props.mission_kick_off_data.length-1) // Remove arrow-right
+        {
+            arrow_right_display = {
+                display: 'none'
+            };
+            otherwise = false;
+        }
+        
+        if(otherwise)// Make sure they both exist
+        {
+            arrow_section_display = {
+                display: 'flex'
+            };
+            arrow_left_display = {
+                display: 'block'
+            };
+            arrow_right_display = {
+                display: 'block'
+            };
+        }
         
         return(
             
@@ -78,7 +114,11 @@ class MissionKickOff extends React.Component
                             }}>
                             <div id="milestones-elements" style={{backgroundColor: 'white'}}>
                                 <div id="kick-off-click-or-tap-section"
-                                    style={kick_off_click_or_tap_section_style}>
+                                    style={{
+                                        margin: '5px',
+                                        padding: '4px',
+                                        color: '#11b624'
+                                    }}>
                                     <span> {this.props.click_or_tap_image_text} </span>
                                 </div>
                                 <div id="kick-off-image-section"
@@ -89,17 +129,17 @@ class MissionKickOff extends React.Component
                                         onClick={(se) => this.goToImageDetails(se)} />
                                 </div>
                                 <div id="kick-off-arrow-section" 
-                                    className="text-center"
-                                    style={kick_off_arrow_section_style}>
-                                    <div id="kick-off-arrow-left">
-                                        <button type="button" className="btn btn-default arrow-left" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-left')}>
+                                    className="d-flex flex-row justify-content-center"
+                                    style={{display: arrow_section_display, margin: '5px'}}>
+                                    <div id="kick-off-arrow-left" style={{display: arrow_left_display}}>
+                                        <button type="button" id="arrow-left" className="btn btn-default arrow-left" onClick={(se) => this.onArrowClicked(se, 'arrow-left')}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-left-circle" viewBox="0 0 16 16">
                                                 <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                                             </svg>
                                         </button>
                                     </div>
-                                    <div id="kick-off-arrow-right">
-                                        <button type="button" className="btn btn-default arrow-right" onClick={(se) => this.onNextPreviousClicked(se, 'arrow-right')}>
+                                    <div id="kick-off-arrow-right" style={{display: arrow_right_display}}>
+                                        <button type="button" id="arrow-right" className="btn btn-default arrow-right" onClick={(se) => this.onArrowClicked(se, 'arrow-right')}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                                 <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                                             </svg>
@@ -109,8 +149,6 @@ class MissionKickOff extends React.Component
                             </div>
                         </div>
                         <div style={{padding: '10px'}} id="aria-ardoise">
-                            <div style={{height: '2px', backgroundColor: 'grey', margin: '30px'}} className="ardoise-div">
-                            </div>
                         </div>
                     </div>
                     <div id="milestones-spinner"></div>
@@ -122,15 +160,16 @@ class MissionKickOff extends React.Component
     componentDidMount()
     {
         console.log('Mission kick off component did mount.');
-        this.manageArrowSection();
         this.handle_image_events();
 
         $('#kick-off-arrow-section').hcenter();
 
-        this.scale_image_item();
         window.addEventListener('resize', e => {
-            this.scale_image_item();
+            this.scale_milestone_image();
         });
+        window.addEventListener(this.props.height_set_event, (e) => {
+            this.scale_milestone_image();
+        })
 
         this.kickOffImageDetailsSectionModal = new Modal(
             document.getElementById('kick-off-image-details-section')
@@ -145,29 +184,6 @@ class MissionKickOff extends React.Component
 
     } // componentDidUpdate
 
-    handle_image_events()
-    {
-        let img = document.getElementById('kick-off-image');
-        if(img)
-        {
-            img.onerror = (e) => {
-                console.log('image failed to load.');
-                setTimeout((e) => {
-                    this.wait_spinner.hide_wait_spinner();
-                }, 1000);
-            };
-            img.onload = (e) => {
-                setTimeout((e) => {
-                    this.wait_spinner.hide_wait_spinner();
-                }, 1000);
-            };
-            img.onmouseover = (e) => {
-                e.target.style.cursor = "pointer";
-            }
-        }
-
-    } // handle_image_events
-
     scale_image_item()
     {
         let width = $('.image-item-div').first().width();
@@ -180,78 +196,90 @@ class MissionKickOff extends React.Component
 
     } // scale_image_item
 
-    manageArrowSection()
+    scale_milestone_image()
     {
-        if(typeof(this) === 'undefined')
-        {
-            console.log("manageArrowSection: the 'this' object is not defined");
-            return;
-        }
+        this.scale_image_item();
+        let limit = $('#mission-kick-off-component').offset().top + 
+                    $('#mission-kick-off-component').height();
+        let etop = $('#kick-off-image').offset().top;
+        let ar_height = $('#kick-off-arrow-section').height();
 
-        let index = this.state.current_index;
-        if(this.props.mission_kick_off_data.length === 1) // Remove both arrows
+        for(;;)
         {
-            this.kick_off_left_arrow_jquery = $('#kick-off-arrow-left');
-            $('#kick-off-arrow-left').remove();
-            this.kick_off_right_arrow_jquery = $('#kick-off-arrow-right');
-            $('#kick-off-arrow-right').remove();
-        }
-        else if(index === 0) // Remove arrow-left
-        {
-            this.kick_off_left_arrow_jquery = $('#kick-off-arrow-left');
-            $('#kick-off-arrow-left').remove();
-        }
-        else if(index === this.props.mission_kick_off_data.length-1) // Remove arrow-right
-        {
-            this.kick_off_right_arrow_jquery = $('#kick-off-arrow-right');
-            $('#kick-off-arrow-right').remove();
-        }
-        else // Make sure they both exist
-        {
-            if($('#kick-off-arrow-left').length === 0)
+            let img_top = etop + 
+                            $('#kick-off-image').height() +
+                            ar_height;
+            if(img_top > limit) // adjust
             {
-                if(!this.kick_off_left_arrow_jquery)
-                {
-                    console.log('manageArrowSection: You should have stored arrow left data. You did not');
-                }
-                else
-                {
-                    if($('#kick-off-arrow-right').length > 0)
-                    {
-                        this.kick_off_left_arrow_jquery.insertBefore($('#kick-off-arrow-right'));
-                    }
-                    else
-                    {
-                        $('#kick-off-arrow-section').append(this.kick_off_left_arrow_jquery);
-                    }
-                }
-
-                this.kick_off_left_arrow_jquery = null;
+                let width = $('#kick-off-image').width() - 5;
+                $('#kick-off-image').width(width);
             }
-
-            if($('#kick-off-arrow-right').length === 0)
+            else 
             {
-                if(!this.kick_off_right_arrow_jquery)
-                {
-                    console.log('manageArrowSection: You should have stored arrow right data. You did not');
-                }
-                else
-                {
-                    if($('#kick-off-arrow-left').length > 0)
-                    {
-                        this.kick_off_right_arrow_jquery.insertAfter($('#kick-off-arrow-left'));
-                    }
-                    else
-                    {
-                        $('#kick-off-arrow-section').append(this.kick_off_right_arrow_jquery);
-                    }
-                }
-
-                this.kick_off_right_arrow_jquery = null;
+                break;
             }
         }
 
-    } // manageArrowSection
+        this.add_lines_to_notebook();
+
+    } // scale_milestone_image
+
+    add_lines_to_notebook()
+    {
+        let limit = $('#mission-kick-off-component').offset().top + 
+                        $('#mission-kick-off-component').height();
+        let html = `
+            <div style="height: 2px; background-color: grey; margin: 30px" class="ardoise-div">
+            </div>
+        `;
+        $('.ardoise-div').remove();
+        let atop = $('#aria-ardoise').offset().top;
+        let aheight = $('#aria-ardoise').height();
+        let counter = 1;
+
+        //console.log('LIMIT: ' + limit + '; ATOP: ' + atop);
+
+        for(;;)
+        {
+            let top = atop + aheight;
+            //console.log('H: ' + h);
+            if((top+2) >= limit)
+            {
+                break;
+            }
+            $('#aria-ardoise').append(html);
+            aheight = $('#aria-ardoise').height();
+            counter += 1;
+
+            //console.log('HEIGHT: ' + aheight);
+        }
+        //console.log('COUNTER: ' + counter);
+
+    } // add_lines_to_notebook
+
+    handle_image_events()
+    {
+        let img = document.getElementById('kick-off-image');
+        if(img)
+        {
+            img.onerror = (e) => {
+                console.log('image failed to load.');
+                setTimeout((e) => {
+                    this.wait_spinner.hide_wait_spinner();
+                }, 1000);
+            };
+            img.onload = (e) => {
+                this.scale_milestone_image();
+                setTimeout((e) => {
+                    this.wait_spinner.hide_wait_spinner();
+                }, 1000);
+            };
+            img.onmouseover = (e) => {
+                e.target.style.cursor = "pointer";
+            }
+        }
+
+    } // handle_image_events
 
     goToImageDetails(e)
     {
@@ -294,70 +322,53 @@ class MissionKickOff extends React.Component
 
     } // leaveImageDetails
 
-    onNextPreviousClicked(e, btnType)
+    onArrowClicked(e, btn)
     {
-        if(typeof(this) === 'undefined')
+        this.wait_spinner.show_wait_spinner();
+        
+        let left = false;
+        if(/^arrow-left$/i.test(btn))
         {
-            console.log('onNextPreviousClicked is not bound with "this" object.');
-            return;
+            console.log('arrow left clicked.');
+            left = true;
         }
-        if(!e){
-            console.log('Event object bound with onNextPreviousClicked is null');
-            return;
-        }
-        let button = e.target;
-        if(!button)
+        else 
         {
-            console.log('No target object defined on the event object bound with onNextPreviousClicked');
-            return;
+            console.log('arrow right clicked.');
         }
 
-        let index = this.state.current_index;
-        let leftRegex = new RegExp('arrow-left');
-        let rightRegex = new RegExp('arrow-right');
-        let updated = false;
-        if(leftRegex.test(btnType))
+        if(left)
         {
-            if(index === 0)
+            if(this.state.current_index > 0)
             {
-                //console.log('kick off data index === 0');
-                updated = false;
+                this.setState({
+                    current_index: (this.state.current_index-1)
+                });
             }
-            else
+            else 
             {
-                index -= 1;
-                updated = true;
+                this.setState({
+                    current_index: (this.props.mission_kick_off_data.length-1)
+                });
             }
         }
-        else if(rightRegex.test(btnType))
+        else 
         {
-            if(index === this.props.mission_kick_off_data.length-1)
+            if(this.state.current_index < (this.props.mission_kick_off_data.length-1))
             {
-                //console.log('kick off data index is last: ' + index);
-                updated = false;
+                this.setState({
+                    current_index: (this.state.current_index+1)
+                });
             }
-            else
+            else 
             {
-                index += 1;
-                updated = true;
+                this.setState({
+                    current_index: 0
+                });
             }
-        }
-        else
-        {
-            console.log(button.className + ' found no match amongst "arrow-right" and "arrow-left"');
-            updated = false;
         }
 
-        if(updated)
-        {
-            this.wait_spinner.show_wait_spinner();
-            this.kick_off_button_clicked = true;
-            this.setState({
-                current_index: index
-            });
-        }
-
-    } // onNextPreviousClicked
+    } // onArrowClicked
 
     onImgLoadedData(e, dis)
     {
@@ -368,14 +379,13 @@ class MissionKickOff extends React.Component
         }
 
         //console.log('Image data is loaded.');
-        dis.manageArrowSection();
         setTimeout((e) => {
             this.wait_spinner.hide_wait_spinner();
         }, 1000);
         // scroll to kick off section
         if(dis.kick_off_button_clicked)
         {
-            let p = $('#kick-off-section').position();
+            let p = $('#kick-off-section').offset();
             $(window).scrollTop(p.top);
             dis.kick_off_button_clicked = false;
         }
