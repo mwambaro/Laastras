@@ -124,13 +124,7 @@ class LaastrasJobOfferShow extends React.Component
 LaastrasJobOfferShow.propTypes = {
     job_offer_title: PropTypes.string,
     job_offer_actions: PropTypes.object, // {apply_label:, application_url:, close_label:, close_job_url:, feature_label:, feature_job_url:}
-    apply_label: PropTypes.string,
-    close_label: PropTypes.string,
-    close_job_url: PropTypes.string,
-    feature_label: PropTypes.string,
-    feature_job_url: PropTypes.string,
     job_offer_description: PropTypes.string,
-    application_url: PropTypes.string,
     html_ids: PropTypes.object // {offer_html_id:, offer_title_html_id:,}
 }
 

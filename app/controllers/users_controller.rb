@@ -199,6 +199,7 @@ class UsersController < ApplicationController
             unless session.nil?
                 unless @laastras_user.nil?
                     unless (@laastras_user.device_id.nil? || @laastras_user.device_id.blank?)
+                        logger.debug "===> Already signed in ..."
                         msg = nil
                         if @laastras_user.device_id == ApplicationHelper.get_device_id(request)
                             msg = "<div>#{I18n.t 'you_are_already_logged_in_title'}</div><hr/>" +
@@ -213,6 +214,7 @@ class UsersController < ApplicationController
                             redirect_uri: redirect_uri
                         }
                     else
+                        logger.debug "===> Signing you in ..."
                         @laastras_user.last_login = Time.now
                         @laastras_user.device_id = ApplicationHelper.get_device_id(request)
                         @laastras_user.save
@@ -223,8 +225,10 @@ class UsersController < ApplicationController
                             message: (I18n.t 'logged_in_true'),
                             redirect_uri: redirect_uri
                         }
+                        logger.debug "===> Returning from sign in ..."
                     end
                 else
+                    logger.debug "===> Sign up or reset password ..."
                     if @email.nil? # sign up, please
                         sign_up_url = url_for(
                             controller: 'laastras',
@@ -290,6 +294,11 @@ class UsersController < ApplicationController
                     message: (I18n.t 'logged_in_false'),
                     redirect_uri: redirect_uri
                 }
+            end
+
+            if dataToSend.nil?
+                message = "===> Data to send is nil ..."
+                raise message
             end
                 
             # send data to caller

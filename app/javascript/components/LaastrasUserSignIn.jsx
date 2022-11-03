@@ -26,7 +26,7 @@ class LaastrasUserSignIn extends React.Component
         return(
             <div id="laastras_user_sign_in_main_div" className="container-fluid" style={form_div_style}>
                 <div className="row justify-content-center">
-                    <div className="col-md-8 shadow p-3 mb-5 bg-body rounded">
+                    <div className="col-md-5 shadow p-3 mb-5 bg-body rounded">
                         <div id="feedback" className="text-center"></div>
                         <h3 className="text-center" id="form-label"> {this.props.laastras_user_sign_in_form_label} </h3>
                         <form role="form"

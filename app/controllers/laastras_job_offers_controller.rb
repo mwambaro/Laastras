@@ -159,17 +159,14 @@ class LaastrasJobOffersController < ApplicationController
             unless id.nil?
                 @job_offer = LaastrasJobOffer.find(id)
             else
-                # logger.debug "===> id: #{job_offer_guid}"
                 @job_offer = ApplicationHelper.job_offer_guid_to_job_offer(job_offer_guid)
                 start_up = @job_offer
             end
 
             unless @job_offer.nil?
-                # logger.debug "===> Job offer found.#{job_type}"
                 if @job_offer.archived && job_type != :start_up.to_s
                     raise 'The job offer [' + @job_offer.title + '] has been archived'
                 end 
-                # logger.debug "===> Job offer to be shown"
 
                 if start_up.nil?
                     start_up = ApplicationHelper.job_offer_guid_to_job_offer(@job_offer.sha256)
@@ -236,6 +233,7 @@ class LaastrasJobOffersController < ApplicationController
                 @job_offer_actions = {
                     feature_label: @feature_label,
                     close_label: @close_label,
+                    apply_label: @apply_label,
                     feature_job_url: @feature_job_url,
                     close_job_url: @close_job_url,
                     application_url: @application_url, 
