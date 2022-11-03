@@ -243,7 +243,7 @@ class MissionKickOff extends React.Component
         {
             let top = atop + aheight;
             //console.log('H: ' + h);
-            if((top+2) >= limit)
+            if((top+32) >= limit)
             {
                 break;
             }
