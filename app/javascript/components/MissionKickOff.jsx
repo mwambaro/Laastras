@@ -197,6 +197,13 @@ class MissionKickOff extends React.Component
 
     scale_milestone_image()
     {
+        let left = $('#mission-kick-off-component').offset().left;
+        let width = $('#intro-capture-component').width();
+        if(left<width) 
+        {
+            return;
+        }
+
         this.scale_image_item();
         let limit = $('#mission-kick-off-component').offset().top + 
                     $('#mission-kick-off-component').height();
@@ -225,6 +232,13 @@ class MissionKickOff extends React.Component
 
     add_lines_to_notebook()
     {
+        let left = $('#mission-kick-off-component').offset().left;
+        let width = $('#intro-capture-component').width();
+        if(left<width) 
+        {
+            return;
+        }
+
         let limit = $('#mission-kick-off-component').offset().top + 
                         $('#mission-kick-off-component').height();
         let html = `

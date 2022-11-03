@@ -56,29 +56,29 @@ class LaastrasPlayVideo extends React.Component
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div style={{
+                                <div style={{
                                     backgroundColor: 'grey', 
                                     borderRadius: '10px',
                                     margin: '10px'
                                 }} 
                                 className="col-md-4" id="play-list">
-                                <ul style={{listStyle: 'none', padding: '5px'}}>
-                                {
-                                    this.props.videos.map((video, idx) =>
-                                        <li data-index={idx} key={`li-${idx}`} 
-                                            style={{
-                                                color: this.state.current_index === idx ? 'blue' : 'black', 
-                                                padding: '5px',
-                                                fontWeight: 'bold'
-                                            }}
-                                            onClick={(se) => this.on_video_clicked(se)}
-                                            onMouseOver={(se) => this.on_video_hovered(se)}>
-                                            {video.filename}
-                                        </li>
-                                    )
-                                }
-                                </ul>
+                                    <ul style={{listStyle: 'none', padding: '5px'}}>
+                                    {
+                                        this.props.videos.map((video, idx) =>
+                                            <li data-index={idx} key={`li-${idx}`} 
+                                                style={{
+                                                    color: this.state.current_index === idx ? 'blue' : 'black', 
+                                                    padding: '5px',
+                                                    fontWeight: 'bold'
+                                                }}
+                                                onClick={(se) => this.on_video_clicked(se)}
+                                                onMouseOver={(se) => this.on_video_hovered(se)}>
+                                                {video.filename}
+                                            </li>
+                                        )
+                                    }
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
