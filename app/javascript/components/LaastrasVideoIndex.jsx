@@ -48,15 +48,6 @@ class LaastrasVideoIndex extends React.Component
         $(window).on('resize', (e) => {
             this.video_filename_sizes();
         });
-        $('video').on('ended', (e) => {
-            let current = this.next;
-            this.next += 1;
-            if(current >= $('video').length)
-            {
-                current = 0;
-            }
-            $('video')[current].play();
-        })
 
     } // componentDidMount
 
@@ -79,13 +70,7 @@ class LaastrasVideoIndex extends React.Component
 
     start_play_video(e)
     {
-        let current = this.next;
-        this.next += 1;
-        if(current >= $('video').length)
-        {
-            current = 0;
-        }
-        $('video')[current].play();
+        window.location = this.props.play_videos_url;
 
     } // start_play_video
 
@@ -94,7 +79,8 @@ class LaastrasVideoIndex extends React.Component
 LaastrasVideoIndex.propTypes = {
     videos: PropTypes.array,
     download_label: PropTypes.string,
-    play_all_label: PropTypes.string
+    play_all_label: PropTypes.string,
+    play_videos_url: PropTypes.string
 }
 
 export default LaastrasVideoIndex

@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {clearTimeout} from "timers"
 import {Modal} from "bootstrap"
 import WaitSpinner from "./WaitSpinner.js"
 

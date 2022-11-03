@@ -8,7 +8,8 @@ class LaastrasIntroCapture extends React.Component
     constructor(props)
     {
         super(props);
-    }
+        
+    } // constructor
 
     render()
     {

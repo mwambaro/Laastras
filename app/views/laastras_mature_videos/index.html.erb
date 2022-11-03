@@ -1,6 +1,16 @@
+<%if @play %>
 
-<%= react_component('LaastrasVideoIndex', {
-    videos: @videos,
-    download_label: (I18n.t 'download_label'),
-    play_all_label: (I18n.t 'play_all_label')
-})%>
+    <%= react_component('LaastrasPlayVideo', {
+        videos: @videos
+    })%>
+
+<% else %>
+
+    <%= react_component('LaastrasVideoIndex', {
+        videos: @videos,
+        download_label: (I18n.t 'download_label'),
+        play_all_label: (I18n.t 'play_all_label'),
+        play_videos_url: url_for(controller: 'laastras_mature_videos', action: 'index', play: 'true')
+    })%>
+
+<% end %>

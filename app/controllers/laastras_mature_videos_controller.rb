@@ -4,6 +4,14 @@ class LaastrasMatureVideosController < ApplicationController
     def index
         next_uri = nil 
         begin 
+            play = params[:play] || nil 
+            @play = false
+            unless play.nil?
+                if play == 'true'
+                    @play = true
+                end
+            end
+
             videos = LaastrasMatureVideo.all 
             if videos.count == 0 
                 session[:fail_safe_title] = 'No Videos in Database'

@@ -1,3 +1,4 @@
+require("./AppUtilities");
 
 class WaitSpinner 
 {
@@ -85,15 +86,7 @@ class WaitSpinner
 
     center_spinner_in_the_viewport()
     {
-        var viewportWidth = jQuery(window).width(),
-        viewportHeight = jQuery(window).height(),
-        $foo = jQuery(`#${this.spinner_id}`),
-        elWidth = $foo.width(),
-        elHeight = $foo.height(),
-        elOffset = $foo.offset();
-        jQuery(window)
-            .scrollTop(elOffset.top + (elHeight/2) - (viewportHeight/2))
-            .scrollLeft(elOffset.left + (elWidth/2) - (viewportWidth/2));
+        $(document).center_in_view_port(this.spinner_id);
 
     } // center_spinner_in_the_viewport
 
