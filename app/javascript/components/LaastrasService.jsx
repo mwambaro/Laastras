@@ -6,6 +6,7 @@ class LaastrasService extends React.Component
     constructor(props)
     {
         super(props);
+        this.rotation_degrees = 1;
 
     } // constructor
 
@@ -20,9 +21,9 @@ class LaastrasService extends React.Component
                                 {this.props.laastras_service_title}
                             </div>
                             <hr />
-                            <div style={{padding: '10px'}} className="text-center">
+                            <div style={{padding: '10px'}} className="text-center" id="logo-image-square">
                                 <img src={this.props.laastras_service_brand_image}
-                                     className="img-fluid"/>
+                                     className="img-fluid brand-logo-image"/>
                             </div>
                             <div style={{padding: '10px'}} id={this.props.service_id}>
                             </div>
@@ -39,8 +40,27 @@ class LaastrasService extends React.Component
         $(`#${this.props.service_id}`).append(
             this.props.laastras_service_description
         );
+        this.draw_logo_image_square();
+        window.addEventListener('resize', (e) => {
+            this.draw_logo_image_square();
+        })
+        setInterval(() => {
+            this.rotation_degrees++;
+            $('.brand-logo-image').css({
+                "transform": `rotate(${this.rotation_degrees}deg)`,
+                "-moz-transform": `rotate(${this.rotation_degrees}deg)`,
+                "-webkit-transform": `rotate(${this.rotation_degrees}deg)`,
+                "-o-transform": `rotate(${this.rotation_degrees}deg)`
+            });
+        }, 100);
 
     } // componentDidMount
+
+    draw_logo_image_square()
+    {
+        //$('#logo-image-square').height($('.brand-logo-image').first().width());
+
+    } // draw_logo_image_square
     
 }
 

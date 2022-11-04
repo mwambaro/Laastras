@@ -8,6 +8,7 @@ class LaastrasIntroCapture extends React.Component
     constructor(props)
     {
         super(props);
+        this.rotation_degrees = 1;
         
     } // constructor
 
@@ -118,6 +119,15 @@ class LaastrasIntroCapture extends React.Component
         $('.brand-logo-image').on('mouseover', (e) => {
             e.target.style.cursor = 'pointer';
         });
+        setInterval(() => {
+            this.rotation_degrees++;
+            $('.brand-logo-image').css({
+                "transform": `rotate(${this.rotation_degrees}deg)`,
+                "-moz-transform": `rotate(${this.rotation_degrees}deg)`,
+                "-webkit-transform": `rotate(${this.rotation_degrees}deg)`,
+                "-o-transform": `rotate(${this.rotation_degrees}deg)`
+            });
+        }, 100);
 
     } // componentDidMount
 
