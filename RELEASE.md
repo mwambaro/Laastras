@@ -22,6 +22,7 @@
         - Banner click/tap pops up a pitch message
         - Feedback message in Contact page.
         - Home page beautified
+        - Brand logos rotate to feed your eyes
 * Privileges for the user with verified email: 
         - You can apply for a job 
         - You can reset your password

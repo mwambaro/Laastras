@@ -149,6 +149,8 @@ class MissionKickOff extends React.Component
                         </div>
                         <div style={{padding: '10px'}} id="aria-ardoise">
                         </div>
+                        <div style={{padding: '10px', zIndex: '99'}} id="aria-ardoise-vertical">
+                        </div>
                     </div>
                     <div id="milestones-spinner"></div>
                 </div>
@@ -247,6 +249,7 @@ class MissionKickOff extends React.Component
         `;
         $('.ardoise-div').remove();
         $('.ardoise-sweep').remove();
+        $('.aria-ardoise-vertical-div').remove();
         let atop = $('#aria-ardoise').offset().top;
         let aheight = $('#aria-ardoise').height();
         let counter = 1;
@@ -268,9 +271,65 @@ class MissionKickOff extends React.Component
             //console.log('HEIGHT: ' + aheight);
         }
         //console.log('COUNTER: ' + counter);
+        //this.add_vertical_lines_to_notebook();
         this.add_sweeper_to_notebook();
 
     } // add_lines_to_notebook
+
+    add_vertical_lines_to_notebook()
+    {
+        let atop = $('#aria-ardoise').offset().top;
+        let height = $('#aria-ardoise').height();
+        let width = $('#aria-ardoise').width();
+        let padding = parseInt($('#aria-ardoise').css('padding').replace('px', ''));
+        let margin = parseInt($('#aria-ardoise').css('margin').replace('px', ''));
+        let html = `
+            <div style="height: 2px; width: ${height}px; background-color: grey; margin: 30px" class="aria-ardoise-vertical-div">
+            </div>
+        `;
+        let limit = atop + height + width;
+        let ttop = atop + height;
+        let aheight = $('#aria-ardoise-vertical').height();
+
+        for(;;)
+        {
+            let ntop = ttop + aheight;
+            if((ntop+32) >= limit)
+            {
+                break;
+            }
+            $('#aria-ardoise-vertical').append(html);
+            aheight = $('#aria-ardoise-vertical').height();
+        }
+
+        // center in aria-ardoise
+        let aw = $('#aria-ardoise').width();
+        let ah = $('#aria-ardoise').height();
+        let w = $('#aria-ardoise-vertical').width();
+        let h = $('#aria-ardoise-vertical').height();
+        let left = $('#aria-ardoise').offset().left;
+        let top = $('#aria-ardoise').offset().top;
+        let paddng = parseInt($('#aria-ardoise-vertical').css('padding').replace('px', ''));
+        let margn = parseInt($('#aria-ardoise-vertical').css('margin').replace('px', ''));
+
+        let tp = top + padding + margin + (ah/2) - (h/2);
+        let lft = left + padding + margin + (aw/2) - (w/2);
+
+        //console.log('LEFT: ' + left + '; AW: ' + (aw/2) + '; W: ' + (w/2));
+
+        let off = $('#aria-ardoise-vertical').offset();
+        off.top = tp;
+        off.left = lft;
+        $('#aria-ardoise-vertical').offset(off);
+
+        $('#aria-ardoise-vertical').css({
+            "transform": `rotate(90deg)`,
+            "-moz-transform": `rotate(90deg)`,
+            "-webkit-transform": `rotate(90deg)`,
+            "-o-transform": `rotate(90deg)`
+        });
+
+    } // add_vertical_lines_to_notebook
 
     add_sweeper_to_notebook()
     {
