@@ -16,14 +16,16 @@ class LaastrasService extends React.Component
             <div className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <div class="shadow-sm p-1 mb-2 bg-white rounded">
+                        <div className="shadow-sm p-1 mb-2 bg-white rounded">
                             <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}}>
                                 {this.props.laastras_service_title}
                             </div>
                             <hr />
                             <div style={{padding: '10px'}} className="text-center" id="logo-image-square">
                                 <img src={this.props.laastras_service_brand_image}
-                                     className="img-fluid brand-logo-image"/>
+                                     className="img-fluid brand-logo-image"
+                                     width="100"
+                                     height="100" />
                             </div>
                             <div style={{padding: '10px'}} id={this.props.service_id}>
                             </div>
@@ -40,10 +42,6 @@ class LaastrasService extends React.Component
         $(`#${this.props.service_id}`).append(
             this.props.laastras_service_description
         );
-        this.draw_logo_image_square();
-        window.addEventListener('resize', (e) => {
-            this.draw_logo_image_square();
-        })
         setInterval(() => {
             this.rotation_degrees++;
             $('.brand-logo-image').css({
@@ -55,12 +53,6 @@ class LaastrasService extends React.Component
         }, 100);
 
     } // componentDidMount
-
-    draw_logo_image_square()
-    {
-        //$('#logo-image-square').height($('.brand-logo-image').first().width());
-
-    } // draw_logo_image_square
     
 }
 
