@@ -14,7 +14,7 @@ class MissionKickOff extends React.Component
         this.state = {
             current_index: 0
         };
-        this.timer = null;
+        this.rotation_degrees = 1;
         this.wait_spinner = null;
         this.kick_off_button_clicked = false;
         this.kickOffImageDetailsSectionModal = null;
@@ -201,7 +201,7 @@ class MissionKickOff extends React.Component
         let width = $('#intro-capture-component').width();
         if(left<width) 
         {
-            return;
+            //return;
         }
 
         this.scale_image_item();
@@ -236,7 +236,7 @@ class MissionKickOff extends React.Component
         let width = $('#intro-capture-component').width();
         if(left<width) 
         {
-            return;
+            //return;
         }
 
         let limit = $('#mission-kick-off-component').offset().top + 
@@ -246,6 +246,7 @@ class MissionKickOff extends React.Component
             </div>
         `;
         $('.ardoise-div').remove();
+        $('.ardoise-sweep').remove();
         let atop = $('#aria-ardoise').offset().top;
         let aheight = $('#aria-ardoise').height();
         let counter = 1;
@@ -267,8 +268,42 @@ class MissionKickOff extends React.Component
             //console.log('HEIGHT: ' + aheight);
         }
         //console.log('COUNTER: ' + counter);
+        this.add_sweeper_to_notebook();
 
     } // add_lines_to_notebook
+
+    add_sweeper_to_notebook()
+    {
+        let aw = $('#aria-ardoise').width();
+        let ah = $('#aria-ardoise').height();
+        let w = ah < aw ? ah : aw;
+        let h = 8;
+        let padding = parseInt($('#aria-ardoise').css('padding').replace('px', ''));
+        let margin = parseInt($('#aria-ardoise').css('margin').replace('px', ''));
+        //console.log('padding: ' + padding + '; margin: ' + margin);
+        let top = $('#aria-ardoise').offset().top + padding + margin + (w/2) - (h/2);
+        let lft = $('#aria-ardoise').offset().left + padding + margin +
+                  (aw/2) - (w/2);
+        let html = `
+            <div style="z-index: 99; height: ${h}px; width: ${w}px; background-color: green; margin: 0px" class="ardoise-sweep">
+            </div>
+        `;
+        $('#aria-ardoise').append(html);
+        let off = $('.ardoise-sweep').offset();
+        off.top = top;
+        off.left = lft;
+        $('.ardoise-sweep').offset(off);
+        setInterval(() => {
+            this.rotation_degrees++;
+            $('.ardoise-sweep').css({
+                "transform": `rotate(${this.rotation_degrees}deg)`,
+                "-moz-transform": `rotate(${this.rotation_degrees}deg)`,
+                "-webkit-transform": `rotate(${this.rotation_degrees}deg)`,
+                "-o-transform": `rotate(${this.rotation_degrees}deg)`
+            });
+        }, 25);
+
+    } // add_sweeper_to_notebook
 
     handle_image_events()
     {

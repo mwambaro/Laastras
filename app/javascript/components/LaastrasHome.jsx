@@ -115,13 +115,14 @@ class LaastrasHome extends React.Component
         let left = $('#mission-kick-off-component').offset().left;
         let width = $('#intro-capture-component').width();
         let height = $('#intro-capture-component').height();
-        if(left>width) // fix height
+        if(true)//(left>width) // fix height
         {   
             $('#mission-kick-off-component').height(height);
         }
         else 
         {
-            $('#mission-kick-off-component').css({height: 'auto'});
+            let sm_h = Math.ceil(height/2);
+            $('#mission-kick-off-component').height(sm_h);
         }
 
     } // scale_home_sizes
