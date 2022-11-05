@@ -240,7 +240,7 @@ class MissionKickOff extends React.Component
         let width = $('#intro-capture-component').width();
         if(left<width) 
         {
-            let addw = add > 700 ? 700 : add;
+            let addw = add > 500 ? 500 : add;
             let h = addw*2;
             $('#mission-kick-off-component').height(h);
         }
@@ -278,12 +278,27 @@ class MissionKickOff extends React.Component
         }
         //console.log('COUNTER: ' + counter);
         
+        this.center_notebook();
         this.add_sweeper_to_notebook();
 
     } // add_lines_to_notebook
 
     center_notebook()
-    {} // center_notebook
+    {
+        let mend = $('#milestones-elements-section').offset().top + 
+                    $('#milestones-elements-section').height();
+        let kend = $('#mission-kick-off-component').offset().top + 
+                    $('#mission-kick-off-component').height();
+        let ah = $('#aria-ardoise').height();
+        let rem = kend - mend - ah;
+        if(rem>0)
+        {
+            let pos = $('#aria-ardoise').offset();
+            pos.top = mend + (rem/2);
+            $('#aria-ardoise').offset(pos);
+        }
+
+    } // center_notebook
 
     add_sweeper_to_notebook()
     {
