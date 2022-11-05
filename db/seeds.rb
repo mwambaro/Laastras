@@ -8,6 +8,11 @@
 
 @seeds = ApplicationHelper::Seeds.new
 
+# __start__ seeding users_database_before_reset
+    users = @seeds.seeding_users_database_before_reset
+    return if users.nil?
+# __end__
+
 # __start__ seeding laastras_documents
     docs = @seeds.seeding_laastras_documents
 # __end__

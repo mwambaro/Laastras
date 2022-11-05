@@ -390,6 +390,18 @@ module ApplicationHelper
 
     end # image_asset_url
 
+    def self.get_db_schema_asset_url
+        path = nil
+        file = 'schema.rb'
+        path = Pathname.new(Rails.root.join('db'))
+        if path.exist?
+            path = Rails.root.join('db', file)
+        end
+        
+        path
+
+    end # get_db_schema_asset_url
+
     def self.document_asset_url(file)
         folder_name = 'laastras_documents'
         path = Pathname.new(Rails.root.join('storage', folder_name))
@@ -1189,6 +1201,63 @@ module ApplicationHelper
             milestone_images
 
         end # seeding_laastras_milestone_element_images
+
+        def seeding_users_database_before_reset()
+            users = [] 
+            begin 
+                emails = [
+                    'onkezabahizi@gmail.com'
+                ].each do |email| 
+                    user = User.find_by_email(email)
+                    next if user.nil?
+                    users = [] if users.nil?
+                    users << {
+                        email: email,
+                        first_name: user.first_name,
+                        last_name: user.last_name,
+                        user_name: user.user_name,
+                        password_sha: user.password,
+                        role: user.role,
+                        device_id: nil,
+                        photo_uri: nil,
+                        photo_mime_type: nil,
+                        verify_email_token: nil,
+                        last_login: user.last_login,
+                        last_logout: user.last_logout
+                    }
+                end
+
+                unless users.nil? 
+                    # reset database
+                    # 1. Delete schema
+                    schema = ApplicationHelper.get_db_schema_asset_url
+                    unless schema.nil? || schema.blank?
+                        sch_file = Pathname.new(schema)
+                        if sch_file.exists? 
+                            File.delete(schema)
+                        end
+                    end
+                    # 2. Reset db
+                    `rails db:reset`
+                    # 3. Migrate db
+                    `rails db:migrate`
+                    
+                    user = User.create(users)
+                    unless user
+                        raise 'There were errors seeding users before reset'
+                    end
+                end
+
+            rescue Exception => e 
+                message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                @logger.debug message unless @logger.nil?
+                users = nil
+            end
+
+            users 
+
+        end # seeding_users_database_before_reset
 
     end # Seeds
 end
