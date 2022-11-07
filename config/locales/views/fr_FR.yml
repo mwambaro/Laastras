@@ -128,7 +128,7 @@ fr_FR:
   job_seeker_form_failure: "Echec de sauvegarde du formulaire de chercheur d'emploi"
   job_offer_title_label: "Aller à la Description de l'Offre d'Emploi"
   full_name_label: "Nom complet"
-  phone_number_label: "Numéro de téléphone"
+  phone_number_digits_label: "Numéro de téléphone (ex. +257 76 177 186)"
   cv_label: "Curriculum Vitae (CV)"
   cover_letter_label: "Lettre de motivation"
   applicants_label: "Postulants"

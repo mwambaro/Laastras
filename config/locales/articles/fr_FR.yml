@@ -194,7 +194,7 @@ fr_FR:
   "
 
   vision_terms: "
-        <p>
+        <div>
             Nous avons pratiqué le commerce depuis si longtemps. Le modèle de commerce a failli à nous procurer
             sécurité financière ainsi que de l'auto-suffisance. Sans parler des conflits qui résultent du fait
             d'essayer de sécuriser et de garder le contrôle de nos affaires. On a essayé mieux&#58; la 
@@ -202,15 +202,15 @@ fr_FR:
             opportunités. Ça n'a pas marché. Jusqu'à ce que le modèle Laastras soit adopté, il y'aura pas de
             sécurité financière, de l'auto-suffisance, égales opportunités, de l'emploi satisfaisant pour tous,
             et des affaires sans conflits. Comment? Laastras réforme le commerce par biais de deux objectifs:
-        </p>
+        </div>
         <ul>
-            <li>
+            <li style=\u0022padding: 10px\u0022>
                 Remplacer la rémunération par les Echanges de Services. Un seul emploi lié au 'management
                 des ressources supportant l'existence humaine' (Marsexh) donne droit à la rémunération à 
                 travers les autres services dans Marsexh, procurant ainsi sécurité financière et auto-suffisance.
                 Il n'y aura plus de conflits dans des affaires.
             </li>
-            <li>
+            <li style=\u0022padding: 10px\u0022>
                 Remplacer devises materielles par une Devise Virtuelle. Avec l'auto-suffisance de Marsexh,
                 on est mieux placé pour utiliser tout notre potentiel à travers créativité sur nos ressources
                 en provenance de Marsexh. On exportera alors ces ressources à travers le commerce qui use d'une
@@ -232,7 +232,7 @@ fr_FR:
             <div class=\u0022text-center\u0022> <strong>Vidéo Captivant de LaasOS</strong> </div>
             <hr/>
         </div>
-        <p>
+        <div>
             Laastras est basé sur le principe de 'l'Internet de <u>nos</u> Trucs' (IdnT) et délivre des services qui,
             à long terme, nous feront atteindre l'objectif Marsexh. Pour plus d'information sur la philosophie 
             Marsexh, veuillez supporter le projet en achetant
@@ -240,7 +240,7 @@ fr_FR:
             le livre </a> derrière le projet Laastras, dont l'auteur est
             <a href=\u0022/user_mail_boxes/send_mail_box?locale=fr_FR&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022> 
             Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
-        </p>
+        </div>
   "
   hiring_message: "
       Nous cherchons une <strong>Assistante du Chef de Projet</strong> qui remplit les qualifications suivantes: 

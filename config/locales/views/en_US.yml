@@ -158,7 +158,7 @@ en_US:
   job_seeker_form_failure: "We failed to save the job seeker form to database"
   job_offer_title_label: "Go to Job offer Description"
   full_name_label: "Full name"
-  phone_number_label: "Phone number"
+  phone_number_digits_label: "Phone number (e.g. +257 76 177 186)"
   cv_label: "CV or Resume"
   cover_letter_label: "Cover letter"
   applicants_label: "Applicants"

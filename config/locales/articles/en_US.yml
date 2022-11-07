@@ -225,7 +225,7 @@ en_US:
   "
 
   vision_terms: "
-        <p>
+        <div>
             We have done trade for ages. The trade model has failed to give us financial security
             coupled with self-sufficiency. Let alone conflicts that result from attempts to secure
             and retain control of our businesses. We went a step further&#58; philanthropy. We believed it
@@ -233,15 +233,15 @@ en_US:
             trade model is adopted we cannot surround ourselves with financial security, self-sufficiency,
             equal opportunities, satisfying employment for all, and conflict-free businesses. How so?
             Laastras reforms trade by way of two impacts:
-        </p>
+        </div>
         <ul>
-            <li>
+            <li style=\u0022padding: 10px\u0022>
                 Replace remuneration-based work with Services Exchange. One job related to 'management
                 of resources that support human existence' (Morshux) unlocks remuneration through all the other 
                 services in Morshux, yielding financial security and self-sufficiency. Gone are business
                 conflicts, too.
             </li>
-            <li>
+            <li style=\u0022padding: 10px\u0022>
                 Replace material currency with Virtual Currency. With Morshux self-sufficiency, one is
                 better positioned to release their full potential through creativity over Morshux owned 
                 assets. We then export those assets through trade that uses Virtual Currency, which is
@@ -263,7 +263,7 @@ en_US:
             <div class=\u0022text-center\u0022> <strong>LaasOS Video Teaser</strong> </div>
             <hr/>
         </div>
-        <p>
+        <div>
             Laastras is built on the principle of 'Internet of <u> our </u> Things' (IooT) and delivers services 
             that will, in the long run, fulfil the Morshux vision. For details on the Morshux 
             philosophy, please, support the project by buying 
@@ -272,7 +272,7 @@ en_US:
             written by Laastras Founder and CEO, 
             <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.com\u0022 style=\u0022text-decoration: none\u0022> 
             Obed-Edom Nkezabahizi </a>.
-        </p>
+        </div>
   "
   hiring_message: "
       We are looking for a <strong>Project Manager Assistant</strong> who meets these requirements: 
