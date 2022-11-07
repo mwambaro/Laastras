@@ -11,10 +11,16 @@ class LaastrasContentOutline extends React.Component
 
     render()
     {
+        let grid_column_class = this.props.grid_column_class;
+        if(grid_column_class === null || grid_column_class === "")
+        {
+            grid_column_class = "col-md-8"
+        }
+
         return(
             <div className="container-fluid" id="outline-top">
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className={grid_column_class}>
                         <div className="shadow-sm p-1 mb-2 bg-body rounded">
                             <p style={{padding: '5px'}} id="outline-capture">
                                 {this.props.content_outline_capture}: 
@@ -126,6 +132,7 @@ class LaastrasContentOutline extends React.Component
 LaastrasContentOutline.propTypes = {
     content_outline_capture: PropTypes.string,
     top_label: PropTypes.string,
+    grid_column_class: PropTypes.string,
     content_outline_elements: PropTypes.array // of {content_outline_id:, content_outline_title:}
 }
 

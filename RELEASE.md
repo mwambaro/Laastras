@@ -3,7 +3,7 @@
 
 * Added features: 
         - Career page with 9 job openings: 
-                Project Manager Assistant, 
+                Project Manager Assistant 
                 Venture Capital Professional and Content Marketer
                 Software Engineer 
                 Grocery Shopping Agent 
@@ -23,6 +23,7 @@
         - Feedback message in Contact page.
         - Home page beautified
         - Brand logos rotate to feed your eyes
+        - CRM page (Customer Relationship Management)
 * Privileges for the user with verified email: 
         - You can apply for a job 
         - You can reset your password

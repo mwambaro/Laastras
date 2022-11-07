@@ -1,0 +1,2 @@
+module LaastrasCrmStrategiesHelper
+end

@@ -243,3 +243,6 @@ en_US:
   send_mail_body_placeholder_text: "Write your thoughts here and we'll get back to you as soon as possible"
   feedback_prompt: "Leave us a feedback message, anything that has crossed your mind!"
   play_all_label: "Play All"
+  customer_relationship_management: "Customer Relationship Management (CRM)"
+  these_are_crm_strategies: "The following are Laastras system development CRM strategies"
+  crm_label: "CRM"

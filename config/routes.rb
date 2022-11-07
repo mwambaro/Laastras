@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'laastras_crm_strategies/index'
+  get 'laastras_crm_strategies/show'
+  get 'laastras_cr_mstrategies/index'
+  get 'laastras_cr_mstrategies/show'
   get 'user_mail_boxes/send_mail_box'
 
   get 'laastras_marketing_videos/index'

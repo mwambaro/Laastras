@@ -9,8 +9,10 @@
 @seeds = ApplicationHelper::Seeds.new
 
 # __start__ seeding users_database_before_reset
-    users = @seeds.seeding_users_database_before_reset
-    return if users.nil?
+    env = Rails.env 
+    if env.match? /\Adevelopment\Z/i
+        users = @seeds.seeding_users_database_before_reset
+    end
 # __end__
 
 # __start__ seeding laastras_documents

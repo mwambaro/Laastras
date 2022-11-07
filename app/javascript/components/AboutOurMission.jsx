@@ -15,7 +15,7 @@ class AboutOurMission extends React.Component
         return(
             <div className="container-fluid">
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-10">
                         <div className="shadow-sm p-1 mb-2 bg-white rounded">
                             <div style={{padding: '10px', color: 'blue'}}>
                                 <h3>{this.props.about_our_mission_title}</h3>

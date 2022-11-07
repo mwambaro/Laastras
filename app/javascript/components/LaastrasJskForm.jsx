@@ -47,25 +47,10 @@ class LaastrasJskForm extends React.Component
                                 </span>
                             </div>
                     
-                            <div className="form-group row" style={form_elt_div_style}>
-                                <div className="col-sm-4">
-                                    <select className="form-select" 
-                                            aria-label="World Countries" 
-                                            id="world-countries-list">
-                                        {
-                                            this.props.world_countries_countrycodes_list.map((country, idx) =>
-                                                <option value={country} key={`world-country-${idx}`}>
-                                                    {country}
-                                                </option>
-                                            )
-                                        }
-                                    </select>
-                                </div>
-                                <div className="col-sm-8">
-                                    <input type="text" name="phone_number"
-                                           className="form-control" id="phone_number_jsk"
-                                           placeholder={this.props.phone_number_label}/>
-                                </div>
+                            <div className="form-group " style={form_elt_div_style}>
+                                <input type="text" name="phone_number"
+                                    className="form-control" id="phone_number_jsk"
+                                    placeholder={this.props.phone_number_label}/>
                             </div>
 
                             <div style={{color: 'white', fontWeight: 'bold', padding: '10px'}}>
@@ -209,7 +194,7 @@ class LaastrasJskForm extends React.Component
                     let country_code = this.get_country_code(
                         document.getElementById('world-countries-list').value
                     );
-                    let phone_number = `${country_code}-${document.laastras_jsk_form.phone_number.value}`;
+                    let phone_number = `${document.laastras_jsk_form.phone_number.value}`;
                     form_data.append(
                         document.laastras_jsk_form.phone_number.name, 
                         phone_number

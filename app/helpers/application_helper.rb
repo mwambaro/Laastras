@@ -618,6 +618,12 @@ module ApplicationHelper
                     data: ''
                 },
                 {
+                    url: url_for(controller: 'laastras_crm_strategies', action: 'index'),
+                    inner_text: (I18n.t 'crm_label'),
+                    dropdown_boolean: 'false',
+                    data: ''
+                },
+                {
                     url: url_for(controller: 'money_transfer', action: 'donate'),
                     inner_text: (I18n.t 'donate_label'),
                     dropdown_boolean: 'false',
@@ -1205,9 +1211,9 @@ module ApplicationHelper
         def seeding_users_database_before_reset()
             users = [] 
             begin 
-                emails = [
-                    'onkezabahizi@gmail.com'
-                ].each do |email| 
+                emails = []
+                User.all.each {|user| emails << user.email}
+                emails.each do |email| 
                     user = User.find_by_email(email)
                     next if user.nil?
                     users = [] if users.nil?
@@ -1227,7 +1233,7 @@ module ApplicationHelper
                     }
                 end
 
-                unless users.nil? 
+                unless users.nil? || users.empty?
                     # reset database
                     # 1. Delete schema
                     schema = ApplicationHelper.get_db_schema_asset_url
@@ -1238,9 +1244,9 @@ module ApplicationHelper
                         end
                     end
                     # 2. Reset db
-                    `rails db:reset`
+                    `bin/rails db:reset`
                     # 3. Migrate db
-                    `rails db:migrate`
+                    `bin/rails db:migrate`
                     
                     user = User.create(users)
                     unless user
@@ -1252,12 +1258,11 @@ module ApplicationHelper
                 message = Pathname.new(__FILE__).basename.to_s + "#" + 
                             __method__.to_s + "--- " + e.message 
                 @logger.debug message unless @logger.nil?
-                users = nil
             end
 
-            users 
+            users
 
-        end # seeding_users_database_before_reset
+        end # seeding_database_before_reset
 
     end # Seeds
 end
