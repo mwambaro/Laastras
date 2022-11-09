@@ -176,12 +176,17 @@ class LaastrasJobOffersController < ApplicationController
                 if admin
                     @apply_label = (I18n.t 'applicants_label')
                     unless start_up.nil?
-                        @close_label = I18n.t 'archive_label'
-                        @close_job_url = url_for(
-                            controller: 'laastras_job_offers', 
-                            action: 'archive', 
-                            id: @job_offer.id
-                        )
+                        if @job_offer.archived 
+                            @close_label = nil
+                            @close_job_url = nil
+                        else
+                            @close_label = I18n.t 'archive_label'
+                            @close_job_url = url_for(
+                                controller: 'laastras_job_offers', 
+                                action: 'archive', 
+                                id: @job_offer.id
+                            )
+                        end
                     else
                         @close_label = I18n.t 'close_label'
                         @close_job_url = url_for(
@@ -206,6 +211,12 @@ class LaastrasJobOffersController < ApplicationController
                             id: @job_offer.id
                         )
                     end
+
+                    if @job_offer.archived 
+                        @feature_label = nil
+                        @feature_job_url = nil
+                    end
+                    
                     @application_url = url_for(
                         controller: 'laastras_job_seekers',
                         action: 'index_jsk',
