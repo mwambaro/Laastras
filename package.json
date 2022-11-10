@@ -32,6 +32,6 @@
     "postinstall": "npm rebuild node-sass",
     "heroku-prebuild": "npm install --dev",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider next build && next export"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider build && export"
   }
 }
