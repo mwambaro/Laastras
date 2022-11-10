@@ -311,6 +311,12 @@ en_US:
             <li>
                 Or, employed in a legally registered company willing to partner up with us for expansion.
             </li>
+            <li>
+                She should be able to qualify as a Head of Department or Minister according to our
+                <a href=\u0022/laastras_crm_strategies/show?index=0&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    Spredem CRM strategy
+                </a>.
+            </li>
         </ol>
         <div>
             Please, take a look at 
@@ -463,8 +469,11 @@ en_US:
             <div>
                 Seldom do Heads of States or Prime Ministers have all the knowledge and strategies
                 needed to solve issues weighing on nations and kingdoms. Setbacks and other situations may make 
-                them very unpopular with their subjects. We are offering to be the rescue boat for your nation 
-                or kingdom. We can 
+                them very unpopular with their subjects. We are offering to be 
+                <a href=\u0022/laastras_crm_strategies/show?index=0&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    the rescue boat 
+                </a>
+                for your nation or kingdom. We can 
                 <a href=\u0022/laastras/about\u0022 style=\u0022text-decoration: none\u0022>
                     secure the future of your nation or kingdom
                 </a>.
@@ -480,6 +489,13 @@ en_US:
                     cooperative.
                 </li>
             </ol>
+            <div style=\u0022margin-top: 10px\u0022>
+                Our 
+                <a href=\u0022/laastras_crm_strategies/index?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    CRM strategies
+                </a>
+                 should give you a glimpse of our expectations.
+            </div>
         </div>
   "
   standards_or_specifications_maker: "Standards or Specifications Maker"
@@ -531,7 +547,11 @@ en_US:
                 </li>
                 <li>
                     Give us a little help in both content and affiliate marketing with the special goal of selling 
-                    Laastras vision to governments and donors.
+                    Laastras vision to governments and donors. Please, have a look at 
+                    Our 
+                    <a href=\u0022/laastras_crm_strategies/index?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        CRM strategies
+                    </a>
                 </li>
                 <li>
                     Pave the way for our ultimate qualification as a UN organ.
@@ -1398,4 +1418,55 @@ en_US:
                 system development.
             </li>
         </ol>
+  "
+  the_special_rescue_department_title: "The Special Rescue Department or Ministry"
+  the_special_rescue_department_message: "
+        <div>
+            To maintain political neutrality and avoid the too much overhead involved in 
+            impacting local policy, big as the impact is, and in order to reduce the time and 
+            space cost tagged to Laastras implimentation, we are defining, according to
+            <a href=\u0022/laastras/about?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                our mission
+            </a>,
+            a CRM strategy named:
+            <strong>Special Rescue Department or Ministry (Spredem)</strong>. Spredem has the following special 
+            characteristics:
+        </div>
+        <ul style=\u0022margin-top: 10px\u0022>
+            <li style=\u0022padding: 10px\u0022>
+                It is a formatter or reshaper of the local government into Laastras,
+                the government becoming one of Laastras cooperatives, named
+                “legal protection of the self-contained personal space”. It is more 
+                convenient than a brutal change of constitution and leaves the local government 
+                alone enough to continue with their mission as a sovereign nation or kingdom.
+            </li>
+            <li style=\u0022padding: 10px\u0022>
+                Its staff must be financially supported by the local government but the Department 
+                or Ministry must be independent, that is, it is not under the oversight of 
+                the Head of State, King, Queen, or Prime Minister.
+            </li>
+            <li style=\u0022padding: 10px\u0022>
+                The Department or Ministry must be headed by Laastras Head of Project, 
+                <a href=\u0022/user_mail_boxes/send_mail_box?locale=en_US&to_email=onkezabahizi%40gmail.om\u0022 style=\u0022text-decoration: none\u0022>
+                    Obed-Edom Nkezabahizi 
+                </a>
+                or one of his descendants, in decreasing order of age.
+                In the country, Obed-Edom Nkezabahizi must exercise his authority through his
+                <a href=\u0022/laastras_job_offers/show?job_offer_guid=3AABAA6512AF2E7415BF1B4405EAAE27FFC97D63D9E74523925C264FE07C44DC&job_type=start_up&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    female project manager assistant
+                </a>, 
+                a native lady who is qualified for the job.
+            </li>
+            <li style=\u0022padding: 10px\u0022>
+                Spredem will oversee the local Laastras NGO which will launch with 
+                <a href=\u0022/services/e_grocery?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    LaasEgrocery
+                </a>, 
+                as its initial brand, until it fully operates as an NGO rendering 
+                <a href=\u0022/services/e_phylosophy?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    Morshux or Services Exchange 
+                </a>
+                service to the country first, and the world, in the end.
+            </li>
+        </ul>
   "

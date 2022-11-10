@@ -4,13 +4,8 @@ class LaastrasCrmStrategiesController < ApplicationController
     def index
         next_uri = nil 
         begin
-            @crm_strategies = []
-            @crm_strategies << {
-                laastras_crm_title: (I18n.t 'homocracy_ransom_and_full_nda_issue_title'),
-                laastras_crm_description: (I18n.t 'homocracy_ransom_and_full_nda_issue_message'),
-                service_id: 'ransom-and-full-nda-issue',
-                service_title_id: 'ransom-and-full-nda-issue-title'
-            }
+            @crm_strategies = ApplicationHelper.crm_strategies
+            
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -27,12 +22,9 @@ class LaastrasCrmStrategiesController < ApplicationController
     def show
         next_uri = nil 
         begin
-            @crm_strategy = {
-                laastras_crm_title: (I18n.t 'homocracy_ransom_and_full_nda_issue_title'),
-                laastras_crm_description: (I18n.t 'homocracy_ransom_and_full_nda_issue_message'),
-                service_id: 'ransom-and-full-nda-issue',
-                service_title_id: 'ransom-and-full-nda-issue-title'
-            }
+            index = params[:index] || 0
+            @crm_strategies = ApplicationHelper.crm_strategies
+            @crm_strategy = @crm_strategies[index.to_i]
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 

@@ -39,6 +39,25 @@ module ApplicationHelper
 
     end # unique_file_name
 
+    def self.crm_strategies 
+        crm_strategies = []
+        crm_strategies << {
+            laastras_crm_title: (I18n.t 'the_special_rescue_department_title'),
+            laastras_crm_description: (I18n.t 'the_special_rescue_department_message'),
+            service_id: 'ransom-and-full-nda-issue-1',
+            service_title_id: 'ransom-and-full-nda-issue-title-1'
+        }
+        crm_strategies << {
+            laastras_crm_title: (I18n.t 'homocracy_ransom_and_full_nda_issue_title'),
+            laastras_crm_description: (I18n.t 'homocracy_ransom_and_full_nda_issue_message'),
+            service_id: 'ransom-and-full-nda-issue-2',
+            service_title_id: 'ransom-and-full-nda-issue-title-2'
+        }
+
+        crm_strategies
+
+    end # crm_strategies
+
     def self.set_locale_from_request(request, logger=nil, session=nil)
         locale = nil 
         begin
@@ -1239,14 +1258,14 @@ module ApplicationHelper
                     schema = ApplicationHelper.get_db_schema_asset_url
                     unless schema.nil? || schema.blank?
                         sch_file = Pathname.new(schema)
-                        if sch_file.exists? 
+                        if sch_file.exist? 
                             File.delete(schema)
                         end
                     end
                     # 2. Reset db
-                    `bin/rails db:reset`
+                    `rails db:reset`
                     # 3. Migrate db
-                    `bin/rails db:migrate`
+                    `rails db:migrate`
                     
                     user = User.create(users)
                     unless user
