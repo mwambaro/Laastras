@@ -283,7 +283,7 @@ fr_FR:
                 Elle devrait pouvoir remplir les qualifications requises pour devenir un Chef de Département ou Ministre 
                 d'après notre 
                 <a href=\u0022/laastras_crm_strategies/show?index=0&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
-                    stratégie GRC Démispre
+                    stratégie GRC Démisfo
                 </a>.
             </li>
         </ol>
@@ -1226,7 +1226,10 @@ fr_FR:
                         engagés, y compris les Chefs d'Etats, les Premiers Ministres, les Parlementaires, les 
                         Ministres (ou Chefs de Départements), Secrétaire Général de l'ONU,
                         pourvu qu'ils respectent notre politique de 
-                        neutralité, qui se concrétise en notre Organisation Non-Gouvernementale.
+                        neutralité, qui se concrétise en 
+                        <a href=\u0022/laastras_crm_strategies/show?index=0&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                            notre Organisation Non-Gouvernementale (ONG)
+                        </a>.
                     </div>
                 </li>
             </ul>
@@ -1421,7 +1424,7 @@ fr_FR:
             </li>
         </ol>
   "
-  the_special_rescue_department_title: "Département ou Ministère Spécial de Rescousse"
+  the_special_rescue_department_title: "Département ou Ministère Spécial de Formattage"
   the_special_rescue_department_message: "
         <div>
             Pour rester politiquement neutre et éviter ces nombreuses procédures  de
@@ -1431,20 +1434,20 @@ fr_FR:
             <a href=\u0022/laastras/about?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                 notre mission
             </a>, 
-            une stratégie GRC appellée: <strong>Département ou Ministère Spécial de Rescousse
-            (Démispre)</strong>. Démispre a des charactéristiques spéciales suivantes:
+            une stratégie GRC appellée: <strong>Département ou Ministère Spécial de Formattage
+            (Démisfo)</strong>. Démisfo a des charactéristiques spéciales suivantes:
         </div>
         <ul style=\u0022margin-top: 10px\u0022>
             <li style=\u0022padding: 10px\u0022>
                 Il sert de traduction ou formattage du gouvernement local en Laastras,
-                le gouvernement devenant une des coopératives de Laastras, appellée 
+                le gouvernement devenant, au final, une des coopératives de Laastras, appellée 
                 “protection légale de l'espace auto-complet”. C'est plus convenable qu'un 
                 changement brutal de la constitution et ça donne au gouvernement assez 
                 d'espace libre pour continuer leur mission en tant que nation souveraine ou
                 royaume souverain.
             </li>
             <li style=\u0022padding: 10px\u0022>
-                Le personnel de Démispre doit être financièrement soutenu par le gouvernement 
+                Le personnel de Démisfo doit être financièrement soutenu par le gouvernement 
                 local mais le Département ou Ministère doit rester indépendent, c'est-à-dire 
                 qu'il n'est pas sous la supervision du Chef d'Etat, du Roi, de la Reine, ou 
                 du Premier Ministre.
@@ -1462,7 +1465,7 @@ fr_FR:
                 une dame native qui est qualifiée pour le travail.
             </li>
             <li style=\u0022padding: 10px\u0022>
-                Démispre dirigera l'ONG locale de Laastras qui sera lancée avec 
+                Démisfo dirigera l'ONG locale de Laastras qui sera lancée avec 
                 <a href=\u0022/services/e_grocery?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                     LaasEgrocery
                 </a>, 
@@ -1474,4 +1477,21 @@ fr_FR:
                 à la nation d'abord, et au monde au final.
             </li>
         </ul>
+        <div style=\u0022padding: 10px\u0022>
+            Convaincre les gouvernements de dresser <strong>Démisfo</strong> n'est pas une tasse de thé. Ces types 
+            ont des tendances hautaines et arrogantes. En plus, ils se la jouent beaucoup de satisfaction apparente.
+            Alors, on comptera sur les bailleurs de fonds et investisseurs qui, à travers des stratégies de marketing,
+            en viendront à apprécier le projet Laastras. Le segment de Laastras sur lequel on mettra accent est 
+            <a href=\u0022/services/e_grocery?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                LaasEgrocery
+            </a>.
+            C'est là que nous avons besoin de vous, 
+            <a href=\u0022/laastras_job_offers/show?job_offer_guid=25C950615B149CC57887039035EF3A4A2FE89307CD85253AB64932B3F10EEC4D&job_type=start_up&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                professionnel en collecte de fonds et en marketing de contenu
+            </a>
+            et  
+            <a href=\u0022/laastras_job_offers/show?job_offer_guid=988EC164FF45A4D1318FDC3B1DC70ADDC0D495485ED19D32B3EBE132C7FF7861&job_type=start_up&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                Chef de Mission dans une ONG
+            </a>.
+        </div>
   "
