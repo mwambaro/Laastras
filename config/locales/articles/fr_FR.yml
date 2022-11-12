@@ -954,21 +954,40 @@ fr_FR:
   communication_as_a_service_cooperative_title: "Coopérative Economie Créatrice"
   communication_as_a_service_cooperative_description: "
         <div>
-            L'Homocratie est un système de commerce qui s'assure que tout Individu Humain Majeur (IHM)
-            ait sa part sur toutes les ressources qui supportent l'existence humaine, dans le pays, d'abord,
-            puis sur la terre. Pour aboutir à cette fin, nous devons exploiter toute la puissance d'un 
-            cellulaire, d'un PC, des serveurs, et du “cloud computing”. L'économie qui va d'un dispositif 
-            ressemblant au capteur, tel un cellulaire, jusqu'au “cloud” est appellé “économie créatrice”. 
-            Nous associerons tout IHM au cellulaire pour transférer le système de commerce au “cloud”. 
-            Ainsi, nous transformerons un cellulaire en devise, carte d'identité, passport, permis de 
-            conduire, et plus, bâtissant le sentier du Gouvernement Fédéral Mondial. Toutes les autres 
-            coopératives deviendront réalité, créant un seul “cloud” du système de commerce, par nation, puis 
-            un seul “cloud” mondial. Après, on pourra dire: 
-            “Viens. Quelqu'un sauve, nous prions! Nous avons fait notre part.” Pourquoi ne pas 
-            <a href=\u0022/laastras/sign_in?service_id=communication_as_a_service\u0022 style=\u0022text-decoration: none\u0022> 
-                rejoindre notre coopérative
-            </a>
-            si la votre est une entreprise de l'économie créatrice.
+            <p>
+                L'Homocratie est un système de commerce qui s'assure que tout Individu Humain Majeur (IHM)
+                ait sa part sur toutes les ressources qui supportent l'existence humaine, dans le pays, d'abord,
+                puis sur la terre. Pour aboutir à cette fin, nous devons exploiter toute la puissance d'un 
+                cellulaire, d'un PC, des serveurs, et du “cloud computing”. L'économie qui va d'un dispositif 
+                ressemblant au capteur, tel un cellulaire, jusqu'au “cloud” est appellé “économie créatrice”. 
+                Nous associerons tout IHM au cellulaire, appellé <strong>“HoFi (Home Finances)”</strong>, 
+                pour transférer le système de commerce au “cloud”. 
+            </p>
+            <div class=\u0022text-center\u0022 style=\u0022margin: 10px\u0022> 
+                <img src=\u0022/laastras_marketing_videos/show_video?locale=fr_FR&video_id=7B6DE65F40EA597839462DA755D37BADD8351580BDE399C6FBF7D6B1B1CCFF66\u0022 class=\u0022img-fluid\u0022 width=\u0022350\u0022 />
+                <div class=\u0022text-center\u0022 style=\u0022padding: 5px\u0022> 
+                    <strong> HoFi dans un context local </strong> 
+                <div>
+            </div>
+            <p style=\u0022margin: 10px\u0022>
+                Ainsi, nous transformerons un cellulaire en devise, carte d'identité, passport, permis de 
+                conduire, et plus, bâtissant le sentier du Gouvernement Fédéral Mondial. Toutes les autres 
+                coopératives deviendront réalité, créant un seul “cloud” du système de commerce, par nation, puis 
+                un seul “cloud” mondial. 
+            </p>
+            <div class=\u0022text-center\u0022 style=\u0022margin: 10px\u0022> 
+                <img src=\u0022/laastras_marketing_videos/show_video?locale=fr_FR&video_id=CFE23DF52667B50607DE975367C8ABE28200CA911301ED5D27F962E9833E5FF9\u0022 class=\u0022img-fluid\u0022 width=\u0022350\u0022 />
+                <div class=\u0022text-center\u0022 style=\u0022padding: 5px\u0022> 
+                    <strong> HoFi dans un contexte global </strong> 
+                <div>
+            </div>
+            <p style=\u0022margin: 10px\u0022>
+                Après, on pourra dire: “Viens. Quelqu'un sauve, nous prions! Nous avons fait notre part.” Pourquoi ne pas 
+                <a href=\u0022/laastras/sign_in?service_id=communication_as_a_service\u0022 style=\u0022text-decoration: none\u0022> 
+                    rejoindre notre coopérative
+                </a>
+                si la votre est une entreprise de l'économie créatrice.
+            </p>
         </div>
   "
   free_trade_capability_cooperative_title: "Logistique Procurant Capacité de Commerce Libre"
@@ -1143,7 +1162,11 @@ fr_FR:
   laastras_organization_pitch_message: "
         <div>
             <p>
-            Puisque chaque personne aura au final un cellulaire, l'organisation Laastras exploite 
+            Puisque chaque personne aura au final un cellulaire, 
+            <a href=\u0022/services/e_card?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                HoFi 
+            </a>,
+            l'organisation Laastras exploite 
             la puissance des technologies logicielles pour guarantir votre part sur toutes les 
             ressources qui supportent l'existence humaine dans votre pays, d'abord, et puis, dans 
             le monde. Notre pays et le monde deviennent une entreprise dans laquelle nous tous citoyens
@@ -1157,7 +1180,10 @@ fr_FR:
             <div>
                 Vous devriez avoir remarqué que Laastras aura un impact sur la politique locale and
                 internationale. Il va de soi que nous devons opérer en tant qu'Organisations Non-Gouvernementales,
-                une ONG par nation. L'ONG locale se doit d'être souveraine dans ce sens que les gens locaux seront 
+                <a href=\u0022/laastras_crm_strategies/show?index=0&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    une ONG par nation
+                </a>. 
+                L'ONG locale se doit d'être souveraine dans ce sens que les gens locaux seront 
                 source de fonds, peu importe comment ils décident d'avoir des fonds. Notre stratégie comporte les 
                 traits majeurs suivants:
             </div>
