@@ -188,7 +188,7 @@ en_US:
   no_applicants_yet: "No Applicants Yet"
   no_applicants_yet_message: "We have not found any applicants for the job offer. Give them more time, please!"
   laastras_documents_label: "Laastras documents"
-  use_one_of_these_donate_options: "Use one of these donation options"
+  use_one_of_these_donate_options: "Use one of these donation options to support the delivery of <a href=\u0022/services/all_services?locale=en_US\u0022 style=\u0022text-decoration: none\u0022> our services </a>"
   laastras_mature_videos_label: "Mature Videos"
   laastras_marketing_videos_label: "Marketing Videos"
   download_label: "Download"
@@ -246,3 +246,4 @@ en_US:
   customer_relationship_management: "Customer Relationship Management (CRM)"
   these_are_crm_strategies: "The following are Laastras system development CRM strategies"
   crm_label: "CRM"
+  these_are_laastras_services: "Laastras will deliver on these services"

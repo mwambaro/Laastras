@@ -1,6 +1,54 @@
 class ServicesController < ApplicationController
     before_action :init_parameters
 
+    def all_services 
+        @services = [
+            {
+                laastras_service_title: (I18n.t 'food_source_and_water_cooperative_title'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery.svg'),
+                laastras_service_description: (I18n.t 'food_source_and_water_cooperative_description'),
+                service_id: 'e-grocery-service',
+                service_title_id: 'e-grocery-service-ex'
+            },
+            {
+                laastras_service_title: (I18n.t 'communication_as_a_service_cooperative_title'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-card.svg'),
+                laastras_service_description: (I18n.t 'communication_as_a_service_cooperative_description'),
+                service_id: 'e-card-service',
+                service_title_id: 'e-card-service-ex'
+            },
+            {
+                laastras_service_title: (I18n.t 'free_trade_capability_cooperative_title'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
+                laastras_service_description: (I18n.t 'free_trade_capability_cooperative_description'),
+                service_id: 'e-logistics-service',
+                service_title_id: 'e-logistics-service-ex'
+            },
+            {
+                laastras_service_title: (I18n.t 'e_alliances_service_title'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
+                laastras_service_description: (I18n.t 'e_alliances_service_description'),
+                service_id: 'e-alliances-service',
+                service_title_id: 'e-alliances-service-ex'
+            },
+            {
+                laastras_service_title: (I18n.t 'mythology_and_fiction_service_title'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-myths.svg'),
+                laastras_service_description: (I18n.t 'mythology_and_fiction_service_description'),
+                service_id: 'e-myth-service',
+                service_title_id: 'e-myth-service-ex'
+            },
+            {
+                laastras_service_title: (I18n.t 'morshux_phylosophy_service_title'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-morshux.svg'),
+                laastras_service_description: (I18n.t 'morshux_phylosophy_service_description'),
+                service_id: 'e-phylosophy-service',
+                service_title_id: 'e-phylosophy-service-ex'
+            }
+        ]
+
+    end # all_services
+
     def e_grocery
         next_uri = nil 
         begin

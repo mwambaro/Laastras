@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'laastras_mature_videos/show'
   get 'laastras_mature_videos/show_video'
 
+  get 'services/all_services'
   get 'services/e_grocery'
   get 'services/e_card'
   get 'services/e_logistics'

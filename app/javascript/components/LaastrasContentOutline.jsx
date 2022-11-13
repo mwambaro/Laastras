@@ -23,7 +23,6 @@ class LaastrasContentOutline extends React.Component
                     <div className={grid_column_class}>
                         <div className="shadow-sm p-1 mb-2 bg-body rounded">
                             <p style={{padding: '5px'}} id="outline-capture">
-                                {this.props.content_outline_capture}: 
                             </p>
                             <ul>
                             {
@@ -68,6 +67,7 @@ class LaastrasContentOutline extends React.Component
     componentDidMount()
     {
         this.manageGoToTopButton();
+        $('#outline-capture').append(`${this.props.content_outline_capture}:`);
         $('.outline-element').on('click', (e) => {
             let element_id = $(e.target).attr('data-id');
             let top = $(`#${element_id}`).offset().top;

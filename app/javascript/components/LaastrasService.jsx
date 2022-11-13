@@ -17,7 +17,7 @@ class LaastrasService extends React.Component
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="shadow-sm p-1 mb-2 bg-white rounded">
-                            <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}}>
+                            <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}} id={this.props.service_title_id}>
                                 {this.props.laastras_service_title}
                             </div>
                             <hr />
@@ -60,7 +60,8 @@ LaastrasService.propTypes = {
     laastras_service_title: PropTypes.string,
     laastras_service_brand_image: PropTypes.string,
     laastras_service_description: PropTypes.string,
-    service_id: PropTypes.string
+    service_id: PropTypes.string,
+    service_title_id: PropTypes.string
 }
 
 export default LaastrasService
