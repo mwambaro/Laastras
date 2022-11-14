@@ -33,20 +33,24 @@ class LaastrasNavigationBar extends React.Component
                                             {
                                                 action.dropdown_boolean === 'true' ?
                                                 (
-                                                    <li className="nav-item dropdown">
-                                                        <a className="nav-link dropdown-toggle" href="#" id={`navbarDropdownMenuLink${idx}`} role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            {action.inner_text}
-                                                        </a>
-                                                        <ul className="dropdown-menu" aria-labelledby={`navbarDropdownMenuLink${idx}`}>
-                                                            {
-                                                                action.data.map((a, i) =>
-                                                                    <li key={`dropdown-item-${idx}${i}`}>
-                                                                        <a className="dropdown-item" href={a.url}>{a.inner_text}</a>
-                                                                    </li>
-                                                                )
-                                                            }
-                                                        </ul>
-                                                    </li>
+                                                    <div>
+                                                        <li className="nav-item dropdown">
+                                                            <a className="nav-link dropdown-toggle" href="#" id={`navbarDropdownMenuLink${idx}`} role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                {action.inner_text}
+                                                            </a>
+                                                            <ul className="dropdown-menu" aria-labelledby={`navbarDropdownMenuLink${idx}`}>
+                                                                {
+                                                                    action.data.map((a, i) =>
+                                                                        <div key={`dropdown-item-${idx}${i}`}>
+                                                                            <li key={`dropdown-item-${idx}${i}`}>
+                                                                                <a className="dropdown-item" href={a.url}>{a.inner_text}</a>
+                                                                            </li>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                            </ul>
+                                                        </li>
+                                                    </div>
                                                 ) :
                                                 (<a className="nav-link" href={action.url}>{action.inner_text}</a>)
                                             }

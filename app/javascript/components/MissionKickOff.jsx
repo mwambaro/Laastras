@@ -205,9 +205,9 @@ class MissionKickOff extends React.Component
         {
             //
         }
-
+        let kh = $('#mission-kick-off-component').height();
         let limit = $('#mission-kick-off-component').offset().top + 
-                    $('#mission-kick-off-component').height();
+                    kh - Math.ceil(kh/5);
         let etop = $('#kick-off-image').offset().top;
         let ar_height = $('#kick-off-arrow-section').height();
 
