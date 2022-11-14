@@ -21,6 +21,8 @@ class LaastrasContract extends React.Component
                             <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}} id={this.props.contract_title_id}>
                             </div>
                             <hr />
+                            <div style={{color: 'grey', margin: '10px'}} id={this.props.contract_nb_id}>
+                            </div>
                             <div style={{padding: '10px'}} id={this.props.contract_id}>
                             </div>
                         </div>
@@ -50,6 +52,7 @@ class LaastrasContract extends React.Component
             this.props.description
         );
         $(`#${this.props.contract_title_id}`).append(this.props.title);
+        $(`#${this.props.contract_nb_id}`).append(this.props.contract_definition_nota_benne);
 
         $('#definition-section').on('click', (e) => {
             this.leave_definition_modal(e);
@@ -144,6 +147,8 @@ class LaastrasContract extends React.Component
 LaastrasContract.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
+    contract_definition_nota_benne: PropTypes.string,
+    contract_nb_id: PropTypes.string,
     contract_id: PropTypes.string,
     contract_title_id: PropTypes.string
 }

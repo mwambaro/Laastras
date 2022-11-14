@@ -50,7 +50,7 @@ fr_FR:
   model_create_mismatch: "Mots de passe différents"
   model_update_success: "Utilisateur mis a jour avec succès."
   model_destroy_success: "Utilisateur détruit avec succès."
-  click_or_tap_image_text: "Cliquer or taper l'image pour plus de détails ..."
+  click_or_tap_image_text: "Cliquer or figner l'image pour plus de détails ..."
   services_label: "Services"
   donate_label: "Faire don"
   hire_us_label: "Engagez-nous"
@@ -220,3 +220,4 @@ fr_FR:
   contracts_label: "Contracts"
   laastras_contracts: "Contracts Laastras"
   these_are_laastras_contracts: "Vous trouverez en bas une liste des contracts Laastras"
+  contract_definition_nota_benne: "<strong>Note:</strong> Cliquer/figner sur un mot pour voir sa définition ou pour suivre le lien"

@@ -20,11 +20,14 @@
     content_outline_elements: outline_elements # {content_outline_id:, content_outline_title:}
 })%>
 
+<% nota_benne = (I18n.t 'contract_definition_nota_benne') %>
 <% @contracts.each do |c| %>
 
     <%= react_component('LaastrasContract', {
         title: c.title,
         description: c.description,
+        contract_definition_nota_benne: nota_benne,
+        contract_nb_id: (c.id.to_s + '-nb'),
         contract_id: c.id.to_s,
         contract_title_id: (c.id.to_s + '-title')
     })%>
