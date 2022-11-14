@@ -323,7 +323,7 @@ en_US:
             </li>
             <li>
                 She should be able to qualify as a Head of Department or Minister according to our
-                <a href=\u0022/laastras_crm_strategies/show?index=0&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                     Spefodem CRM strategy
                 </a>.
             </li>
@@ -480,7 +480,7 @@ en_US:
                 Seldom do Heads of States or Prime Ministers have all the knowledge and strategies
                 needed to solve issues weighing on nations and kingdoms. Setbacks and other situations may make 
                 them very unpopular with their subjects. We are offering to be 
-                <a href=\u0022/laastras_crm_strategies/show?index=0&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                     the rescue boat 
                 </a>
                 for your nation or kingdom. We can 
@@ -1208,7 +1208,7 @@ en_US:
             <div>
                 You must have realized that Laastras will impact local and global policy. We must mention 
                 that we have got to operate as Non-Governmental Organizations, 
-                <a href=\u0022/laastras_crm_strategies/show?index=0&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                     one NGO per nation
                 </a>. 
                 The local NGO must be sovereign in the sense that local people will be source of funding, no matter how 
@@ -1288,7 +1288,7 @@ en_US:
                         </a>, 
                         as long as they respect our 
                         neutrality policy, which is concretized by our 
-                        <a href=\u0022/laastras_crm_strategies/show?index=0&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                             NGO legal container
                         </a>.
                     </div>
@@ -1539,5 +1539,171 @@ en_US:
             <a href=\u0022/laastras_job_offers/show?job_offer_guid=988EC164FF45A4D1318FDC3B1DC70ADDC0D495485ED19D32B3EBE132C7FF7861&job_type=start_up&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                 NGO Chief of Mission
             </a>.
+        </div>
+  "
+  laastras_contract_with_the_company_title: "Contract Terms Between Laastras and Your Company"
+  laastras_contract_with_the_company_message: "
+        <div class=\u0022contract-terms\u0022> 
+            <div style=\u0022margin: 10px\u0022> <h4> Preamble </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                Laastras project can only fit in a legal container that we call <span class=\u0022definition\u0022>company</span>.
+                This is the contract that will bind your <span class=\u0022definition\u0022>company</span> to Laastras. The contract will specify 
+                Laastras roles and your <span class=\u0022definition\u0022>company</span>'s, as well as your <span class=\u0022definition\u0022>company</span>'s interests.
+            </div>
+            <div style=\u0022margin: 10px\u0022> <h4> Roles </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                <strong>Laastras roles:</strong>
+            </div>
+            <ul style=\u0022margin: 10px\u0022>
+                <li style=\u0022padding: 10px\u0022>
+                    <span class=\u0022definition\u0022>Laastras founder</span> or one of <span class=\u0022definition\u0022>Laastras founder</span>'s descendants in decreasing order of age 
+                    must be Head of Project and will oversee the management of all Laastras resources, both human and material.
+                </li>
+            </ul>
+            <div id=\u0022your-company-roles\u0022 style=\u0022margin: 10px\u0022>
+                <strong>Your <span class=\u0022definition\u0022>company</span>'s roles:</strong>
+            </div>
+            <ul style=\u0022margin: 10px\u0022>
+                <li>
+                    Appoint a <span class=\u0022definition\u0022>project manager assistant</span>, one per country, unless she has already 
+                    been appointed.
+                </li>
+                <li>
+                    Appoint a <span class=\u0022definition\u0022>LaasOS software engineer</span>, one per country, 
+                    unless he/she has already been appointed.
+                </li>
+                <li> 
+                    Launch “<span class=\u0022definition\u0022>LaasEgrocery</span>”, the first branch of Laastras project, unless it has already 
+                    been set up in your country.
+                </li>
+                <li>
+                    Look for the funds needed to support the Laastras project branch, both its personnel
+                    and the needed equipment. “<span class=\u0022definition\u0022>LaasEgrocery</span>” branch 
+                    is self-sustained and revenue can come from and grocery transporters or/and importers.
+                </li>
+                <li>
+                    Be owner of all Laastras resources, both human and material.
+                </li>
+                <li>
+                    Legalize the 
+                    <a href=\u0022#\u0022 style=\u0022text-decoration: none\u0022>
+                        contracts 
+                    </a>
+                    between <span class=\u0022definition\u0022>Laastras founder</span> and his <span class=\u0022definition\u0022>project manager assistant</span>.
+                </li>
+                <li>
+                    If you are 
+                    <a href=\u0022/laastras_job_offers/show?job_offer_guid=EE782BA12A138541290F8570F25F71ABF9983CA428C4E7E8E6AFF171A60A70A3&job_type=start_up&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        Head of State
+                    </a>, 
+                    set up the
+                    <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        Special Formatter Department or Ministry (Spefodem)
+                    </a>
+                    that provides for the qualification of your government as a World Federal Government State.
+                </li>
+                <li>
+                    If you are 
+                    <a href=\u0022/laastras_job_offers/show?job_offer_guid=7BAF9D72FAF8FF016EC539F7869313EB5C352BDDC59B7CB758CB405B8D23BEAD&job_type=start_up&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        UN Secretary General
+                    </a>,
+                    set up a 
+                    <a href=\u0022#\u0022 style=\u0022text-decoration: none\u0022>
+                        Special UN Integration Commission (Spuninc)
+                    </a>
+                    that will  run Laastras at world level once it qualifies as a UN organ.
+                </li>
+            </ul>
+            <div style=\u0022margin: 10px\u0022> <h4> Interests </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                <strong> Your <span class=\u0022definition\u0022>company</span>'s interests: </strong> The benefits beyond the ones in 
+                <a href=\u0022#your-company-roles\u0022 style=\u0022text-decoration: none\u0022>
+                    the roles above 
+                </a>
+                are subject to discussion.
+            </div>
+        </div>
+        <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
+            <div id=\u0022company\u0022>
+                <strong> Company: </strong> A start-up, or any legally registered business container such as 
+                enterprise, organization, or association, including government, kingdom, or empire.
+            </div>
+            <div id=\u0022laastras-founder\u0022>
+                <strong> Laastras founder: </strong> Obed-Edom Nkezabahizi, born on January 26, 1987 at Musaga,
+                Bujumbura, Burundi, of John Mpfayokurera as father, and Helen Nyandwi as a mother.
+            </div>
+            <div id=\u0022project-manager-assistant\u0022>
+                <strong> Project manager assistant: </strong> A single lady whose birth date lies between February 
+                1987 and February 1997. She will be bound by two contracts: <strong>work contract</strong> 
+                and <strong>assistant contract</strong>. She is single as unmarried, divorced without children, 
+                or widowed.
+            </div>
+            <div id=\u0022laasos-software-engineer\u0022>
+                <strong>LaasOS software engineer:</strong> A software engineer with at least 10 years of 
+                hands-on experience in desktop, mobile, cloud, and full-stack development. He/she will 
+                participate in 
+                <a href=\u0022/laastras_marketing_videos/show?video_id=8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    LaasOS 
+                </a>
+                development.
+            </div>
+            <div id=\u0022laasegrocery\u0022>
+                <div>
+                    <strong> LaasEgrocery: </strong> A commercial brand of Laastras organization that will give Laastras 
+                    impetus and kick things off. “LaasEgrocery” must be registered as a brand and a trade mark. Once 
+                    we are fully functional, LaasEgrocery will power Laastras NGO, named according to the pattern 
+                    “Laastras-CountryName”. E.g <strong>Laastras-Burundi</strong>.
+                    The needed equipment:
+                </div>
+                <ul>
+                    <li>
+                        1 truck, the kind that can be used to carry groceries to households, hotels, 
+                        and restaurants.
+                    </li>
+                    <li>
+                        <div> 2 laptop computers with the following specifications:</div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <strong>CPU:</strong> >= 4 cores, >= 2GHz of base clock rate
+                                </li>
+                                <li>
+                                    <strong>RAM:</strong> >= 32GB
+                                </li>
+                                <li>
+                                    <strong>SSD:</strong> >= 512GB
+                                </li>
+                            </ul>
+                            <div>
+                                <u>Reference machines</u>:
+                            </div>
+                            <ul>
+                                <li>
+                                    Dell XPS 15 with 32 gigs of RAM
+                                </li>
+                                <li>
+                                    ThinkPad T14/T15/X1 Extreme with 32 gigs of RAM
+                                </li>
+                                <li>
+                                    Lenovo Legion Slim 7 based on Ryzen (up to 8-core 4900H,
+                                    32GB of memory, and NVMe SSD)
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        2 (4G) internet devices to connect to internet. E.g 4G Modem, a cell phone that supports 4G.
+                    </li>
+                    <li>
+                        1 professional camera the specifications of which you are to decide upon.
+                    </li>
+                    <li>
+                        A GPS tracker module.
+                    </li>
+                    <li>
+                        N employees to work on the truck and to do the shopping and delivery.
+                    </li>
+                </ul>
+            </div>
         </div>
   "

@@ -18,7 +18,6 @@ class LaastrasService extends React.Component
                     <div className="col-md-8">
                         <div className="shadow-sm p-1 mb-2 bg-white rounded">
                             <div style={{padding: '10px', fontWeight: 'bold', color: 'blue'}} id={this.props.service_title_id}>
-                                {this.props.laastras_service_title}
                             </div>
                             <hr />
                             <div style={{padding: '10px'}} className="text-center" id="logo-image-square">
@@ -42,6 +41,7 @@ class LaastrasService extends React.Component
         $(`#${this.props.service_id}`).append(
             this.props.laastras_service_description
         );
+        $(`#${this.props.service_title_id}`).append(this.props.laastras_service_title);
         setInterval(() => {
             this.rotation_degrees++;
             $('.brand-logo-image').css({

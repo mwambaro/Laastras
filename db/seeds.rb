@@ -34,3 +34,11 @@
 # __start__ seeding laastras_milestone_element_images
     milestone_images = @seeds.seeding_laastras_milestone_element_images
 # __end__
+
+# __start__ seeding laastras_crm_strategies
+    strategies = @seeds.seeding_laastras_crm_strategies
+# __end__
+
+# __start__ seeding laastras_contracts
+    contracts = @seeds.seeding_laastras_contracts
+# __end__

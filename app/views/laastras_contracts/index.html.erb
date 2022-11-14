@@ -1,0 +1,32 @@
+
+<div class="container-fluid">
+    <div style="margin: 10px" class="text-center"> 
+        <h3><%= I18n.t 'laastras_contracts' %></h3>
+    </div>
+</div>
+
+<% outline_elements = [] %>
+<% @contracts.each do |c| %>
+    <% outline_elements << {
+        content_outline_id: c.id.to_s, 
+        content_outline_title: c.title
+    } %>
+<% end %>
+
+<%= react_component('LaastrasContentOutline', {
+    content_outline_capture: (I18n.t 'these_are_laastras_contracts'),
+    top_label: (I18n.t 'back_to_top_label'),
+    grid_column_class: 'col-md-10',
+    content_outline_elements: outline_elements # {content_outline_id:, content_outline_title:}
+})%>
+
+<% @contracts.each do |c| %>
+
+    <%= react_component('LaastrasContract', {
+        title: c.title,
+        description: c.description,
+        contract_id: c.id.to_s,
+        contract_title_id: (c.id.to_s + '-title')
+    })%>
+
+<% end %>

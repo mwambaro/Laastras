@@ -1,13 +1,13 @@
-class LaastrasCrmStrategiesController < ApplicationController
+class LaastrasContractsController < ApplicationController
     before_action :init_parameters
 
     def index
         next_uri = nil 
         begin
-            sql = "SELECT * FROM laastras_crm_strategies WHERE language = '#{I18n.locale.to_s}'"
-            @crm_strategies = LaastrasCrmStrategy.find_by_sql sql
-            if @crm_strategies.nil? || @crm_strategies.empty?
-                raise 'We could not find any CRM strategy in the database'
+            sql = "SELECT * FROM laastras_contracts WHERE language = '#{I18n.locale.to_s}'"
+            @contracts = LaastrasContract.find_by_sql sql
+            if @contracts.nil? || @contracts.empty?
+                raise 'We could not find any contracts in the database'
             end
             
         rescue Exception => e 
@@ -26,14 +26,14 @@ class LaastrasCrmStrategiesController < ApplicationController
     def show
         next_uri = nil 
         begin
-            sha256 = params[:strategy_id]
+            sha256 = params[:contract_id]
             if sha256.nil? || sha256.blank?
-                raise 'Invalid, nil, or blank strategy id'
+                raise 'Invalid, nil, or blank contract id'
             end
 
-            @crm_strategy = LaastrasCrmStrategy.find_by_sha256_and_language sha256, I18n.locale.to_s
-            if @crm_strategy.nil? 
-                raise 'We could not find the CRM strategy in the database'
+            @contract = LaastrasContract.find_by_sha256_and_language sha256, I18n.locale.to_s
+            if @contract.nil? 
+                raise 'We could not find the contract in the database'
             end
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 

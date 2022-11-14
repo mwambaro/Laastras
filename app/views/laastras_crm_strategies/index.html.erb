@@ -7,8 +7,8 @@
 <% outline_elements = [] %>
 <% @crm_strategies.each do |crm| %>
     <% outline_elements << {
-        content_outline_id: crm[:service_title_id], 
-        content_outline_title: crm[:laastras_crm_title]
+        content_outline_id: crm.id.to_s, 
+        content_outline_title: crm.laastras_crm_title
     } %>
 <% end %>
 
@@ -22,10 +22,10 @@
 <% @crm_strategies.each do |crm_strategy|%>
 
     <%= react_component('LaastrasCRM', {
-        laastras_crm_title: crm_strategy[:laastras_crm_title],
-        laastras_crm_description: crm_strategy[:laastras_crm_description],
-        service_id: crm_strategy[:service_id],
-        service_title_id: crm_strategy[:service_title_id]
+        laastras_crm_title: crm_strategy.laastras_crm_title,
+        laastras_crm_description: crm_strategy.laastras_crm_description,
+        service_id: crm_strategy.id.to_s,
+        service_title_id: (crm_strategy.id.to_s + '-title')
     })%>
 
 <% end %>

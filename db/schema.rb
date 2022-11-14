@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_22_095403) do
+ActiveRecord::Schema.define(version: 2022_11_14_111114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "laastras_contracts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "language"
+    t.string "sha256"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "laastras_crm_strategies", force: :cascade do |t|
+    t.string "laastras_crm_title"
+    t.text "laastras_crm_description"
+    t.string "language"
+    t.string "sha256"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "laastras_documents", force: :cascade do |t|
     t.string "sha256"

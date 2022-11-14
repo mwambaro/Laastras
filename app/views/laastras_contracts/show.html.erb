@@ -1,0 +1,7 @@
+
+<%= react_component('LaastrasContract', {
+    title: @contract.title,
+    description: @contract.description,
+    contract_id: @contract.id.to_s,
+    contract_title_id: (@contract.id.to_s + '-title')
+})%>

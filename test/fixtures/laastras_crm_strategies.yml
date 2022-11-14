@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  laastras_crm_title: MyString
+  laastras_crm_description: MyText
+  language: MyString
+  sha256: MyString
+
+two:
+  laastras_crm_title: MyString
+  laastras_crm_description: MyText
+  language: MyString
+  sha256: MyString

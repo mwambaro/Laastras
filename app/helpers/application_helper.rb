@@ -39,25 +39,6 @@ module ApplicationHelper
 
     end # unique_file_name
 
-    def self.crm_strategies 
-        crm_strategies = []
-        crm_strategies << {
-            laastras_crm_title: (I18n.t 'the_special_rescue_department_title'),
-            laastras_crm_description: (I18n.t 'the_special_rescue_department_message'),
-            service_id: 'ransom-and-full-nda-issue-1',
-            service_title_id: 'ransom-and-full-nda-issue-title-1'
-        }
-        crm_strategies << {
-            laastras_crm_title: (I18n.t 'homocracy_ransom_and_full_nda_issue_title'),
-            laastras_crm_description: (I18n.t 'homocracy_ransom_and_full_nda_issue_message'),
-            service_id: 'ransom-and-full-nda-issue-2',
-            service_title_id: 'ransom-and-full-nda-issue-title-2'
-        }
-
-        crm_strategies
-
-    end # crm_strategies
-
     def self.set_locale_from_request(request, logger=nil, session=nil)
         locale = nil 
         begin
@@ -643,6 +624,12 @@ module ApplicationHelper
                     data: ''
                 },
                 {
+                    url: url_for(controller: 'laastras_contracts', action: 'index'),
+                    inner_text: (I18n.t 'contracts_label'),
+                    dropdown_boolean: 'false',
+                    data: ''
+                },
+                {
                     url: url_for(controller: 'money_transfer', action: 'donate'),
                     inner_text: (I18n.t 'donate_label'),
                     dropdown_boolean: 'false',
@@ -785,6 +772,95 @@ module ApplicationHelper
             end
 
         end # initialize
+
+        def seeding_laastras_contracts 
+            contracts = nil 
+            begin 
+                s_locale = I18n.locale 
+                I18n.available_locales.each do |locale|
+                    I18n.locale = locale 
+                    contracts = [] if contracts.nil?
+                    contracts << {
+                        title: (I18n.t 'laastras_contract_with_the_company_title'),
+                        description: (I18n.t 'laastras_contract_with_the_company_message'),
+                        language: locale.to_s,
+                        sha256: 'D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462'
+                    }
+                end
+                I18n.locale = s_locale
+
+                val = LaastrasContract.create(contracts)
+                unless val
+                    raise 'There were errors seeding laastras contracts'
+                end
+
+                contracts.each do |contract| 
+                    title = contract[:title] 
+                    d = LaastrasContract.find_by_title title 
+                    if d.nil? 
+                        msg = "Contract [#{contract.title}][#{contract.sha256}] was not seeded"
+                        message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + msg
+                        @logger.debug message unless @logger.nil?
+                    end
+                end
+            rescue Exception => e 
+                message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                @logger.debug message unless @logger.nil?
+            end
+
+            contracts 
+
+        end # seeding_laastras_contracts
+
+        def seeding_laastras_crm_strategies 
+            strategies = nil 
+            begin 
+                strategies = []
+                s_locale = I18n.locale
+                I18n.available_locales.each do |locale|
+                    I18n.locale = locale
+                    strategies << {
+                        laastras_crm_title: (I18n.t 'the_special_rescue_department_title'),
+                        laastras_crm_description: (I18n.t 'the_special_rescue_department_message'),
+                        language: locale.to_s,
+                        sha256: '38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA'
+                    }
+                    strategies << {
+                        laastras_crm_title: (I18n.t 'homocracy_ransom_and_full_nda_issue_title'),
+                        laastras_crm_description: (I18n.t 'homocracy_ransom_and_full_nda_issue_message'),
+                        language: locale.to_s,
+                        sha256: 'C8F5134F5C38D268AB50E83110A9F1897EFF337F86722AA830E385CFE80C180E'
+                    }
+                end
+                I18n.locale = s_locale
+
+                val = LaastrasCrmStrategy.create(strategies)
+                unless val
+                    raise 'There were errors seeding laastras crm strategies'
+                end
+
+                strategies.each do |strategy| 
+                    title = strategy[:laastras_crm_title] 
+                    d = LaastrasCrmStrategy.find_by_laastras_crm_title title 
+                    if d.nil? 
+                        msg = "Strategy [#{strategy.laastras_crm_title}][#{strategy.sha256}] was not seeded"
+                        message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + msg
+                        @logger.debug message unless @logger.nil?
+                    end
+                end
+
+            rescue Exception => e 
+                message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                @logger.debug message unless @logger.nil?
+            end    
+
+            strategies
+
+        end # seeding_laastras_crm_strategies
 
         def seeding_laastras_documents 
             docs = nil 

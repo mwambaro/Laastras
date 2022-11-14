@@ -247,3 +247,6 @@ en_US:
   these_are_crm_strategies: "The following are Laastras system development CRM strategies"
   crm_label: "CRM"
   these_are_laastras_services: "Laastras will deliver on these services"
+  contracts_label: "Contracts"
+  laastras_contracts: "Laastras Contracts"
+  these_are_laastras_contracts: "You will find below a list of Laastras contracts"
