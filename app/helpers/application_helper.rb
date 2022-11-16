@@ -786,6 +786,18 @@ module ApplicationHelper
                         language: locale.to_s,
                         sha256: 'D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462'
                     }
+                    contracts << {
+                        title: (I18n.t 'project_manager_assistant_work_contract_title'),
+                        description: (I18n.t 'project_manager_assistant_work_contract_message'),
+                        language: locale.to_s,
+                        sha256: 'CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D'
+                    }
+                    contracts << {
+                        title: (I18n.t 'project_manager_assistant_intimacy_contract_title'),
+                        description: (I18n.t 'project_manager_assistant_intimacy_contract_message'),
+                        language: locale.to_s,
+                        sha256: 'E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59'
+                    }
                 end
                 I18n.locale = s_locale
 

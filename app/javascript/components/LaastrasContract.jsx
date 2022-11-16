@@ -73,20 +73,61 @@ class LaastrasContract extends React.Component
 
     manage_definitions()
     {
-        let selector = $('span');
+        let selector = $('span.definition');
         selector.css({
             color: 'blue',
             cursor: 'pointer'
         });
 
         selector.on('click', (e) => {
-            this.show_definition(e);
-        })
+            //console.log('Dictionary word clicked ...');
+            let latency = this.dictionary_word_is_in_definition_modal(e);
+            if(latency)
+            {
+                setTimeout((ee) => {
+                    this.show_definition(e);
+                }, 250);
+            }
+            else 
+            {
+                this.show_definition(e);
+            }
+        });
         
-    } // manage_definitions
+    } // manage_definitions 
+
+    dictionary_word_is_in_definition_modal(e)
+    {
+        let in_definition_modal = false;
+        let parent = $(e.target);
+        while(!parent.is($('body')))
+        {
+            if(parent.is($(e.target)))
+            {
+                //console.log('Assessing definition word click source ... ');
+            }
+
+            parent = parent.parent();
+            if(parent.is($('#definition-body')))
+            {
+                in_definition_modal = true; 
+                //console.log('Clicked from definition modal.');
+                break;
+            }
+        }
+
+        if(!in_definition_modal)
+        {
+            //console.log('Click is not from definition modal.');
+        }
+
+        return in_definition_modal;
+
+    } // dictionary_word_is_in_definition_modal
 
     show_definition(e)
     {
+        
         let id = null;
         let dataId = $(e.target).attr('data-id');
         if(dataId !== '' && typeof(dataId) !== 'undefined' && !/^\s+$/.test(dataId))

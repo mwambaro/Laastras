@@ -1543,7 +1543,7 @@ en_US:
   "
   laastras_contract_with_the_company_title: "Contract Terms Between Laastras and Your Company"
   laastras_contract_with_the_company_message: "
-        <div class=\u0022contract-terms\u0022> 
+        <div class=\u0022contract-terms-company\u0022> 
             <div style=\u0022margin: 10px\u0022> <h4> Preamble </h4> </div>
             <div style=\u0022margin: 10px\u0022>
                 Laastras project can only fit in a legal container that we call <span class=\u0022definition\u0022>company</span>.
@@ -1587,7 +1587,7 @@ en_US:
                 </li>
                 <li>
                     Legalize the 
-                    <a href=\u0022#\u0022 style=\u0022text-decoration: none\u0022>
+                    <a href=\u0022/laastras_contracts/index?type=intimate-mate&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                         contracts 
                     </a>
                     between <span class=\u0022definition\u0022>Laastras founder</span> and his <span class=\u0022definition\u0022>project manager assistant</span>.
@@ -1617,11 +1617,14 @@ en_US:
             </ul>
             <div style=\u0022margin: 10px\u0022> <h4> Interests </h4> </div>
             <div style=\u0022margin: 10px\u0022>
-                <strong> Your <span class=\u0022definition\u0022>company</span>'s interests: </strong> The benefits beyond the ones in 
+                The benefits beyond the ones in 
                 <a href=\u0022#your-company-roles\u0022 style=\u0022text-decoration: none\u0022>
                     the roles above 
                 </a>
-                are subject to discussion.
+                are subject to discussion. It must be stressed that the provisions in this contract
+                make up the price and the permit for Laastras project by your <span class=\u0022definition\u0022>
+                company</span> in your country. It is a per-country price but can be paid internationally 
+                by any world-coverage <span class=\u0022definition\u0022>company</span>.
             </div>
         </div>
         <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
@@ -1635,9 +1638,15 @@ en_US:
             </div>
             <div id=\u0022project-manager-assistant\u0022>
                 <strong> Project manager assistant: </strong> A single lady whose birth date lies between February 
-                1987 and February 1997. She will be bound by two contracts: <strong>work contract</strong> 
-                and <strong>assistant contract</strong>. She is single as unmarried, divorced without children, 
-                or widowed.
+                1987 and February 1997. She will be bound by two contracts: 
+                <a href=\u0022/laastras_contracts/show?contract_id=CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    work contract
+                </a>
+                and 
+                <a href=\u0022/laastras_contracts/show?contract_id=E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    intimacy contract
+                </a>. 
+                She is single as unmarried, divorced without children, or widowed.
             </div>
             <div id=\u0022laasos-software-engineer\u0022>
                 <strong>LaasOS software engineer:</strong> A software engineer with at least 10 years of 
@@ -1705,6 +1714,211 @@ en_US:
                         N employees to work on the truck and to do the shopping and delivery.
                     </li>
                 </ul>
+            </div>
+        </div>
+  "
+  project_manager_assistant_work_contract_title: "Project Manager Assistant Work Contract"
+  project_manager_assistant_work_contract_message: "
+        <div class=\u0022contract-terms-assistant\u0022> 
+            <div style=\u0022margin: 10px\u0022> <h4> Preamble </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                Laastras is a gigantic yet simple project. To achieve peace, trustworthiness, and in order 
+                to create value, <span class=\u0022definition\u0022>Laastras founder</span> needs a 
+                <span class=\u0022definition\u0022>project manager assistant</span>, one per country. We will 
+                specify <span class=\u0022definition\u0022>Laastras founder</span>'s roles and the roles of 
+                her <span class=\u0022definition\u0022>project manager assistant</span>.
+            </div>
+            <div style=\u0022margin: 10px\u0022> <h4> Roles </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                <strong><span class=\u0022definition\u0022>Laastras founder</span> roles:</strong>
+            </div>
+            <div style=\u0022margin: 10px\u0022>
+                <span class=\u0022definition\u0022>Laastras founder</span>'s roles are as specified in 
+                <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    the contract between him and the company 
+                </a>.
+            </div>
+            <div id=\u0022assistant-roles\u0022 style=\u0022margin: 10px\u0022>
+                <strong><span class=\u0022definition\u0022>Project manager assistant</span> roles:</strong>
+            </div>
+            <ul style=\u0022margin: 10px\u0022>
+                <li>
+                    She must not enter any <span class=\u0022definition\u0022>intimate relationship</span> outside 
+                    her assistant work, for fear she may lose focus and dedication.
+                </li>
+                <li>
+                    She must be ready to assist <span class=\u0022definition\u0022>Laastras founder</span> 
+                    in everything when he is on her country’s soil.
+                </li>
+                <li> 
+                    She is free to terminate this contract relationship any time she wants and will pass her 
+                    duties on to another candidate who meets the qualifications.
+                </li>
+                <li>
+                    If there are <span class=\u0022definition\u0022>shared resources</span> whatsoever that 
+                    we cannot <span class=\u0022definition\u0022>divide</span>, then we must continue managing them 
+                    together as a <span class=\u0022definition\u0022>team</span>. We will decide on how to manage 
+                    them together.
+                </li>
+                <li>
+                    She must continue <span class=\u0022definition\u0022>dwelling in her native country until enough 
+                    space is available</span> for all Laastras <span class=\u0022definition\u0022>project manager 
+                    assistant</span>s around the world.
+                </li>
+            </ul>
+            <div style=\u0022margin: 10px\u0022> <h4> Interests </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                The benefits beyond the ones in 
+                <a href=\u0022#assistant-roles\u0022 style=\u0022text-decoration: none\u0022>
+                    the roles above 
+                </a>
+                are subject to discussion.
+            </div>
+        </div>
+        <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
+            <div id=\u0022laastras-founder\u0022>
+                <strong> Laastras founder: </strong> Obed-Edom Nkezabahizi, born on January 26, 1987 at Musaga,
+                Bujumbura, Burundi, of John Mpfayokurera as father, and Helen Nyandwi as a mother.
+            </div>
+            <div id=\u0022project-manager-assistant\u0022>
+                <strong> Project manager assistant: </strong> A single lady whose birth date lies between February 
+                1987 and February 1997. She will be bound by two contracts: 
+                <a href=\u0022/laastras_contracts/show?contract_id=CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    work contract
+                </a>
+                and 
+                <a href=\u0022/laastras_contracts/show?contract_id=E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    intimacy contract
+                </a>.
+                She is single as unmarried, divorced without children, 
+                or widowed.
+            </div>
+            <div id=\u0022intimate-relationship\u0022>
+                <strong>Intimate relationship: </strong> Relationship between an individual and a member of the 
+                opposite sex. It includes gestures of affection, tenderness, and sex.
+            </div>
+            <div id=\u0022shared-resources\u0022>
+                <strong>Shared resources: </strong> Resources that rightfully belong to many individuals. Shared 
+                here is not to be confused with common. The resources are undoubtedly properties of the many 
+                individuals.
+            </div>
+            <div id=\u0022divide\u0022>
+                <strong> Divide: </strong> We are referring to the process of dividing resources as they
+                appear. Some resources like human resources will appear the same even after management. You 
+                still won't be able to break them into pieces without degrading, deteriorating, or damaging them.
+                For example, parents cannot divide children, per se. For the children to have both parents,
+                the parents must raise them together under the same roof. Step parents cannot replace biological 
+                parents, per se.
+            </div>
+            <div id=\u0022team\u0022>
+                <strong> Team: </strong> Here it means within the same space and time context. For example,
+                if some of your children are being raised by a step parent, you and the other old mate are no 
+                longer a team, per se.
+            </div>
+            <div id=\u0022dwelling-in-her-native-country-until-enough-space-is-available\u0022>
+                <strong>Dwelling in her native country until enough space is available:</strong>
+                This means that she must stay in the country to accomplish her local duties. She will be 
+                moving only on holidays. When all the countries recognized by 
+                <a href=\u0022/laastras_job_offers/show?job_offer_guid=7BAF9D72FAF8FF016EC539F7869313EB5C352BDDC59B7CB758CB405B8D23BEAD&job_type=start_up&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    UN 
+                </a>
+                have permitted Laastras realization, we will decide on and provision the capital city of 
+                the World Federal Government. Only then will all of the <span class=\u0022definition\u0022>project 
+                manager assistant</span>s move in together with 
+                <span class=\u0022definition\u0022>Laastras Founder</span>.
+            </div>
+        </div>
+  "
+  project_manager_assistant_intimacy_contract_title: "Project Manager Assistant Intimacy Contract"
+  project_manager_assistant_intimacy_contract_message: "
+        <div class=\u0022contract-terms-intimacy\u0022> 
+            <div style=\u0022margin: 10px\u0022> <h4> Preamble </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                Divorce can be energy and time consuming. It disrupts peace and development. Laastras project 
+                values family, married couples, and children. To be proactive, and since statistics prove that 
+                divorce or near-divorce rate is too high, this contract is divorce-oriented. It makes provisions 
+                that arm family with policy, protocols, and strategies that will keep family safe even in case 
+                of divorce or near-divorce.
+            </div>
+            <div style=\u0022margin: 10px\u0022> <h4> Terms </h4> </div>
+            <ul style=\u0022margin: 10px\u0022>
+                <li>
+                    <span class=\u0022definition\u0022>Laastras founder</span> and the 
+                    <span class=\u0022definition\u0022>project manager assistant</span> must manage 
+                    their business accounts separately and independently. If either employs the other, 
+                    he/she must assign him/her a salary like the rest of the employees under the same 
+                    employment regulations.
+                </li>
+                <li>
+                    Since the <span class=\u0022definition\u0022>intimate relationship</span> between 
+                    <span class=\u0022definition\u0022>Laastras founder</span> and the 
+                    <span class=\u0022definition\u0022>project manager assistant</span> may result in 
+                    bearing and raising children, our contract regards them as family based solely on this contract, 
+                    as opposed to traditional family in the country.
+                </li>
+                <li> 
+                    <span class=\u0022definition\u0022>Laastras founder</span> and the 
+                    <span class=\u0022definition\u0022>project manager assistant</span> must contribute 
+                    50% of all family expenses, each. Any deficit must be regarded as a debt that the mate who 
+                    has fallen short will reimburse. Reimbursement is subject to local law.
+                </li>
+                <li>
+                    Both <span class=\u0022definition\u0022>Laastras founder</span> and the 
+                    <span class=\u0022definition\u0022>project manager assistant</span> are free to enter 
+                    another <span class=\u0022definition\u0022>intimate relationship</span> as long as 
+                    the other mate is fully informed. The mate entering the other 
+                    <span class=\u0022definition\u0022>intimate relationship</span> must cooperate by 
+                    sharing all information requested by his/her partner. No children at all should result from 
+                    this other <span class=\u0022definition\u0022>intimate relationship</span>. If they do, 
+                    the children will be handed to the care of the other mate.
+                </li>
+                <li>
+                    If <span class=\u0022definition\u0022>Laastras founder</span> and the 
+                    <span class=\u0022definition\u0022>project manager assistant</span> bear children, then 
+                    these are <span class=\u0022definition\u0022>shared resources</span> that they cannot 
+                    <span class=\u0022definition\u0022>divide</span>. So, they must continue raising them 
+                    together as a <span class=\u0022definition\u0022>team</span>.
+                </li>
+            </ul>
+        </div>
+        <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
+            <div id=\u0022laastras-founder\u0022>
+                <strong> Laastras founder: </strong> Obed-Edom Nkezabahizi, born on January 26, 1987 at Musaga,
+                Bujumbura, Burundi, of John Mpfayokurera as father, and Helen Nyandwi as a mother.
+            </div>
+            <div id=\u0022project-manager-assistant\u0022>
+                <strong> Project manager assistant: </strong> A single lady whose birth date lies between February 
+                1987 and February 1997. She will be bound by two contracts: 
+                <a href=\u0022/laastras_contracts/show?contract_id=CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    work contract
+                </a>
+                and 
+                <a href=\u0022/laastras_contracts/show?contract_id=E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    intimacy contract
+                </a>.
+                She is single as unmarried, divorced without children, or widowed.
+            </div>
+            <div id=\u0022intimate-relationship\u0022>
+                <strong>Intimate relationship: </strong> Relationship between an individual and a member of the 
+                opposite sex. It includes gestures of affection, tenderness, and sex.
+            </div>
+            <div id=\u0022shared-resources\u0022>
+                <strong>Shared resources: </strong> Resources that rightfully belong to many individuals. Shared 
+                here is not to be confused with common. The resources are undoubtedly properties of the many 
+                individuals.
+            </div>
+            <div id=\u0022divide\u0022>
+                <strong> Divide: </strong> We are referring to the process of dividing resources as they
+                appear. Some resources like human resources will appear the same even after management. You 
+                still won't be able to break them into pieces without degrading, deteriorating, or damaging them.
+                For example, parents cannot divide children, per se. For the children to have both parents,
+                the parents must raise them together under the same roof. Step parents cannot replace biological 
+                parents, per se.
+            </div>
+            <div id=\u0022team\u0022>
+                <strong> Team: </strong> Here it means within the same space and time context. For example,
+                if some of your children are being raised by a step parent, you and the other old mate are no 
+                longer a team, per se.
             </div>
         </div>
   "

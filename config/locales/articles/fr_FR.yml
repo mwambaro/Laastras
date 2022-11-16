@@ -1550,7 +1550,7 @@ fr_FR:
   "
   laastras_contract_with_the_company_title: "Termes de Contrat entre Laastras et votre Compagnie"
   laastras_contract_with_the_company_message: "
-        <div class=\u0022contract-terms\u0022> 
+        <div class=\u0022contract-terms-company\u0022> 
             <div style=\u0022margin: 10px\u0022> <h4> Préambule </h4> </div>
             <div style=\u0022margin: 10px\u0022>
                 Le projet Laastras peut seulement entrer dans un conteneur légal que nous appellons <span class=\u0022definition\u0022>compagnie</span>.
@@ -1597,7 +1597,7 @@ fr_FR:
                 </li>
                 <li>
                     Légaliser les
-                    <a href=\u0022#\u0022 style=\u0022text-decoration: none\u0022>
+                    <a href=\u0022/laastras_contracts/index?type=intimate-mate&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                         contracts 
                     </a>
                     entre <span class=\u0022definition\u0022>fondateur de Laastras</span> et son <span class=\u0022definition\u0022>assistante du Chef de Projet</span>.
@@ -1628,17 +1628,21 @@ fr_FR:
             </ul>
             <div style=\u0022margin: 10px\u0022> <h4> Intérêts </h4> </div>
             <div style=\u0022margin: 10px\u0022>
-                <strong> Les intérêts de votre <span class=\u0022definition\u0022>compagnie</span>:</strong> Les intérêts au-delà des
+                Les intérêts au-delà de ceux qui découlent des
                 <a href=\u0022#your-company-roles\u0022 style=\u0022text-decoration: none\u0022>
                     rôles ci-haut
                 </a>
-                sont sujets à la discussion.
+                sont sujets à la discussion. Nous devons insister sur le fait que les arrangements de ce contract sont le prix et le permis 
+                pour le projet Laastras par votre <span class=\u0022definition\u0022> compagnie </span> 
+                dans votre pays. C'est un prix par pays, mais peut être payé à l'international par 
+                n'importe quelle <span class=\u0022definition\u0022> compagnie </span> qui vise une couverture
+                mondiale.
             </div>
         </div>
         <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
             <div id=\u0022compagnie\u0022>
-                <strong> Compagnie: </strong> Une entreprise débutante, n'importe quel conteneur 
-                d'affaire légallement enregistrée tel qu'une entreprise, une organisation, ou une 
+                <strong> Compagnie: </strong> Une entreprise débutante, ou n'importe quel conteneur 
+                d'affaire légallement enregistré tel qu'une entreprise, une organisation, ou une 
                 association, y compris un gouvernement, un royaume, ou un empire.
             </div>
             <div id=\u0022fondateur-de-laastras\u0022>
@@ -1647,9 +1651,15 @@ fr_FR:
             </div>
             <div id=\u0022assistante-du-chef-de-projet\u0022>
                 <strong> Assistante du Chef de Projet: </strong> Une dame célibataire dont la date de naissance se 
-                situe entre Février 1987 et Février 1997. Elle sera soumise à deux contracts: <strong>contract 
-                de travail </strong> et <strong>contract d'assistance</strong>. Elle est célibataire dans le sens d'être non-marriée,
-                divorcée sans enfants, ou veuve.
+                situe entre Février 1987 et Février 1997. Elle sera soumise à deux contracts: 
+                <a href=\u0022/laastras_contracts/show?contract_id=CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract de travail
+                </a>
+                et 
+                <a href=\u0022/laastras_contracts/show?contract_id=E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract d'intimité
+                </a>. 
+                Elle est célibataire dans le sens d'être non-marriée, divorcée sans enfants, ou veuve.
             </div>
             <div id=\u0022ingnieur-logiciel-laasos\u0022>
                 <strong> Ingénieur logiciel LaasOS: </strong> Un ingénieur logiciel ayant au moins 10 ans 
@@ -1718,6 +1728,217 @@ fr_FR:
                         courses.
                     </li>
                 </ul>
+            </div>
+        </div>
+  "
+  project_manager_assistant_work_contract_title: "Contract de Travail de l'Assistante du Chef de Projet"
+  project_manager_assistant_work_contract_message: "
+        <div class=\u0022contract-terms-assistant\u0022> 
+            <div style=\u0022margin: 10px\u0022> <h4> Préambule </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                Laastras est un projet gigantesque mais simple. Pour aboutir à la paix, à un 
+                atmosphère de confiance, et à fin de générer de la valeur ajoutée, le
+                <span class=\u0022definition\u0022>fondateur de Laastras</span> a besoin d'une 
+                <span class=\u0022definition\u0022>assistante du Chef de Projet</span>, une par pays.
+                On précisera les rôles du <span class=\u0022definition\u0022>fondateur de Laastras</span>
+                et ceux de son <span class=\u0022definition\u0022>assistante du Chef de Projet</span>.
+            </div>
+            <div style=\u0022margin: 10px\u0022> <h4> Rôles </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                <strong>Les rôles du <span class=\u0022definition\u0022>fondateur de Laastras</span>:</strong>
+            </div>
+            <div style=\u0022margin: 10px\u0022>
+                Les rôles du <span class=\u0022definition\u0022>fondateur de Laastras</span> sont spécifiés dans le
+                <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract entre lui et la compagnie
+                </a>.
+            </div>
+            <div id=\u0022assistant-roles\u0022 style=\u0022margin: 10px\u0022>
+                <strong>Les rôles de l'<span class=\u0022definition\u0022>assistante du Chef de Projet</span></strong>
+            </div>
+            <ul style=\u0022margin: 10px\u0022>
+                <li>
+                    Elle ne doit avoir aucune <span class=\u0022definition\u0022>relation intime</span> au-delà de son 
+                    travail d'assistante, de peur de perdre concentration et dédicace.
+                </li>
+                <li>
+                    Elle doit être prête à assister le <span class=\u0022definition\u0022>fondateur de Laastras</span> 
+                    dans tout lorsqu'il est sur le territoire de son pays.
+                </li>
+                <li> 
+                    Elle est libre de mettre fin à cette relation contractuelle à n'importe quel moment voulu 
+                    et elle passera ses responsabilités à une autre candidate qualifiée.
+                </li>
+                <li>
+                    S'il y a des <span class=\u0022definition\u0022 data-id=\u0022ressources-partagees\u0022>
+                    ressources partagées</span> quelles qu'elles 
+                    soient que nous ne pouvons pas <span class=\u0022definition\u0022>diviser</span>, 
+                    alors on les gèrera ensemble en <span class=\u0022definition\u0022 data-id=\u0022equipe\u0022>équipe</span>. 
+                    On discutera la façon de les gérer ensemble.
+                </li>
+                <li>
+                    Elle doit <span class=\u0022definition\u0022 data-id=\u0022dwelling\u0022> démeurer dans son pays natal jusqu'à ce qu'il y ait 
+                    assez d'espace </span> pour toutes les <span class=\u0022definition\u0022 data-id=\u0022assistante-du-chef-de-projet\u0022> 
+                    assistantes du Chef de projet </span> à travers le monde.
+                </li>
+            </ul>
+            <div style=\u0022margin: 10px\u0022> <h4> Intérêts </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                Les intérêts au-delà de ceux qui découlent des
+                <a href=\u0022#assistant-roles\u0022 style=\u0022text-decoration: none\u0022>
+                    rôles ci-haut
+                </a>
+                sont sujets à la discussion.
+            </div>
+        </div>
+        <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
+            <div id=\u0022fondateur-de-laastras\u0022>
+                <strong> Fondateur de Laastras: </strong> Nkezabahizi Obed-Edom, né le 26 Janvier 1987, 
+                à Musaga, Bujumbura-Mairie, Burundi, de Mpfayokurera Jean comme père, et Nyandwi Hélène comme mère.
+            </div>
+            <div id=\u0022assistante-du-chef-de-projet\u0022>
+                <strong> Assistante du Chef de Projet: </strong> Une dame célibataire dont la date de naissance se 
+                situe entre Février 1987 et Février 1997. Elle sera soumise à deux contracts: 
+                <a href=\u0022/laastras_contracts/show?contract_id=CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract de travail
+                </a>
+                et 
+                <a href=\u0022/laastras_contracts/show?contract_id=E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract d'intimité
+                </a>.
+                Elle est célibataire dans le sens d'être non-marriée, divorcée sans enfants, ou veuve.
+            </div>
+            <div id=\u0022relation-intime\u0022>
+                <strong>Relation intime: </strong> Relation entre un individu et un membre du sexe opposé.
+                Elle inclut les gestes d'affection, de tendresse, et le sexe.
+            </div>
+            <div id=\u0022ressources-partagees\u0022>
+                <strong>Ressources partagées: </strong> Les ressources qui appartiennent officiellement 
+                à beaucoup d'individus. Le terme partagées utilisé ici ne doit pas être confondu avec 
+                communes. Les ressources sont indubitablement propriétés de beaucoup d'individus.
+            </div>
+            <div id=\u0022diviser\u0022>
+                <strong> Diviser: </strong> Nous faisons référence au processus de division de ressources 
+                telles qu'elles apparaissent. Certaines ressources comme les ressources humaines 
+                apparaitront les mêmes même après transformation. Même après transformation, on ne pourra 
+                pas les scinder en morceaux sans les dégrader, les détériorer, ou les endommager. 
+                Par exemple, les parents ne peuvent pas diviser les enfants, en soi. Pour que les enfants 
+                aient tous les deux parents, ils doivent les dresser ensemble sous un même toit. Les 
+                beaux parents ne peuvent pas remplacer les parents biologiques, en soi.
+            </div>
+            <div id=\u0022equipe\u0022>
+                <strong> Equipe: </strong> Ici ça veut dire dans un même contexte spacio-temporel. Par 
+                exemple, si certains de vos enfants sont dressés par un beau parent, vous et l'autre 
+                ancien partenaire ne sont plus une équipe, en soi.
+            </div>
+            <div id=\u0022dwelling\u0022>
+                <strong>Démeurer dans son pays natal jusqu'à ce qu'il y ait assez d'espace:</strong>
+                Ceci veut dire qu'elle doit rester dans son pays pour accomplir ses responsabilités. Elle 
+                bougera seulement pendant les vacances. Quand tous les pays reconnus par l'
+                <a href=\u0022/laastras_job_offers/show?job_offer_guid=7BAF9D72FAF8FF016EC539F7869313EB5C352BDDC59B7CB758CB405B8D23BEAD&job_type=start_up&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    ONU 
+                </a>
+                auront permis la réalisation de Laastras, nous prendrons la décision de l'endroit où mettre la capitale
+                du Gouvernement Fédéral Mondial. Alors toutes les <span class=\u0022definition\u0022 data-id=\u0022assistante-du-chef-de-projet\u0022>
+                assistantes du Chef de Projet </span> viendront vivre ensemble avec le <span class=\u0022definition\u0022>
+                fondateur de Laastras </span>.
+            </div>
+        </div>
+  "
+  project_manager_assistant_intimacy_contract_title: "Contract d'Intimité avec l'Assistante du Chef de Projet"
+  project_manager_assistant_intimacy_contract_message: "
+        <div class=\u0022contract-terms-intimacy\u0022> 
+            <div style=\u0022margin: 10px\u0022> <h4> Préambule </h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                Le divorce peut être épuisant et fait perdre beaucoup de temps. C'est une barrière à 
+                la paix et au développement. Le projet Laastras valorise la famille, les couples marriés, et 
+                les enfants. A fin d'être proactif, et vu le taux élevé de divorce et des couples qui en viennent au point 
+                de divorcer, ce contract est orienté divorce. Il définit des arrangements qui arment la famille de 
+                politique, protocoles, et stratégies qui garderont les familles en sécurité même en cas de divorce 
+                ou de divorce manqué de justesse.
+            </div>
+            <div style=\u0022margin: 10px\u0022> <h4> Termes </h4> </div>
+            <ul style=\u0022margin: 10px\u0022>
+                <li>
+                    Le <span class=\u0022definition\u0022>fondateur de Laastras</span> et l'
+                    <span class=\u0022definition\u0022>assistante du Chef de Projet</span> doivent 
+                    gérer leurs comptes d'affaire séparément et indépendemment. Si l'un(e) emploie 
+                    l'autre, il(elle) doit lui allouer un salaire comme le reste des employés et sous 
+                    les mêmes régulations d'emploi.
+                </li>
+                <li>
+                    Puisque la <span class=\u0022definition\u0022>relation intime</span> entre le
+                    <span class=\u0022definition\u0022>fondateur de Laastras</span> et l'
+                    <span class=\u0022definition\u0022>assistante du Chef de Projet</span>
+                    peut résulter en la naissance et au soin des enfants, notre contract  les regarde 
+                    comme une famille basée uniquement sur ce contract, à l'opposé de la famille 
+                    traditionnelle du pays.
+                </li>
+                <li> 
+                    Le <span class=\u0022definition\u0022>fondateur de Laastras</span> et l'
+                    <span class=\u0022definition\u0022>assistante du Chef de Projet</span> doivent
+                    contribuer 50% des dépenses familiales, chacun. Tout déficit est considéré comme 
+                    une dette que l'endetté(e) remboursera. Le remboursement est sujet à la loi locale.
+                </li>
+                <li>
+                    Le <span class=\u0022definition\u0022>fondateur de Laastras</span> et l'
+                    <span class=\u0022definition\u0022>assistante du Chef de Projet</span> sont tous 
+                    les deux libres d'entrer une autre <span class=\u0022definition\u0022>relation intime</span>,
+                    pourvu que l'autre partenaire soit informé. Le partenaire qui entre l'autre 
+                    <span class=\u0022definition\u0022>relation intime</span> doit coopérer en partageant 
+                    toute information demandée par son partenaire. Aucun enfant ne devrait pas résulter
+                    de cette autre <span class=\u0022definition\u0022>relation intime</span>. Sinon, ces 
+                    enfants seront laissés aux soins de l'autre partenaire.
+                </li>
+                <li>
+                    Si le <span class=\u0022definition\u0022>fondateur de Laastras</span> et l'
+                    <span class=\u0022definition\u0022>assistante du Chef de Projet</span> font des 
+                    enfants, alors ceux-ci sont des <span class=\u0022definition\u0022 data-id=\u0022ressources-partagees\u0022>
+                    ressources partagées</span> qu'ils ne peuvent pas <span class=\u0022definition\u0022>diviser</span>.
+                    Alors, ils doivent continuer à les élever ensemble comme une 
+                    <span class=\u0022definition\u0022 data-id=\u0022equipe\u0022>équipe</span>.
+                </li>
+            </ul>
+        </div>
+        <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
+            <div id=\u0022fondateur-de-laastras\u0022>
+                <strong> Fondateur de Laastras: </strong> Nkezabahizi Obed-Edom, né le 26 Janvier 1987, 
+                à Musaga, Bujumbura-Mairie, Burundi, de Mpfayokurera Jean comme père, et Nyandwi Hélène comme mère.
+            </div>
+            <div id=\u0022assistante-du-chef-de-projet\u0022>
+                <strong> Assistante du Chef de Projet: </strong> Une dame célibataire dont la date de naissance se 
+                situe entre Février 1987 et Février 1997. Elle sera soumise à deux contracts: 
+                <a href=\u0022/laastras_contracts/show?contract_id=CC2900EFB2B91A92955B70021D56093965252A93043F17E5A7068A11500C3E0D&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract de travail
+                </a>
+                et 
+                <a href=\u0022/laastras_contracts/show?contract_id=E9BE8321BE63CA2E2CB3630C67A13076B4B6A0A4E0D2A55A4D4E8100A0CFCE59&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    contract d'intimité
+                </a>.
+                Elle est célibataire dans le sens d'être non-marriée, divorcée sans enfants, ou veuve.
+            </div>
+            <div id=\u0022relation-intime\u0022>
+                <strong>Relation intime: </strong> Relation entre un individu et un membre du sexe opposé.
+                Elle inclut les gestes d'affection, de tendresse, et le sexe.
+            </div>
+            <div id=\u0022ressources-partagees\u0022>
+                <strong>Ressources partagées: </strong> Les ressources qui appartiennent officiellement 
+                à beaucoup d'individus. Le terme partagées utilisé ici ne doit pas être confondu avec 
+                communes. Les ressources sont indubitablement propriétés de beaucoup d'individus.
+            </div>
+            <div id=\u0022diviser\u0022>
+                <strong> Diviser: </strong> Nous faisons référence au processus de division de ressources 
+                telles qu'elles apparaissent. Certaines ressources comme les ressources humaines 
+                apparaitront les mêmes même après transformation. Même après transformation, on ne pourra 
+                pas les scinder en morceaux sans les dégrader, les détériorer, ou les endommager. 
+                Par exemple, les parents ne peuvent pas diviser les enfants, en soi. Pour que les enfants 
+                aient tous les deux parents, ils doivent les dresser ensemble sous un même toit. Les 
+                beaux parents ne peuvent pas remplacer les parents biologiques, en soi.
+            </div>
+            <div id=\u0022equipe\u0022>
+                <strong> Equipe: </strong> Ici ça veut dire dans un même contexte spacio-temporel. Par 
+                exemple, si certains de vos enfants sont dressés par un beau parent, vous et l'autre 
+                ancien partenaire ne sont plus une équipe, en soi.
             </div>
         </div>
   "
