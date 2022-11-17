@@ -475,9 +475,9 @@ class LocaleSettings extends React.Component
                     }
                     finally
                     {
-                        setTimeout((e) => {
+                        /*setTimeout((e) => {
                             this.wait_spinner.hide_wait_spinner();
-                        }, 1000);
+                        }, 1000);*/
                     }
                 }
             }

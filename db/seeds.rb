@@ -42,3 +42,7 @@
 # __start__ seeding laastras_contracts
     contracts = @seeds.seeding_laastras_contracts
 # __end__
+
+# __start__ seeding laastras_marketing_images
+    marketing_images = @seeds.seeding_laastras_marketing_images
+# __end__

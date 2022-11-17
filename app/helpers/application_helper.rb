@@ -469,7 +469,18 @@ module ApplicationHelper
             path.mkpath
         end
         Rails.root.join('storage', folder_name, fname)
+
     end # milestone_element_images
+
+    def self.marketing_images_asset_url(fname)
+        folder_name = 'laastras_marketing_images'
+        path = Pathname.new(Rails.root.join('storage', folder_name))
+        unless path.exist?
+            path.mkpath
+        end
+        Rails.root.join('storage', folder_name, fname)
+        
+    end # marketing_images_asset_url
 
     def self.log_model_errors(model, logger)
         msg = "\r\n#{model.errors.count} error(s) prohibited this model from being saved:"
@@ -833,6 +844,12 @@ module ApplicationHelper
                 s_locale = I18n.locale
                 I18n.available_locales.each do |locale|
                     I18n.locale = locale
+                    strategies << {
+                        laastras_crm_title: (I18n.t 'the_special_un_integration_commission_title'),
+                        laastras_crm_description: (I18n.t 'the_special_un_integration_commission_message'),
+                        language: locale.to_s,
+                        sha256: '9CF2B419EEB4FDF9F302794F75EFBC0232FE19A1DFC340E457C8595F58C21D7B'
+                    }
                     strategies << {
                         laastras_crm_title: (I18n.t 'the_special_rescue_department_title'),
                         laastras_crm_description: (I18n.t 'the_special_rescue_department_message'),
@@ -1247,6 +1264,68 @@ module ApplicationHelper
             marketing_videos
 
         end # seeding_laastras_marketing_videos
+
+        def seeding_laastras_marketing_images 
+            marketing_images = nil 
+            begin 
+                marketing_images = [
+                    {
+                        sha256: 'A04FFD23633B545EA0798054545B8F3FC6E7E8D227ED0CA1B72875A9EFBCF0AB',
+                        title: 'Special-formatter-department-or-ministry-en.jpg',
+                        uri: ApplicationHelper.marketing_images_asset_url(
+                            'Special-formatter-department-or-ministry-en.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    },
+                    {
+                        sha256: '70732A890B1C1AC15FD405CC938EC990826D7272D61172C26BB671C215997003',
+                        title: 'Special-formatter-department-or-ministry-fr.jpg',
+                        uri: ApplicationHelper.marketing_images_asset_url(
+                            'Special-formatter-department-or-ministry-fr.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    },
+                    {
+                        sha256: '065914FBBAC6A967DD1AF63972884DFE88451B0CC030854A60374DDC27B4083B',
+                        title: 'Special-UN-integration-commission-en.jpg',
+                        uri: ApplicationHelper.marketing_images_asset_url(
+                            'Special-UN-integration-commission-en.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    },
+                    {
+                        sha256: '8750549BA3E48F0A8300494885E8FC99156B676770292C3C1B6299A8B6CA3E1B',
+                        title: 'Special-UN-integration-commission-fr.jpg',
+                        uri: ApplicationHelper.marketing_images_asset_url(
+                            'Special-UN-integration-commission-fr.jpg'
+                        ),
+                        mime_type: 'image/jpeg'
+                    }
+                ]
+                video = LaastrasMarketingVideo.create(marketing_images)
+                unless video 
+                    raise 'There were errors seeding marketing images'
+                end 
+
+                marketing_images.each do |image| 
+                    sha256 = image[:sha256] 
+                    v = LaastrasMarketingVideo.find_by_sha256 sha256 
+                    if v.nil?
+                        msg = "Marketing image [#{video.title}][#{sha256}] was not seeded"
+                        message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                                    __method__.to_s + "--- " + msg
+                        @logger.debug message unless @logger.nil?
+                    end
+                end
+            rescue Exception => e 
+                message = Pathname.new(__FILE__).basename.to_s + "#" + 
+                            __method__.to_s + "--- " + e.message 
+                @logger.debug message unless @logger.nil?
+            end
+
+            marketing_images
+
+        end # seeding_laastras_marketing_images
 
         def seeding_laastras_milestone_element_images 
             milestone_images = nil
