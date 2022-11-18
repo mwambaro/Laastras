@@ -481,7 +481,11 @@ fr_FR:
             </div>
             <ol style=\u0022margin-top: 10px\u0022>
                 <li>
-                    Vous avez la volonté de soutenir notre personnel pendant qu'ils opèrent comme une ONG. Vous pouvez 
+                    Vous avez la volonté de soutenir notre personnel pendant qu'ils 
+                    <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                        opèrent comme une ONG
+                    </a>. 
+                    Vous pouvez 
                     <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                         faire mieux
                     </a>.
@@ -1561,7 +1565,7 @@ fr_FR:
             <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                 contract avec le gouvernement
             </a>. 
-            Démisfo a des charactéristiques spéciales suivantes:
+            <strong>Démisfo</strong> a des charactéristiques spéciales suivantes:
         </div>
         <ul style=\u0022margin-top: 10px\u0022>
             <li style=\u0022padding: 10px\u0022>
@@ -1574,10 +1578,11 @@ fr_FR:
                 être Etat du Gouvernement Fédéral Mondial.
             </li>
             <li style=\u0022padding: 10px\u0022>
-                Le personnel de Démisfo doit être financièrement soutenu par le gouvernement 
+                Le personnel de <strong>Démisfo</strong> doit être financièrement soutenu par le gouvernement 
                 local mais le Département ou Ministère doit rester indépendent, c'est-à-dire 
                 qu'il n'est pas sous la supervision du Chef d'Etat, du Roi, de la Reine, ou 
-                du Premier Ministre.
+                du Premier Ministre. En d'autres termes, <strong>Démisfo</strong> est une ONG dont le personnel 
+                est payé par l'Etat.
             </li>
             <li style=\u0022padding: 10px\u0022>
                 Le Département ou Ministère doit être sous la conduite du Chef de Projet de Laastras,
@@ -1595,7 +1600,7 @@ fr_FR:
                 </a>.
             </li>
             <li style=\u0022padding: 10px\u0022>
-                Démisfo dirigera l'ONG locale de Laastras qui sera lancée avec 
+                <strong>Démisfo</strong> dirigera/remplacera l'ONG locale de Laastras qui sera lancée avec 
                 <a href=\u0022/services/e_grocery?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                     LaasEgrocery
                 </a>, 

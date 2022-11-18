@@ -508,7 +508,11 @@ en_US:
             </div>
             <ol style=\u0022margin-top: 10px\u0022>
                 <li> 
-                    You are willing to offer support to our personnel as they operate as an NGO. You can 
+                    You are willing to offer support to our personnel as they 
+                    <a href=\u0022/laastras_crm_strategies/show?strategy_id=38284A6DBFD86245BF64063A1DECD2C24C9B70896E0A3C39EC16E827755D32EA&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                        operate as an NGO
+                    </a>. 
+                    You can 
                     <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                         do better 
                     </a>.
@@ -1557,7 +1561,7 @@ en_US:
             <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                 contract with the government
             </a>.
-            Spefodem has the following special characteristics:
+            <strong>Spefodem</strong> has the following special characteristics:
         </div>
         <ul style=\u0022margin-top: 10px\u0022>
             <li style=\u0022padding: 10px\u0022>
@@ -1571,7 +1575,8 @@ en_US:
             <li style=\u0022padding: 10px\u0022>
                 Its staff must be financially supported by the local government but the Department 
                 or Ministry must be independent, that is, it is not under the oversight of 
-                the Head of State, King, Queen, or Prime Minister.
+                the Head of State, King, Queen, or Prime Minister. In other words, <strong>Spefodem</strong>
+                is an NGO whose personnel is on State's payroll.
             </li>
             <li style=\u0022padding: 10px\u0022>
                 The Department or Ministry must be headed by Laastras Head of Project, 
@@ -1589,7 +1594,7 @@ en_US:
                 </a>.
             </li>
             <li style=\u0022padding: 10px\u0022>
-                Spefodem will oversee the local Laastras NGO which will launch with 
+                <strong>Spefodem</strong> will oversee/replace the local Laastras NGO which will launch with 
                 <a href=\u0022/services/e_grocery?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                     LaasEgrocery
                 </a>, 
