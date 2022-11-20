@@ -45,11 +45,11 @@ class LaastrasHireUs extends React.Component
                 </div>
 
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-10">
                         <div className="shadow-sm p-1 mb-2 bg-body rounded">
-                            <p style={{padding: '5px'}} id="expertise-capture">
+                            <p style={{margin: '10px'}} id="expertise-capture">
                             </p>
-                            <ul>
+                            <ul style={{margin: '10px'}}>
                                 <li style={expertise_item_style}
                                     id="software-engineering"
                                     className="expertise-field"> 
@@ -74,15 +74,14 @@ class LaastrasHireUs extends React.Component
                         </div>
                         <div className="shadow-sm p-1 mb-2 bg-body rounded">
                             <div style={{
-                                    marginTop: '10px', 
-                                    marginBottom: '10px',
+                                    margin: '10px', 
                                     color: '#1b6b07', 
                                     fontSize: '25px', 
                                     fontWeigt: 'bold'
                             }}>
                                 {this.props.detailed_cv.cv_title}
                             </div>
-                            <div id="detailed-cv-data"></div>
+                            <div style={{margin: '10px'}} id="detailed-cv-data"></div>
                         </div>
                     </div>
                 </div>
