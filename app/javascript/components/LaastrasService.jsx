@@ -42,6 +42,13 @@ class LaastrasService extends React.Component
             this.props.laastras_service_description
         );
         $(`#${this.props.service_title_id}`).append(this.props.laastras_service_title);
+        $('.service-marketing-image').on('load', (e) => {
+            this.scale_service_marketing_image();
+            window.onresize = (ee) => {
+                console.log('window resized.');
+                this.scale_service_marketing_image();
+            };
+        });
         setInterval(() => {
             this.rotation_degrees++;
             $('.brand-logo-image').css({
@@ -53,6 +60,16 @@ class LaastrasService extends React.Component
         }, 100);
 
     } // componentDidMount
+
+    scale_service_marketing_image()
+    {
+        let c_width = $(`#${this.props.service_id}`).width();
+        let s_width = $('.service-marketing-image').width();
+        let width = s_width > c_width/2 ? (c_width/2) : s_width;
+        console.log('c_width: ' + c_width + '; s_width: ' + s_width + '; width: ' + width);
+        $('.service-marketing-image').width(width);
+
+    } // scale_service_marketing_image
     
 }
 
