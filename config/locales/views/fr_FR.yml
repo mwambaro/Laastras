@@ -220,4 +220,7 @@ fr_FR:
   contracts_label: "Contracts"
   laastras_contracts: "Contracts Laastras"
   these_are_laastras_contracts: "Vous trouverez en bas une liste des contracts Laastras"
-  contract_definition_nota_benne: "<strong>Note:</strong> Cliquer/figner sur un mot pour voir sa définition ou pour suivre le lien"
+  contract_definition_nota_benne: "
+    <strong>Note:</strong> Cliquer/figner sur un mot pour voir sa définition ou pour suivre le lien.
+    Souvenez-vous d'inclure une clause de peines pendant la négotiation du contract.
+  "
