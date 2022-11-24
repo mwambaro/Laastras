@@ -11,7 +11,7 @@
 # __start__ seeding users_database_before_reset
     env = Rails.env 
     if false # env.match? /\Adevelopment\Z/i
-        users = @seeds.seeding_users_database_before_reset
+       # users = @seeds.seeding_users_database_before_reset
     end
 # __end__
 
