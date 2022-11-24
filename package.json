@@ -30,6 +30,8 @@
   },
   "scripts": {
     "postinstall": "npm rebuild node-sass",
-    "heroku-prebuild": "npm install --dev"
+    "heroku-prebuild": "npm install --dev",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build"
   }
 }
