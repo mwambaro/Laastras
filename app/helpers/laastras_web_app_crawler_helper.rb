@@ -206,7 +206,10 @@ module LaastrasWebAppCrawlerHelper
                         throw 'We cannot canonize any url without the web app request'
                     end
                     u = URI.parse(url)
-                    uri = @request.protocol + @request.host_with_port + u.path
+                    host_with_port = u.host + ":" + u.port
+                    if host_with_port =~ Regexp.compile(Regexp.escape(host_with_port))
+                        uri = @request.protocol + @request.host_with_port + u.path
+                    end
                 rescue Exception => e 
                     message = Pathname.new(__FILE__).basename.to_s + "#" + 
                                 __method__.to_s + "--- " + e.message 
@@ -350,6 +353,7 @@ module LaastrasWebAppCrawlerHelper
 
                         in_data_text_urls.each do |i_url|
                             c_url = self.canonize_url(i_url)
+                            next if c_url.nil? || c_url.blank?
                             success = self.save_web_page(c_url)
                         end
                         # NOTE: Overriding any previous failures
