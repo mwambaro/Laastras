@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'laastras_web_app_crawler/index'
   get 'laastras_contracts/index'
   get 'laastras_contracts/show'
   get 'laastras_crm_strategies/index'

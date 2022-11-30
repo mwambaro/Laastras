@@ -1,0 +1,34 @@
+
+<div class="container-fluid"> 
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="shadow-sm p-1 mb-2 bg-body rounded">
+                <div style="margin: 10px">
+                    <% counter = 0 %>
+                    <% while true %>
+                        <% message = @app_crawler.verbose_queue.pop %>
+                        <% if message.nil? || message.blank? %> 
+                            <% next %>
+                        <% end %>
+                        <% if message.match? /\Afinished\Z/i %> 
+                            <div id="<%= counter %>" style="margin: 10px" class="d-flex flex-row justify-content-start">
+                                <span id="<%= counter %>-span"> <%= message %> </span>
+                            </div>
+                            <% break %>
+                        <% end %>
+                        <% if counter % 2 == 0 %>
+                            <div id="<%= counter %>" class="d-flex flex-row justify-content-start">
+                                <span id="<%= counter %>-span"> <%= message %> </span>
+                            </div>
+                        <% else %> 
+                            <script> 
+                                $('#<%= (counter-1) %>').append('<span> <%= "[#{message}]" %> </span>')
+                            </script>
+                        <% end %>
+                        <% counter += 1 %>
+                    <% end %>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

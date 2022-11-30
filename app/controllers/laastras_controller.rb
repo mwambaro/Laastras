@@ -320,6 +320,10 @@ class LaastrasController < ApplicationController
                         {
                             url: url_for(controller: 'laastras_marketing_videos', action: 'index'),
                             inner_text: (I18n.t 'laastras_marketing_videos_label')
+                        },
+                        {
+                            url: url_for(controller: 'laastras_web_app_crawler', action: 'index'),
+                            inner_text: (I18n.t 'crawl_label')
                         }
                     ]
                 }
