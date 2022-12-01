@@ -161,7 +161,7 @@ class LaastrasWebCrawler extends React.Component
             var typeOfDataToReceive = 'json';
             $.post(url, dataToSend, callback, typeOfDataToReceive)
                 .fail((error) => {
-                    console.log(`Failed to send ${cmd} command: ${error}`);  
+                    console.log(`Failed to send '${cmd}' command: ${error}`);  
                     if(this.counter === 0)
                     {
                         this.wait_spinner.hide_wait_spinner(); 

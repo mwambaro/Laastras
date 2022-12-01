@@ -42,25 +42,25 @@ module LaastrasWebAppCrawlerHelper
 
             def offline_root_path 
                 folder_name = 'laastras_offline_app'
-                path = Pathname.new(Rails.root.join('storage', folder_name))
+                Rails.root.join('storage', folder_name).to_path
 
             end # offline_root_path
 
             def laastras_offline_files_path(fname)
-                of_path = self.offline_root_path
+                of_path = Pathname.new(self.offline_root_path)
                 unless of_path.exist?
                     of_path.mkpath
                 end
                 fpath = nil 
                 if @root_file == fname 
-                    fpath = of_path.join(fname)
+                    fpath = of_path.join(fname).to_path
                 else
                     ipath_name = 'files'
                     ipath = Pathname.new(of_path.join(ipath_name))
                     unless ipath.exist?
                         ipath.mkpath
                     end
-                    fpath = of_path.join(ipath_name, fname)
+                    fpath = of_path.join(ipath_name, fname).to_path
                 end
 
                 fpath
@@ -72,7 +72,7 @@ module LaastrasWebAppCrawlerHelper
                 unless path.exist?
                     throw 'config folder is missing'
                 end
-                Rails.root.join('config', fname)
+                Rails.root.join('config', fname).to_path
 
             end # routes_path
 
@@ -231,12 +231,12 @@ module LaastrasWebAppCrawlerHelper
                 begin 
                     p_data = data
                     @verbose_queue.push 'Getting urls from page ...'
-                    in_data_text_urls, p_data = self.get_urls_from_data_text(data)
+                    in_data_text_urls, p_data = self.get_urls_from_data_text(data, url);
 
                     count = 0
                     in_data_text_urls.each do |i_url|
                         @verbose_queue.push 'OK' if count == 0
-                        count += 1
+                        count = 1
                         c_url = self.canonize_url(i_url)
                         next if c_url.nil? || c_url.blank?
                         success = self.save_web_page(c_url)
@@ -249,7 +249,7 @@ module LaastrasWebAppCrawlerHelper
                     File.open(fpath, mode){|f| f.write(p_data)}
                     @verbose_queue.push 'OK'
 
-                    @scanned_urls << url
+                    @scanned_urls << url if @scanned_urls.find_index(url).nil?
 
                     success = true
                 rescue Exception => e 
@@ -262,7 +262,7 @@ module LaastrasWebAppCrawlerHelper
 
             end # write_data_to_file
 
-            def get_urls_from_data_text(data)
+            def get_urls_from_data_text(data, c_url=nil)
                 urls = []
                 p_data = data
                 begin 
@@ -283,14 +283,15 @@ module LaastrasWebAppCrawlerHelper
                     
                     urls.each do |url|
                         fpath = self.full_file_path(url)
-                        root_p = self.offline_root_path.to_path
-                        path = fpath.sub(root_p.to_s, '')
+                        root_p = self.offline_root_path
+                        path = fpath.sub(root_p, '')
                         p_data = p_data.sub(url, path)
                     end
                 rescue Exception => e 
                     message = Pathname.new(__FILE__).basename.to_s + "#" + 
                                 __method__.to_s + "--- " + e.message 
                     @logger.debug message unless @logger.nil?
+                    @logger.debug "===> Current Url: #{c_url}\r\n#{@scanned_urls.join("\n")}" unless @logger.nil?
                 end
                 
                 return urls, p_data 
@@ -328,6 +329,8 @@ module LaastrasWebAppCrawlerHelper
                     else # unknown 
                         success = self.write_data_to_file(url, data, 'wb')
                     end
+
+                    @scanned_urls << url if @scanned_urls.find_index(url).nil?
 
                 rescue Exception => e 
                     message = Pathname.new(__FILE__).basename.to_s + "#" + 
