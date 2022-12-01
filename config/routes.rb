@@ -92,5 +92,6 @@ Rails.application.routes.draw do
   post 'users/profile_image_update'
   post 'laastras_job_seekers/store_form'
   post 'user_mail_boxes/send_mail'
+  post 'laastras_web_app_crawler/command'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,12 +1,13 @@
 module LaastrasWebAppCrawlerHelper
     class WebAppCrawler 
-        def initialize(app=nil, logger=nil)
+        def initialize(request=nil, app=nil, logger=nil)
             @logger = logger 
             @app = app
-            @request = @app.request unless @app.nil?
-            @threads = []
+            @request = request
+            @thread = nil
             @url_routes = {}
-            @root_file = "index.html"
+            @scanned_urls = []
+            @root_file = "index-#{I18n.locale.to_s}.html"
             @verbose_queue = Queue.new
 
             if @logger.nil?
@@ -18,9 +19,8 @@ module LaastrasWebAppCrawlerHelper
         end # initialize
 
         def crawl 
-            thread = nil
             begin 
-                thread = Thread.new do 
+                @thread = Thread.new do 
                     self.scan_all_possible_routes 
                 end
             rescue Exception => e 
@@ -29,7 +29,7 @@ module LaastrasWebAppCrawlerHelper
                 @logger.debug message unless @logger.nil?
             end
 
-            thread
+            @thread
 
         end # crawl
 
@@ -75,52 +75,6 @@ module LaastrasWebAppCrawlerHelper
                 Rails.root.join('config', fname)
 
             end # routes_path
-
-            def js_and_css_assets 
-                success = true
-                begin 
-                    [
-                        'bootstrap.min.css',
-                        'bootstrap.min.css.map',
-                        'bootstrap.min.js',
-                        'bootstrap.min.js.map',
-                        'jquery-3.6.0.min.js',
-                        'prop-types.min.js',
-                        'react-dom.production.min.js',
-                        'react.production.min.js'
-                    ].each do |f|
-                        file = self.laastras_offline_files_path f 
-                        unless File.exists? file 
-                            success = false 
-                            msg = "Asset file [#{f}] does not exist. You should have copied it to the root folder."
-                            message = Pathname.new(__FILE__).basename.to_s + "#" + 
-                                __method__.to_s + "--- " + msg
-                            @logger.debug message unless @logger.nil?
-                        end
-                    end
-
-                rescue Exception => e 
-                    message = Pathname.new(__FILE__).basename.to_s + "#" + 
-                                __method__.to_s + "--- " + e.message 
-                    @logger.debug message unless @logger.nil?
-                end
-
-                success
-
-            end # js_and_css_assets
-
-            def images_assets 
-                sucess = true
-                begin 
-                rescue Exception => e 
-                    message = Pathname.new(__FILE__).basename.to_s + "#" + 
-                                __method__.to_s + "--- " + e.message 
-                    @logger.debug message unless @logger.nil?
-                end
-
-                success
-
-            end # images_assets
 
             def scan_all_possible_routes 
                 begin
@@ -206,9 +160,15 @@ module LaastrasWebAppCrawlerHelper
                         throw 'We cannot canonize any url without the web app request'
                     end
                     u = URI.parse(url)
-                    host_with_port = u.host + ":" + u.port
-                    if host_with_port =~ Regexp.compile(Regexp.escape(host_with_port))
-                        uri = @request.protocol + @request.host_with_port + u.path
+                    unless u.nil? 
+                        if !u.host.nil? && !u.host.blank? && !u.port.nil? 
+                            host_with_port = "#{u.host}:#{u.port}"
+                            if @request.host_with_port =~ Regexp.compile(Regexp.escape(host_with_port))
+                                uri = @request.protocol + @request.host_with_port + "#{u.path}"
+                            end
+                        else
+                            uri = @request.protocol + @request.host_with_port + "#{u.path}"
+                        end 
                     end
                 rescue Exception => e 
                     message = Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -225,10 +185,16 @@ module LaastrasWebAppCrawlerHelper
                 begin 
                     uri = URI.parse(url)
                     if root 
-                        filename = "index.html"
+                        filename = "index-#{I18n.locale.to_s}.html"
                     else 
                         filename = uri.path.split(/\//i).join('_')
-                        filename = "index.html" if filename.empty?
+                        unless uri.query.nil?
+                            filename += "_" + uri.query.split(/[&=%]/i).join('_')
+                        end
+
+                        filename = filename + "-#{I18n.locale.to_s}" unless filename.nil?
+
+                        filename = "index-#{I18n.locale.to_s}.html" if filename.blank? || filename.nil?
                     end
                 rescue Exception => e 
                     message = Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -263,8 +229,28 @@ module LaastrasWebAppCrawlerHelper
             def write_data_to_file(url, data, mode)
                 success = false 
                 begin 
+                    p_data = data
+                    @verbose_queue.push 'Getting urls from page ...'
+                    in_data_text_urls, p_data = self.get_urls_from_data_text(data)
+
+                    count = 0
+                    in_data_text_urls.each do |i_url|
+                        @verbose_queue.push 'OK' if count == 0
+                        count += 1
+                        c_url = self.canonize_url(i_url)
+                        next if c_url.nil? || c_url.blank?
+                        success = self.save_web_page(c_url)
+                    end
+                    @verbose_queue.push 'FAILED' if count == 0
+                    # NOTE: Overriding any previous failures
+                    
+                    @verbose_queue.push 'Writing data to file ...'
                     fpath = self.full_file_path(url)
-                    File.open(fpath, mode){|f| f.write(data)}
+                    File.open(fpath, mode){|f| f.write(p_data)}
+                    @verbose_queue.push 'OK'
+
+                    @scanned_urls << url
+
                     success = true
                 rescue Exception => e 
                     message = Pathname.new(__FILE__).basename.to_s + "#" + 
@@ -281,13 +267,14 @@ module LaastrasWebAppCrawlerHelper
                 p_data = data
                 begin 
                     [
-                        "href=\&quot;", 
-                        "src=\&quot;"
+                        "href=\\&quot;", 
+                        "src=\\&quot;"
                     ].each do |r|
                         regexp = Regexp.compile((Regexp.escape(r) + "([^;]+)"))
                         match = data.match(regexp)
+                        # @logger.debug match.to_s if !@logger.nil? && !match.nil?
                         while match do 
-                            url = match[1].sub('&quot', '')
+                            url = match[1].sub('\&quot', '')
                             urls << url
                             s_data = match.post_match 
                             match = s_data.match(regexp)
@@ -296,7 +283,8 @@ module LaastrasWebAppCrawlerHelper
                     
                     urls.each do |url|
                         fpath = self.full_file_path(url)
-                        path = fpath.sub(self.offline_root_path.to_s, '')
+                        root_p = self.offline_root_path.to_path
+                        path = fpath.sub(root_p.to_s, '')
                         p_data = p_data.sub(url, path)
                     end
                 rescue Exception => e 
@@ -312,60 +300,33 @@ module LaastrasWebAppCrawlerHelper
             def save_web_page(url)
                 success = false 
                 begin 
-                    if @app.nil?
-                        throw 'The app variable is not set.'
-                    end
+                    return true unless @scanned_urls.find_index(url).nil?
 
-                    @verbose_queue.push "Fetching page: #{url} ..."
-                    @app.get url
-                    ftype = @app.response.headers['Content-Type']
-                    data = @app.response.body
-                    @verbose_queue.push 'OK'
+                    data = nil 
+                    ftype = ""
+                    if @app.nil?
+                        @logger.debug "Reading #{url} ... " unless @logger.nil?
+                        data = URI.open(url){|f| f.read}
+                        @logger.debug "[DONE]" unless @logger.nil?
+                        throw "Failed to read data from [#{url}]" if data.nil? || data.blank?
+                    else
+                        @verbose_queue.push "Fetching page: #{url} ..."
+                        @app.get url
+                        ftype = @app.response.headers['Content-Type']
+                        data = @app.response.body
+                        @verbose_queue.push 'OK'
+                    end
                     
                     if ftype =~ /\Aimage/i
-                        @verbose_queue.push 'Writing data to file ...'
                         success = self.write_data_to_file(url, data, 'wb')
-                        if success 
-                            @verbose_queue.push 'OK'
-                        else 
-                            @verbose_queue.push 'FAILED'
-                        end
                     elsif ftype =~ /\Avideo/i
-                        @verbose_queue.push 'Writing data to file ...'
                         success = self.write_data_to_file(url, data, 'wb')
-                        if success 
-                            @verbose_queue.push 'OK'
-                        else 
-                            @verbose_queue.push 'FAILED'
-                        end
                     elsif ftype =~ /\Aapplication/i
-                        @verbose_queue.push 'Writing data to file ...'
                         success = self.write_data_to_file(url, data, 'wb')
-                        if success 
-                            @verbose_queue.push 'OK'
-                        else 
-                            @verbose_queue.push 'FAILED'
-                        end
                     elsif ftype =~ /\Atext/i
-                        @verbose_queue.push 'Getting urls from page ...'
-                        in_data_text_urls, p_data = self.get_urls_from_data_text(data)
-                        @verbose_queue.push 'OK'
-
-                        in_data_text_urls.each do |i_url|
-                            c_url = self.canonize_url(i_url)
-                            next if c_url.nil? || c_url.blank?
-                            success = self.save_web_page(c_url)
-                        end
-                        # NOTE: Overriding any previous failures
-                        @verbose_queue.push 'Writing data to file ...'
-                        success = self.write_data_to_file(url, p_data, 'w')
-                        if success 
-                            @verbose_queue.push 'OK'
-                        else 
-                            @verbose_queue.push 'FAILED'
-                        end
+                        success = self.write_data_to_file(url, data, 'w')
                     else # unknown 
-                        throw "Unknown page type [#{url}]"
+                        success = self.write_data_to_file(url, data, 'wb')
                     end
 
                 rescue Exception => e 
