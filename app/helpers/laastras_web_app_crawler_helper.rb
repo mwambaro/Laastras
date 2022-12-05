@@ -1,5 +1,5 @@
 module LaastrasWebAppCrawlerHelper
-
+=begin
     WEB_APP_CRAWLER = {|request|
         @root_file = "index-#{I18n.locale.to_s}.html"
         @offline_root_path = {
@@ -359,6 +359,7 @@ module LaastrasWebAppCrawlerHelper
         }
 
     } # WebAppCrawler_
+=end
     
     class WebAppCrawler 
         def initialize(request=nil, app=nil, logger=nil)
