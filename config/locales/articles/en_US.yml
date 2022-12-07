@@ -291,7 +291,10 @@ en_US:
           A single lady whose birth date lies between February 1987 and February 1997. 
         </li>
         <li>
-          Unemployed but willing to launch a start-up under our directions.
+          Unemployed but willing to launch a start-up under our 
+          <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+            instructions
+          </a>.
         </li>
         <li>
           Or, employed in a legally registered company willing to partner up with us for expansion.
@@ -319,7 +322,10 @@ en_US:
                 </a>.
             </li>
             <li>
-                Unemployed but willing to launch a start-up under our directions.
+                Unemployed but willing to launch a start-up under our 
+                <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    instructions
+                </a>.
             </li>
             <li>
                 Or, employed in a legally registered company willing to 
