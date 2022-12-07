@@ -143,7 +143,8 @@ class LaastrasContract extends React.Component
                 let sregex = /\s+/;
                 id = $(e.target).html()
                         .replaceAll(wregex, '$1'.toLowerCase())
-                        .replaceAll(sregex, '-');
+                        .replaceAll(sregex, '-')
+                        .trim();
                 //console.log('ID: ' + id);
                 let elt = document.getElementById(id);
                 if(!elt)
@@ -154,7 +155,7 @@ class LaastrasContract extends React.Component
             catch(exp)
             {
                 let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                let string = $(e.target).html();
+                let string = $(e.target).html().trim();
                 for(let i in alphabet)
                 {
                     string = string.replaceAll(alphabet[i], alphabet[i].toLowerCase());

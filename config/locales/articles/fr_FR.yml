@@ -897,7 +897,7 @@ fr_FR:
                 </li>
                 <li style=\u0022margin: 5px\u0022> 
                     <a href=\u0022/services/e_alliances\u0022 style=\u0022text-decoration: none\u0022> 
-                        Alliez-vous à nous en signant le contrat AOUI
+                        Alliez-vous à nous en signant le contract AOUI
                     </a> 
                 </li>
             </ul>
@@ -1659,7 +1659,7 @@ fr_FR:
             </a>.
         </div>
   "
-  laastras_contract_with_the_company_title: "Termes de Contrat entre Laastras et votre Compagnie"
+  laastras_contract_with_the_company_title: "Termes de Contract entre Laastras et votre Compagnie"
   laastras_contract_with_the_company_message: "
         <div class=\u0022contract-terms-company\u0022> 
             <div style=\u0022margin: 10px\u0022> <h4> Préambule </h4> </div>
@@ -1750,14 +1750,13 @@ fr_FR:
                 sont sujets à la discussion. Nous devons insister sur le fait que les arrangements de ce contract sont le prix et le permis 
                 pour le projet Laastras par votre <span class=\u0022definition\u0022> compagnie </span>, 
                 dans votre pays. C'est un prix par pays, mais peut être payé à l'international par 
-                n'importe quelle <span class=\u0022definition\u0022> compagnie </span> qui vise une couverture
-                mondiale.
+                n'importe quelle <span class=\u0022definition\u0022> compagnie </span> multi-nationale.
             </div>
         </div>
         <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>
             <div id=\u0022compagnie\u0022>
-                <strong> Compagnie: </strong> Une entreprise débutante, ou n'importe quel conteneur 
-                d'affaire légallement enregistré tel qu'une entreprise, une organisation, ou une 
+                <strong> Compagnie: </strong> Un individu désireux de créer une entreprise débutante, ou n'importe 
+                quel conteneur d'affaire légallement enregistré tel qu'une entreprise, une organisation, ou une 
                 association, y compris un gouvernement, un royaume, ou un empire.
             </div>
             <div id=\u0022fondateur-de-laastras\u0022>
