@@ -1675,9 +1675,10 @@ fr_FR:
             </div>
             <ul style=\u0022margin: 10px\u0022>
                 <li>
-                    Le <span class=\u0022definition\u0022>fondateur de Laastras</span> ou un(e) de ses descendants, par ordre décroissant d'âge,
-                    doit être le Chef de Projet et sera le surveillant (ou la surveillante) de la gestion de toutes 
-                    les ressources matérielles et humaines de Laastras.
+                    Le <span class=\u0022definition\u0022>fondateur de Laastras</span> ou son 
+                    <span class=\u0022definition\u0022>successeur </span>, 
+                    par ordre décroissant d'âge, doit être le Chef de Projet et sera le surveillant (ou la surveillante) 
+                    de la gestion de toutes les ressources matérielles et humaines de Laastras. 
                 </li>
             </ul>
             <div id=\u0022your-company-roles\u0022 style=\u0022margin: 10px\u0022>
@@ -1758,6 +1759,13 @@ fr_FR:
                 <strong> Compagnie: </strong> Un individu désireux de créer une entreprise débutante, ou n'importe 
                 quel conteneur d'affaire légallement enregistré tel qu'une entreprise, une organisation, ou une 
                 association, y compris un gouvernement, un royaume, ou un empire.
+            </div>
+            <div id=\u0022successeur\u0022>
+                Un(e) des descendants du <span class=\u0022definition\u0022>fondateur de Laastras</span>, 
+                par ordre décroissant d'âge. Si cet individu de ses descendants n'est pas encore majeur, 
+                alors le(la) suivant(e) le(la) remplacera jusqu'à ce qu'il(elle) soit d'âge. Si  aucun(e) de 
+                ses descendants n'est pas disponible, alors un membre de la génération de sa famille restreinte 
+                ou élargie, par ordre décroissant d'âge, lui succédera.
             </div>
             <div id=\u0022fondateur-de-laastras\u0022>
                 <strong> Fondateur de Laastras: </strong> Nkezabahizi Obed-Edom, né le 26 Janvier 1987, 
@@ -1881,7 +1889,7 @@ fr_FR:
                 </li>
                 <li> 
                     Elle est libre de mettre fin à cette relation contractuelle à n'importe quel moment voulu 
-                    et elle passera ses responsabilités à une autre candidate qualifiée.
+                    et elle passera ses responsabilités à une autre candidate qualifiée. Idem si elle meurt.
                 </li>
                 <li>
                     S'il y a des <span class=\u0022definition\u0022 data-id=\u0022ressources-partagees\u0022>
