@@ -996,8 +996,11 @@ fr_FR:
             Nous avons une liste d'articles à acheter lorsque nous allons faire des courses.
             D'un autre côté, la personne de qui nous nous procurons ces articles va au fournisseur 
             avec une liste de trucs à acheter. Nous aimerions avoir ces deux listes pour informatiser 
-            le processus. Ceci nous permettra d'avoir la capacité de former des coopératives selon 
-            les catégories de vente. Nous nous focaliserons surtout sur les aliments et les boissons.
+            le processus. Ceci nous permettra d'avoir la capacité de former des 
+            <a href=\u0022/services/e_alliances?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                coopératives 
+            </a>
+            selon les catégories de vente. Nous nous focaliserons surtout sur les aliments et les boissons.
             Voilà pourquoi nous appellons cette coopérative “source d'aliments et eau”. Nous exigerons 
             que l'acheteur, le marchand, et le fournisseur s'inscrivent auprès de notre Appli.
             Les services inclus sont: nutrition, gestion de cycle de revenu, partage de clients, etc.

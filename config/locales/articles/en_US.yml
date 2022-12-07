@@ -1012,7 +1012,11 @@ en_US:
             We have a grocery list of items to buy when we go shopping. On the other side,
             the grocer goes to the supplier with a list of stuffs to purchase. We would like
             to have both lists so as to computerize the process. This will give us the capability 
-            to form cooperatives according to sale categories. We will focus mainly on 
+            to form 
+            <a href=\u0022/services/e_alliances?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                cooperatives 
+            </a>
+            according to sale categories. We will focus mainly on 
             foods and drinks. That is why we refer to this cooperative as “food source and water”.
             We will require the buyer, the grocer, and the supplier to register with our App. 
             The services included are: nutrition, revenue cycle management, clients distribution, etc. 
