@@ -1651,6 +1651,79 @@ en_US:
             </a>.
         </div>
   "
+  laastras_price_and_permit_as_a_project_proposal_title: "Laastras Price and Permit as a Project Proposal"
+  laastras_price_and_permit_as_a_project_proposal_message: "
+        <div>
+            <div style=\u0022margin: 10px\u0022><h4> Preamble </h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                Laastras is a project that purposes to preserve peace in Burundi and all over the world.
+                First and foremost, it is crucial that people have peace in the stomach. Many a time, quarels 
+                and fights result from starvation and ill health that stems from malnutrition. As the old Burundi 
+                adage goes “Mu nda harara inzara hakazinduka inzigo”, that is, literally, “When you go to bed hungry
+                you will wake up enraged”. “LaasEgrocery” is the core branch of Laastras project. To reduce the cost
+                to a minimum, we will lead customers to shops with a list of groceries that nourish their health.
+                That will give us insights into their nutrition needs. We will distribute customers to traders and 
+                arrange for regular orders from suppliers. All of the three groups will be sources of revenue. 
+                The revenue will sustain “LaasEgrocery” and fund the other remaining branches of Laastras project.
+            </div>
+            <div style=\u0022margin: 10px\u0022><h4>Finances Over a Period of 24 Months</h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                <table class=\u0022table table-bordered table-striped\u0022>
+                    <thead>
+                        <tr>
+                            <th>Needs</th>
+                            <th>Quantity</th>
+                            <th>Unitary Price (USD)</th>
+                            <th>Total (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Laptop (Dell XPS 15 with RAM memory >= 32GB and SSD memory >= 512GB)</td>
+                            <td>3</td>
+                            <td>1600</td>
+                            <td>4800</td>
+                        </tr>
+                        <tr>
+                            <td>Cell phone supporting 4G network</td>
+                            <td>3</td>
+                            <td>200</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td>Internet bundle over 24 months</td>
+                            <td>3</td>
+                            <td>50x24</td>
+                            <td>3600</td>
+                        </tr>
+                        <tr>
+                            <td>Personnel over a period of 24 months</td>
+                            <td>3</td>
+                            <td>2000x24</td>
+                            <td>144,000</td>
+                        </tr>
+                        <tr>
+                            <td> Totals </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> 153,000 </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style=\u0022margin: 10px\u0022><h4> LaasOS Development Policy </h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                The software engineers will have full access to 
+                <a href=\u0022/laastras_marketing_videos/show?video_id=8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    LaasOS 
+                </a>
+                repositories source code during 
+                the entire LaasOS SDLC (System Development Life Cycle). As soon as possible, they 
+                will have a fully functional local copy of the repositories. Local means hosted 
+                within the borders of the nation they represent.
+            </div>
+        </div>
+  "
   laastras_contract_with_the_company_title: "Contract Terms Between Laastras and Your Company"
   laastras_contract_with_the_company_message: "
         <div class=\u0022contract-terms-company\u0022> 
@@ -1738,7 +1811,10 @@ en_US:
                 are subject to discussion. It must be stressed that the provisions in this contract
                 make up the price and the permit for Laastras project by your <span class=\u0022definition\u0022>
                 company</span>, in your country. It is a per-country price but can be paid internationally 
-                by any multi-national <span class=\u0022definition\u0022>company</span>.
+                by any multi-national <span class=\u0022definition\u0022>company</span>. Please, have a look at 
+                <a href=\u0022/laastras_crm_strategies/show?strategy_id=07A001BFF37F5C185A2EF5D7FF7003158DE54A4FA917A2EA619EC622D25F4A09&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    the finances behind these provisions
+                </a>.
             </div>
         </div>
         <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>

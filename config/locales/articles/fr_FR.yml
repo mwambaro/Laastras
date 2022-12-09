@@ -388,7 +388,7 @@ fr_FR:
         <div>
             <div>
                 Vous devez savoir que les gens peuvent faire commande de pizzas, nourritures, et boissons. On 
-                l'appelle “e-commerce” ou “faire des courses en ligne”. Notre service est particulièrement appellé
+                l'appelle “e-commerce” ou “faire des courses en ligne”. Notre service et particulièrement appellé
                 <a href=\u0022/services/e_grocery\u0022 style=\u0022text-decoration: none\u0022>
                 LaasEgrocery
                 </a>.
@@ -1004,7 +1004,7 @@ fr_FR:
             Voilà pourquoi nous appellons cette coopérative “source d'aliments et eau”. Nous exigerons 
             que l'acheteur, le marchand, et le fournisseur s'inscrivent auprès de notre Appli.
             Les services inclus sont: nutrition, gestion de cycle de revenu, partage de clients, etc.
-            Nous ajouterons l'empaquettage, le stockage, et une ferme, en fin. Venez 
+            Nous ajouterons l'empaquetage, le stockage, et une ferme, en fin. Venez 
             <a href=\u0022/laastras/sign_in?service_id=food_source_and_water\u0022 style=\u0022text-decoration: none\u0022> 
                 rejoindre notre coopérative 
             </a>
@@ -1659,6 +1659,80 @@ fr_FR:
             </a>.
         </div>
   "
+  laastras_price_and_permit_as_a_project_proposal_title: "Prix et Permis du Projet Laastras"
+  laastras_price_and_permit_as_a_project_proposal_message: "
+        <div>
+            <div style=\u0022margin: 10px\u0022><h4> Préambule </h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                Laastras est un projet dont l'objectif est de préserver la paix au Burundi est partout 
+                dans le monde. Avant tout, il est crucial que les gens aient la paix dans l'estomac.
+                Souvent, les querelles et combats résultent de la faim et d'une mauvaise santé découlant de la 
+                malnutrition. Comme le dit l'ancien proverbe du Burundi “Mu nda harara inzara hakazinduka inzigo”,
+                c'est-à-dire, litérallement, “Quand on va dormir sans avoir mangé, on se réveille enragé”.
+                “LaasEgrocery” est le volet central du projet Laastras. A fin de réduire le prix au minimum,
+                nous orienterons les clients vers les “shops” (boutiques) avec une liste d'aliments et articles 
+                ménagers qui nourrissent leur santé. Cela enrichira notre base de données d'information au sujet 
+                de leurs besoins nutritionnels. Nous distribuerons des clients aux marchands et arrangerons des 
+                commandes régulières aux fournisseurs. Tous les trois groupes seront des sources de revenus. Ces 
+                revenus soutiendront “LaasEgrocery” et financeront le reste des volets du projet Laastras.
+            </div>
+            <div style=\u0022margin: 10px\u0022><h4>Détails Financiers sur une Période de 24 Mois</h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                <table class=\u0022table table-bordered table-striped\u0022>
+                    <thead>
+                        <tr>
+                            <th>Besoins</th>
+                            <th>Quantité</th>
+                            <th>Prix Unitaire (USD)</th>
+                            <th>Total (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Ordi Portable (Dell XPS 15 avec mémoire RAM >= 32GB et mémoire SSD >= 512GB)</td>
+                            <td>3</td>
+                            <td>1600</td>
+                            <td>4800</td>
+                        </tr>
+                        <tr>
+                            <td>Cellulaire supportant le réseau 4G</td>
+                            <td>3</td>
+                            <td>200</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td>Bouquet internet sur une période de 24 mois</td>
+                            <td>3</td>
+                            <td>50x24</td>
+                            <td>3600</td>
+                        </tr>
+                        <tr>
+                            <td>Personnel sur une période de 24 mois</td>
+                            <td>3</td>
+                            <td>2000x24</td>
+                            <td>144,000</td>
+                        </tr>
+                        <tr>
+                            <td> Totaux </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> 153,000 </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style=\u0022margin: 10px\u0022><h4> Politique de Développement de LaasOS </h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                Les ingénieurs de logiciels auront accès complet à tout le code source de 
+                <a href=\u0022/laastras_marketing_videos/show?video_id=8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    LaasOS
+                </a>
+                pendant tout le CVDS (Cycle de Vie du Développement d'un Système) de LaasOS.
+                Dès que possible, ils auront une copie locale complètement fonctionnelle du code source.
+                Locale veut dire hébergé à l'intérieur de la nation qu'ils représentent.
+            </div>
+        </div>
+  "
   laastras_contract_with_the_company_title: "Termes de Contract entre Laastras et votre Compagnie"
   laastras_contract_with_the_company_message: "
         <div class=\u0022contract-terms-company\u0022> 
@@ -1751,7 +1825,10 @@ fr_FR:
                 sont sujets à la discussion. Nous devons insister sur le fait que les arrangements de ce contract sont le prix et le permis 
                 pour le projet Laastras par votre <span class=\u0022definition\u0022> compagnie </span>, 
                 dans votre pays. C'est un prix par pays, mais peut être payé à l'international par 
-                n'importe quelle <span class=\u0022definition\u0022> compagnie </span> multi-nationale.
+                n'importe quelle <span class=\u0022definition\u0022> compagnie </span> multi-nationale. Veuillez
+                <a href=\u0022/laastras_crm_strategies/show?strategy_id=07A001BFF37F5C185A2EF5D7FF7003158DE54A4FA917A2EA619EC622D25F4A09&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    consulter les finances dérrière ces arrangements
+                </a>.
             </div>
         </div>
         <div class=\u0022contract-glossary\u0022 style=\u0022display: none\u0022>

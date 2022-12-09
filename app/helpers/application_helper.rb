@@ -845,6 +845,12 @@ module ApplicationHelper
                 I18n.available_locales.each do |locale|
                     I18n.locale = locale
                     strategies << {
+                        laastras_crm_title: (I18n.t 'laastras_price_and_permit_as_a_project_proposal_title'),
+                        laastras_crm_description: (I18n.t 'laastras_price_and_permit_as_a_project_proposal_message'),
+                        language: locale.to_s,
+                        sha256: '07A001BFF37F5C185A2EF5D7FF7003158DE54A4FA917A2EA619EC622D25F4A09'
+                    }
+                    strategies << {
                         laastras_crm_title: (I18n.t 'the_special_un_integration_commission_title'),
                         laastras_crm_description: (I18n.t 'the_special_un_integration_commission_message'),
                         language: locale.to_s,
