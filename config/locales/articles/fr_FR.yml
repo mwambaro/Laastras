@@ -1489,6 +1489,15 @@ fr_FR:
                 qu'ils veulent impliquer un gouvernement et m'imposer leur propre stratégie, par exemple, 
                 Laastras doit commencer au Burundi pour raison de teste.
             </li>
+            <li style=\u0022padding: 10px\u0022> 
+                Depuis Avril 2021, j'ai commencé la campagne officielle de marketing du projet Laastras. Depuis, 
+                j'ai contacté le Bureau du Président du Burundi, le Président de l'Assemblée Nationale du Burundi,
+                le Ministère des Finances, du Budget, et de la Planification Economique au Burundi. Les Embassadeurs
+                au Burundi des pays suivants ont aussi été informés par lettre: France, Chine, Allemagne, Belgique,
+                Russie, Royaume Uni, Swisse, Ouganda, Kenya, Rwanda, RDC, Tanzanie, Somalie, Nigéria, Afrique du Sud,
+                et Egypte. Les ONG suivantes ont aussi été informées par lettre: Save the Children et World Vision.
+                Incluse parmi les institutions informées est OBEM (Office Burundais de l'Emploi et de la Main d'œuvre).
+            </li>
         </ul>
         <div style=\u0022margin-top: 10px\u0022>
             Voici les stratégies court-termes et long-termes conçues, en tout égard à la 
@@ -1531,10 +1540,18 @@ fr_FR:
                 des morts.
             </li>
             <li style=\u0022padding: 10px\u0022>
-                La nation qui a perpétré ces attaques mortels ne sera jamais excusé, ni dans cette vie,
+                Au plus tard le 08 Janvier 2023, le Chef de projet Laastras invalidera pour toute 
+                la planète terre habitée les privilèges au-delà des intérêts humainement possibles.
+                “Goshen”, qui est un état mythique de transcendance, qui sera hérité par ceux qui 
+                participeront volontiers à la réalisation du projet Laastras ne sera jamais hérité 
+                par cette génération, dont l'âge sera supérieur à 11 ans, du 08 Janvier 2023. Le Chef de 
+                projet Laastras se réserve le privilège et l'autorité de faire les exceptions jugées 
+                nécéssaires en temps voulu.
+            </li>
+            <li style=\u0022padding: 10px\u0022>
+                La nation qui a perpétré des attaques mortels ne sera jamais excusé, ni dans cette vie,
                 ni dans n'importe quelle autre vie, ni dans la vie à venir, ni dans aucunes circonstances 
-                spéciales. Si non, je mettrai fin à la nation qui passera outre ces mesures à propos du 
-                développement du système Laastras.
+                spéciales. 
             </li>
         </ol>
   "
@@ -1581,7 +1598,7 @@ fr_FR:
         <div>
             Pour rester politiquement neutre et éviter ces nombreuses procédures  de
             changement de politique nécéssaires, ce changement étant gigantesque,
-            et, à fin de réduire le coût spacio-temporel de l'implémentation de Laastras, nous 
+            et, à fin de réduire le coût spacio-temporel de la réalisation du projet Laastras, nous 
             définissons, d'après 
             <a href=\u0022/laastras/about?locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
                 notre mission
@@ -1717,6 +1734,55 @@ fr_FR:
                             <td> - </td>
                             <td> - </td>
                             <td> 153,000 </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style=\u0022margin: 10px\u0022> <h4>Localisation</h4> </div>
+            <div style=\u0022margin: 10px\u0022>
+                <p>
+                Vous pouvez aussi réduire les chiffres ci-haut au minimum. Cela augmentera le nombre possible 
+                de bailleurs de fonds locaux intéressés. Exemple, pour le Burundi:
+                </p>
+                <table class=\u0022table table-bordered table-striped\u0022>
+                    <thead>
+                        <tr>
+                            <th>Ibikenewe</th>
+                            <th>Ubwinshi</th>
+                            <th>Igiciro c'ikintu kimwe (BIF)</th>
+                            <th>Igiciro ca vyose (BIF)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Orodinateri ngendanwa (Dell XPS 15) </td>
+                            <td>3</td>
+                            <td>1600x3000 (4,800,000)</td>
+                            <td>14,400,000</td>
+                        </tr>
+                        <tr>
+                            <td>Terefone ngendanwa (Samsung Galaxy) yemera umuhora 4G</td>
+                            <td>3</td>
+                            <td>1,000,000</td>
+                            <td>3,000,000</td>
+                        </tr>
+                        <tr>
+                            <td>Intereneti y’amezi 24</td>
+                            <td>3</td>
+                            <td>1000x30x24 (720,000)</td>
+                            <td>2,160,000</td>
+                        </tr>
+                        <tr>
+                            <td>Abakozi mu kiringo c’amezi 24</td>
+                            <td>3</td>
+                            <td>100,000x24 (2,400,000)</td>
+                            <td>7,200,000</td>
+                        </tr>
+                        <tr>
+                            <td> Vyose hamwe </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> 26,760,000 </td>
                         </tr>
                     </tbody>
                 </table>
