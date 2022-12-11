@@ -1026,6 +1026,15 @@ module ApplicationHelper
                             'README.pdf'
                         ),
                         mime_type: 'application/pdf'
+                    },
+                    {
+                        sha256: '22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3',
+                        title: 'laastras_price_and_permit_ru-BI (.html)',
+                        language: 'ru_BI',
+                        uri: ApplicationHelper.document_asset_url(
+                            'laastras_price_and_permit_ru-BI.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 

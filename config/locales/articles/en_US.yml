@@ -1493,7 +1493,7 @@ en_US:
                 Starting April 2021, I started the official marketing campaign of Laastras project. I have ever since contacted
                 Burundi government and multiple Embassies in Burundi. I informed the Office of Burundi President, 
                 the Head of Burundi Parliament, the Burundi Minister of Finances, the OSESG in Bujumbura-Burundi. The Ambassadors
-                of these countries to Burundi were also informed by letter: France, China, Germany, Belgium, Russia, UK, 
+                of these countries to Burundi were also informed by letter: USA, France, China, Germany, Belgium, Russia, UK, 
                 Switzerland, Uganda, Kenya, Rwanda, DRC, Tanzania, Somalia, Nigeria, South Africa, and Egypt. The 
                 following NGO's were also informed by letter: Save the Children and World Vision. Included in 
                 informed institutions is OBEM (Office of Burundi for Employment and Manpower).
@@ -1672,7 +1672,7 @@ en_US:
         <div>
             <div style=\u0022margin: 10px\u0022><h4> Preamble </h4></div>
             <div style=\u0022margin: 10px\u0022>
-                Laastras is a project that purposes to preserve peace in Burundi and all over the world.
+                Laastras is a project that purposes to preserve peace in our country and all over the world.
                 First and foremost, it is crucial that people have peace in the stomach. Many a time, quarels 
                 and fights result from starvation and ill health that stems from malnutrition. As the old Burundi 
                 adage goes “Mu nda harara inzara hakazinduka inzigo”, that is, literally, “When you go to bed hungry
@@ -1757,7 +1757,7 @@ en_US:
                             <td>3,000,000</td>
                         </tr>
                         <tr>
-                            <td>Intereneti y’amezi 24</td>
+                            <td>Entereneti y’amezi 24</td>
                             <td>3</td>
                             <td>1000x30x24 (720,000)</td>
                             <td>2,160,000</td>
@@ -1776,6 +1776,13 @@ en_US:
                         </tr>
                     </tbody>
                 </table>
+                <p id=\u0022localization\u0022>
+                    If you are interested, you can view 
+                    <span class=\u0022pull-data\u0022 data-href=\u0022/laastras_documents/show_laastras_document?doc_id=22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3&locale=en_US\u0022 style=\u0022color: blue\u0022>
+                        the full project proposal 
+                    </span>
+                    in Kirundi locale.
+                </p>
             </div>
             <div style=\u0022margin: 10px\u0022><h4> LaasOS Development Policy </h4></div>
             <div style=\u0022margin: 10px\u0022>
@@ -1787,6 +1794,20 @@ en_US:
                 the entire LaasOS SDLC (System Development Life Cycle). As soon as possible, they 
                 will have a fully functional local copy of the repositories. Local means hosted 
                 within the borders of the nation they represent.
+            </div>
+            <div style=\u0022margin: 10px\u0022><h4> Learn More </h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                You can learn more about this project proposal in its full context by visiting our 
+                <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022 style=\u0022text-decoration: none\u0022>
+                    LinkedIn Page 
+                </a>, by reading
+                <a href=\u0022https://1drv.ms/b/s!Alpt4zgtrW4ugpA59yYDvpFskywN0w?e=hDeg35\u0022 style=\u0022text-decoration: none\u0022>
+                    LaasEgrocery job offer description 
+                </a>, 
+                and the public relations 
+                <a href=\u0022https://1drv.ms/u/s!Alpt4zgtrW4ugpBAKHuiOFz7AvdC5g?e=AsHczW\u0022 style=\u0022text-decoration: none\u0022>
+                    job offer to the Project Manager Assistant
+                </a>.
             </div>
         </div>
   "

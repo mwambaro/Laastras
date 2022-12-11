@@ -1493,10 +1493,11 @@ fr_FR:
                 Depuis Avril 2021, j'ai commencé la campagne officielle de marketing du projet Laastras. Depuis, 
                 j'ai contacté le Bureau du Président du Burundi, le Président de l'Assemblée Nationale du Burundi,
                 le Ministère des Finances, du Budget, et de la Planification Economique au Burundi. Les Embassadeurs
-                au Burundi des pays suivants ont aussi été informés par lettre: France, Chine, Allemagne, Belgique,
-                Russie, Royaume Uni, Swisse, Ouganda, Kenya, Rwanda, RDC, Tanzanie, Somalie, Nigéria, Afrique du Sud,
-                et Egypte. Les ONG suivantes ont aussi été informées par lettre: Save the Children et World Vision.
-                Incluse parmi les institutions informées est OBEM (Office Burundais de l'Emploi et de la Main d'œuvre).
+                au Burundi des pays suivants ont aussi été informés par lettre: Etats Unis d'Amérique,
+                France, Chine, Allemagne, Belgique, Russie, Royaume Uni, Swisse, Ouganda, Kenya, Rwanda, RDC, 
+                Tanzanie, Somalie, Nigéria, Afrique du Sud, et Egypte. Les ONG suivantes ont aussi été informées 
+                par lettre: Save the Children et World Vision. Incluse parmi les institutions informées est 
+                OBEM (Office Burundais de l'Emploi et de la Main d'œuvre).
             </li>
         </ul>
         <div style=\u0022margin-top: 10px\u0022>
@@ -1681,7 +1682,7 @@ fr_FR:
         <div>
             <div style=\u0022margin: 10px\u0022><h4> Préambule </h4></div>
             <div style=\u0022margin: 10px\u0022>
-                Laastras est un projet dont l'objectif est de préserver la paix au Burundi est partout 
+                Laastras est un projet dont l'objectif est de préserver la paix dans notre pays et partout 
                 dans le monde. Avant tout, il est crucial que les gens aient la paix dans l'estomac.
                 Souvent, les querelles et combats résultent de la faim et d'une mauvaise santé découlant de la 
                 malnutrition. Comme le dit l'ancien proverbe du Burundi “Mu nda harara inzara hakazinduka inzigo”,
@@ -1767,7 +1768,7 @@ fr_FR:
                             <td>3,000,000</td>
                         </tr>
                         <tr>
-                            <td>Intereneti y’amezi 24</td>
+                            <td>Entereneti y’amezi 24</td>
                             <td>3</td>
                             <td>1000x30x24 (720,000)</td>
                             <td>2,160,000</td>
@@ -1786,6 +1787,13 @@ fr_FR:
                         </tr>
                     </tbody>
                 </table>
+                <p id=\u0022localization\u0022>
+                    Si ça vous intéresse, vous pouvez voir
+                    <span class=\u0022pull-data\u0022 data-href=\u0022/laastras_documents/show_laastras_document?doc_id=22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3&locale=fr_FR\u0022 style=\u0022color: blue\u0022>
+                        l'offre de projet complète 
+                    </a>
+                    en Kirundi.    
+                </p>
             </div>
             <div style=\u0022margin: 10px\u0022><h4> Politique de Développement de LaasOS </h4></div>
             <div style=\u0022margin: 10px\u0022>
@@ -1796,6 +1804,20 @@ fr_FR:
                 pendant tout le CVDS (Cycle de Vie du Développement d'un Système) de LaasOS.
                 Dès que possible, ils auront une copie locale complètement fonctionnelle du code source.
                 Locale veut dire hébergé à l'intérieur de la nation qu'ils représentent.
+            </div>
+            <div style=\u0022margin: 10px\u0022><h4> Pour Plus d'Information </h4></div>
+            <div style=\u0022margin: 10px\u0022>
+                Vous pouvez en savoir plus sur cette offre de projet dans tout son contexte en visitant notre
+                <a href=\u0022https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/\u0022 style=\u0022text-decoration: none\u0022>
+                    Page LinkedIn 
+                </a>, en lisant la
+                <a href=\u0022https://1drv.ms/b/s!Alpt4zgtrW4ugpA59yYDvpFskywN0w?e=hDeg35\u0022 style=\u0022text-decoration: none\u0022>
+                    description de l'offre d'emploi LaasEgrocery
+                </a>, 
+                et, concernant les relations publiques, en consultant
+                <a href=\u0022https://1drv.ms/u/s!Alpt4zgtrW4ugpBAKHuiOFz7AvdC5g?e=AsHczW\u0022 style=\u0022text-decoration: none\u0022>
+                    l'offre d'emploi à l'Assistante du Chef de Projet
+                </a>.
             </div>
         </div>
   "
