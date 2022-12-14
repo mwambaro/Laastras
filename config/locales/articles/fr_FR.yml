@@ -318,7 +318,7 @@ fr_FR:
             </a>!
         </div>
   "
-  venture_capital_professional: "Professionnel en Collecte de Fonds et en Marketing de Contenu"
+  venture_capital_professional: "Partenaire en ventes Laastras"
   venture_capital_professional_offer: "
         <div> 
             <div>
@@ -349,6 +349,27 @@ fr_FR:
                     qui peuvent influencer grandement l'opinion des consommateurs sur nos produits et services.
                 </li>
             </ol>
+            <div style=\u0022margin-top: 10px\u0022>
+                <strong>Responsabilités: </strong>
+                <ol>
+                    <li> Planifier et accomplir le marketing de contenu et d'affiliation. </li>
+                    <li> 
+                        Chercher les fonds nécéssaires selon
+                        <a href=\u0022/laastras_crm_strategies/show?strategy_id=07A001BFF37F5C185A2EF5D7FF7003158DE54A4FA917A2EA619EC622D25F4A09&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                            le texte de l'offre de projet 
+                        </a>
+                        ci-bas. 
+                    </li>
+                </ol>
+            </div>
+            <div style=\u0022margin-top: 10px; margin-bottom: 10px\u0022>
+                <strong>Intérêts: </strong> Veuillez voir 
+                <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=fr_FR\u0022 style=\u0022text-decoration: none\u0022>
+                    le contract
+                </a>
+                ci-bas. Vos intérêts incluront une position permanente au sein de l'organisation Laastras
+                et 50%-100% d'équité.
+            </div>
         </div>
   "
   software_engineer: "Ingénieur Logiciel"
@@ -1552,7 +1573,7 @@ fr_FR:
             <li style=\u0022padding: 10px\u0022>
                 La nation qui a perpétré des attaques mortels ne sera jamais excusé, ni dans cette vie,
                 ni dans n'importe quelle autre vie, ni dans la vie à venir, ni dans aucunes circonstances 
-                spéciales. 
+                spéciales en matière du développement du système Laastras. 
             </li>
         </ol>
   "
@@ -1692,7 +1713,8 @@ fr_FR:
                 ménagers qui nourrissent leur santé. Cela enrichira notre base de données d'information au sujet 
                 de leurs besoins nutritionnels. Nous distribuerons des clients aux marchands et arrangerons des 
                 commandes régulières aux fournisseurs. Tous les trois groupes seront des sources de revenus. Ces 
-                revenus soutiendront “LaasEgrocery” et financeront le reste des volets du projet Laastras.
+                revenus soutiendront “LaasEgrocery” et financeront le reste des volets du projet Laastras: 
+                “LaasEcard” (cellulaire HoFi), “LaasElogistics”, et “LaasEalliances” (AOUI).
             </div>
             <div style=\u0022margin: 10px\u0022><h4>Détails Financiers sur une Période de 24 Mois</h4></div>
             <div style=\u0022margin: 10px\u0022>
@@ -1789,10 +1811,9 @@ fr_FR:
                 </table>
                 <p id=\u0022localization\u0022>
                     Si ça vous intéresse, vous pouvez voir
-                    <span class=\u0022pull-data\u0022 data-href=\u0022/laastras_documents/show_laastras_document?doc_id=22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3&locale=fr_FR\u0022 style=\u0022color: blue\u0022>
-                        l'offre de projet complète 
-                    </a>
-                    en Kirundi.    
+                    <span id=\u0022localization-span\u0022 class=\u0022pull-data\u0022 data-href=\u0022/laastras_documents/show_laastras_document?doc_id=22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3&locale=fr_FR\u0022 style=\u0022color: blue\u0022>
+                        l'offre de projet complète en Kirundi
+                    </a>.    
                 </p>
             </div>
             <div style=\u0022margin: 10px\u0022><h4> Politique de Développement de LaasOS </h4></div>

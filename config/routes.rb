@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'laastras_erp_business_case/erp_business_case'
+  get 'laastras_erp_business_case/erp_implementation'
+  get 'laastras_erp_business_case/erp_risks_and_pitfalls'
+  get 'laastras_erp_business_case/erp_business_case'
+  get 'laastras_erp_business_case/erp_implimentation'
+  get 'laastras_erp_business_case/erp_risks_and_pitfalls'
   get 'laastras_web_app_crawler/index'
   get 'laastras_contracts/index'
   get 'laastras_contracts/show'

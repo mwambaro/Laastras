@@ -651,10 +651,34 @@ module ApplicationHelper
                     inner_text: (I18n.t 'services_label'),
                     dropdown_boolean: 'true',
                     data: self.laastras_services
+                },
+                {
+                    url: '',
+                    inner_text: (I18n.t 'erp_label'),
+                    dropdown_boolean: 'true',
+                    data: self.laastras_erp_actions
                 }
             ]
 
         end # laastras_actions
+
+        def laastras_erp_actions 
+            [
+                {
+                    url: url_for(controller: 'laastras_erp_business_case', action: 'erp_business_case'),
+                    inner_text: (I18n.t 'erp_business_case')
+                },
+                {
+                    url: url_for(controller: 'laastras_erp_business_case', action: 'erp_implementation'),
+                    inner_text: (I18n.t 'erp_implementation')
+                },
+                {
+                    url: url_for(controller: 'laastras_erp_business_case', action: 'erp_risks_and_pitfalls'),
+                    inner_text: (I18n.t 'erp_risks_and_pitfalls')
+                }
+            ]
+
+        end # laastras_erp_actions
 
         def footer_actions
             [

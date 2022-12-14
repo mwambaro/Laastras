@@ -348,7 +348,7 @@ en_US:
             </a>!
         </div>
   "
-  venture_capital_professional: "Venture Capital Professional and Content Marketer"
+  venture_capital_professional: "Laastras sales partner"
   venture_capital_professional_offer: "
         <div> 
             <div>
@@ -379,6 +379,25 @@ en_US:
                     who can greatly influence the consumers' opinion of our products and services. 
                 </li>
             </ol>
+            <div style=\u0022margin-top: 10px; margin-bottom: 10px\u0022>
+                <strong>Responsibilities: </strong>
+                <ol>
+                    <li> Plan and carry out content and affiliation marketing. </li>
+                    <li> 
+                        Look for funding according to 
+                        <a href=\u0022/laastras_crm_strategies/show?strategy_id=07A001BFF37F5C185A2EF5D7FF7003158DE54A4FA917A2EA619EC622D25F4A09&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                            the project proposal text 
+                        </a>. 
+                    </li>
+                </ol>
+            </div>
+            <div style=\u0022margin-top: 10px; margin-bottom: 10px\u0022>
+                <strong>Interests: </strong> Please, view
+                <a href=\u0022/laastras_contracts/show?contract_id=D51F3909EBC516DA2DC30748DCD7273A12AF90768BD302CACD6EBB70404C5462&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
+                    the contract
+                </a>. Your interests will include permanent position in Laastras organization and 
+                50%-100% equity.
+            </div>
         </div>
   "
   software_engineer: "Software Engineer"
@@ -1231,7 +1250,7 @@ en_US:
             </ul>
         </div>
   "
-  no_laastras_documents_available_title: "No Laastras Docuuments Available"
+  no_laastras_documents_available_title: "No Laastras Documents Available"
   no_laastras_documents_available_message: "
     We are sorry we could not find any Laastras documents in our database. Try again later or upload some to our servers.
   "
@@ -1539,15 +1558,15 @@ en_US:
             <li style=\u0022padding: 10px\u0022>
                 By January 08, 2023, Laastras Head of project is closing to the entire inhabited planet earth any 
                 privileges other than the humanly possible interests. “Goshen”, which is a mythical state of 
-                transcendence to be inherited by wilful participants in Laastras project implimentation shall never 
+                transcendence to be inherited by wilful participants in Laastras project implementation shall never 
                 be inherited by this generation, whose age will be beyond 11 years old, starting with January 08, 2023.
                 Laastras Head of project allows himself the privilege and authority to make necessary exceptions 
                 in due course.
             </li>
             <li style=\u0022padding: 10px\u0022>
                 The nation perpetrating lethal attacks can never be excused, not in this life, 
-                not in any life, not in the life to come, not under any special circumstances whatsoever. 
-                system development.
+                not in any life, not in the life to come, not under any special circumstances whatsoever
+                in matters of Laastras system development.
             </li>
         </ol>
   "
@@ -1593,7 +1612,7 @@ en_US:
         <div>
             To maintain political neutrality and avoid the too much overhead involved in 
             impacting local policy, big as the impact is, and in order to reduce the time and 
-            space cost tagged to Laastras implimentation, we are defining, according to
+            space cost tagged to Laastras implementation, we are defining, according to
             <a href=\u0022/laastras/about?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                 our mission
             </a>,
@@ -1680,7 +1699,8 @@ en_US:
                 to a minimum, we will lead customers to shops with a list of groceries that nourish their health.
                 That will give us insights into their nutrition needs. We will distribute customers to traders and 
                 arrange for regular orders from suppliers. All of the three groups will be sources of revenue. 
-                The revenue will sustain “LaasEgrocery” and fund the other remaining branches of Laastras project.
+                The revenue will sustain “LaasEgrocery” and fund the other remaining branches of Laastras project:
+                “LaasEcard” (HoFi cell phone), “LaasElogistics”, and “LaasEalliances” (AORI).
             </div>
             <div style=\u0022margin: 10px\u0022><h4>Finances Over a Period of 24 Months</h4></div>
             <div style=\u0022margin: 10px\u0022>
@@ -1778,10 +1798,9 @@ en_US:
                 </table>
                 <p id=\u0022localization\u0022>
                     If you are interested, you can view 
-                    <span class=\u0022pull-data\u0022 data-href=\u0022/laastras_documents/show_laastras_document?doc_id=22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3&locale=en_US\u0022 style=\u0022color: blue\u0022>
-                        the full project proposal 
-                    </span>
-                    in Kirundi locale.
+                    <span id=\u0022localization-span\u0022 class=\u0022pull-data\u0022 data-href=\u0022/laastras_documents/show_laastras_document?doc_id=22CD5AD1243594F490BD7910ACE2397CD2BA0B7F3539C395E18670849AA3A3F3&locale=en_US\u0022 style=\u0022color: blue\u0022>
+                        the full project proposal in Kirundi locale
+                    </span>.
                 </p>
             </div>
             <div style=\u0022margin: 10px\u0022><h4> LaasOS Development Policy </h4></div>

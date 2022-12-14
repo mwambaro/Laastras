@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {Modal} from "bootstrap"
+import WaitSpinner from "./WaitSpinner.js"
 
 class LaastrasCRM extends React.Component
 {
@@ -8,6 +9,7 @@ class LaastrasCRM extends React.Component
     {
         super(props);
         this.rotation_degrees = 1;
+        this.wait_spinner = null;
         this.pulled_data_modal = null;
 
     } // constructor
@@ -61,6 +63,7 @@ class LaastrasCRM extends React.Component
             this.props.laastras_crm_description
         );
         $(`#${this.props.service_title_id}`).append(this.props.laastras_crm_title);
+        this.wait_spinner = new WaitSpinner('localization-span');
         this.handle_pulled_data();
 
     } // componentDidMount
@@ -71,6 +74,7 @@ class LaastrasCRM extends React.Component
             e.target.style.cursor = 'pointer';
         });
         $('.pull-data').on('click', (e) => {
+            this.wait_spinner.show_wait_spinner();
             e.preventDefault();
             let href = $(e.target).attr('data-href');
             $.get(href)
@@ -82,9 +86,11 @@ class LaastrasCRM extends React.Component
                     `;
                     $('.pulled-data').remove();
                     $('#pulled-data-body').append(html);
+                    this.wait_spinner.hide_wait_spinner();
                     this.pulled_data_modal.show();
                 })
                 .fail((error) => {
+                    this.wait_spinner.hide_wait_spinner();
                     alert('We failed to get the project proposal in Kirundi locale.');
                 });
         });
@@ -94,6 +100,10 @@ class LaastrasCRM extends React.Component
     close_pulled_data_section(e)
     {
         this.pulled_data_modal.hide();
+        let hash = window.location.hash;
+        let href = window.location.href.replace(hash, '');
+        window.location.assign(`${href}#localization`);
+        window.location.reload(true);
 
     } // close_pulled_data_section
 

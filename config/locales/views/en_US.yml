@@ -255,3 +255,7 @@ en_US:
     Remember to include penalties clause during contract negotiation.
   "
   crawl_label: "Crawl"
+  erp_label: "ERP"
+  erp_business_case: "ERP Business Case"
+  erp_implementation: "ERP Implementation"
+  erp_risks_and_pitfalls: "ERP Risks and Pitfalls"

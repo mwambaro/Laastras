@@ -36,8 +36,8 @@ jQuery.fn.center_in_view_port = function(id)
         let elt_height = elt.height();
         let elt_offset = elt.offset();
         jQuery(window)
-            .scrollTop(elt_offset.top + (elt_height/2) - (view_port_height/2))
-            .scrollLeft(elt_offset.left + (elt_width/2) - (view_port_width/2));
+            .scrollTop(widow.scrollY - (elt_height/2) + (view_port_height/2))
+            .scrollLeft(window.scrollX - (elt_width/2) + (view_port_width/2));
     }
     else
     {
