@@ -106,7 +106,7 @@
                 let loc = null;
                 if(window.location.href)
                 {
-                    let match = /locale=([^&]+)/.exec(window.location.href);
+                    let match = /locale=([^&#]+)/.exec(window.location.href);
                     if(match)
                     {
                         loc = match[1];
@@ -175,6 +175,12 @@
                                     </a>
                                     with us for expansion.
                                 </li>
+                                <li>
+                                    She should be able to qualify as a Head of Department or Minister according to our
+                                    <strong>
+                                        Spefodem CRM strategy
+                                    </strong>.
+                                </li>
                             </ol>
                             <div style="margin-top: 10px; margin-bottom: 10px">
                                 <strong>Responsibilities: </strong>
@@ -232,6 +238,13 @@
                                         notre partenaire 
                                     </a>
                                     à fin de s'expandre.
+                                </li>
+                                <li> 
+                                    Elle devrait pouvoir remplir les qualifications requises pour devenir un Chef de Département ou Ministre 
+                                    d'après notre 
+                                    <strong>
+                                        stratégie GRC Démisfo
+                                    </strong>.
                                 </li>
                             </ol>
                             <div style="margin-top: 10px">
@@ -1773,7 +1786,7 @@
                                 let l = match[1];
                                 href = href.replace(`${l}`, '');
                             }
-                            match = /locale=([^&]+)/.exec(href);
+                            match = /locale=([^&#]+)/.exec(href);
                             if(match)
                             {
                                 let l = match[1];
