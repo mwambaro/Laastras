@@ -662,7 +662,7 @@ en_US:
             <hr style=\u0022height: 3px; margin: 1px; font-weight: bold; color: grey\u0022/>
         </div>
         <div style=\u0022margin-top: 20px\u0022>
-            <table>
+            <table class=\u0022table table-bordered table-striped\u0022>
                 <tbody>
                     <tr>
                         <td>
@@ -751,7 +751,7 @@ en_US:
             <hr style=\u0022height: 3px; margin: 1px; font-weight: bold; color: grey\u0022/>
         </div>
         <div style=\u0022margin-top: 20px\u0022>
-            <table>
+            <table class=\u0022table table-bordered table-striped\u0022>
                 <tbody>
                     <tr>
                         <td>
@@ -787,7 +787,7 @@ en_US:
             <hr style=\u0022height: 3px; margin: 1px; font-weight: bold; color: grey\u0022/>
         </div>
         <div style=\u0022margin-top: 20px\u0022>
-            <table>
+            <table class=\u0022table table-bordered table-striped\u0022>
                 <tbody>
                     <tr>
                         <td>
@@ -1257,9 +1257,9 @@ en_US:
   laastras_organization_pitch_message: "
         <div>
             <p>
-            Since each person will ultimately own a cell phone, 
+            Since each person will ultimately own a cell phone, named
             <a href=\u0022/services/e_card?locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
-                HoFi 
+                “HoFi (Home Finances)”
             </a>,
             Laastras organization harnesses the power 
             behind software technologies to guarantee your share on all resources that support human existence
@@ -1708,40 +1708,44 @@ en_US:
                     <thead>
                         <tr>
                             <th>Needs</th>
-                            <th>Quantity</th>
-                            <th>Unitary Price (USD)</th>
-                            <th>Total (USD)</th>
+                            <th>Figures</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> Laptop (Dell XPS 15 with RAM memory >= 32GB and SSD memory >= 512GB)</td>
-                            <td>3</td>
-                            <td>1600</td>
-                            <td>4800</td>
+                            <td>
+                                <div><strong>Quantity:</strong>3</div>
+                                <div><strong>Unitary price (USD):</strong>1600</div>
+                                <div><strong>Total (USD):</strong>4800</div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Cell phone supporting 4G network</td>
-                            <td>3</td>
-                            <td>200</td>
-                            <td>600</td>
+                            <td>
+                                <div><strong>Quantity:</strong>3</div>
+                                <div><strong>Unitary price (USD):</strong>200</div>
+                                <div><strong>Total (USD):</strong>600</div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Internet bundle over 24 months</td>
-                            <td>3</td>
-                            <td>50x24</td>
-                            <td>3600</td>
+                            <td>
+                                <div><strong>Quantity:</strong>3</div>
+                                <div><strong>Unitary price (USD):</strong>50x24</div>
+                                <div><strong>Total (USD):</strong>3600</div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Personnel over a period of 24 months</td>
-                            <td>3</td>
-                            <td>2000x24</td>
-                            <td>144,000</td>
+                            <td>
+                                <div><strong>Quantity:</strong>3</div>
+                                <div><strong>Unitary price (USD):</strong>2000x24</div>
+                                <div><strong>Total (USD):</strong>144,000</div>
+                            </td>
                         </tr>
                         <tr>
                             <td> Totals </td>
-                            <td> - </td>
-                            <td> - </td>
                             <td> 153,000 </td>
                         </tr>
                     </tbody>
@@ -1758,40 +1762,44 @@ en_US:
                     <thead>
                         <tr>
                             <th>Ibikenewe</th>
-                            <th>Ubwinshi</th>
-                            <th>Igiciro c'ikintu kimwe (BIF)</th>
-                            <th>Igiciro ca vyose (BIF)</th>
+                            <th>Ibitigiri</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> Orodinateri ngendanwa (Dell XPS 15) </td>
-                            <td>3</td>
-                            <td>1600x3000 (4,800,000)</td>
-                            <td>14,400,000</td>
+                            <td>
+                                <div><strong>Ubwinshi:</strong>3</div>
+                                <div><strong>Igiciro c'ikintu kimwe (BIF):</strong>1600x3000 (4,800,000)</div>
+                                <div><strong>Igiciro ca vyose (BIF):</strong>14,400,000</div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Terefone ngendanwa (Samsung Galaxy) yemera umuhora 4G</td>
-                            <td>3</td>
-                            <td>1,000,000</td>
-                            <td>3,000,000</td>
+                            <td>
+                                <div><strong>Ubwinshi:</strong>3</div>
+                                <div><strong>Igiciro c'ikintu kimwe (BIF):</strong>1,000,000</div>
+                                <div><strong>Igiciro ca vyose (BIF):</strong>3,000,000</div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Entereneti y’amezi 24</td>
-                            <td>3</td>
-                            <td>1000x30x24 (720,000)</td>
-                            <td>2,160,000</td>
+                            <td>
+                                <div><strong>Ubwinshi:</strong>3</div>
+                                <div><strong>Igiciro c'ikintu kimwe (BIF):</strong>1000x30x24 (720,000)</div>
+                                <div><strong>Igiciro ca vyose (BIF):</strong>2,160,000</div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Abakozi mu kiringo c’amezi 24</td>
-                            <td>3</td>
-                            <td>100,000x24 (2,400,000)</td>
-                            <td>7,200,000</td>
+                            <td>
+                                <div><strong>Ubwinshi:</strong>3</div>
+                                <div><strong>Igiciro c'ikintu kimwe (BIF):</strong>100,000x24 (2,400,000)</div>
+                                <div><strong>Igiciro ca vyose (BIF):</strong>7,200,000</div>
+                            </td>
                         </tr>
                         <tr>
                             <td> Vyose hamwe </td>
-                            <td> - </td>
-                            <td> - </td>
                             <td> 26,760,000 </td>
                         </tr>
                     </tbody>
@@ -1849,7 +1857,7 @@ en_US:
                     must be Head of Project and will oversee the management of all Laastras resources, both human and material.
                 </li>
             </ul>
-            <div id=\u0022your-company-roles\u0022 style=\u0022margin: 10px\u0022>
+            <div id=\u0022your-company-roles-1\u0022 style=\u0022margin: 10px\u0022>
                 <strong>Your <span class=\u0022definition\u0022>company</span>'s roles:</strong>
             </div>
             <ul style=\u0022margin: 10px\u0022>
@@ -1903,7 +1911,7 @@ en_US:
                     set up a 
                     <a href=\u0022/laastras_crm_strategies/show?strategy_id=9CF2B419EEB4FDF9F302794F75EFBC0232FE19A1DFC340E457C8595F58C21D7B&locale=en_US\u0022 style=\u0022text-decoration: none\u0022>
                         Special UN Integration Commission (Spuninc)
-                    </a>
+                    </a> OR an <strong>ERP system </strong>
                     that will  run Laastras at world level once it qualifies as a UN organ. Through Laastras, 
                     <strong>Spuninc</strong> will mold UN into World Federal Government.
                 </li>
@@ -1911,9 +1919,9 @@ en_US:
             <div style=\u0022margin: 10px\u0022> <h4> Interests </h4> </div>
             <div style=\u0022margin: 10px\u0022>
                 The benefits beyond the ones in 
-                <a href=\u0022#your-company-roles\u0022 style=\u0022text-decoration: none\u0022>
+                <a href=\u0022#your-company-roles-1\u0022 style=\u0022text-decoration: none\u0022>
                     the roles above 
-                </a>
+                </a>, i.e., 50%-100% equity and permanent position, 
                 are subject to discussion. It must be stressed that the provisions in this contract
                 make up the price and the permit for Laastras project by your <span class=\u0022definition\u0022>
                 company</span>, in your country. It is a per-country price but can be paid internationally 
