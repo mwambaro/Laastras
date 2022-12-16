@@ -623,6 +623,17 @@ module ApplicationHelper
                     data: ''
                 },
                 {
+                    url: url_for(
+                        controller: 'laastras_documents', 
+                        action: 'show_laastras_document', 
+                        doc_id: '055837F55289B847D59B7982C426387E1933CCDB69502E97D3BB0525FDE7A7C7',
+                        locale: I18n.locale.to_s
+                    ),
+                    inner_text: (I18n.t 'sales_label'),
+                    dropdown_boolean: 'false',
+                    data: ''
+                },
+                {
                     url: url_for(controller: 'laastras', action: 'hire_us'),
                     inner_text: (I18n.t 'hire_us_label'),
                     dropdown_boolean: 'false',
@@ -651,12 +662,6 @@ module ApplicationHelper
                     inner_text: (I18n.t 'services_label'),
                     dropdown_boolean: 'true',
                     data: self.laastras_services
-                },
-                {
-                    url: '',
-                    inner_text: (I18n.t 'erp_label'),
-                    dropdown_boolean: 'true',
-                    data: self.laastras_erp_actions
                 }
             ]
 
@@ -1057,6 +1062,15 @@ module ApplicationHelper
                         language: 'ru_BI',
                         uri: ApplicationHelper.document_asset_url(
                             'laastras_price_and_permit_ru-BI.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '055837F55289B847D59B7982C426387E1933CCDB69502E97D3BB0525FDE7A7C7',
+                        title: 'laastras-sales-job-offer (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'laastras-sales-job-offer.html'
                         ),
                         mime_type: 'text/html'
                     }

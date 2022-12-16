@@ -225,6 +225,7 @@ fr_FR:
     Souvenez-vous d'inclure une clause de peines pendant la négotiation du contract.
   "
   crawl_label: "Puiser"
+  sales_label: "Ventes"
   erp_label: "ERP"
   erp_business_case: "Cas d'Affaire ERP"
   erp_implementation: "Réalisation ERP"
