@@ -1067,10 +1067,10 @@ module ApplicationHelper
                     },
                     {
                         sha256: '055837F55289B847D59B7982C426387E1933CCDB69502E97D3BB0525FDE7A7C7',
-                        title: 'laastras-sales-job-offer (.html)',
+                        title: 'laastras-sales-and-marketing-job-offer (.html)',
                         language: 'en_US',
                         uri: ApplicationHelper.document_asset_url(
-                            'laastras-sales-job-offer.html'
+                            'laastras-sales-and-marketing-job-offer.html'
                         ),
                         mime_type: 'text/html'
                     }

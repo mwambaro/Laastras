@@ -464,7 +464,7 @@ class LaastrasController < ApplicationController
             @laastras_e_logo_urls = [
                 {
                     image_url: ApplicationHelper.image_asset_url(
-                        request, 'Logo-e-grocery.svg'
+                        request, 'Logo-e-grocery-ng.png'
                     ),
                     service_url: url_for(
                         controller: 'services',
@@ -473,7 +473,7 @@ class LaastrasController < ApplicationController
                 },
                 {
                     image_url: ApplicationHelper.image_asset_url(
-                        request, 'Logo-e-card.svg'
+                        request, 'Logo-e-card-ng.png'
                     ),
                     service_url: url_for(
                         controller: 'services',
@@ -482,7 +482,7 @@ class LaastrasController < ApplicationController
                 },
                 {
                     image_url: ApplicationHelper.image_asset_url(
-                        request, 'Logo-e-logistics.svg'
+                        request, 'Logo-e-logistics-ng.png'
                     ),
                     service_url: url_for(
                         controller: 'services',
@@ -491,7 +491,7 @@ class LaastrasController < ApplicationController
                 },
                 {
                     image_url: ApplicationHelper.image_asset_url(
-                        request, 'Logo-e-alliances.svg'
+                        request, 'Logo-e-alliances-ng.png'
                     ),
                     service_url: url_for(
                         controller: 'services',
@@ -508,7 +508,7 @@ class LaastrasController < ApplicationController
                 request, '838457-default-background-image.jpg'
             )
             @logo_image_url = ApplicationHelper.image_asset_url(
-                request, 'Logo-03.svg'
+                request, 'Logo-e-laastras-ng.png'
             )
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 

@@ -1,7 +1,7 @@
 
 <%= react_component('LaastrasService', {
     laastras_service_title: (I18n.t 'e_alliances_service_title'),
-    laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
+    laastras_service_brand_image: @service_brand_image,
     laastras_service_description: (I18n.t 'e_alliances_service_description'),
     service_id: @service_id,
     service_title_id: (@service_id + '-title')

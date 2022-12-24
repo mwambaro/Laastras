@@ -41,24 +41,29 @@
     </head>
     
     <body>
+        <% laastras_banner_image = I18n.locale.to_s.match?(/\Afr_FR\Z/i) ? 
+                ApplicationHelper.image_asset_url(request, 'Laas-e-banner-ng-fr.png') : 
+                ApplicationHelper.image_asset_url(request, 'Laas-e-banner-ng-en.png')
+        %>
+                
         <%= react_component('LaastrasBanner', { 
             # Banner Pitch
             laastras_banner_pitch_message: (I18n.t 'laastras_organization_pitch_message'),
             home_url: url_for(controller: 'laastras', action: 'home'),
             home_label: (I18n.t 'home_label'),
             # Banner Html
-            laastras_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-03.svg'),
-            e_grocery_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery.svg'),
-            e_card_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-card.svg'),
-            e_logistics_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
-            e_alliances_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
-            e_homocracy_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-homocracy.svg'),
+            laastras_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-laastras-ng.png'),
+            e_grocery_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery-ng.png'),
+            e_card_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-card-ng.png'),
+            e_logistics_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics-ng.png'),
+            e_alliances_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances-ng.png'),
+            e_homocracy_logo_url: ApplicationHelper.image_asset_url(request, 'Logo-e-homocracy-ng.png'),
             from: (I18n.t 'from_label'),
             democracy: (I18n.t 'democracy_label'),
             to: (I18n.t 'to_label'),
             homocracy: (I18n.t 'homocracy_label'),
             # Banner Image
-            laastras_banner_image: @laastras_banner_image
+            laastras_banner_image: laastras_banner_image
         })%>
 
         <%= yield %>

@@ -547,7 +547,7 @@ class LaastrasJobOffersController < ApplicationController
                 request
             )
             @logo_image_url = ApplicationHelper.image_asset_url(
-                request, 'Logo-03.svg'
+                request, 'Logo-e-laastras-ng.png'
             )
 
             @headerData = ApplicationHelper::SiteHeaderData.new(request, logger)

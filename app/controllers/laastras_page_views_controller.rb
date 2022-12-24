@@ -62,7 +62,7 @@ class LaastrasPageViewsController < ApplicationController
                 request
             )
             @logo_image_url = ApplicationHelper.image_asset_url(
-                request, 'Logo-03.svg'
+                request, 'Logo-e-laastras-ng.png'
             )
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 

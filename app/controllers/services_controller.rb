@@ -5,42 +5,42 @@ class ServicesController < ApplicationController
         @services = [
             {
                 laastras_service_title: (I18n.t 'food_source_and_water_cooperative_title'),
-                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery.svg'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-grocery-ng.png'),
                 laastras_service_description: (I18n.t 'food_source_and_water_cooperative_description'),
                 service_id: 'e-grocery-service',
                 service_title_id: 'e-grocery-service-ex'
             },
             {
                 laastras_service_title: (I18n.t 'communication_as_a_service_cooperative_title'),
-                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-card.svg'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-card-ng.png'),
                 laastras_service_description: (I18n.t 'communication_as_a_service_cooperative_description'),
                 service_id: 'e-card-service',
                 service_title_id: 'e-card-service-ex'
             },
             {
                 laastras_service_title: (I18n.t 'free_trade_capability_cooperative_title'),
-                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics.svg'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-logistics-ng.png'),
                 laastras_service_description: (I18n.t 'free_trade_capability_cooperative_description'),
                 service_id: 'e-logistics-service',
                 service_title_id: 'e-logistics-service-ex'
             },
             {
                 laastras_service_title: (I18n.t 'e_alliances_service_title'),
-                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances.svg'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-alliances-ng.png'),
                 laastras_service_description: (I18n.t 'e_alliances_service_description'),
                 service_id: 'e-alliances-service',
                 service_title_id: 'e-alliances-service-ex'
             },
             {
                 laastras_service_title: (I18n.t 'mythology_and_fiction_service_title'),
-                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-myths.svg'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-myths-ng.png'),
                 laastras_service_description: (I18n.t 'mythology_and_fiction_service_description'),
                 service_id: 'e-myth-service',
                 service_title_id: 'e-myth-service-ex'
             },
             {
                 laastras_service_title: (I18n.t 'morshux_phylosophy_service_title'),
-                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-morshux.svg'),
+                laastras_service_brand_image: ApplicationHelper.image_asset_url(request, 'Logo-e-morshux-ng.png'),
                 laastras_service_description: (I18n.t 'morshux_phylosophy_service_description'),
                 service_id: 'e-phylosophy-service',
                 service_title_id: 'e-phylosophy-service-ex'
@@ -53,6 +53,7 @@ class ServicesController < ApplicationController
         next_uri = nil 
         begin
             @service_id = "e_grocery_service"
+            @service_brand_image = ApplicationHelper.image_asset_url(request, 'Logo-e-grocery-ng.png')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -70,6 +71,7 @@ class ServicesController < ApplicationController
         next_uri = nil 
         begin
             @service_id = "e_card_service"
+            @service_brand_image = ApplicationHelper.image_asset_url(request, 'Logo-e-card-ng.png')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -87,6 +89,7 @@ class ServicesController < ApplicationController
         next_uri = nil 
         begin
             @service_id = "e_logistics_service"
+            @service_brand_image = ApplicationHelper.image_asset_url(request, 'Logo-e-logistics-ng.png')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -104,6 +107,7 @@ class ServicesController < ApplicationController
         next_uri = nil 
         begin
             @service_id = "e_alliances_service"
+            @service_brand_image = ApplicationHelper.image_asset_url(request, 'Logo-e-alliances-ng.png')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -121,6 +125,7 @@ class ServicesController < ApplicationController
         next_uri = nil 
         begin
             @service_id = "e_myth_service"
+            @service_brand_image = ApplicationHelper.image_asset_url(request, 'Logo-e-myths-ng.png')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -138,6 +143,7 @@ class ServicesController < ApplicationController
         next_uri = nil 
         begin
             @service_id = "e_morshux_service"
+            @service_brand_image = ApplicationHelper.image_asset_url(request, 'Logo-e-morshux-ng.png')
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
                     __method__.to_s + "--- " + e.message 
@@ -164,7 +170,7 @@ class ServicesController < ApplicationController
                 request
             )
             @logo_image_url = ApplicationHelper.image_asset_url(
-                request, 'Logo-03.svg'
+                request, 'Logo-e-laastras-ng.png'
             )
         rescue Exception => e 
             message = Time.now.to_s + ": " + Pathname.new(__FILE__).basename.to_s + "#" + 
