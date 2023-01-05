@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
         <meta name="description" content="Since each person will ultimately own a cell phone, named “HoFi (Home Finances)”, Laastras organization harnesses the power behind software technologies to guarantee your share on all resources that support human existence in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us citizens have equal shares. Our major brands are: “LaasEgrocery” (nutrition), “LaasEcard” (a cell phone named HoFi, i.e., Home Finances), “LaasElogistics”, and “LaasEalliances”">
     
         <!-- // 35 characters -->
@@ -1338,6 +1339,7 @@
                                         <li><strong>Phone number:</strong> +257 76 177 186 </li>
                                         <li><strong>E-mail:</strong> <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none"> onkezabahizi@gmail.com </a> </li>
                                         <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/" style="text-decoration: none"> LinkedIn Profile </a> </li>
+                                        <li><strong>Background:</strong> <a href="/laastras_documents/show_laastras_document?locale=en_US&doc_id=CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671" style="text-decoration: none"> Track Record </a> </li>
                                     </ul>
                                 </div>
                             `
@@ -1353,6 +1355,7 @@
                                         <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
                                         <li><strong>E-mail:</strong> <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none"> onkezabahizi@gmail.com </a> </li>
                                         <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/" style="text-decoration: none"> Profil LinkedIn </a> </li>
+                                        <li><strong>Histoire:</strong> <a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671" style="text-decoration: none"> Record </a> </li>
                                     </ul>
                                 </div>
                             `
@@ -4534,6 +4537,14 @@
                     e.preventDefault();
                     apply_modal.show();  
                 });
+
+                if(window.location.hash != null && window.location.hash != '')
+                {
+                    let id = window.location.hash.replace('#', '');
+                    let top = $(`#${id}`).offset().top;
+                    console.log('ID from hash: ' + id + `; TOP: ${top}`);
+                    $(window).scrollTop(top);
+                }
             });
         </script>
     </body>

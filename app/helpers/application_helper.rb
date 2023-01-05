@@ -1073,6 +1073,15 @@ module ApplicationHelper
                             'laastras-sales-and-marketing-job-offer.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671',
+                        title: 'cv (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'cv.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
