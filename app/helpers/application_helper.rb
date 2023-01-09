@@ -1082,6 +1082,15 @@ module ApplicationHelper
                             'cv.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'C7C3D58103C48167C61E368D40B8D77AEDE93F547D581DABF1251998F471C72A',
+                        title: 'work-anthem (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'work-anthem.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
