@@ -430,8 +430,8 @@
                         fr_FR: 'Voici le contenu de l\'offre d\'emploi des <strong>Ventes & Marketing</strong> Laastras. Nous avons besoin d\'un <strong> Partenaire en Ventes</strong> et une dame <strong> Assistante du Chef de Projet </strong>'
                     },
                     back_to_top: {
-                        en_US: 'Top',
-                        fr_FR: 'Haut'
+                        en_US: 'OUTLN',
+                        fr_FR: 'SMR'
                     },
                     contract_note: {
                         en_US: `
@@ -1356,7 +1356,7 @@
                                         <li><strong>Numéro de téléphone:</strong> +257 76 177 186 </li>
                                         <li><strong>E-mail:</strong> <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none"> onkezabahizi@gmail.com </a> </li>
                                         <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/" style="text-decoration: none"> Profil LinkedIn </a> </li>
-                                        <li><strong>Histoire:</strong> <a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671" style="text-decoration: none"> Record </a> </li>
+                                        <li><strong>Record:</strong> <a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671" style="text-decoration: none"> Parcours </a> </li>
                                         <li><strong>Motivation:</strong><a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=C7C3D58103C48167C61E368D40B8D77AEDE93F547D581DABF1251998F471C72A" style="text-decoration: none"> Hymne de Travail </a> </li>
                                     </ul>
                                 </div>
@@ -3131,6 +3131,18 @@
                                 </div>
                             `
                         }
+                    },
+                    anthem: {
+                        en_US: 'Work Anthem',
+                        fr_FR: 'Hymne de Travail'
+                    },
+                    motivation: {
+                        en_US: 'Motivation',
+                        fr_FR: 'Motivation'
+                    },
+                    topping_label: {
+                        en_US: 'Top',
+                        fr_FR: 'Sommet'
                     }
                 };
 
@@ -3148,22 +3160,33 @@
     <body class="container-fluid">
         <!-- STRIP -->
         <div class="container-fluid" style="margin: 0px">
-            <div id="navigation-bar-strip" style="color: white; background-color: black; margin: 0px">
+            <div id="navigation-bar-strip" style="color: white; background-color: black; margin: 0px; padding: 5px" class="text-center">
+                TOP
             </div>
             <script>
                 var strip_height = '20px';
                 $(document).ready((e) => {
-                    if(is_mob)
+                    function set_strip_bar()
                     {
-                        strip_height = '40px';
-                    }
-                    $('#navigation-bar-strip').css({
-                        zIndex: '99',
-                        position: 'fixed',
-                        top: '0px'
-                    });
-                    $('#navigation-bar-strip').width($(window).width());
-                    $('#navigation-bar-strip').height(strip_height);
+                        if(is_mob)
+                        {
+                            strip_height = '40px';
+                        }
+                        $('#navigation-bar-strip').css({
+                            zIndex: '99',
+                            position: 'fixed',
+                            top: '0px',
+                            left: '0px'
+                        });
+                        $('#navigation-bar-strip').width($(window).width());
+                        $('#navigation-bar-strip').height(strip_height);
+
+                    } // set_strip_bar
+
+                    $('#navigation-bar-strip').html(locales.topping_label[locale]);
+
+                    set_strip_bar();
+
                     $('#navigation-bar-strip').on('mouseover', (e) => {
                         e.target.style.cursor = 'pointer';
                     });
@@ -3171,6 +3194,9 @@
                         let top = $('#padding-div').offset().top;
                         $(window).scrollTop(top);
                     });
+                    window.addEventListener('resize', (e) => {
+                        set_strip_bar();
+                    })
                 })
             </script>
         </div>
