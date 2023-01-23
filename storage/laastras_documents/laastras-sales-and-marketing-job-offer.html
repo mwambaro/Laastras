@@ -76,27 +76,43 @@
 
             function set_urls()
             {
-
                 var env = get_env();
                 var urls = {
                     bootstrap_css: {
-                        development: 'bootstrap.min.css',
-                        production: ''
+                        development: 'assets/bootstrap.min.css',
+                        production: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+                        integrity: 'sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
                     },
                     bootstrap_js: {
-                        development: 'bootstrap.min.js',
-                        production: ''
+                        development: 'assets/bootstrap.bundle.min.js',
+                        production: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
+                        integrity: 'sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
                     },
                     jquery: {
-                        development: 'jquery-3.6.0.min.js',
-                        production: ''
+                        development: 'assets/jquery-3.6.3.min.js',
+                        production: 'https://code.jquery.com/jquery-3.6.3.min.js',
+                        integrity: 'sha384-Ft/vb48LwsAEtgltj7o+6vtS2esTU9PCpDqcXs4OCVQFZu5BqprHtUCZ4kjK+bpE'
                     }
                 }
 
-                document.getElementById('bootstrap_css').attributes.getNamedItem('href').value = urls.bootstrap_css[env];
-                document.getElementById('bootstrap_js').attributes.getNamedItem('src').value = urls.bootstrap_js[env];
-                document.getElementById('jquery').attributes.getNamedItem('src').value = urls.jquery[env];
-            }
+                document.getElementById('bootstrap_css').setAttribute('href', urls.bootstrap_css[env]);
+                document.getElementById('bootstrap_js').setAttribute('src', urls.bootstrap_js[env]);
+                document.getElementById('jquery').setAttribute('src', urls.jquery[env]);
+
+                if(env === 'production') // set integrity and crossorigin attributes
+                {
+                    document.getElementById('bootstrap_css').setAttribute('integrity', urls.bootstrap_css.integrity);
+                    document.getElementById('bootstrap_js').setAttribute('integrity', urls.bootstrap_js.integrity);
+                    document.getElementById('jquery').setAttribute('integrity', urls.jquery.integrity);
+
+                    document.getElementById('bootstrap_css').setAttribute('crossorigin', 'anonymous');
+                    document.getElementById('bootstrap_js').setAttribute('crossorigin', 'anonymous');
+                    document.getElementById('jquery').setAttribute('crossorigin', 'anonymous');
+                }
+
+                console.log('ENV: ' + env);
+
+            } // set_urls
         </script>
         <script>
             function is_mobile()
@@ -1341,6 +1357,7 @@
                                         <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/" style="text-decoration: none"> LinkedIn Profile </a> </li>
                                         <li><strong>Background:</strong> <a href="/laastras_documents/show_laastras_document?locale=en_US&doc_id=CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671" style="text-decoration: none"> Track Record </a> </li>
                                         <li><strong>Motivation:</strong><a href="/laastras_documents/show_laastras_document?locale=en_US&doc_id=C7C3D58103C48167C61E368D40B8D77AEDE93F547D581DABF1251998F471C72A" style="text-decoration: none"> Work Anthem </a> </li>
+                                        <li><strong>Challenge:</strong><a href="/laastras_documents/show_laastras_document?locale=en_US&doc_id=68F94E5B109DA5EC7B29F3C015AD3CAA74BC96E03372887869897D1CE4284636" style="text-decoration: none"> The Lawless One </a> </li>
                                     </ul>
                                 </div>
                             `
@@ -1358,6 +1375,7 @@
                                         <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/obed-edom-nkezabahizi-5695b8167/" style="text-decoration: none"> Profil LinkedIn </a> </li>
                                         <li><strong>Record:</strong> <a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=CCF94B58492F1CE6A8651AD7D1E114655BE7DECC9AFB6BC4254D276A92FB2671" style="text-decoration: none"> Parcours </a> </li>
                                         <li><strong>Motivation:</strong><a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=C7C3D58103C48167C61E368D40B8D77AEDE93F547D581DABF1251998F471C72A" style="text-decoration: none"> Hymne de Travail </a> </li>
+                                        <li><strong>Défi:</strong><a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=68F94E5B109DA5EC7B29F3C015AD3CAA74BC96E03372887869897D1CE4284636" style="text-decoration: none"> Le Hors-la-loi </a> </li>
                                     </ul>
                                 </div>
                             `
@@ -1971,7 +1989,7 @@
                     },
                     contact_label: {
                         en_US: 'Contact',
-                        fr_FR: 'Contacte'
+                        fr_FR: 'Contact'
                     },
                     spefodem_offer: {
                         en_US: {
@@ -2242,7 +2260,7 @@
                                         <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none">
                                             Obed-Edom Nkezabahizi
                                         </a>, 
-                                        Laastras designer and master-mind, has faced the following competition issues:
+                                        Laastras designer and master-mind, have faced the following competition issues:
                                     </div>
                                 </div>
                                 <ul style="margin-top: 10px">
@@ -2331,7 +2349,7 @@
                             `
                         },
                         fr_FR: {
-                            title: `Question de  la Rançon et du “Full NDA” de l'Homocratie`,
+                            title: `La Rançon de l'Homocratie et la Question du “Full NDA”`,
                             body: `
                                 <div>
                                     <p>
@@ -2828,9 +2846,9 @@
                                     </a>
                                     that will, in the long run, fulfil the Morshux vision. For details on the Morshux 
                                     philosophy, please, support the project by buying 
-                                    <a href="https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service" style="text-decoration: none"> 
+                                    <a href="https://1drv.ms/b/s!Alpt4zgtrW4ugpEkE7T8tptws-r8sw?e=C0it09" style="text-decoration: none"> 
                                     the book </a> behind Laastras project,
-                                    written by Laastras Founder and CEO, 
+                                    written by Laastras Founder and Director, 
                                     <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none"> 
                                     Obed-Edom Nkezabahizi </a>.
                                 </div>
@@ -2891,10 +2909,10 @@
                                     </a>
                                     qui, à long terme, nous feront atteindre l'objectif Marsexh. Pour plus d'information sur la philosophie 
                                     Marsexh, veuillez supporter le projet en achetant
-                                    <a href="https://leanpub.com/World-Federal-Government-Constitution--Leadership-as-a-Service" style="text-decoration: none"> 
+                                    <a href="https://1drv.ms/b/s!Alpt4zgtrW4ugpEkE7T8tptws-r8sw?e=C0it09" style="text-decoration: none"> 
                                     le livre </a> derrière le projet Laastras, dont l'auteur est
                                     <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none"> 
-                                    Nkezabahizi Obed-Edom </a>, Fondateur et CEO de Laastras.
+                                    Nkezabahizi Obed-Edom </a>, Fondateur et Directeur de Laastras.
                                 </div>
                             `
                         }
@@ -3160,11 +3178,11 @@
     <body class="container-fluid">
         <!-- STRIP -->
         <div class="container-fluid" style="margin: 0px">
-            <div id="navigation-bar-strip" style="color: white; background-color: black; margin: 0px; padding: 5px" class="text-center">
-                TOP
+            <div id="navigation-bar-strip" style="color: white; background-color: black; margin: 0px; padding: 5px; font-weight: bold; height: 40px; display: flex; align-items: center; justify-content: center">
+                <span id="navigation-bar-strip-span">TOP</span>
             </div>
             <script>
-                var strip_height = '20px';
+                var strip_height = '40px';
                 $(document).ready((e) => {
                     function set_strip_bar()
                     {
@@ -3176,14 +3194,23 @@
                             zIndex: '99',
                             position: 'fixed',
                             top: '0px',
-                            left: '0px'
+                            left: '0px',
+                            width: `${$(window).width()}px`
                         });
+                        /*
                         $('#navigation-bar-strip').width($(window).width());
-                        $('#navigation-bar-strip').height(strip_height);
+                        //$('#navigation-bar-strip').height(strip_height);
+
+                        let offset = $('#navigation-bar-strip-span').offset();
+                        offset.left = ($('#navigation-bar-strip').width() - $('#navigation-bar-strip-span').width())/2;
+                        console
+                        //offset.top = ($('#navigation-bar-strip').height() - $('#navigation-bar-strip-span').height())/2;
+                        $('#navigation-bar-strip-span').offset(offset);
+                        */
 
                     } // set_strip_bar
 
-                    $('#navigation-bar-strip').html(locales.topping_label[locale]);
+                    $('#navigation-bar-strip-span').html(locales.topping_label[locale]);
 
                     set_strip_bar();
 
@@ -3217,6 +3244,29 @@
                 <img src="/images/Laas-e-banner-ng-en.png"
                     class="img-fluid banner-image"
                     id="banner-image" />
+                <script>
+                    $(document).ready((e) => {
+                        function arrange_banner_div()
+                        {
+                            $('#banner-div').css({
+                                width: `${$(window).width()}px`,
+                                left: '0px'
+                            });
+
+                            // LA FERME
+                            let offset = $('#banner-div').offset();
+                            offset.left = '0';
+                            $('#banner-div').offset(offset);
+
+                        } // arrange_banner_div
+
+                        arrange_banner_div();
+
+                        window.addEventListener('resize', (e) => {
+                            arrange_banner_div();
+                        });
+                    });
+                </script>
             </div>
             <div id="pitch-message-modal" class="modal fade" data-keyboard="false" tabIndex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -3321,6 +3371,20 @@
             <script>
                 $(document).ready((e) => 
                 {
+                    function arrange_navbar_div()
+                    {
+                        $('#sales-navigation-bar').css({
+                            width: `${$(window).width()}px`,
+                            left: '0px'
+                        });
+
+                        // LA FERME
+                        let offset = $('#sales-navigation-bar').offset();
+                        offset.left = '0';
+                        $('#sales-navigation-bar').offset(offset);
+                            
+                    } // arrange_navbar_div
+
                     $('a[data-name="sales"]').html(locales.sales_label[locale]);
                     $('a[data-name="brands"]').html(locales.brands_label[locale]);
                     $('a[data-name="legalization"]').html(locales.legalization_label[locale]);
@@ -3420,6 +3484,11 @@
                         //$(`${id}`).show();
                         let top = $(`${id}`).offset().top;
                         $(window).scrollTop(top);
+                    });
+
+                    arrange_navbar_div();
+                    window.addEventListener('resize', (e) => {
+                        arrange_navbar_div();
                     });
                 });
             </script>
@@ -4539,6 +4608,18 @@
             </div>
         </div>
         <script>
+            function go_to_element_using_hash_value()
+            {
+                if(window.location.hash != null && window.location.hash != '')
+                {
+                    let id = window.location.hash.replace('#', '');
+                    let top = $(`#${id}`).offset().top;
+                    //console.log('ID from hash: ' + id + `; TOP: ${top}`);
+                    $(window).scrollTop(top);
+                }
+
+            } // go_to_element_using_hash_value
+
             $(document).ready((e) => {
                 $('.vyogo').css({padding: '10px'});
                 $('.col-sm-12').css({
@@ -4571,13 +4652,13 @@
                     apply_modal.show();  
                 });
 
-                if(window.location.hash != null && window.location.hash != '')
-                {
-                    let id = window.location.hash.replace('#', '');
-                    let top = $(`#${id}`).offset().top;
-                    console.log('ID from hash: ' + id + `; TOP: ${top}`);
-                    $(window).scrollTop(top);
-                }
+                $('.video-item-main').on('loadeddata', (e) => {
+                    go_to_element_using_hash_value();
+                });
+                $(window).on('hashchange', (e) => {
+                    //console.log('HASHCHANGE INVOKED');
+                    go_to_element_using_hash_value();
+                });
             });
         </script>
     </body>

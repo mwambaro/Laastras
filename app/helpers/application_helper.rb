@@ -1091,6 +1091,15 @@ module ApplicationHelper
                             'work-anthem.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '68F94E5B109DA5EC7B29F3C015AD3CAA74BC96E03372887869897D1CE4284636',
+                        title: 'the-lawless-one (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'the-lawless-one.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
