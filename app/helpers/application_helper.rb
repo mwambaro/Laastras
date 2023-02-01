@@ -1100,6 +1100,24 @@ module ApplicationHelper
                             'the-lawless-one.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '9E8D2A0E5607E0F07E5BDF78228B683611A52FCFE038BE80BF2EB640F73945E1',
+                        title: 'translation-contribution (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'translation-contribution.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '37589ABA1822622BA992DC366C8CEEC7752B1C69F94628AD89C15710C39756F7',
+                        title: 'kick-off-order-rules (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'kick-off-order-rules.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 

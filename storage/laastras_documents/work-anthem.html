@@ -7,12 +7,12 @@
         <meta name="description" content="Since each person will ultimately own a cell phone, named “HoFi (Home Finances)”, Laastras organization harnesses the power behind software technologies to guarantee your share on all resources that support human existence in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us citizens have equal shares. Our major brands are: “LaasEgrocery” (nutrition), “LaasEcard” (a cell phone named HoFi, i.e., Home Finances), “LaasElogistics”, and “LaasEalliances”">
     
         <!-- // 35 characters -->
-        <meta property="og:title" content="Laastras - Work Anthem" />
-        <meta property="og:url" content="https://mwambaro.github.io" />
+        <meta property="og:title" content="Work Anthem - Laastras" />
+        <meta property="og:url" content="https://mwambaro.github.io/assets/work-anthem.html" />
         <!-- // 65 characters -->
         <meta property="og:description" content="Nutrition.Equality.Financial Security.Capitalism Order" />
         <!-- // Image type PNG or JPG size less than 300KB and minimum pixels 300x200 -->
-        <meta property="og:image" content="https://am3pap006files.storage.live.com/y4ma5MeKvgKtQak3pLJ0UpRY3sVcpbNbUloqdmRf8535tZGBQsY3IHTD4HYKJXCidTdCd6eS8x5wuljG7JwfW0Boi8hgu-qSP59U5Hu89MdKQWSRkhh6utCbhTaOJqOTYkn3PnrED6_5MPdiz-GQ0lgBApH1sF9Jr6VHtYlHa9tbHhT8LU9OtmH6R9iBWCCZotV?width=1514&height=2556&cropmode=none" />
+        <meta property="og:image" content="https://am3pap006files.storage.live.com/y4mom9lyCfIug9eZo5s6TZ6IxmxXYjD762ZprEy2iJ8YGsTY8o3-XMquJRS35jTyGm4qQJtj2dcQhxKPndhQe1CMZpHIELqGbaH3mayBSu_xdScdVaI6nZX-SRt1KTM9pckHcuIybW6647yvXLz1zvHmdSt6diLJ5y_SlrHZaH80KBkzxFe86vZ5aO8j_hllQYn?width=1919&height=2149&cropmode=none" />
         <!-- // see https://opengraphprotocol.org/#types -->
         <meta property="og:type" content="website" />
         <!-- // Examples: en_US, en_GB. => locale_TERRITORRY -->
@@ -166,8 +166,32 @@
 
                 var locales = {
                     title: {
-                        en_US: 'Work Anthem',
-                        fr_FR: 'Hymne de Travail'
+                        en_US: 'Work Anthem - Laastras',
+                        fr_FR: 'Hymne de Travail - Laastras'
+                    },
+                    og_title: {
+                        en_US: 'Work Anthem - Laastras',
+                        fr_FR: 'Hymne de Travail - Laastras'
+                    },
+                    og_image: {
+                        en_US: 'https://am3pap006files.storage.live.com/y4mom9lyCfIug9eZo5s6TZ6IxmxXYjD762ZprEy2iJ8YGsTY8o3-XMquJRS35jTyGm4qQJtj2dcQhxKPndhQe1CMZpHIELqGbaH3mayBSu_xdScdVaI6nZX-SRt1KTM9pckHcuIybW6647yvXLz1zvHmdSt6diLJ5y_SlrHZaH80KBkzxFe86vZ5aO8j_hllQYn?width=1919&height=2149&cropmode=none',
+                        fr_FR: 'https://am3pap006files.storage.live.com/y4m8pTYHbD9IOMxNFA1Adb9IHo6gxFYW7-tQzwLV91m7O7HTuofipios687Sl6y2QPxU7Kj0Bns4K_1Fu599XCtZ9vcI7qHCxzD0T35aC-CWJz0x5nSGfRuiGIziIQBgRYCRwshZAq7b_zSO9cBeiQvZpEMObV-gybVkjiBxYBL9W4eqAY-HeZXRoAd2R_6qx3D?width=2544&height=2149&cropmode=none'
+                    },
+                    og_description: {
+                        en_US: 'Nutrition.Equality.Financial Security.Capitalism Order',
+                        fr_FR: 'Nutrition.Egalité.Sécurité Financière.Ordre dans le Capitalisme'
+                    },
+                    og_url: {
+                        en_US: 'https://mwambaro.github.io/assets/work-anthem.html?locale=en_US',
+                        fr_FR: 'https://mwambaro.github.io/assets/work-anthem.html?locale=fr_FR'
+                    },
+                    og_locale: {
+                        en_US: 'en_US',
+                        fr_FR: 'fr_FR'
+                    },
+                    site_description: {
+                        en_US: 'Since each person will ultimately own a cell phone, named “HoFi (Home Finances)”, Laastras organization harnesses the power behind software technologies to guarantee your share on all resources that support human existence in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us citizens have equal shares. Our major brands are: “LaasEgrocery” (nutrition), “LaasEcard” (a cell phone named HoFi, i.e., Home Finances), “LaasElogistics”, and “LaasEalliances”',
+                        fr_FR: "Puisque chaque personne aura au final un cellulaire, appellé “HoFi (Home Finances)”, l'organisation Laastras exploite la puissance des technologies logicielles pour guarantir votre part sur toutes les ressources qui supportent l'existence humaine dans votre pays, d'abord, et puis, dans le monde. Notre pays et le monde deviennent une entreprise dans laquelle nous tous citoyens avons des parts (actions) égales. Nos marques principales sont: “LaasEgrocery” (nutrition), “LaasEcard” (cellulaire appellé HoFi, pour “Home Finances”), “LaasElogistics”, et “LaasEalliances”"
                     },
                     previous: {
                         en_US: 'Previous',
@@ -339,6 +363,18 @@
                     }
                 };
             }
+
+            $(document).ready((e) => {
+                $('title').html(locales.title[locale]);
+
+                // Set open graph attributes
+                $('meta[property="og:title"]').attr('content', locales.og_title[locale]);
+                $('meta[property="og:image"]').attr('content', locales.og_image[locale]);
+                $('meta[property="og:url"]').attr('content', locales.og_url[locale]);
+                $('meta[property="og:description"]').attr('content', locales.og_description[locale]);
+                $('meta[property="og:locale"]').attr('content', locales.og_locale[locale]);
+                $('meta[name="description"]').attr('content', locales.site_description[locale]);
+            });
         </script>
     </head>
     <body class="container-fluid" style="background-color: #1a202c;">
