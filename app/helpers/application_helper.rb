@@ -1118,6 +1118,24 @@ module ApplicationHelper
                             'kick-off-order-rules.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'F7F9580437A1BF081488A86570DE6025477049FAC254FA067C297309D1336D32',
+                        title: 'blogs-and-articles (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'blogs-and-articles.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '14B8697E1AF04717842DEF2482DE48CFF77D08DCE3695576B0B0E11549919674',
+                        title: 'creating-a-start-up (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'creating-a-start-up.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
