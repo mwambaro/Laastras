@@ -611,5 +611,28 @@
                 });
             })
         </script>
+        <script>
+            $(document).ready((e) => {
+                function go_to_element_using_hash_value()
+                {
+                    if(window.location.hash != null && window.location.hash != '')
+                    {
+                        let id = window.location.hash.replace('#', '');
+                        let top = $(`#${id}`).offset().top;
+                        //console.log('ID from hash: ' + id + `; TOP: ${top}`);
+                        $(window).scrollTop(top);
+                    }
+
+                } // go_to_element_using_hash_value
+
+                $('.video-item-main').on('loadeddata', (e) => {
+                    go_to_element_using_hash_value();
+                });
+                $(window).on('hashchange', (e) => {
+                    //console.log('HASHCHANGE INVOKED');
+                    go_to_element_using_hash_value();
+                });
+            })
+        </script>
     </body>
 </html>
