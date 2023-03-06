@@ -192,6 +192,10 @@
                         en_US: 'Since each person will ultimately own a cell phone, named “HoFi (Home Finances)”, Laastras organization harnesses the power behind software technologies to guarantee your share on all resources that support human existence in your country, first, and then, in the world. Our country and the world become an enterprise in which all of us citizens have equal shares. Our major brands are: “LaasEgrocery” (nutrition), “LaasEcard” (a cell phone named HoFi, i.e., Home Finances), “LaasElogistics”, and “LaasEalliances”',
                         fr_FR: "Puisque chaque personne aura au final un cellulaire, appellé “HoFi (Home Finances)”, l'organisation Laastras exploite la puissance des technologies logicielles pour guarantir votre part sur toutes les ressources qui supportent l'existence humaine dans votre pays, d'abord, et puis, dans le monde. Notre pays et le monde deviennent une entreprise dans laquelle nous tous citoyens avons des parts (actions) égales. Nos marques principales sont: “LaasEgrocery” (nutrition), “LaasEcard” (cellulaire appellé HoFi, pour “Home Finances”), “LaasElogistics”, et “LaasEalliances”"
                     },
+                    expertise_section_title: {
+                        en_US: 'Fields of Expertise',
+                        fr_FR: 'Domaines d\'Expertise'
+                    },
                     expertise_capture: {
                         en_US: `
                             You can 
@@ -444,7 +448,7 @@
                                     <div style="margin-top: 20px">
                                         <p style="background-color: #303037; border-radius: 5px; padding: 3px; margin: 3px; color: #ededed">
                                         10 years of in-depth hands-on experience in software engineering 
-                                        (software development, system and network administration), business ideation/intelligence,
+                                        (software development, system and network administration), business ideation/intelligence, project management,
                                         leadership policy making, translation of myths into innovation tech,
                                         translation amongst English, French, and Kirundi, as well as ICT & Languages 
                                         tutoring.
@@ -748,7 +752,7 @@
                                         <p style="background-color: #303037; border-radius: 5px; padding: 3px; margin: 3px; color: #ededed">
                                             10 ans d'expérience pratique en ingénierie logicielle 
                                             (développement logiciel, administration système et réseau), 
-                                            idées/renseignement d'affaires, politique de leadership, traduction de 
+                                            idées/renseignement d'affaires, gestion de projet, politique de leadership, traduction de 
                                             mythes en technologie d'innovation, traduction parmi l'Anglais, le Français, et le Kirundi,
                                             ainsi que Télé-enseignement des TIC & langues.
                                         </p>
@@ -1088,6 +1092,13 @@
             <div class="col-md-10">
                 <!-- INTRO -->
                 <div class="shadow-sm p-1 mb-2 bg-body rounded">
+                    <div class="d-flex flex-row justify-content-center">
+                        <img src="/images/obed-edom-nkezabahizi-profile.jpg" class="img-fluid" style="height: 155px; width: 155px; border-radius: 50%; display: inline-block; padding: 10px"/>
+                    </div>
+                </div>
+                <div class="shadow-sm p-1 mb-2 bg-body rounded">
+                    <div id="expertise-section-title" style="margin: 10px; color: #1b6b07; font-size: 25px; font-weight: bold">
+                    </div>
                     <p style="margin: 10px" id="expertise-capture">
                     </p>
                     <ul style="margin: 10px">
@@ -1200,6 +1211,7 @@
 
                             } // expertiseFieldClicked
                             
+                            $('#expertise-section-title').html(locales.expertise_section_title[locale]);
                             $('#expertise-capture').append(
                                 `${locales.expertise_capture[locale]}:`
                             );
