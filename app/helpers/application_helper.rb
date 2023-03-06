@@ -1136,6 +1136,15 @@ module ApplicationHelper
                             'creating-a-start-up.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'A302987E7F958FFEF71FF600C516C7375859CC9DC28B101A2EEDFA29F0F8935C',
+                        title: 'work-as-co-founder-deliverable-01 (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'work-as-co-founder-deliverable-01.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
