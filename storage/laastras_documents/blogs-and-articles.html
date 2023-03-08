@@ -178,7 +178,7 @@
 
             if(true)
             {
-                var locale = get_locale(); locale = locale != 'en_US' ? 'en_US' : locale;
+                var locale = get_locale(); 
                 var is_mob = is_mobile();
                 console.log('Main locale: ' + locale + '; Mobile: ' + (is_mob ? 'true' : 'false'));
                 var grid_width = is_mob ? 'col-sm-12' : 'col-md-10';
@@ -215,8 +215,8 @@
                     blogs_and_articles: {
                         start_up_enterprise_course: {
                             en_US: `Start-up Enterprise Creation Course - Free`,
-                            fr_FR: ``,
-                            url: `/laastras_documents/show_laastras_document?doc_id=14B8697E1AF04717842DEF2482DE48CFF77D08DCE3695576B0B0E11549919674`
+                            fr_FR: `Cours sur Création d'Entreprise Débutante - Gratis`,
+                            url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=14B8697E1AF04717842DEF2482DE48CFF77D08DCE3695576B0B0E11549919674`
                         }
                     }
                 };

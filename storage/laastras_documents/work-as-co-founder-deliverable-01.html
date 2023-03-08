@@ -199,7 +199,7 @@
 
             if(true)
             {
-                var locale = get_locale(); locale = locale != 'en_US' ? 'en_US' : locale;
+                var locale = get_locale(); 
                 var is_mob = is_mobile();
                 console.log('Main locale: ' + locale + '; Mobile: ' + (is_mob ? 'true' : 'false'));
                 var grid_width = is_mob ? 'col-sm-12' : 'col-md-10';
@@ -244,7 +244,7 @@
                     start_up_creation_course: {
                         en_US: `
                             <div style="padding: 10px">
-                                <h3>Work as Co-founder of our Laastras Multi-national Organization - Deliverable 01</h3>
+                                <h3 class="text-center">Work as Co-founder of our Laastras Multi-national Organization - Deliverable 01</h3>
                                 <div id="video-teaser">
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div">
@@ -357,7 +357,118 @@
                                 </div>
                             </div>
                         `,
-                        fr_FR: ``
+                        fr_FR: `
+                            <div style="padding: 10px">
+                                <h3 class="text-center">Travailler comme Co-fondateur de notre Organisation Multi-nationale Laastras - Délivrable 01</h3>
+                                <div id="video-teaser">
+                                    <hr/>
+                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div">
+                                        <video class="embed-responsive video-item-main" controls=true>
+                                            <source src="/laastras_marketing_videos/show_video?video_id=8CB9B9BA4799A69CDDB84B4DFDB4D1309D3D157C532BE8AB050720A2B36FF946&disposition=inline" 
+                                                    type="video/mp4"
+                                                    class="embed-responsive-item video-item" />
+                                                    Vidéo captivant du système LaasOS/ERP
+                                        </video>
+                                    </div>
+                                    <div class="text-center"> <strong>Vidéo captivant du système LaasOS/ERP</strong> </div>
+                                    <hr/>
+                                </div>
+                                <div style="padding-top: 20px">
+                                    <p>
+                                        Ce cours est gratis mais on vous payera pour l'avoir pris. Vous serez un(e) des 
+                                        Co-fondateurs de l'organisation Laastras dans votre pays. Alors, veuillez y mettre 
+                                        du votre. Lire le
+                                        <a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=14B8697E1AF04717842DEF2482DE48CFF77D08DCE3695576B0B0E11549919674" style="text-decoration: none">
+                                            texte du cours
+                                        </a>, à moins que vous ne l'ayez fait.
+                                    </p>
+                                    <ol> 
+                                        <li>
+                                            <p id="118">
+                                                <strong> Jour 01 - Jour 02 </strong>
+                                            </p>
+                                            <p> 
+                                                <ul style="list-style-type: lower-alpha">
+                                                    <li>
+                                                        Veuillez lire 
+                                                        <a href="/laastras_documents/show_laastras_document?locale=fr_FR&doc_id=9E8D2A0E5607E0F07E5BDF78228B683611A52FCFE038BE80BF2EB640F73945E1" style="text-decoration: none">
+                                                            ces instructions 
+                                                        </a>.
+                                                        Une fois que vous aurez terminé de cloner le “repository” (dépôt) jusqu'à votre PC/ordi-portable,
+                                                        trouver le fichier <strong>cv.html</strong> dans le dossier <strong>assets</strong>, et 
+                                                        le copier dans un autre dossier différent du dossier du “repository” (dépôt) 
+                                                        <strong>mwambaro.github.io</strong>.
+                                                    </li>
+                                                    <li>
+                                                        Documenter tous les problèmes ou opportunités rencontrés durant l'éxécution de cette tâche et
+                                                        comment/si vous les avez gérés. Vous en rendrez compte à la fin de ce travail, 
+                                                        après avoir éxécuté toutes les tâches relatives à ce délivrable. Les maintenir comme 
+                                                        une <strong>Liste de Problèmes </strong>.
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p id="138">
+                                                <strong> Jour 03 - Jour 04 </strong>
+                                            </p>
+                                            <p>
+                                                <ul style="list-style-type: lower-alpha">
+                                                    <li>
+                                                        Puis, au lieu de traduire mon CV, le remplacer par le votre.
+                                                        Ne vous inquiétez pas de la traduction Anglaise de votre CV, utiliser 
+                                                        simplement un traducteur en ligne trouvé en utilisant votre moteur de recherche 
+                                                        préféré. Changer l'information du contenu du protocole “open graph” suivant:
+                                                        <i>og:title</i>, <i>og:url</i>. Dans la variable <strong>locales</strong>, changer 
+                                                        également les valeurs de ces propriétés: <i>title</i>, 
+                                                        <i>og_title</i>, <i>og_url</i>.
+                                                    </li>
+                                                    <li>
+                                                        Rassembler les problèmes/opportunités dans la <strong> Liste de Problèmes </strong>,
+                                                        s'il y en a, comme en 1.b
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </li> 
+                                        <li>
+                                            <p id="158">
+                                                <strong> Jour 05 - Jour 07 </strong>
+                                            </p>
+                                            <p>
+                                                <ul style="list-style-type: lower-alpha">
+                                                    <li>
+                                                        Aller à 
+                                                        <a href="https://github.com" style="text-decoration: none">
+                                                            github.com 
+                                                        </a>
+                                                        et créer un compte. Puis, chercher <strong>Github Pages</strong> 
+                                                        dans votre moteur de recherche favori. Utiliser <strong>SmartGit</strong> 
+                                                        pour transformer votre CV local en  “repository” (dépôt). Puis mettre en place un  “repository” (dépôt) 
+                                                        sur Github utilisant votre nom d'utilisateur comme nom du dépôt.
+                                                        Le “repository” (dépôt) doit être public, non pas privé. En fin, créer un “remote origin”
+                                                        dans SmartGit, pointant sur le “repository” (dépôt) créé sur Github et puis, 
+                                                        “push” votre “repository” (dépôt) local. Votre CV devrait être en direct 
+                                                        à <i>yourusername.github.io</i>
+                                                    </li> 
+                                                    <li>
+                                                        Rassembler les problèmes/opportunités dans la <strong> Liste de Problèmes </strong>,
+                                                        s'il y en a, comme en 1.b
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <div style="padding-top: 20px; padding-bottom: 20px" class="d-flex flex-row justify-content-end">
+                                    <p>
+                                        <strong>Tuteur:</strong> 
+                                        <a href="mailto:onkezabahizi@gmail.com" style="text-decoration: none">
+                                            Nkezabahizi Obed-Edom 
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        `
                     }
                 }
             }
