@@ -241,6 +241,20 @@
                         en_US: 'Back to top',
                         fr_FR: 'Retour en haut'
                     },
+                    set_language_label: {
+                        en_US: 'Change language',
+                        fr_FR: 'Modifier la langue'
+                    },
+                    languages: {
+                        en_US: [
+                            {locale: 'fr_FR', name: 'French', country: 'France'},
+                            {locale: 'en_US', name: 'English', country: 'United States of America'}
+                        ],
+                        fr_FR: [
+                            {locale: 'fr_FR', name: 'Français', country: 'France'},
+                            {locale: 'en_US', name: 'Anglais', country: 'Etats Unis d\'Amérique'}
+                        ]
+                    },
                     start_up_creation_course: {
                         en_US: `
                             <div style="padding: 10px">
@@ -492,10 +506,89 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                 <div class="shadow-sm p-1 mb-2 bg-body rounded">
+                    <div class="d-flex flex-row justify-content-center">
+                        <div class="d-flex flex-column align-items-center vyogo" style="background-color: #8cafdb;">
+                            <div class="d-flex flex-row justify-content-start">
+                                <div>
+                                    <label style="font-weight: bold" id="lang-label">  
+                                        Change language:
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <select aria-label="Laastras lang select" id="laastras-lang-selection" style="padding: 10px; border-radius: 5px">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-sm p-1 mb-2 bg-body rounded">
                     <div style="margin: 10px" id="details"></div>
                 </div>
                 <script>
                     $(document).ready((e) => {
+                        function handle_language_switch()
+                        {
+                            let options = '';
+                            let selected_idx = 0;
+                            $('#lang-label').html((locales.set_language_label[locale] + ':'));
+                            locales.languages[locale].map((lang, idx) => {
+                                if(lang.locale === locale)
+                                {
+                                    selected_idx = idx;
+                                }
+                                let html = `
+                                    <option value="${lang.locale}">${lang.name} (${lang.country})</option>
+                                `;
+                                options += html;
+                            });
+                            $('#laastras-lang-selection').append(options);
+                            document.getElementById('laastras-lang-selection').selectedIndex = selected_idx;
+                            
+                            $('#laastras-lang-selection').on('change', (e) => {
+                                let loc = document.getElementById('laastras-lang-selection').value;
+                                console.log('Locale: ' + loc);
+                                if(loc)
+                                {
+                                    let href = window.location.href;
+                                    let match = /locale=([^&#]+)/.exec(href);
+                                    if(match)
+                                    {
+                                        href = href.replace(match[1], loc);
+                                    }
+                                    else 
+                                    {
+                                        // query ?
+                                        match = /\?/.exec(href);
+                                        if(match)
+                                        {
+                                            let first = href.substring(0, (match.index+1));
+                                            let second = href.substring((match.index+1));
+                                            href = `${first}locale=${loc}&${second}`;
+                                        }
+                                        else
+                                        {
+                                            // hash ?
+                                            match = /#/.exec(href);
+                                            if(match)
+                                            {
+                                                let first = href.substring(0, (match.index));
+                                                let second = href.substring((match.index));
+                                                href = `${first}?locale=${loc}${second}`;
+                                            }
+                                            else 
+                                            {
+                                                href = `${href}?locale=${loc}`;
+                                            }
+                                        }
+                                        
+                                    }
+                                    window.location = href;
+                                    //window.location.reload(true);
+                                }
+                            });
+
+                        } // handle_language_switch
                         
                         function task_duration()
                         {
@@ -522,6 +615,7 @@
                         $('#details').append(locales.start_up_creation_course[locale]);
                         $('h3,h5').css({color: 'magenta'});
                         $('strong').css({color: 'grey'});
+                        $('.vyogo').css({padding: '10px'});
 
                         task_duration();
 
@@ -532,6 +626,8 @@
                         $(window).on('resize', (e) => {
                             scale_video_item();
                         });
+
+                        handle_language_switch();
 
                         if(env === 'development')
                         {
