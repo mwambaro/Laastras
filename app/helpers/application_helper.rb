@@ -1145,6 +1145,24 @@ module ApplicationHelper
                             'work-as-co-founder-deliverable-01.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'B38683B7031F6876900D90178198640C19023D540EDFFCE20EB2EFA8FC6E3ECA',
+                        title: 'eac-test-site (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'eac-test-site.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '8870AA397B7CEA38E5C6FDA228D4D7B6FE514730CAC2AA1F7B933D9D52AA2420',
+                        title: 'al-baghdadi-daech-coalition (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'al-baghdadi-daech-coalition.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
