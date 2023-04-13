@@ -38,3 +38,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore large videos for now
+/public/images/al-baghdadi-daech-coalition-un-security-council.mp4
+/public/images/diplomatic-mission.mp4
