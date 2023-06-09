@@ -277,7 +277,7 @@
                                         <a href="/laastras_documents/show_laastras_document?locale=en_US&doc_id=37589ABA1822622BA992DC366C8CEEC7752B1C69F94628AD89C15710C39756F7#blue" style="text-decoration: none">
                                             CEO (or Project Sponsor)
                                         </a>, 
-                                        who will in turn give in marriage to the Director a diplomat lady who will be 
+                                        who will in return give in marriage to the Director a diplomat lady who will be 
                                         <strong>Project Manager Assistant</strong>. 
                                         Each new Head of State will be serving in this 
                                         <a href="/laastras_documents/show_laastras_document?locale=en_US&doc_id=37589ABA1822622BA992DC366C8CEEC7752B1C69F94628AD89C15710C39756F7#blue" style="text-decoration: none">
@@ -359,9 +359,17 @@
                                 <h5>To Illustrate</h5>
                                 <div style="padding-top: 10px; padding-bottom: 10px">
                                     <hr/>
-                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div">
+                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
+                                        <iframe src="/images/diplomatic-mission.mp4" 
+                                            class="video-item-main embed-responsive-item"
+                                            frameborder="0" 
+                                            scrolling="no" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
                                         <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="https://mwambaro.github.io/assets/diplomatic-mission.mp4" 
+                                            <source src="/images/diplomatic-mission.mp4" 
                                                     type="video/mp4"
                                                     class="embed-responsive-item video-item" />
                                                 Diplomatic Mission
@@ -504,9 +512,17 @@
                                 <h5>Pour Illustrer</h5>
                                 <div style="padding-top: 10px; padding-bottom: 10px">
                                     <hr/>
-                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div">
+                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
+                                        <iframe src="/images/diplomatic-mission.mp4" 
+                                            class="video-item-main embed-responsive-item"
+                                            frameborder="0" 
+                                            scrolling="no" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
                                         <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="https://mwambaro.github.io/assets/diplomatic-mission.mp4" 
+                                            <source src="/images/diplomatic-mission.mp4" 
                                                     type="video/mp4"
                                                     class="embed-responsive-item video-item" />
                                                 Mission Diplomatique (Anglais)
@@ -538,18 +554,22 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="shadow-sm p-1 mb-2 bg-body rounded">
-                    <div class="d-flex flex-row justify-content-center">
-                        <div class="d-flex flex-column align-items-center vyogo" style="background-color: #8cafdb;">
-                            <div class="d-flex flex-row justify-content-start">
+                    <div>
+                        <div class="vyogo" style="background-color: #8cafdb;">
+                            <div class="d-flex flex-row justify-content-center">
                                 <div>
-                                    <label style="font-weight: bold" id="lang-label">  
-                                        Change language:
-                                    </label>
+                                    <div class="d-flex flex-row justify-content-start">
+                                        <div>
+                                            <label style="font-weight: bold" id="lang-label">  
+                                                Change language:
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <select aria-label="Laastras lang select" id="laastras-lang-selection" style="padding: 10px; border-radius: 5px">
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <select aria-label="Laastras lang select" id="laastras-lang-selection" style="padding: 10px; border-radius: 5px">
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -654,6 +674,33 @@
 
                         } // scale_video_item
 
+                        function switch_video_container(e=null)
+                        {
+                            if(e)
+                            {
+                                if($(e.target).hasClass('ivideo'))
+                                {
+                                    $('.iframe').remove();
+                                }
+                                else 
+                                {
+                                    $('.ivideo').remove();
+                                }
+                            }
+                            else 
+                            {
+                                if(env === 'development')
+                                {
+                                    $('.iframe').remove();
+                                }
+                                else 
+                                {
+                                    $('.ivideo').remove();
+                                }
+                            }
+
+                        } // switch_video_container
+
                         $('#details').append(locales.eac_test_site[locale]);
                         $('h3,h5').css({color: 'magenta'});
                         $('strong').css({color: 'grey'});
@@ -672,6 +719,7 @@
                         $('.video-item-main').on('loadeddata', (e) => {
                             console.log(`Video url: ${$('source').first().attr('src')}`);
                             scale_video_item();
+                            switch_video_container(e);
                         });
                         $(window).on('resize', (e) => {
                             scale_video_item();

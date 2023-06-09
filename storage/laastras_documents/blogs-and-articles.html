@@ -226,13 +226,33 @@
                         },
                         eac_test_site: {
                             en_US: `East African Community Test Site of World Federal Government - Laastras`,
-                            fr_FR: `Communauté Est-Africaine Site-test du Gouvernement Fédéral Mondial - Laastras`,
+                            fr_FR: `Communauté Est-Africaine Site-teste du Gouvernement Fédéral Mondial - Laastras`,
                             url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=B38683B7031F6876900D90178198640C19023D540EDFFCE20EB2EFA8FC6E3ECA`
                         },
                         al_baghdadi_coalition: {
-                            en_US: `Turning UN into World Federal Government through Al Baghdadi Opposition Coalition (Daech) - Laastras`,
-                            fr_FR: `Transformer l'ONU en Gouvernement Fédéral Mondial à travers la Coalition d'Opposition d'Al Baghdadi (Daech) - Laastras`,
+                            en_US: `Al-Baghdadi Opposition Coalition (Daech) & UN as World Federal Government - Laastras`,
+                            fr_FR: `Coalition d'Opposition d'Al-Baghdadi (Daech) & ONU comme Gouvernement Fédéral Mondial - Laastras`,
                             url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=8870AA397B7CEA38E5C6FDA228D4D7B6FE514730CAC2AA1F7B933D9D52AA2420`
+                        }, 
+                        owl_knights_ngo_coalition: {
+                            en_US: `Owl Knights NGO Coalition & UN as World Federal Government - Laastras`,
+                            fr_FR: `Coalition des ONG's Chevaliers Chouettes & ONU comme Gouvernement Fédéral Mondial - Laastras`,
+                            url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=C010311BD4986CB038A6ED8791978CD3F2951D54B57238A891A5321FD1D0CD21`
+                        },
+                        taqwa_families_coalition: {
+                            en_US: `Taqwa Families Coalition & UN as World Federal Government - Laastras`,
+                            fr_FR: `Coalition des Familles Taqwa & ONU comme Gouvernement Fédéral Mondial - Laastras`,
+                            url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=D68F377E734084AEDBED8B34078DB64DA8F572D6922AF1A158D15B94B05DB0A5`
+                        },
+                        enterprises_aori_alliance: {
+                            en_US: `Enterprises AORI Alliance & UN as World Federal Government - Laastras`,
+                            fr_FR: `Alliance AOUI des Entreprises & ONU comme Gouvernement Fédéral Mondial - Laastras`,
+                            url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=8F762A2AA7E80014E0E47600F69378BEDFD93960319CD4F1DC010E0386B26D76`
+                        },
+                        ossama_bin_laden_institute: {
+                            en_US: `Ossama Bin Laden Institute & UN as World Federal Government - Laastras`,
+                            fr_FR: `Institut Oussama Bin Laden & ONU comme Gouvernement Fédéral Mondial - Laastras`,
+                            url: `/laastras_documents/show_laastras_document?locale=${locale}&doc_id=835169673786FA1FB9B9E941B78CCD5E031584F3E424695B53AB3344182668BF`
                         }
                     }
                 };
@@ -254,6 +274,8 @@
     <body class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10">
+                <h3 class="text-center" id="visible-title" style="margin-top: 10px"> </h3>
+                <p class="text-center" id="visible-og-description" style="margin-top: 5px; color: magenta"> </p>
                 <div class="shadow-sm p-1 mb-2 bg-body rounded">
                     <div style="margin: 20px" id="blogs-and-articles"></div>
                 </div>
@@ -262,16 +284,21 @@
                         // 
                         let html = "";
                         let count = 0;
+                        $('#visible-title').html(locales.title[locale]);
+                        $('#visible-og-description').html(`[${locales.og_description[locale]}]`);
                         $.each(locales.blogs_and_articles, (idx, v) => {
                         
-                            html += `
-                                <li> 
-                                    <a href="${v.url}" style="text-decoration: none"> 
-                                        ${v[locale]}
-                                    </a>
-                                <li>
-                            `;
-                            count += 1;
+                            if(typeof(v) != 'undefined' && v)
+                            {
+                                html += `
+                                    <li style="padding: 10px"> 
+                                        <a href="${v.url}" style="text-decoration: none"> 
+                                            ${v[locale]}
+                                        </a>
+                                    </li>
+                                `;
+                                count += 1;
+                            }
                         });
                         let a_html = `
                             <ul style="list-style-type: square">

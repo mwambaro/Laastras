@@ -42,3 +42,7 @@ yarn-debug.log*
 # Ignore large videos for now
 /public/images/al-baghdadi-daech-coalition-un-security-council.mp4
 /public/images/diplomatic-mission.mp4
+/public/images/owl-knights-ngo-coalition.mp4
+/public/images/taqwa-families-coalition.mp4
+/public/images/enterprises-aori-alliance.mp4
+/public/images/ossama-bin-laden-institute.mp4

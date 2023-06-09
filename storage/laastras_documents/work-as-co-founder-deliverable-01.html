@@ -470,7 +470,7 @@
                                                         Le “repository” (dépôt) doit être public, non pas privé. En fin, créer un “remote origin”
                                                         dans SmartGit, pointant sur le “repository” (dépôt) créé sur Github et puis, 
                                                         “push” votre “repository” (dépôt) local. Votre CV devrait être en direct 
-                                                        à <i>yourusername.github.io</i>
+                                                        à <i>nomutilisateur.github.io</i>
                                                     </li> 
                                                     <li>
                                                         Rassembler les problèmes/opportunités dans la <strong> Liste de Problèmes </strong>,
@@ -514,18 +514,22 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                 <div class="shadow-sm p-1 mb-2 bg-body rounded">
-                    <div class="d-flex flex-row justify-content-center">
-                        <div class="d-flex flex-column align-items-center vyogo" style="background-color: #8cafdb;">
-                            <div class="d-flex flex-row justify-content-start">
+                    <div>
+                        <div class="vyogo" style="background-color: #8cafdb;">
+                            <div class="d-flex flex-row justify-content-center">
                                 <div>
-                                    <label style="font-weight: bold" id="lang-label">  
-                                        Change language:
-                                    </label>
+                                    <div class="d-flex flex-row justify-content-start">
+                                        <div>
+                                            <label style="font-weight: bold" id="lang-label">  
+                                                Change language:
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <select aria-label="Laastras lang select" id="laastras-lang-selection" style="padding: 10px; border-radius: 5px">
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <select aria-label="Laastras lang select" id="laastras-lang-selection" style="padding: 10px; border-radius: 5px">
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -595,6 +599,8 @@
                                     //window.location.reload(true);
                                 }
                             });
+
+                            $('.vyogo').css({padding: '10px'});
 
                         } // handle_language_switch
                         

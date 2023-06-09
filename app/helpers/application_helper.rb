@@ -1163,6 +1163,42 @@ module ApplicationHelper
                             'al-baghdadi-daech-coalition.html'
                         ),
                         mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'C010311BD4986CB038A6ED8791978CD3F2951D54B57238A891A5321FD1D0CD21',
+                        title: 'owl-knights-ngo-coalition (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'owl-knights-ngo-coalition.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: 'D68F377E734084AEDBED8B34078DB64DA8F572D6922AF1A158D15B94B05DB0A5',
+                        title: 'taqwa-families-coalition (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'taqwa-families-coalition.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '8F762A2AA7E80014E0E47600F69378BEDFD93960319CD4F1DC010E0386B26D76',
+                        title: 'enterprises-aori-alliance (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'enterprises-aori-alliance.html'
+                        ),
+                        mime_type: 'text/html'
+                    },
+                    {
+                        sha256: '835169673786FA1FB9B9E941B78CCD5E031584F3E424695B53AB3344182668BF',
+                        title: 'ossama-bin-laden-institute (.html)',
+                        language: 'en_US',
+                        uri: ApplicationHelper.document_asset_url(
+                            'ossama-bin-laden-institute.html'
+                        ),
+                        mime_type: 'text/html'
                     }
                 ]
 
