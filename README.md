@@ -61,3 +61,5 @@ Using psql cli for PostgreSQL, log in to the admin database using admin credenti
 * Deployment instructions
 
 Just push/merge to the master branch as it is CI/CD'ed with Heroku.
+Since Heroku is n longer supporting my web app, attempting to deploy on render using the instructions 
+[here](https://render.com/docs/deploy-rails)
