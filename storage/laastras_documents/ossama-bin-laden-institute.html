@@ -340,17 +340,14 @@
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
                                         <iframe src="/images/ossama-bin-laden-institute.mp4" 
-                                            class="video-item-main embed-responsive-item"
+                                            class="video-item-main embed-responsive-item iiframe"
                                             frameborder="0" 
-                                            scrolling="no" 
+                                            scrolling="no"
                                             allowfullscreen>
                                         </iframe>
                                     </div>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
-                                        <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="/images/ossama-bin-laden-institute.mp4" 
-                                                    type="video/mp4"
-                                                    class="embed-responsive-item video-item" />
+                                        <video src="/images/ossama-bin-laden-institute.mp4" class="embed-responsive video-item-main iivideo" controls=true>
                                             Ossama Bin Laden Institute & UN as World Federal Government
                                         </video>
                                     </div>
@@ -476,17 +473,14 @@
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
                                         <iframe src="/images/ossama-bin-laden-institute.mp4" 
-                                            class="video-item-main embed-responsive-item"
+                                            class="video-item-main embed-responsive-item iiframe"
                                             frameborder="0" 
                                             scrolling="no" 
                                             allowfullscreen>
                                         </iframe>
                                     </div>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
-                                        <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="/images/ossama-bin-laden-institute.mp4" 
-                                                    type="video/mp4"
-                                                    class="embed-responsive-item video-item" />
+                                        <video src="/images/ossama-bin-laden-institute.mp4" class="embed-responsive video-item-main iivideo" controls=true>
                                             Institut Oussama Bin Laden & ONU comme Gouvernement Fédéral Mondial
                                         </video>
                                     </div>
@@ -640,24 +634,28 @@
                         {
                             if(e)
                             {
-                                if($(e.target).hasClass('ivideo'))
+                                //console.log('Video loaded ...');
+                                if($(e.target).hasClass('iivideo'))
                                 {
-                                    $('.iframe').remove();
+                                    $('.iiframe').attr('src', 'xyz.xyz');
+                                    $('.iiframe').hide();
+                                    //console.log('IIVIDEO');
                                 }
                                 else 
                                 {
-                                    $('.ivideo').remove();
+                                    $('.ivideo').hide();
                                 }
                             }
                             else 
                             {
                                 if(env === 'development')
                                 {
-                                    $('.iframe').remove();
+                                    $('.iiframe').attr('src', 'xyz.xyz');
+                                    $('.iiframe').hide();
                                 }
                                 else 
                                 {
-                                    $('.ivideo').remove();
+                                    $('.ivideo').hide();
                                 }
                             }
 

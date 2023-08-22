@@ -360,17 +360,14 @@
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
                                         <iframe src="/images/owl-knights-ngo-coalition.mp4" 
-                                            class="video-item-main embed-responsive-item"
+                                            class="video-item-main embed-responsive-item iiframe"
                                             frameborder="0" 
                                             scrolling="no" 
                                             allowfullscreen>
                                         </iframe>
                                     </div>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
-                                        <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="/images/owl-knights-ngo-coalition.mp4" 
-                                                    type="video/mp4"
-                                                    class="embed-responsive-item video-item" />
+                                        <video src="/images/owl-knights-ngo-coalition.mp4" class="embed-responsive video-item-main iivideo" controls=true>
                                                 Owl Knights NGO Coalition & UN as World Federal Government
                                         </video>
                                     </div>
@@ -512,17 +509,14 @@
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
                                         <iframe src="/images/owl-knights-ngo-coalition.mp4" 
-                                            class="video-item-main embed-responsive-item"
+                                            class="video-item-main embed-responsive-item iiframe"
                                             frameborder="0" 
                                             scrolling="no" 
                                             allowfullscreen>
                                         </iframe>
                                     </div>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
-                                        <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="/images/owl-knights-ngo-coalition.mp4" 
-                                                    type="video/mp4"
-                                                    class="embed-responsive-item video-item" />
+                                        <video src="/images/owl-knights-ngo-coalition.mp4" class="embed-responsive video-item-main iivideo" controls=true>
                                                 Coalition des ONG's Chevaliers Chouettes & ONU comme Gouvernement Fédéral Mondial
                                         </video>
                                     </div>
@@ -676,24 +670,26 @@
                         {
                             if(e)
                             {
-                                if($(e.target).hasClass('ivideo'))
+                                if($(e.target).hasClass('iivideo'))
                                 {
-                                    $('.iframe').remove();
+                                    $('.iiframe').attr('src', 'xyz.xyz');
+                                    $('.iiframe').hide();
                                 }
                                 else 
                                 {
-                                    $('.ivideo').remove();
+                                    $('.ivideo').hide();
                                 }
                             }
                             else 
                             {
                                 if(env === 'development')
                                 {
-                                    $('.iframe').remove();
+                                    $('.iiframe').attr('src', 'xyz.xyz');
+                                    $('.iiframe').hide();
                                 }
                                 else 
                                 {
-                                    $('.ivideo').remove();
+                                    $('.ivideo').hide();
                                 }
                             }
 

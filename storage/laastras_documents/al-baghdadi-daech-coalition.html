@@ -352,17 +352,14 @@
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
                                         <iframe src="/images/al-baghdadi-daech-coalition-un-security-council.mp4" 
-                                            class="video-item-main embed-responsive-item"
+                                            class="video-item-main embed-responsive-item iiframe"
                                             frameborder="0" 
                                             scrolling="no" 
                                             allowfullscreen>
                                         </iframe>
                                     </div>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
-                                        <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="/images/al-baghdadi-daech-coalition-un-security-council.mp4" 
-                                                    type="video/mp4"
-                                                    class="embed-responsive-item video-item" />
+                                        <video src="/images/al-baghdadi-daech-coalition-un-security-council.mp4" class="embed-responsive video-item-main iivideo" controls=true>
                                                 From Al-Baghdadi Opposition Coalition (Daech) to UN Security Council
                                         </video>
                                     </div>
@@ -502,17 +499,14 @@
                                     <hr/>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div embed-responsive iframe">
                                         <iframe src="/images/al-baghdadi-daech-coalition-un-security-council.mp4" 
-                                            class="video-item-main embed-responsive-item"
+                                            class="video-item-main embed-responsive-item iiframe"
                                             frameborder="0" 
                                             scrolling="no" 
                                             allowfullscreen>
                                         </iframe>
                                     </div>
                                     <div style="padding: 10px" class="d-flex flex-row justify-content-center video-item-div ivideo">
-                                        <video class="embed-responsive video-item-main" controls=true>
-                                            <source src="/images/al-baghdadi-daech-coalition-un-security-council.mp4" 
-                                                    type="video/mp4"
-                                                    class="embed-responsive-item video-item" />
+                                        <video src="/images/al-baghdadi-daech-coalition-un-security-council.mp4" class="embed-responsive video-item-main iivideo" controls=true>
                                             De la Coalition d'Opposition d'Al-Baghdadi (Daech) au Conseil de Sécurité de l’ONU (Anglais)
                                         </video>
                                     </div>
@@ -666,24 +660,26 @@
                         {
                             if(e)
                             {
-                                if($(e.target).hasClass('ivideo'))
+                                if($(e.target).hasClass('iivideo'))
                                 {
-                                    $('.iframe').remove();
+                                    $('.iiframe').attr('src', 'xyz.xyz');
+                                    $('.iiframe').hide();
                                 }
                                 else 
                                 {
-                                    $('.ivideo').remove();
+                                    $('.ivideo').hide();
                                 }
                             }
                             else 
                             {
                                 if(env === 'development')
                                 {
-                                    $('.iframe').remove();
+                                    $('.iiframe').attr('src', 'xyz.xyz');
+                                    $('.iiframe').hide();
                                 }
                                 else 
                                 {
-                                    $('.ivideo').remove();
+                                    $('.ivideo').hide();
                                 }
                             }
 
