@@ -88,3 +88,4 @@ production:
   database: Laastras_production
   username: Laastras
   password: <%= ENV['LAASTRAS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
